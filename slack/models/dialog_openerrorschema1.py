@@ -1,0 +1,22 @@
+from __future__ import annotations
+
+from typing_extensions import NotRequired, TypedDict
+
+from ..core import UNSET, Optional, SdkBaseModel
+from .enums.dialog_open_error_enum import DialogOpenErrorEnumOrStr
+
+
+class DialogOpenerrorschema1(SdkBaseModel):
+    """Schema for error response from dialog.open method"""
+
+    callstack: Optional[str] = UNSET
+    """Note: PHP callstack is only visible in dev/qa"""
+
+    error: DialogOpenErrorEnumOrStr
+    ok: bool
+
+
+class DialogOpenerrorschema1Dict(TypedDict):
+    callstack: NotRequired[str]
+    error: DialogOpenErrorEnumOrStr
+    ok: bool

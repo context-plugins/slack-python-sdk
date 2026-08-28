@@ -2,7 +2,7 @@
 
 # Reactions — operations
 
-Accessor: `client.reactions` · Source: `slack_web_api/apis/reactions.py` · 4 operations
+Accessor: `client.reactions` · Source: `slack/apis/reactions.py` · 4 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ReactionsAddschema` | `slack_web_api/models/reactions_addschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ReactionsAddschema` | `slack/models/reactions_addschema.py` |
 
 ### client.reactions.reactions_get
 
@@ -33,7 +33,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
 
 ### client.reactions.reactions_list
 
@@ -47,8 +47,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ReactionsListschema` | `slack_web_api/models/reactions_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ReactionsListschema` | `slack/models/reactions_listschema.py` |
 
 ### client.reactions.reactions_remove
 
@@ -62,6 +62,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ReactionsRemoveschema` | `slack_web_api/models/reactions_removeschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ReactionsRemoveschema` | `slack/models/reactions_removeschema.py` |
 

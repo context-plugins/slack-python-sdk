@@ -1,0 +1,26 @@
+from __future__ import annotations
+
+from typing_extensions import NotRequired, TypedDict
+
+from ..core import UNSET, Optional, SdkBaseModel
+from .enums.conversations_rename_error_enum import ConversationsRenameErrorEnumOrStr
+
+
+class ConversationsRenameerrorschema1(SdkBaseModel):
+    """Schema for error response from conversations.rename method"""
+
+    callstack: Optional[str] = UNSET
+    """Note: PHP callstack is only visible in dev/qa"""
+
+    error: ConversationsRenameErrorEnumOrStr
+    needed: Optional[str] = UNSET
+    ok: bool
+    provided: Optional[str] = UNSET
+
+
+class ConversationsRenameerrorschema1Dict(TypedDict):
+    callstack: NotRequired[str]
+    error: ConversationsRenameErrorEnumOrStr
+    needed: NotRequired[str]
+    ok: bool
+    provided: NotRequired[str]

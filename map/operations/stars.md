@@ -2,7 +2,7 @@
 
 # Stars — operations
 
-Accessor: `client.stars` · Source: `slack_web_api/apis/stars.py` · 3 operations
+Accessor: `client.stars` · Source: `slack/apis/stars.py` · 3 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `StarsAddschema` | `slack_web_api/models/stars_addschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `StarsAddschema` | `slack/models/stars_addschema.py` |
 
 ### client.stars.stars_list
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `StarsListschema` | `slack_web_api/models/stars_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `StarsListschema` | `slack/models/stars_listschema.py` |
 
 ### client.stars.stars_remove
 
@@ -48,6 +48,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `StarsRemoveschema` | `slack_web_api/models/stars_removeschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `StarsRemoveschema` | `slack/models/stars_removeschema.py` |
 

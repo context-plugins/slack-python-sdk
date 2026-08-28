@@ -2,7 +2,7 @@
 
 # Conversations — operations
 
-Accessor: `client.conversations` · Source: `slack_web_api/apis/conversations.py` · 18 operations
+Accessor: `client.conversations` · Source: `slack/apis/conversations.py` · 18 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsArchivesuccessschema` | `slack_web_api/models/conversations_archivesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsArchivesuccessschema` | `slack/models/conversations_archivesuccessschema.py` |
 
 ### client.conversations.conversations_close
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsClosesuccessschema` | `slack_web_api/models/conversations_closesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsClosesuccessschema` | `slack/models/conversations_closesuccessschema.py` |
 
 ### client.conversations.conversations_create
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsCreatesuccessschema` | `slack_web_api/models/conversations_createsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsCreatesuccessschema` | `slack/models/conversations_createsuccessschema.py` |
 
 ### client.conversations.conversations_history
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsHistorysuccessschema` | `slack_web_api/models/conversations_historysuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsHistorysuccessschema` | `slack/models/conversations_historysuccessschema.py` |
 
 ### client.conversations.conversations_info
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsInfosuccessschema` | `slack_web_api/models/conversations_infosuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsInfosuccessschema` | `slack/models/conversations_infosuccessschema.py` |
 
 ### client.conversations.conversations_invite
 
@@ -93,8 +93,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsInviteerrorschema` | `slack_web_api/models/conversations_inviteerrorschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsInviteerrorschema` | `slack/models/conversations_inviteerrorschema.py` |
 
 ### client.conversations.conversations_join
 
@@ -108,8 +108,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsJoinsuccessschema` | `slack_web_api/models/conversations_joinsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsJoinsuccessschema` | `slack/models/conversations_joinsuccessschema.py` |
 
 ### client.conversations.conversations_kick
 
@@ -123,8 +123,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsKicksuccessschema` | `slack_web_api/models/conversations_kicksuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsKicksuccessschema` | `slack/models/conversations_kicksuccessschema.py` |
 
 ### client.conversations.conversations_leave
 
@@ -138,8 +138,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsLeavesuccessschema` | `slack_web_api/models/conversations_leavesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsLeavesuccessschema` | `slack/models/conversations_leavesuccessschema.py` |
 
 ### client.conversations.conversations_list
 
@@ -153,8 +153,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsListsuccessschema` | `slack_web_api/models/conversations_listsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsListsuccessschema` | `slack/models/conversations_listsuccessschema.py` |
 
 ### client.conversations.conversations_mark
 
@@ -168,8 +168,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsMarksuccessschema` | `slack_web_api/models/conversations_marksuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsMarksuccessschema` | `slack/models/conversations_marksuccessschema.py` |
 
 ### client.conversations.conversations_members
 
@@ -183,8 +183,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsMemberssuccessschema` | `slack_web_api/models/conversations_memberssuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsMemberssuccessschema` | `slack/models/conversations_memberssuccessschema.py` |
 
 ### client.conversations.conversations_open
 
@@ -198,8 +198,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsOpensuccessschema` | `slack_web_api/models/conversations_opensuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsOpensuccessschema` | `slack/models/conversations_opensuccessschema.py` |
 
 ### client.conversations.conversations_rename
 
@@ -213,8 +213,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsRenamesuccessschema` | `slack_web_api/models/conversations_renamesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsRenamesuccessschema` | `slack/models/conversations_renamesuccessschema.py` |
 
 ### client.conversations.conversations_replies
 
@@ -228,8 +228,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsRepliessuccessschema` | `slack_web_api/models/conversations_repliessuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsRepliessuccessschema` | `slack/models/conversations_repliessuccessschema.py` |
 
 ### client.conversations.conversations_set_purpose
 
@@ -243,8 +243,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsSetPurposesuccessschema` | `slack_web_api/models/conversations_set_purposesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsSetPurposesuccessschema` | `slack/models/conversations_set_purposesuccessschema.py` |
 
 ### client.conversations.conversations_set_topic
 
@@ -258,8 +258,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsSetTopicsuccessschema` | `slack_web_api/models/conversations_set_topicsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsSetTopicsuccessschema` | `slack/models/conversations_set_topicsuccessschema.py` |
 
 ### client.conversations.conversations_unarchive
 
@@ -273,6 +273,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ConversationsUnarchivesuccessschema` | `slack_web_api/models/conversations_unarchivesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ConversationsUnarchivesuccessschema` | `slack/models/conversations_unarchivesuccessschema.py` |
 

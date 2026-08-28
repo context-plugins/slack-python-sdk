@@ -2,7 +2,7 @@
 
 # Calls — operations
 
-Accessor: `client.calls` · Source: `slack_web_api/apis/calls.py` · 6 operations
+Accessor: `client.calls` · Source: `slack/apis/calls.py` · 6 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.calls.calls_end
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.calls.calls_info
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.calls.calls_participants_add
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.calls.calls_participants_remove
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.calls.calls_update
 
@@ -93,6 +93,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 

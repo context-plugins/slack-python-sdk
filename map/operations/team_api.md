@@ -2,7 +2,7 @@
 
 # TeamApi — operations
 
-Accessor: `client.team_api` · Source: `slack_web_api/apis/team_api.py` · 5 operations
+Accessor: `client.team_api` · Source: `slack/apis/team_api.py` · 5 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `TeamAccessLogsschema` | `slack_web_api/models/team_access_logsschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `TeamAccessLogsschema` | `slack/models/team_access_logsschema.py` |
 
 ### client.team_api.team_billable_info
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.team_api.team_info
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `TeamInfoschema` | `slack_web_api/models/team_infoschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `TeamInfoschema` | `slack/models/team_infoschema.py` |
 
 ### client.team_api.team_integration_logs
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `TeamIntegrationLogsschema` | `slack_web_api/models/team_integration_logsschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `TeamIntegrationLogsschema` | `slack/models/team_integration_logsschema.py` |
 
 ### client.team_api.team_profile_get
 
@@ -78,6 +78,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `TeamProfileGetsuccessschema` | `slack_web_api/models/team_profile_getsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `TeamProfileGetsuccessschema` | `slack/models/team_profile_getsuccessschema.py` |
 

@@ -1,8 +1,8 @@
-# Slack Web API SDK
+# Slack SDK
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url] [![Python 3.10+][python-badge]][python-url]
 
-The Slack Web API SDK for Python provides access to the [Slack Web API REST APIs](https://api.slack.com/web) from Python applications.
+The Slack SDK for Python provides access to the [Slack REST APIs](https://api.slack.com/web) from Python applications.
 
 > [!TIP]
 > **Looking for a specific signature, model, enum, or error type?** This SDK ships a generated
@@ -18,15 +18,15 @@ One way to interact with the Slack platform is its HTTP RPC-based Web API, a col
 Install the Python SDK from PyPI, with whichever package manager your project uses:
 
 ```bash
-pip install slack-web-api
+pip install slack
 ```
 
 ```bash
-uv add slack-web-api
+uv add slack
 ```
 
 ```bash
-poetry add slack-web-api
+poetry add slack
 ```
 
 ---
@@ -35,19 +35,19 @@ poetry add slack-web-api
 
 ### Synchronous client
 
-Construct `SlackWebApiClient` with keyword arguments, and call `close()` when you are done. Every argument is optional; the full list is in the [SDK map](sdk-map.md).
+Construct `SlackClient` with keyword arguments, and call `close()` when you are done. Every argument is optional; the full list is in the [SDK map](sdk-map.md).
 
 ```python
-from slack_web_api import SlackWebApiClient
-from slack_web_api.auth import SlackAuthScope
-from slack_web_api.core import AuthorizationCodeCredentials
+from slack import SlackClient
+from slack.auth import SlackAuthScope
+from slack.core import AuthorizationCodeCredentials
 
 
 def prompt(url: str) -> str:
     return input(f"Open {url}, then paste the code: ")
 
 
-client = SlackWebApiClient(
+client = SlackClient(
     slack_auth=AuthorizationCodeCredentials[SlackAuthScope](
         client_id="YOUR_CLIENT_ID", redirect_uri="YOUR_REDIRECT_URI", prompt_for_authorization_code=prompt
     ),
@@ -59,22 +59,22 @@ client = SlackWebApiClient(
 client.close()
 ```
 
-Alternatively, scope it -- `with SlackWebApiClient(...) as client:` closes the pool on exit; see [Best Practices](#best-practices).
+Alternatively, scope it -- `with SlackClient(...) as client:` closes the pool on exit; see [Best Practices](#best-practices).
 
-`Client` is exported as an alias of `SlackWebApiClient`, so `from slack_web_api import Client` also works.
+`Client` is exported as an alias of `SlackClient`, so `from slack import Client` also works.
 
 The SDK accepts every model-typed input in two interchangeable spellings, both type-checked: the typed model, or a plain dict with the same keys -- the `OrDict` and `Model | ModelDict` unions in the [SDK map](sdk-map.md). Pick whichever suits the call site: the dict form needs no import, while the model form adds a keyword-checked constructor and editor completion.
 
 ### Asynchronous client
 
-`AsyncSlackWebApiClient` mirrors `SlackWebApiClient` with **identical method names**, and every endpoint method is a coroutine. It takes the same arguments, with some differences -- for example, the transport argument is `custom_async_http_client`.
+`AsyncSlackClient` mirrors `SlackClient` with **identical method names**, and every endpoint method is a coroutine. It takes the same arguments, with some differences -- for example, the transport argument is `custom_async_http_client`.
 
 ```python
 from asyncio import run, to_thread
 
-from slack_web_api import AsyncSlackWebApiClient
-from slack_web_api.auth import SlackAuthScope
-from slack_web_api.core import AsyncAuthorizationCodeCredentials
+from slack import AsyncSlackClient
+from slack.auth import SlackAuthScope
+from slack.core import AsyncAuthorizationCodeCredentials
 
 
 async def prompt(url: str) -> str:
@@ -83,7 +83,7 @@ async def prompt(url: str) -> str:
 
 
 async def main() -> None:
-    client = AsyncSlackWebApiClient(
+    client = AsyncSlackClient(
         slack_auth=AsyncAuthorizationCodeCredentials[SlackAuthScope](
             client_id="YOUR_CLIENT_ID", redirect_uri="YOUR_REDIRECT_URI", prompt_for_authorization_code=prompt
         ),
@@ -96,7 +96,7 @@ async def main() -> None:
 run(main())
 ```
 
-Alternatively, scope it -- `async with AsyncSlackWebApiClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx; see [Best Practices](#best-practices).
+Alternatively, scope it -- `async with AsyncSlackClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx; see [Best Practices](#best-practices).
 
 `AsyncClient` is the exported alias. Each client accepts **only** its own transport argument and its own prompt flavour; passing the other's is a `TypeError` at runtime and an error under mypy.
 
@@ -122,11 +122,11 @@ Consult the map before scanning or grepping the source: it answers call-level co
 ## Best Practices
 
 > [!TIP]
-> Use a **single `SlackWebApiClient` instance** for the lifetime of your application and reuse it across
+> Use a **single `SlackClient` instance** for the lifetime of your application and reuse it across
 > all requests. Each instance owns its own connection pool, so an instance per request forfeits
 > connection reuse and leaks pools that are never closed.
 
-Match the disposal to the client's lifetime: an application-lifetime client is closed once at shutdown with `close()` / `aclose()`; where the lifetime fits a block, `with SlackWebApiClient() as client:` / `async with AsyncSlackWebApiClient() as client:` releases it automatically. Both are idempotent, but a closed client is not reusable: the next call raises. The client closes **whatever transport it holds**, including one you supplied via `custom_http_client` / `custom_async_http_client`; if you intend to reuse your own transport across clients, don't hand its lifetime to a `with` block.
+Match the disposal to the client's lifetime: an application-lifetime client is closed once at shutdown with `close()` / `aclose()`; where the lifetime fits a block, `with SlackClient() as client:` / `async with AsyncSlackClient() as client:` releases it automatically. Both are idempotent, but a closed client is not reusable: the next call raises. The client closes **whatever transport it holds**, including one you supplied via `custom_http_client` / `custom_async_http_client`; if you intend to reuse your own transport across clients, don't hand its lifetime to a `with` block.
 
 ## License
 

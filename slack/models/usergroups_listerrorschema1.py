@@ -1,0 +1,22 @@
+from __future__ import annotations
+
+from typing_extensions import NotRequired, TypedDict
+
+from ..core import UNSET, Optional, SdkBaseModel
+from .enums.usergroups_enable_error_enum import UsergroupsEnableErrorEnumOrStr
+
+
+class UsergroupsListerrorschema1(SdkBaseModel):
+    """Schema for error response from usergroups.list method"""
+
+    callstack: Optional[str] = UNSET
+    """Note: PHP callstack is only visible in dev/qa"""
+
+    error: UsergroupsEnableErrorEnumOrStr
+    ok: bool
+
+
+class UsergroupsListerrorschema1Dict(TypedDict):
+    callstack: NotRequired[str]
+    error: UsergroupsEnableErrorEnumOrStr
+    ok: bool

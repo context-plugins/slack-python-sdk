@@ -1,14 +1,14 @@
 <!-- Generated file — do not edit; regenerated with the SDK. -->
 
-# SDK map — Slack Web API (Python)
+# SDK map — Slack (Python)
 
 > A generated table of contents for this SDK. Consult this map and its sub-pages to learn signatures, error types, and server/auth wiring **by lookup**. Model shapes and enum values are *not* duplicated here — the map names the module declaring each type; read the shape there. Every name is the emitted spelling, so a wrong one fails at import rather than working silently.
 
 |  |  |
 | --- | --- |
-| SDK display name | Slack Web API |
-| Root package | `slack_web_api` |
-| Distribution name | `slack-web-api` |
+| SDK display name | Slack |
+| Root package | `slack` |
+| Distribution name | `slack` |
 | Requires | Python 3.10 or later |
 | API spec version | `1.7.0` |
 | Generator | APIMatic |
@@ -24,16 +24,16 @@ All `Source` paths on this map and its sub-pages are relative to the **SDK root*
 ### Synchronous client
 
 ```python
-from slack_web_api import SlackWebApiClient
-from slack_web_api.auth import SlackAuthScope
-from slack_web_api.core import AuthorizationCodeCredentials
+from slack import SlackClient
+from slack.auth import SlackAuthScope
+from slack.core import AuthorizationCodeCredentials
 
 
 def prompt(url: str) -> str:
     return input(f"Open {url}, then paste the code: ")
 
 
-client = SlackWebApiClient(
+client = SlackClient(
     slack_auth=AuthorizationCodeCredentials[SlackAuthScope](
         client_id="YOUR_CLIENT_ID", redirect_uri="YOUR_REDIRECT_URI", prompt_for_authorization_code=prompt
     ),
@@ -45,16 +45,16 @@ client = SlackWebApiClient(
 client.close()
 ```
 
-Alternatively, scope it — `with SlackWebApiClient(...) as client:` closes the pool on exit.
+Alternatively, scope it — `with SlackClient(...) as client:` closes the pool on exit.
 
 ### Asynchronous client
 
 ```python
 from asyncio import run, to_thread
 
-from slack_web_api import AsyncSlackWebApiClient
-from slack_web_api.auth import SlackAuthScope
-from slack_web_api.core import AsyncAuthorizationCodeCredentials
+from slack import AsyncSlackClient
+from slack.auth import SlackAuthScope
+from slack.core import AsyncAuthorizationCodeCredentials
 
 
 async def prompt(url: str) -> str:
@@ -63,7 +63,7 @@ async def prompt(url: str) -> str:
 
 
 async def main() -> None:
-    client = AsyncSlackWebApiClient(
+    client = AsyncSlackClient(
         slack_auth=AsyncAuthorizationCodeCredentials[SlackAuthScope](
             client_id="YOUR_CLIENT_ID", redirect_uri="YOUR_REDIRECT_URI", prompt_for_authorization_code=prompt
         ),
@@ -76,15 +76,15 @@ async def main() -> None:
 run(main())
 ```
 
-Alternatively, scope it — `async with AsyncSlackWebApiClient(...) as client:` closes the pool on exit.
+Alternatively, scope it — `async with AsyncSlackClient(...) as client:` closes the pool on exit.
 
-`AsyncClient` (`slack_web_api/async_client.py`) mirrors `Client` method for method, each endpoint method a coroutine. It takes the same keywords, except that each client accepts only its own transport and — where the **Async Type** column differs — only its own flavor.
+`AsyncClient` (`slack/async_client.py`) mirrors `Client` method for method, each endpoint method a coroutine. It takes the same keywords, except that each client accepts only its own transport and — where the **Async Type** column differs — only its own flavor.
 
-`Client` and `AsyncClient` are aliases of `SlackWebApiClient` and `AsyncSlackWebApiClient` — the names tracebacks and `repr()` show; all four import from the root.
+`Client` and `AsyncClient` are aliases of `SlackClient` and `AsyncSlackClient` — the names tracebacks and `repr()` show; all four import from the root.
 
 `close()` / `aclose()` closes the transport even when you supplied one via `custom_http_client=` / `custom_async_http_client=`, and a closed client cannot be reused.
 
-Every API group is a property on the client (e.g. `client.admin`). Every constructor argument is optional and keyword-only. Sources: `slack_web_api/client.py`, `slack_web_api/async_client.py`:
+Every API group is a property on the client (e.g. `client.admin`). Every constructor argument is optional and keyword-only. Sources: `slack/client.py`, `slack/async_client.py`:
 
 | Keyword | Sync Type | Async Type | Default |
 | --- | --- | --- | --- |
@@ -100,16 +100,16 @@ The types those columns name — where each imports from and, for a credentials 
 
 | Type | Import from | Shape |
 | --- | --- | --- |
-| `Environment` | `slack_web_api.server` | `Literal` of the Environments table's names |
-| `HttpClient` | `slack_web_api.core` | protocol — `send(request: HttpRequest) -> HttpResponse` · `close()` |
-| `AuthorizationCodeCredentialsOrDict` | `slack_web_api.core` | `AuthorizationCodeCredentials` or a dict: `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AuthorizationCodePrompt` |
-| `SlackAuthScope` | `slack_web_api.auth` | `Enum` of the declared scopes |
-| `RefreshableTokenSource` | `slack_web_api.core` | protocol — `fetch(credentials) -> OAuthTokenRefreshable` · `refresh(credentials, refresh_token) -> OAuthTokenRefreshable \| None` |
-| `AuthorizationCodeCredentials` | `slack_web_api.core` | `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AuthorizationCodePrompt` |
-| `AsyncHttpClient` | `slack_web_api.core` | protocol — `async send(request: HttpRequest) -> HttpResponse` · `async aclose()` |
-| `AsyncAuthorizationCodeCredentialsOrDict` | `slack_web_api.core` | `AsyncAuthorizationCodeCredentials` or a dict: `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AsyncAuthorizationCodePrompt` |
-| `AsyncRefreshableTokenSource` | `slack_web_api.core` | protocol — `async fetch(credentials) -> OAuthTokenRefreshable` · `async refresh(credentials, refresh_token) -> OAuthTokenRefreshable \| None` |
-| `AsyncAuthorizationCodeCredentials` | `slack_web_api.core` | `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AsyncAuthorizationCodePrompt` |
+| `Environment` | `slack.server` | `Literal` of the Environments table's names |
+| `HttpClient` | `slack.core` | protocol — `send(request: HttpRequest) -> HttpResponse` · `close()` |
+| `AuthorizationCodeCredentialsOrDict` | `slack.core` | `AuthorizationCodeCredentials` or a dict: `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AuthorizationCodePrompt` |
+| `SlackAuthScope` | `slack.auth` | `Enum` of the declared scopes |
+| `RefreshableTokenSource` | `slack.core` | protocol — `fetch(credentials) -> OAuthTokenRefreshable` · `refresh(credentials, refresh_token) -> OAuthTokenRefreshable \| None` |
+| `AuthorizationCodeCredentials` | `slack.core` | `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AuthorizationCodePrompt` |
+| `AsyncHttpClient` | `slack.core` | protocol — `async send(request: HttpRequest) -> HttpResponse` · `async aclose()` |
+| `AsyncAuthorizationCodeCredentialsOrDict` | `slack.core` | `AsyncAuthorizationCodeCredentials` or a dict: `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AsyncAuthorizationCodePrompt` |
+| `AsyncRefreshableTokenSource` | `slack.core` | protocol — `async fetch(credentials) -> OAuthTokenRefreshable` · `async refresh(credentials, refresh_token) -> OAuthTokenRefreshable \| None` |
+| `AsyncAuthorizationCodeCredentials` | `slack.core` | `client_id: str` · `client_secret: str \| None` · `redirect_uri: str` · `scopes: list[Scope] \| None` · `state: str \| None` · `pkce: PkceMethod \| None = "S256"` · `prompt_for_authorization_code: AsyncAuthorizationCodePrompt` |
 
 ---
 
@@ -122,21 +122,21 @@ Every operation is reached in two response modes:
 
 What `.error` holds is fixed per operation. There are two cases:
 
-- **Case A — typed error.** The operation documents at least one error status, so `slack_web_api/errors/` declares a union alias over the bodies those statuses map to — `RawError` is always its last arm, for any undocumented status — and `.error` is annotated with that alias. Narrow it with `isinstance`. The operation blocks name the alias and the status each arm maps from.
-- **Case B — raw error.** The operation documents no error status; `.error` is `RawError` (`slack_web_api/core/results.py`): `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse`.
+- **Case A — typed error.** The operation documents at least one error status, so `slack/errors/` declares a union alias over the bodies those statuses map to — `RawError` is always its last arm, for any undocumented status — and `.error` is annotated with that alias. Narrow it with `isinstance`. The operation blocks name the alias and the status each arm maps from.
+- **Case B — raw error.** The operation documents no error status; `.error` is `RawError` (`slack/core/results.py`): `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse`.
 
-Core runtime types (`slack_web_api/core/`) — public members with their **declared types**, verbatim from source:
+Core runtime types (`slack/core/`) — public members with their **declared types**, verbatim from source:
 
 | Type | Public members | Source |
 | --- | --- | --- |
-| `ApiError` — raised by every parsed call; `.error` is always `RawError` (no Case A alias in this SDK) | `error: E` · `status_code: int` · `response: HttpResponse` | `slack_web_api/core/exceptions.py` |
-| `ApiResult[T, E]` — returned by every raw call; the `Success[T] \| Failure[E]` union | `payload: T` (on `Success`) · `error: E` (on `Failure`) · `response: HttpResponse` (on both) | `slack_web_api/core/results.py` |
-| `RawError` | `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse` | `slack_web_api/core/results.py` |
+| `ApiError` — raised by every parsed call; `.error` is always `RawError` (no Case A alias in this SDK) | `error: E` · `status_code: int` · `response: HttpResponse` | `slack/core/exceptions.py` |
+| `ApiResult[T, E]` — returned by every raw call; the `Success[T] \| Failure[E]` union | `payload: T` (on `Success`) · `error: E` (on `Failure`) · `response: HttpResponse` (on both) | `slack/core/results.py` |
+| `RawError` | `status_code: int` · `content: bytes` · `text(encoding="utf-8"): str` · `json(): Any` · `response: HttpResponse` | `slack/core/results.py` |
 
 Typed error bodies (the arms of a Case A alias) are ordinary models — no special handling. The operation's **Type sources** table gives the module that declares each one; read field names, declared types and JSON aliases there, as for any other model.
 
 ```python
-from slack_web_api.core import ApiError, RawError
+from slack.core import ApiError, RawError
 
 try:
     response = client.admin.admin_apps_approve(token, content_type)
@@ -160,7 +160,7 @@ Each links to a sub-page with one block per operation, headed by its full access
 | **Four spellings, one signature** — the same method name and parameters on `Client` and `AsyncClient`, each also reachable through `.with_raw_response`; the async twin is a coroutine to `await`, with the same return types and error case, and where the **Async Type** column differs, pass the type it names | Getting a client |
 | **Parsed raises, raw returns** — `ApiError` versus `ApiResult` | Error-handling model |
 | **Case B error is always `RawError`** — also the last arm of every Case A alias, where a block's **Error arms** bullet ends in it | Error-handling model |
-| **A trailing `request_options`** — keyword-only and optional, for per-call overrides such as a timeout or extra headers; every signature ends with it | here (`slack_web_api/core/request_options.py`) |
+| **A trailing `request_options`** — keyword-only and optional, for per-call overrides such as a timeout or extra headers; every signature ends with it | here (`slack/core/request_options.py`) |
 | **Base URL is the selected environment's** — this SDK's only server, one URL per `environment=`; override it with `base_url="https://…"` | Servers & auth |
 | **Parameter names are literal** — signatures are generated code verbatim, and everything behind the bare `*` must be passed by name | here |
 | **A parameter's wire name is its Python name** — sent as-is on the path, query string, header or body, unless the block's **Params** bullet carries a wire name beside the role | here |
@@ -232,12 +232,12 @@ Sub-pages chunk per `###` block: each block is self-contained given the table ab
 
 ## Models — where they live, how to build them
 
-**Shapes live only in the source.** Every module under `slack_web_api/models/` declares one type plus its input companion, and every module under `slack_web_api/errors/` one alias plus the mapper that builds it; no two share a name. Take a type's module from the operation's **Type sources** table. When no retrieved chunk names it, the module is the type name in snake_case under the kind's directory below (`ApimethodusersGetPresence` ↔ `apimethodusers_get_presence.py`). Never grep for a type.
+**Shapes live only in the source.** Every module under `slack/models/` declares one type plus its input companion, and every module under `slack/errors/` one alias plus the mapper that builds it; no two share a name. Take a type's module from the operation's **Type sources** table. When no retrieved chunk names it, the module is the type name in snake_case under the kind's directory below (`ApimethodusersGetPresence` ↔ `apimethodusers_get_presence.py`). Never grep for a type.
 
 | Group | Count | Directory (module = `<type_name>.py`) |
 | --- | --- | --- |
-| Models (`SdkBaseModel` pydantic classes) | 357 | `slack_web_api/models/` |
-| Enums (`Enum` over `str`) — Python member names + wire values | 89 | `slack_web_api/models/enums/` |
+| Models (`SdkBaseModel` pydantic classes) | 357 | `slack/models/` |
+| Enums (`Enum` over `str`) — Python member names + wire values | 89 | `slack/models/enums/` |
 
 Conventions: a model is a `SdkBaseModel` (pydantic) class; a field whose wire name differs from its Python name carries it as `Field(alias=…)` (`type_` ↔ `"type"`) — read the alias off the field rather than deriving it. An omittable field is annotated `Optional[T]` and defaults to `UNSET`, and one that may also be explicitly null is `OptionalNullable[T]`; both come from `core` and neither is `typing.Optional` — there is no `None` arm unless the spec declared the property nullable, so passing `None` to the first is a type error rather than a value that serializes.
 
@@ -247,11 +247,11 @@ Import paths by content type (`from <package> import <Name>`):
 
 | Contents | Import from |
 | --- | --- |
-| Client (root) | `slack_web_api` |
-| Operation controllers | `slack_web_api.apis` |
-| Models | `slack_web_api.models` |
-| Enums | `slack_web_api.models.enums` |
-| Core runtime (`ApiError`, `ApiResult`, `RawError`, …) | `slack_web_api.core` |
+| Client (root) | `slack` |
+| Operation controllers | `slack.apis` |
+| Models | `slack.models` |
+| Enums | `slack.models.enums` |
+| Core runtime (`ApiError`, `ApiResult`, `RawError`, …) | `slack.core` |
 
 ---
 
@@ -259,7 +259,7 @@ Import paths by content type (`from <package> import <Name>`):
 
 **OAuth2 (authorization code).** Pass `slack_auth` your client id, redirect URI and authorization code; authorization is at `/authorize` and tokens come from `/oauth.access`, both on the base URL — so `base_url="https://…"` moves token traffic too. Scopes are the `SlackAuthScope` alias.
 
-**Environments.** `environment=` selects the target environment (`slack_web_api/server/environment.py`); this SDK's one server (`slack_web_api/server/server_config.py`) has a base URL per environment:
+**Environments.** `environment=` selects the target environment (`slack/server/environment.py`); this SDK's one server (`slack/server/server_config.py`) has a base URL per environment:
 
 | Environment | Base URL | Hosting | Override point |
 | --- | --- | --- | --- |

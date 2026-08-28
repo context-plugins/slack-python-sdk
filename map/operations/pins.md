@@ -2,7 +2,7 @@
 
 # Pins — operations
 
-Accessor: `client.pins` · Source: `slack_web_api/apis/pins.py` · 3 operations
+Accessor: `client.pins` · Source: `slack/apis/pins.py` · 3 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `PinsAddschema` | `slack_web_api/models/pins_addschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `PinsAddschema` | `slack/models/pins_addschema.py` |
 
 ### client.pins.pins_list
 
@@ -33,7 +33,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
 
 ### client.pins.pins_remove
 
@@ -47,6 +47,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `PinsRemoveschema` | `slack_web_api/models/pins_removeschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `PinsRemoveschema` | `slack/models/pins_removeschema.py` |
 

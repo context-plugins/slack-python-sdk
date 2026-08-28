@@ -2,7 +2,7 @@
 
 # Users — operations
 
-Accessor: `client.users` · Source: `slack_web_api/apis/users.py` · 12 operations
+Accessor: `client.users` · Source: `slack/apis/users.py` · 12 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersConversationssuccessschema` | `slack_web_api/models/users_conversationssuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersConversationssuccessschema` | `slack/models/users_conversationssuccessschema.py` |
 
 ### client.users.users_delete_photo
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersDeletePhotoschema` | `slack_web_api/models/users_delete_photoschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersDeletePhotoschema` | `slack/models/users_delete_photoschema.py` |
 
 ### client.users.users_get_presence
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ApimethodusersGetPresence` | `slack_web_api/models/apimethodusers_get_presence.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ApimethodusersGetPresence` | `slack/models/apimethodusers_get_presence.py` |
 
 ### client.users.users_identity
 
@@ -63,7 +63,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
 
 ### client.users.users_info
 
@@ -77,8 +77,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersInfosuccessschema` | `slack_web_api/models/users_infosuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersInfosuccessschema` | `slack/models/users_infosuccessschema.py` |
 
 ### client.users.users_list
 
@@ -92,8 +92,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersListschema` | `slack_web_api/models/users_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersListschema` | `slack/models/users_listschema.py` |
 
 ### client.users.users_lookup_by_email
 
@@ -107,8 +107,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersLookupByEmailsuccessschema` | `slack_web_api/models/users_lookup_by_emailsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersLookupByEmailsuccessschema` | `slack/models/users_lookup_by_emailsuccessschema.py` |
 
 ### client.users.users_profile_get
 
@@ -122,8 +122,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersProfileGetschema` | `slack_web_api/models/users_profile_getschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersProfileGetschema` | `slack/models/users_profile_getschema.py` |
 
 ### client.users.users_profile_set
 
@@ -137,8 +137,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersProfileSetschema` | `slack_web_api/models/users_profile_setschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersProfileSetschema` | `slack/models/users_profile_setschema.py` |
 
 ### client.users.users_set_active
 
@@ -152,8 +152,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersSetActiveschema` | `slack_web_api/models/users_set_activeschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersSetActiveschema` | `slack/models/users_set_activeschema.py` |
 
 ### client.users.users_set_photo
 
@@ -167,8 +167,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersSetPhotoschema` | `slack_web_api/models/users_set_photoschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersSetPhotoschema` | `slack/models/users_set_photoschema.py` |
 
 ### client.users.users_set_presence
 
@@ -182,6 +182,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsersSetPresenceschema` | `slack_web_api/models/users_set_presenceschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsersSetPresenceschema` | `slack/models/users_set_presenceschema.py` |
 

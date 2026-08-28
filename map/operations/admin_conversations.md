@@ -2,7 +2,7 @@
 
 # AdminConversations — operations
 
-Accessor: `client.admin_conversations` · Source: `slack_web_api/apis/admin_conversations.py` · 13 operations
+Accessor: `client.admin_conversations` · Source: `slack/apis/admin_conversations.py` · 13 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsArchiveschema` | `slack_web_api/models/admin_conversations_archiveschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsArchiveschema` | `slack/models/admin_conversations_archiveschema.py` |
 
 ### client.admin_conversations.admin_conversations_convert_to_private
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsConvertToPrivateschema` | `slack_web_api/models/admin_conversations_convert_to_privateschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsConvertToPrivateschema` | `slack/models/admin_conversations_convert_to_privateschema.py` |
 
 ### client.admin_conversations.admin_conversations_create
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsCreateschema` | `slack_web_api/models/admin_conversations_createschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsCreateschema` | `slack/models/admin_conversations_createschema.py` |
 
 ### client.admin_conversations.admin_conversations_delete
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsDeleteschema` | `slack_web_api/models/admin_conversations_deleteschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsDeleteschema` | `slack/models/admin_conversations_deleteschema.py` |
 
 ### client.admin_conversations.admin_conversations_disconnect_shared
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsRenameschema` | `slack_web_api/models/admin_conversations_renameschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsRenameschema` | `slack/models/admin_conversations_renameschema.py` |
 
 ### client.admin_conversations.admin_conversations_get_conversation_prefs
 
@@ -93,8 +93,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsGetConversationPrefsschema` | `slack_web_api/models/admin_conversations_get_conversation_prefsschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsGetConversationPrefsschema` | `slack/models/admin_conversations_get_conversation_prefsschema.py` |
 
 ### client.admin_conversations.admin_conversations_get_teams
 
@@ -108,8 +108,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsGetTeamsschema` | `slack_web_api/models/admin_conversations_get_teamsschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsGetTeamsschema` | `slack/models/admin_conversations_get_teamsschema.py` |
 
 ### client.admin_conversations.admin_conversations_invite
 
@@ -123,8 +123,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsInviteschema` | `slack_web_api/models/admin_conversations_inviteschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsInviteschema` | `slack/models/admin_conversations_inviteschema.py` |
 
 ### client.admin_conversations.admin_conversations_rename
 
@@ -138,8 +138,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsRenameschema1` | `slack_web_api/models/admin_conversations_renameschema1.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsRenameschema1` | `slack/models/admin_conversations_renameschema1.py` |
 
 ### client.admin_conversations.admin_conversations_search
 
@@ -153,8 +153,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsSearchschema` | `slack_web_api/models/admin_conversations_searchschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsSearchschema` | `slack/models/admin_conversations_searchschema.py` |
 
 ### client.admin_conversations.admin_conversations_set_conversation_prefs
 
@@ -168,8 +168,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsSetConversationPrefsschema` | `slack_web_api/models/admin_conversations_set_conversation_prefsschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsSetConversationPrefsschema` | `slack/models/admin_conversations_set_conversation_prefsschema.py` |
 
 ### client.admin_conversations.admin_conversations_set_teams
 
@@ -183,8 +183,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.admin_conversations.admin_conversations_unarchive
 
@@ -198,6 +198,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `AdminConversationsUnarchiveschema` | `slack_web_api/models/admin_conversations_unarchiveschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `AdminConversationsUnarchiveschema` | `slack/models/admin_conversations_unarchiveschema.py` |
 

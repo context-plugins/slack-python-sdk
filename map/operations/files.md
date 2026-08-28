@@ -2,7 +2,7 @@
 
 # Files — operations
 
-Accessor: `client.files` · Source: `slack_web_api/apis/files.py` · 13 operations
+Accessor: `client.files` · Source: `slack/apis/files.py` · 13 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesCommentsDeleteschema` | `slack_web_api/models/files_comments_deleteschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesCommentsDeleteschema` | `slack/models/files_comments_deleteschema.py` |
 
 ### client.files.files_delete
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesDeleteschema` | `slack_web_api/models/files_deleteschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesDeleteschema` | `slack/models/files_deleteschema.py` |
 
 ### client.files.files_info
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesInfoschema` | `slack_web_api/models/files_infoschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesInfoschema` | `slack/models/files_infoschema.py` |
 
 ### client.files.files_list
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesListschema` | `slack_web_api/models/files_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesListschema` | `slack/models/files_listschema.py` |
 
 ### client.files.files_remote_add
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_remote_info
 
@@ -93,8 +93,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_remote_list
 
@@ -108,8 +108,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_remote_remove
 
@@ -123,8 +123,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_remote_share
 
@@ -138,8 +138,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_remote_update
 
@@ -153,8 +153,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `Defaultsuccesstemplate` | `slack_web_api/models/defaultsuccesstemplate.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `Defaultsuccesstemplate` | `slack/models/defaultsuccesstemplate.py` |
 
 ### client.files.files_revoke_public_url
 
@@ -168,8 +168,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesRevokePublicUrlschema` | `slack_web_api/models/files_revoke_public_urlschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesRevokePublicUrlschema` | `slack/models/files_revoke_public_urlschema.py` |
 
 ### client.files.files_shared_public_url
 
@@ -183,8 +183,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesSharedPublicUrlschema` | `slack_web_api/models/files_shared_public_urlschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesSharedPublicUrlschema` | `slack/models/files_shared_public_urlschema.py` |
 
 ### client.files.files_upload
 
@@ -198,6 +198,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `FilesUploadschema` | `slack_web_api/models/files_uploadschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `FilesUploadschema` | `slack/models/files_uploadschema.py` |
 

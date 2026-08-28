@@ -2,7 +2,7 @@
 
 # Chat — operations
 
-Accessor: `client.chat` · Source: `slack_web_api/apis/chat.py` · 10 operations
+Accessor: `client.chat` · Source: `slack/apis/chat.py` · 10 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatDeletesuccessschema` | `slack_web_api/models/chat_deletesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatDeletesuccessschema` | `slack/models/chat_deletesuccessschema.py` |
 
 ### client.chat.chat_delete_scheduled_message
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatDeleteScheduledMessageschema` | `slack_web_api/models/chat_delete_scheduled_messageschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatDeleteScheduledMessageschema` | `slack/models/chat_delete_scheduled_messageschema.py` |
 
 ### client.chat.chat_get_permalink
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatGetPermalinksuccessschema` | `slack_web_api/models/chat_get_permalinksuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatGetPermalinksuccessschema` | `slack/models/chat_get_permalinksuccessschema.py` |
 
 ### client.chat.chat_me_message
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatMeMessageschema` | `slack_web_api/models/chat_me_messageschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatMeMessageschema` | `slack/models/chat_me_messageschema.py` |
 
 ### client.chat.chat_post_ephemeral
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatPostEphemeralsuccessschema` | `slack_web_api/models/chat_post_ephemeralsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatPostEphemeralsuccessschema` | `slack/models/chat_post_ephemeralsuccessschema.py` |
 
 ### client.chat.chat_post_message
 
@@ -93,8 +93,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatPostMessagesuccessschema` | `slack_web_api/models/chat_post_messagesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatPostMessagesuccessschema` | `slack/models/chat_post_messagesuccessschema.py` |
 
 ### client.chat.chat_schedule_message
 
@@ -108,8 +108,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatScheduleMessagesuccessschema` | `slack_web_api/models/chat_schedule_messagesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatScheduleMessagesuccessschema` | `slack/models/chat_schedule_messagesuccessschema.py` |
 
 ### client.chat.chat_scheduled_messages_list
 
@@ -123,8 +123,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatScheduledMessagesListschema` | `slack_web_api/models/chat_scheduled_messages_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatScheduledMessagesListschema` | `slack/models/chat_scheduled_messages_listschema.py` |
 
 ### client.chat.chat_unfurl
 
@@ -138,8 +138,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatUnfurlsuccessschema` | `slack_web_api/models/chat_unfurlsuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatUnfurlsuccessschema` | `slack/models/chat_unfurlsuccessschema.py` |
 
 ### client.chat.chat_update
 
@@ -153,6 +153,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `ChatUpdatesuccessschema` | `slack_web_api/models/chat_updatesuccessschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `ChatUpdatesuccessschema` | `slack/models/chat_updatesuccessschema.py` |
 

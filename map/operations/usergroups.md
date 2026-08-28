@@ -2,7 +2,7 @@
 
 # Usergroups — operations
 
-Accessor: `client.usergroups` · Source: `slack_web_api/apis/usergroups.py` · 7 operations
+Accessor: `client.usergroups` · Source: `slack/apis/usergroups.py` · 7 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsCreateschema` | `slack_web_api/models/usergroups_createschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsCreateschema` | `slack/models/usergroups_createschema.py` |
 
 ### client.usergroups.usergroups_disable
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsDisableschema` | `slack_web_api/models/usergroups_disableschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsDisableschema` | `slack/models/usergroups_disableschema.py` |
 
 ### client.usergroups.usergroups_enable
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsEnableschema` | `slack_web_api/models/usergroups_enableschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsEnableschema` | `slack/models/usergroups_enableschema.py` |
 
 ### client.usergroups.usergroups_list
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsListschema` | `slack_web_api/models/usergroups_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsListschema` | `slack/models/usergroups_listschema.py` |
 
 ### client.usergroups.usergroups_update
 
@@ -78,8 +78,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsUpdateschema` | `slack_web_api/models/usergroups_updateschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsUpdateschema` | `slack/models/usergroups_updateschema.py` |
 
 ### client.usergroups.usergroups_users_list
 
@@ -93,8 +93,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsUsersListschema` | `slack_web_api/models/usergroups_users_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsUsersListschema` | `slack/models/usergroups_users_listschema.py` |
 
 ### client.usergroups.usergroups_users_update
 
@@ -108,6 +108,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `UsergroupsUsersUpdateschema` | `slack_web_api/models/usergroups_users_updateschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `UsergroupsUsersUpdateschema` | `slack/models/usergroups_users_updateschema.py` |
 

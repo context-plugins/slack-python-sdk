@@ -2,7 +2,7 @@
 
 # Reminders — operations
 
-Accessor: `client.reminders` · Source: `slack_web_api/apis/reminders.py` · 5 operations
+Accessor: `client.reminders` · Source: `slack/apis/reminders.py` · 5 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
@@ -18,8 +18,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `RemindersAddschema` | `slack_web_api/models/reminders_addschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `RemindersAddschema` | `slack/models/reminders_addschema.py` |
 
 ### client.reminders.reminders_complete
 
@@ -33,8 +33,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `RemindersCompleteschema` | `slack_web_api/models/reminders_completeschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `RemindersCompleteschema` | `slack/models/reminders_completeschema.py` |
 
 ### client.reminders.reminders_delete
 
@@ -48,8 +48,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `RemindersDeleteschema` | `slack_web_api/models/reminders_deleteschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `RemindersDeleteschema` | `slack/models/reminders_deleteschema.py` |
 
 ### client.reminders.reminders_info
 
@@ -63,8 +63,8 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `RemindersInfoschema` | `slack_web_api/models/reminders_infoschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `RemindersInfoschema` | `slack/models/reminders_infoschema.py` |
 
 ### client.reminders.reminders_list
 
@@ -78,6 +78,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
-| `RemindersListschema` | `slack_web_api/models/reminders_listschema.py` |
+| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
+| `RemindersListschema` | `slack/models/reminders_listschema.py` |
 

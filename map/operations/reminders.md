@@ -2,13 +2,14 @@
 
 # Reminders — operations
 
-Accessor: `client.reminders` · Source: `slack/apis/reminders.py` · 5 operations
+Accessor: `client.reminders` · Source: `slack_web_api/apis/reminders.py` · 5 operations
 
 Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.reminders.reminders_add
 
 - **Route**: `POST /reminders.add`
+- **Auth**: `slack_auth`
 - **Signature**: `def reminders_add(token: str, content_type: ContentTypeOrStr, text: str, time: str, *, user: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `text`, `time`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `text` — form field · `time` — form field · `user` — form field
@@ -18,12 +19,13 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
-| `RemindersAddschema` | `slack/models/reminders_addschema.py` |
+| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `RemindersAddschema` | `slack_web_api/models/reminders_addschema.py` |
 
 ### client.reminders.reminders_complete
 
 - **Route**: `POST /reminders.complete`
+- **Auth**: `slack_auth`
 - **Signature**: `def reminders_complete(content_type: ContentTypeOrStr, *, token: str | None = None, reminder: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `reminder` — form field
@@ -33,12 +35,13 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
-| `RemindersCompleteschema` | `slack/models/reminders_completeschema.py` |
+| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `RemindersCompleteschema` | `slack_web_api/models/reminders_completeschema.py` |
 
 ### client.reminders.reminders_delete
 
 - **Route**: `POST /reminders.delete`
+- **Auth**: `slack_auth`
 - **Signature**: `def reminders_delete(content_type: ContentTypeOrStr, *, token: str | None = None, reminder: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `reminder` — form field
@@ -48,12 +51,13 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
-| `RemindersDeleteschema` | `slack/models/reminders_deleteschema.py` |
+| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `RemindersDeleteschema` | `slack_web_api/models/reminders_deleteschema.py` |
 
 ### client.reminders.reminders_info
 
 - **Route**: `GET /reminders.info`
+- **Auth**: `slack_auth`
 - **Signature**: `def reminders_info(content_type: ContentTypeOrStr, *, token: str | None = None, reminder: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `reminder` — query · `content_type` — header `Content-Type`
@@ -63,12 +67,13 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
-| `RemindersInfoschema` | `slack/models/reminders_infoschema.py` |
+| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `RemindersInfoschema` | `slack_web_api/models/reminders_infoschema.py` |
 
 ### client.reminders.reminders_list
 
 - **Route**: `GET /reminders.list`
+- **Auth**: `slack_auth`
 - **Signature**: `def reminders_list(content_type: ContentTypeOrStr, *, token: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `content_type` — header `Content-Type`
@@ -78,6 +83,6 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 | Type | Source |
 | --- | --- |
-| `ContentTypeOrStr` | `slack/models/enums/content_type.py` |
-| `RemindersListschema` | `slack/models/reminders_listschema.py` |
+| `ContentTypeOrStr` | `slack_web_api/models/enums/content_type.py` |
+| `RemindersListschema` | `slack_web_api/models/reminders_listschema.py` |
 

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 from .log import Log, LogDict
@@ -13,11 +11,11 @@ class TeamIntegrationLogsschema(SdkBaseModel):
     """Schema for successful response from team.integrationLogs method"""
 
     logs: list[Log]
-    ok: Literal["True"] = "True"
+    ok: bool
     paging: Pagingobject
 
 
 class TeamIntegrationLogsschemaDict(TypedDict):
-    logs: list[Log | LogDict]
-    ok: NotRequired[Literal["True"]]
-    paging: Pagingobject | PagingobjectDict
+    logs: list[LogDict]
+    ok: bool
+    paging: PagingobjectDict

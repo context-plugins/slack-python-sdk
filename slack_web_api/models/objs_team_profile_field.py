@@ -17,7 +17,7 @@ class ObjsTeamProfileField(SdkBaseModel):
     label: str
     options: Optional[Any] = UNSET
     ordering: float
-    possible_values: Optional[list[str | None]] = UNSET
+    possible_values: OptionalNullable[list[str]] = UNSET
     type_: TypeOrStr = Field(alias="type")
 
 
@@ -29,5 +29,5 @@ class ObjsTeamProfileFieldDict(TypedDict):
     label: str
     options: NotRequired[Any]
     ordering: float
-    possible_values: NotRequired[list[str | None]]
+    possible_values: NotRequired[list[str] | None]
     type_: TypeOrStr

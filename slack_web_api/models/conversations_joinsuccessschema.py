@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -12,13 +12,13 @@ class ConversationsJoinsuccessschema(SdkBaseModel):
     """Schema for successful response from conversations.join method"""
 
     channel: Any
-    ok: Literal["True"] = "True"
+    ok: bool
     response_metadata: Optional[Responsemetadata3] = UNSET
     warning: Optional[str] = UNSET
 
 
 class ConversationsJoinsuccessschemaDict(TypedDict):
     channel: Any
-    ok: NotRequired[Literal["True"]]
-    response_metadata: NotRequired[Responsemetadata3 | Responsemetadata3Dict]
+    ok: bool
+    response_metadata: NotRequired[Responsemetadata3Dict]
     warning: NotRequired[str]

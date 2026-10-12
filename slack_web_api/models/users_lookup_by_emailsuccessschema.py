@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 
@@ -10,10 +10,10 @@ from ..core import SdkBaseModel
 class UsersLookupByEmailsuccessschema(SdkBaseModel):
     """Schema for successful response from users.lookupByEmail method"""
 
-    ok: Literal["True"] = "True"
+    ok: bool
     user: Any
 
 
 class UsersLookupByEmailsuccessschemaDict(TypedDict):
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     user: Any

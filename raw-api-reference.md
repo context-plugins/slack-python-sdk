@@ -32,7 +32,9 @@ Approve an app for installation on a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_apps_approve(token, content_type)
+result = client.admin.with_raw_response.admin_apps_approve(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -43,7 +45,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_apps_approve(token, content_type)
+result = await async_client.admin.with_raw_response.admin_apps_approve(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -66,7 +70,7 @@ match result:
 | <code>app_id</code> | <code>str \| None</code> | The id of the app to approve.<br>**Default**: <code>None</code> |
 | <code>request_id</code> | <code>str \| None</code> | The id of the request to approve.<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -114,7 +118,9 @@ List approved apps for an org or workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_apps_approved_list(token, content_type)
+result = client.admin.with_raw_response.admin_apps_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -125,7 +131,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_apps_approved_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_apps_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -149,7 +157,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>enterprise_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -197,7 +205,9 @@ List app requests for a team/workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_apps_requests_list(token, content_type)
+result = client.admin.with_raw_response.admin_apps_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -208,7 +218,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_apps_requests_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_apps_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -231,7 +243,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -279,7 +291,9 @@ Restrict an app for installation on a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_apps_restrict(token, content_type)
+result = client.admin.with_raw_response.admin_apps_restrict(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -290,7 +304,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_apps_restrict(token, content_type)
+result = await async_client.admin.with_raw_response.admin_apps_restrict(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -313,7 +329,7 @@ match result:
 | <code>app_id</code> | <code>str \| None</code> | The id of the app to restrict.<br>**Default**: <code>None</code> |
 | <code>request_id</code> | <code>str \| None</code> | The id of the request to restrict.<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -361,7 +377,9 @@ List restricted apps for an org or workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_apps_restricted_list(token, content_type)
+result = client.admin.with_raw_response.admin_apps_restricted_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -372,7 +390,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_apps_restricted_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_apps_restricted_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -396,7 +416,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>enterprise_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -444,7 +464,9 @@ Archive a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_archive(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_archive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsArchiveschema
@@ -455,7 +477,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_archive(token, content_type, channel_id)
+result = await async_client.admin.with_raw_response.admin_conversations_archive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsArchiveschema
@@ -476,7 +500,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to archive. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -524,7 +548,9 @@ Convert a public channel to a private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_convert_to_private(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_convert_to_private(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsConvertToPrivateschema
@@ -536,7 +562,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_convert_to_private(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -558,7 +584,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to convert to private. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -606,7 +632,9 @@ Create a public or private channel-based conversation.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_create(token, content_type, name, is_private)
+result = client.admin.with_raw_response.admin_conversations_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", True
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsCreateschema
@@ -617,7 +645,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_create(token, content_type, name, is_private)
+result = await async_client.admin.with_raw_response.admin_conversations_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", True
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsCreateschema
@@ -642,7 +672,7 @@ match result:
 | <code>description</code> | <code>str \| None</code> | Description of the public or private channel to create.<br>**Default**: <code>None</code> |
 | <code>org_wide</code> | <code>bool \| None</code> | When `true`, the channel will be available org-wide. Note: if the channel is not `org_wide=true`, you must specify a `team_id` for this channel<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -690,7 +720,9 @@ Delete a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_delete(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_delete(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsDeleteschema
@@ -701,7 +733,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_delete(token, content_type, channel_id)
+result = await async_client.admin.with_raw_response.admin_conversations_delete(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsDeleteschema
@@ -722,7 +756,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -770,7 +804,9 @@ Disconnect a connected channel from one or more workspaces.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_disconnect_shared(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_disconnect_shared(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsRenameschema
@@ -782,7 +818,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_disconnect_shared(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -805,7 +841,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to be disconnected from some workspaces. |
 | <code>leaving_team_ids</code> | <code>str \| None</code> | The team to be removed from the channel. Currently only a single team id can be specified.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -854,7 +890,7 @@ List all disconnected channels—i.e., channels that were once connected to othe
 
 ```python
 result = client.admin.with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -867,7 +903,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -892,7 +928,7 @@ match result:
 | <code>team_ids</code> | <code>str \| None</code> | A comma-separated list of the workspaces to which the channels you would like returned belong.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -940,7 +976,9 @@ Get conversation preferences for a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_get_conversation_prefs(channel_id, token, content_type)
+result = client.admin.with_raw_response.admin_conversations_get_conversation_prefs(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsGetConversationPrefsschema
@@ -952,7 +990,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_get_conversation_prefs(
-    channel_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -974,7 +1012,7 @@ match result:
 | <code>channel_id</code> | <code>str</code> | The channel to get preferences for. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1022,7 +1060,9 @@ Get all the workspaces a given public or private channel is connected to within 
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_get_teams(channel_id, token, content_type)
+result = client.admin.with_raw_response.admin_conversations_get_teams(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsGetTeamsschema
@@ -1033,7 +1073,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_get_teams(channel_id, token, content_type)
+result = await async_client.admin.with_raw_response.admin_conversations_get_teams(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsGetTeamsschema
@@ -1056,7 +1098,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1104,7 +1146,9 @@ Invite a user to a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_invite(token, content_type, user_ids, channel_id)
+result = client.admin.with_raw_response.admin_conversations_invite(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsInviteschema
@@ -1116,7 +1160,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_invite(
-    token, content_type, user_ids, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1139,7 +1183,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>user_ids</code> | <code>str</code> | The users to invite. |
 | <code>channel_id</code> | <code>str</code> | The channel that the users will be invited to. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1187,7 +1231,9 @@ Rename a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_rename(token, content_type, channel_id, name)
+result = client.admin.with_raw_response.admin_conversations_rename(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsRenameschema1
@@ -1198,7 +1244,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_rename(token, content_type, channel_id, name)
+result = await async_client.admin.with_raw_response.admin_conversations_rename(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsRenameschema1
@@ -1220,7 +1268,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to rename. |
 | <code>name</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1269,7 +1317,7 @@ Add an allowlist of IDP groups for accessing a channel
 
 ```python
 result = client.admin.with_raw_response.admin_conversations_restrict_access_add_group(
-    content_type, token, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1282,7 +1330,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_restrict_access_add_group(
-    content_type, token, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1306,7 +1354,7 @@ match result:
 | <code>group_id</code> | <code>str</code> | The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel. |
 | <code>channel_id</code> | <code>str</code> | The channel to link this group to. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1354,7 +1402,9 @@ List all IDP Groups linked to a channel
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_restrict_access_list_groups(token, channel_id, content_type)
+result = client.admin.with_raw_response.admin_conversations_restrict_access_list_groups(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1366,7 +1416,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_restrict_access_list_groups(
-    token, channel_id, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -1389,7 +1439,7 @@ match result:
 | <code>channel_id</code> | <code>str</code> | Value sent with the request. |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1438,7 +1488,11 @@ Remove a linked IDP group linked from a private channel
 
 ```python
 result = client.admin.with_raw_response.admin_conversations_restrict_access_remove_group(
-    content_type, token, team_id, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
 )
 match result:
     case Success(payload=payload):
@@ -1451,7 +1505,11 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_restrict_access_remove_group(
-    content_type, token, team_id, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
 )
 match result:
     case Success(payload=payload):
@@ -1475,7 +1533,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. |
 | <code>group_id</code> | <code>str</code> | The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel. |
 | <code>channel_id</code> | <code>str</code> | The channel to remove the linked group from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1523,7 +1581,9 @@ Search for public or private channels in an Enterprise organization.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_search(token, content_type)
+result = client.admin.with_raw_response.admin_conversations_search(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsSearchschema
@@ -1534,7 +1594,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_search(token, content_type)
+result = await async_client.admin.with_raw_response.admin_conversations_search(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsSearchschema
@@ -1561,7 +1623,7 @@ match result:
 | <code>search_channel_types</code> | <code>str \| None</code> | The type of channel to include or exclude in the search. For example `private` will search private channels, while `private_exclude` will exclude them. For a full list of types, check the [Types section](#types).<br>**Default**: <code>None</code> |
 | <code>sort</code> | <code>str \| None</code> | Possible values are `relevant` (search ranking based on what we think is closest), `name` (alphabetical), `member_count` (number of users in the channel), and `created` (date channel was created). You can optionally pair this with the `sort_dir` arg to change how it is sorted<br>**Default**: <code>None</code> |
 | <code>sort_dir</code> | <code>str \| None</code> | Sort direction. Possible values are `asc` for ascending order like (1, 2, 3) or (a, b, c), and `desc` for descending order like (3, 2, 1) or (c, b, a)<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1610,7 +1672,7 @@ Set the posting permissions for a public or private channel.
 
 ```python
 result = client.admin.with_raw_response.admin_conversations_set_conversation_prefs(
-    token, content_type, channel_id, prefs
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1623,7 +1685,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_conversations_set_conversation_prefs(
-    token, content_type, channel_id, prefs
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1646,7 +1708,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to set the prefs for |
 | <code>prefs</code> | <code>str</code> | The prefs for this channel in a stringified JSON format. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1694,7 +1756,9 @@ Set the workspaces in an Enterprise grid org that connect to a public or private
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_set_teams(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_set_teams(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1705,7 +1769,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_set_teams(token, content_type, channel_id)
+result = await async_client.admin.with_raw_response.admin_conversations_set_teams(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1729,7 +1795,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.<br>**Default**: <code>None</code> |
 | <code>target_team_ids</code> | <code>str \| None</code> | A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide.<br>**Default**: <code>None</code> |
 | <code>org_channel</code> | <code>bool \| None</code> | True if channel has to be converted to an org channel<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1777,7 +1843,9 @@ Unarchive a public or private channel.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_conversations_unarchive(token, content_type, channel_id)
+result = client.admin.with_raw_response.admin_conversations_unarchive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsUnarchiveschema
@@ -1788,7 +1856,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_conversations_unarchive(token, content_type, channel_id)
+result = await async_client.admin.with_raw_response.admin_conversations_unarchive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsUnarchiveschema
@@ -1809,7 +1879,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to unarchive. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1857,7 +1927,9 @@ Add an emoji.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_emoji_add(content_type, token, name, url)
+result = client.admin.with_raw_response.admin_emoji_add(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1868,7 +1940,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_emoji_add(content_type, token, name, url)
+result = await async_client.admin.with_raw_response.admin_emoji_add(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1890,7 +1964,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>url</code> | <code>str</code> | The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1938,7 +2012,9 @@ Add an emoji alias.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_emoji_add_alias(content_type, token, name, alias_for)
+result = client.admin.with_raw_response.admin_emoji_add_alias(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1949,7 +2025,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_emoji_add_alias(content_type, token, name, alias_for)
+result = await async_client.admin.with_raw_response.admin_emoji_add_alias(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -1971,7 +2049,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>alias_for</code> | <code>str</code> | The alias of the emoji. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2019,7 +2097,9 @@ List emoji for an Enterprise Grid organization.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_emoji_list(token, content_type)
+result = client.admin.with_raw_response.admin_emoji_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2030,7 +2110,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_emoji_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_emoji_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2052,7 +2134,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2100,7 +2182,9 @@ Remove an emoji across an Enterprise Grid organization
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_emoji_remove(content_type, token, name)
+result = client.admin.with_raw_response.admin_emoji_remove(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2111,7 +2195,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_emoji_remove(content_type, token, name)
+result = await async_client.admin.with_raw_response.admin_emoji_remove(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2132,7 +2218,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2180,7 +2266,9 @@ Rename an emoji.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_emoji_rename(content_type, token, name, new_name)
+result = client.admin.with_raw_response.admin_emoji_rename(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2191,7 +2279,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_emoji_rename(content_type, token, name, new_name)
+result = await async_client.admin.with_raw_response.admin_emoji_rename(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2213,7 +2303,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>new_name</code> | <code>str</code> | The new name of the emoji. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2261,7 +2351,9 @@ Approve a workspace invite request.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_invite_requests_approve(token, content_type, invite_request_id)
+result = client.admin.with_raw_response.admin_invite_requests_approve(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2273,7 +2365,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_invite_requests_approve(
-    token, content_type, invite_request_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -2296,7 +2388,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>invite_request_id</code> | <code>str</code> | ID of the request to invite. |
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite request was made.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2344,7 +2436,9 @@ List all approved workspace invite requests.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_invite_requests_approved_list(token, content_type)
+result = client.admin.with_raw_response.admin_invite_requests_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2355,7 +2449,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_invite_requests_approved_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_invite_requests_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2378,7 +2474,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous API response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2426,7 +2522,9 @@ List all denied workspace invite requests.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_invite_requests_denied_list(token, content_type)
+result = client.admin.with_raw_response.admin_invite_requests_denied_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2437,7 +2535,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_invite_requests_denied_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_invite_requests_denied_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2460,7 +2560,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous api response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2508,7 +2608,9 @@ Deny a workspace invite request.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_invite_requests_deny(token, content_type, invite_request_id)
+result = client.admin.with_raw_response.admin_invite_requests_deny(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2519,7 +2621,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_invite_requests_deny(token, content_type, invite_request_id)
+result = await async_client.admin.with_raw_response.admin_invite_requests_deny(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2541,7 +2645,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>invite_request_id</code> | <code>str</code> | ID of the request to invite. |
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite request was made.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2589,7 +2693,9 @@ List all pending workspace invite requests.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_invite_requests_list(token, content_type)
+result = client.admin.with_raw_response.admin_invite_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2600,7 +2706,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_invite_requests_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_invite_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2623,7 +2731,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous API response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2671,7 +2779,9 @@ List all of the admins on a given workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_admins_list(token, team_id, content_type)
+result = client.admin.with_raw_response.admin_teams_admins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2682,7 +2792,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_admins_list(token, team_id, content_type)
+result = await async_client.admin.with_raw_response.admin_teams_admins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2705,7 +2817,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2753,7 +2865,9 @@ Create an Enterprise team.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_create(token, content_type, team_domain, team_name)
+result = client.admin.with_raw_response.admin_teams_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2764,7 +2878,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_create(token, content_type, team_domain, team_name)
+result = await async_client.admin.with_raw_response.admin_teams_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2788,7 +2904,7 @@ match result:
 | <code>team_name</code> | <code>str</code> | Team name (for example, Slack Softball Team). |
 | <code>team_description</code> | <code>str \| None</code> | Description for the team.<br>**Default**: <code>None</code> |
 | <code>team_discoverability</code> | <code>str \| None</code> | Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2836,7 +2952,9 @@ List all teams on an Enterprise organization
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_list(token, content_type)
+result = client.admin.with_raw_response.admin_teams_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2847,7 +2965,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_list(token, content_type)
+result = await async_client.admin.with_raw_response.admin_teams_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2869,7 +2989,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 100 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2917,7 +3037,9 @@ List all of the owners on a given workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_owners_list(token, team_id, content_type)
+result = client.admin.with_raw_response.admin_teams_owners_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2928,7 +3050,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_owners_list(token, team_id, content_type)
+result = await async_client.admin.with_raw_response.admin_teams_owners_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -2951,7 +3075,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2999,7 +3123,9 @@ Fetch information about settings in a workspace
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_settings_info(team_id, token, content_type)
+result = client.admin.with_raw_response.admin_teams_settings_info(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3010,7 +3136,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_settings_info(team_id, token, content_type)
+result = await async_client.admin.with_raw_response.admin_teams_settings_info(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3031,7 +3159,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3080,7 +3208,7 @@ Set the default channels of a workspace.
 
 ```python
 result = client.admin.with_raw_response.admin_teams_settings_set_default_channels(
-    content_type, token, team_id, channel_ids
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3093,7 +3221,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_teams_settings_set_default_channels(
-    content_type, token, team_id, channel_ids
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3116,7 +3244,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the default channel for. |
 | <code>channel_ids</code> | <code>str</code> | An array of channel IDs. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3164,7 +3292,9 @@ Set the description of a given workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_settings_set_description(token, content_type, team_id, description)
+result = client.admin.with_raw_response.admin_teams_settings_set_description(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3176,7 +3306,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_teams_settings_set_description(
-    token, content_type, team_id, description
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3199,7 +3329,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the description for. |
 | <code>description</code> | <code>str</code> | The new description for the workspace. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3248,7 +3378,7 @@ An API method that allows admins to set the discoverability of a given workspace
 
 ```python
 result = client.admin.with_raw_response.admin_teams_settings_set_discoverability(
-    token, content_type, team_id, discoverability
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3261,7 +3391,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_teams_settings_set_discoverability(
-    token, content_type, team_id, discoverability
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3284,7 +3414,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID of the workspace to set discoverability on. |
 | <code>discoverability</code> | <code>str</code> | This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3332,7 +3462,9 @@ Sets the icon of a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_settings_set_icon(content_type, token, image_url, team_id)
+result = client.admin.with_raw_response.admin_teams_settings_set_icon(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3344,7 +3476,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_teams_settings_set_icon(
-    content_type, token, image_url, team_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3367,7 +3499,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>image_url</code> | <code>str</code> | Image URL for the icon |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the icon for. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3415,7 +3547,9 @@ Set the name of a given workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_teams_settings_set_name(token, content_type, team_id, name)
+result = client.admin.with_raw_response.admin_teams_settings_set_name(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3426,7 +3560,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_teams_settings_set_name(token, content_type, team_id, name)
+result = await async_client.admin.with_raw_response.admin_teams_settings_set_name(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3448,7 +3584,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the name for. |
 | <code>name</code> | <code>str</code> | The new name of the workspace. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3496,7 +3632,9 @@ Add one or more default channels to an IDP group.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_usergroups_add_channels(token, content_type, usergroup_id, channel_ids)
+result = client.admin.with_raw_response.admin_usergroups_add_channels(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3508,7 +3646,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_usergroups_add_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3532,7 +3670,7 @@ match result:
 | <code>usergroup_id</code> | <code>str</code> | ID of the IDP group to add default channels for. |
 | <code>channel_ids</code> | <code>str</code> | Comma separated string of channel IDs. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace to add default channels in.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3580,7 +3718,9 @@ Associate one or more default workspaces with an organization-wide IDP group.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_usergroups_add_teams(token, content_type, usergroup_id, team_ids)
+result = client.admin.with_raw_response.admin_usergroups_add_teams(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3592,7 +3732,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_usergroups_add_teams(
-    token, content_type, usergroup_id, team_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3616,7 +3756,7 @@ match result:
 | <code>usergroup_id</code> | <code>str</code> | An encoded usergroup (IDP Group) ID. |
 | <code>team_ids</code> | <code>str</code> | A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. |
 | <code>auto_provision</code> | <code>bool \| None</code> | When `true`, this method automatically creates new workspace accounts for the IDP group members.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3664,7 +3804,9 @@ List the channels linked to an org-level IDP group (user group).
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_usergroups_list_channels(usergroup_id, token, content_type)
+result = client.admin.with_raw_response.admin_usergroups_list_channels(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3675,7 +3817,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_usergroups_list_channels(usergroup_id, token, content_type)
+result = await async_client.admin.with_raw_response.admin_usergroups_list_channels(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3698,7 +3842,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str \| None</code> | ID of the the workspace.<br>**Default**: <code>None</code> |
 | <code>include_num_members</code> | <code>bool \| None</code> | Flag to include or exclude the count of members per channel.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3746,7 +3890,9 @@ Remove one or more default channels from an org-level IDP group (user group).
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_usergroups_remove_channels(token, content_type, usergroup_id, channel_ids)
+result = client.admin.with_raw_response.admin_usergroups_remove_channels(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3758,7 +3904,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_usergroups_remove_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -3781,7 +3927,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>usergroup_id</code> | <code>str</code> | ID of the IDP Group |
 | <code>channel_ids</code> | <code>str</code> | Comma-separated string of channel IDs |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3829,7 +3975,9 @@ Add an Enterprise user to a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_assign(token, content_type, team_id, user_id)
+result = client.admin.with_raw_response.admin_users_assign(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3840,7 +3988,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_assign(token, content_type, team_id, user_id)
+result = await async_client.admin.with_raw_response.admin_users_assign(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3865,7 +4015,7 @@ match result:
 | <code>is_restricted</code> | <code>bool \| None</code> | True if user should be added to the workspace as a guest.<br>**Default**: <code>None</code> |
 | <code>is_ultra_restricted</code> | <code>bool \| None</code> | True if user should be added to the workspace as a single-channel guest.<br>**Default**: <code>None</code> |
 | <code>channel_ids</code> | <code>str \| None</code> | Comma separated values of channel IDs to add user in the new workspace.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3913,7 +4063,13 @@ Invite a user to a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_invite(token, content_type, team_id, email, channel_ids)
+result = client.admin.with_raw_response.admin_users_invite(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3924,7 +4080,13 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_invite(token, content_type, team_id, email, channel_ids)
+result = await async_client.admin.with_raw_response.admin_users_invite(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -3953,7 +4115,7 @@ match result:
 | <code>is_restricted</code> | <code>bool \| None</code> | Is this user a multi-channel guest user? (default: false)<br>**Default**: <code>None</code> |
 | <code>is_ultra_restricted</code> | <code>bool \| None</code> | Is this user a single channel guest user? (default: false)<br>**Default**: <code>None</code> |
 | <code>guest_expiration_ts</code> | <code>str \| None</code> | Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4001,7 +4163,9 @@ List users on a workspace
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_list(team_id, token, content_type)
+result = client.admin.with_raw_response.admin_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4012,7 +4176,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_list(team_id, token, content_type)
+result = await async_client.admin.with_raw_response.admin_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4035,7 +4201,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Limit for how many users to be retrieved per page<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4083,7 +4249,9 @@ Remove a user from a workspace.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_remove(token, content_type, team_id, user_id)
+result = client.admin.with_raw_response.admin_users_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4094,7 +4262,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_remove(token, content_type, team_id, user_id)
+result = await async_client.admin.with_raw_response.admin_users_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4116,7 +4286,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to remove. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4164,7 +4334,9 @@ Invalidate a single session for a user by session_id
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_session_invalidate(token, content_type, team_id, session_id)
+result = client.admin.with_raw_response.admin_users_session_invalidate(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", 1
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4176,7 +4348,7 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_users_session_invalidate(
-    token, content_type, team_id, session_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", 1
 )
 match result:
     case Success(payload=payload):
@@ -4199,7 +4371,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID of the team that the session belongs to |
 | <code>session_id</code> | <code>int</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4247,7 +4419,9 @@ Wipes all valid sessions on all devices for a given user
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_session_reset(token, content_type, user_id)
+result = client.admin.with_raw_response.admin_users_session_reset(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4258,7 +4432,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_session_reset(token, content_type, user_id)
+result = await async_client.admin.with_raw_response.admin_users_session_reset(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4281,7 +4457,7 @@ match result:
 | <code>user_id</code> | <code>str</code> | The ID of the user to wipe sessions for |
 | <code>mobile_only</code> | <code>bool \| None</code> | Only expire mobile sessions (default: false)<br>**Default**: <code>None</code> |
 | <code>web_only</code> | <code>bool \| None</code> | Only expire web sessions (default: false)<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4329,7 +4505,9 @@ Set an existing guest, regular user, or owner to be an admin user.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_set_admin(token, content_type, team_id, user_id)
+result = client.admin.with_raw_response.admin_users_set_admin(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4340,7 +4518,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_set_admin(token, content_type, team_id, user_id)
+result = await async_client.admin.with_raw_response.admin_users_set_admin(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4362,7 +4542,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to designate as an admin. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4410,7 +4590,13 @@ Set an expiration for a guest user
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_set_expiration(token, content_type, team_id, user_id, expiration_ts)
+result = client.admin.with_raw_response.admin_users_set_expiration(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    1,
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4422,7 +4608,11 @@ match result:
 
 ```python
 result = await async_client.admin.with_raw_response.admin_users_set_expiration(
-    token, content_type, team_id, user_id, expiration_ts
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    1,
 )
 match result:
     case Success(payload=payload):
@@ -4446,7 +4636,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to set an expiration for. |
 | <code>expiration_ts</code> | <code>int</code> | Timestamp when guest account should be disabled. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4494,7 +4684,9 @@ Set an existing guest, regular user, or admin user to be a workspace owner.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_set_owner(token, content_type, team_id, user_id)
+result = client.admin.with_raw_response.admin_users_set_owner(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4505,7 +4697,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_set_owner(token, content_type, team_id, user_id)
+result = await async_client.admin.with_raw_response.admin_users_set_owner(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4527,7 +4721,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | Id of the user to promote to owner. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4575,7 +4769,9 @@ Set an existing guest user, admin user, or owner to be a regular user.
 **Sync**
 
 ```python
-result = client.admin.with_raw_response.admin_users_set_regular(token, content_type, team_id, user_id)
+result = client.admin.with_raw_response.admin_users_set_regular(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4586,7 +4782,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin.with_raw_response.admin_users_set_regular(token, content_type, team_id, user_id)
+result = await async_client.admin.with_raw_response.admin_users_set_regular(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4608,7 +4806,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to designate as a regular user. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4660,7 +4858,9 @@ Approve an app for installation on a workspace.
 **Sync**
 
 ```python
-result = client.admin_apps.with_raw_response.admin_apps_approve(token, content_type)
+result = client.admin_apps.with_raw_response.admin_apps_approve(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4671,7 +4871,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_apps.with_raw_response.admin_apps_approve(token, content_type)
+result = await async_client.admin_apps.with_raw_response.admin_apps_approve(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4694,7 +4896,7 @@ match result:
 | <code>app_id</code> | <code>str \| None</code> | The id of the app to approve.<br>**Default**: <code>None</code> |
 | <code>request_id</code> | <code>str \| None</code> | The id of the request to approve.<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4742,7 +4944,9 @@ Restrict an app for installation on a workspace.
 **Sync**
 
 ```python
-result = client.admin_apps.with_raw_response.admin_apps_restrict(token, content_type)
+result = client.admin_apps.with_raw_response.admin_apps_restrict(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4753,7 +4957,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_apps.with_raw_response.admin_apps_restrict(token, content_type)
+result = await async_client.admin_apps.with_raw_response.admin_apps_restrict(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4776,7 +4982,7 @@ match result:
 | <code>app_id</code> | <code>str \| None</code> | The id of the app to restrict.<br>**Default**: <code>None</code> |
 | <code>request_id</code> | <code>str \| None</code> | The id of the request to restrict.<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4828,7 +5034,9 @@ List approved apps for an org or workspace.
 **Sync**
 
 ```python
-result = client.admin_apps_approved.with_raw_response.admin_apps_approved_list(token, content_type)
+result = client.admin_apps_approved.with_raw_response.admin_apps_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4839,7 +5047,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_apps_approved.with_raw_response.admin_apps_approved_list(token, content_type)
+result = await async_client.admin_apps_approved.with_raw_response.admin_apps_approved_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4863,7 +5073,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>enterprise_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4915,7 +5125,9 @@ List app requests for a team/workspace.
 **Sync**
 
 ```python
-result = client.admin_apps_requests.with_raw_response.admin_apps_requests_list(token, content_type)
+result = client.admin_apps_requests.with_raw_response.admin_apps_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4926,7 +5138,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_apps_requests.with_raw_response.admin_apps_requests_list(token, content_type)
+result = await async_client.admin_apps_requests.with_raw_response.admin_apps_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -4949,7 +5163,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5001,7 +5215,9 @@ List restricted apps for an org or workspace.
 **Sync**
 
 ```python
-result = client.admin_apps_restricted.with_raw_response.admin_apps_restricted_list(token, content_type)
+result = client.admin_apps_restricted.with_raw_response.admin_apps_restricted_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -5012,7 +5228,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_apps_restricted.with_raw_response.admin_apps_restricted_list(token, content_type)
+result = await async_client.admin_apps_restricted.with_raw_response.admin_apps_restricted_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -5036,7 +5254,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>enterprise_id</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5088,7 +5306,9 @@ Archive a public or private channel.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_archive(token, content_type, channel_id)
+result = client.admin_conversations.with_raw_response.admin_conversations_archive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsArchiveschema
@@ -5100,7 +5320,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_archive(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5122,7 +5342,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to archive. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5171,7 +5391,7 @@ Convert a public channel to a private channel.
 
 ```python
 result = client.admin_conversations.with_raw_response.admin_conversations_convert_to_private(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5184,7 +5404,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_convert_to_private(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5206,7 +5426,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to convert to private. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5254,7 +5474,9 @@ Create a public or private channel-based conversation.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_create(token, content_type, name, is_private)
+result = client.admin_conversations.with_raw_response.admin_conversations_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", True
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsCreateschema
@@ -5266,7 +5488,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_create(
-    token, content_type, name, is_private
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", True
 )
 match result:
     case Success(payload=payload):
@@ -5292,7 +5514,7 @@ match result:
 | <code>description</code> | <code>str \| None</code> | Description of the public or private channel to create.<br>**Default**: <code>None</code> |
 | <code>org_wide</code> | <code>bool \| None</code> | When `true`, the channel will be available org-wide. Note: if the channel is not `org_wide=true`, you must specify a `team_id` for this channel<br>**Default**: <code>None</code> |
 | <code>team_id</code> | <code>str \| None</code> | The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5340,7 +5562,9 @@ Delete a public or private channel.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_delete(token, content_type, channel_id)
+result = client.admin_conversations.with_raw_response.admin_conversations_delete(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsDeleteschema
@@ -5352,7 +5576,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_delete(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5374,7 +5598,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5423,7 +5647,7 @@ Disconnect a connected channel from one or more workspaces.
 
 ```python
 result = client.admin_conversations.with_raw_response.admin_conversations_disconnect_shared(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5436,7 +5660,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_disconnect_shared(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5459,7 +5683,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to be disconnected from some workspaces. |
 | <code>leaving_team_ids</code> | <code>str \| None</code> | The team to be removed from the channel. Currently only a single team id can be specified.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5508,7 +5732,7 @@ Get conversation preferences for a public or private channel.
 
 ```python
 result = client.admin_conversations.with_raw_response.admin_conversations_get_conversation_prefs(
-    channel_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -5521,7 +5745,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_get_conversation_prefs(
-    channel_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -5543,7 +5767,7 @@ match result:
 | <code>channel_id</code> | <code>str</code> | The channel to get preferences for. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5591,7 +5815,9 @@ Get all the workspaces a given public or private channel is connected to within 
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_get_teams(channel_id, token, content_type)
+result = client.admin_conversations.with_raw_response.admin_conversations_get_teams(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsGetTeamsschema
@@ -5603,7 +5829,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_get_teams(
-    channel_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -5627,7 +5853,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5676,7 +5902,7 @@ Invite a user to a public or private channel.
 
 ```python
 result = client.admin_conversations.with_raw_response.admin_conversations_invite(
-    token, content_type, user_ids, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5689,7 +5915,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_invite(
-    token, content_type, user_ids, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5712,7 +5938,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>user_ids</code> | <code>str</code> | The users to invite. |
 | <code>channel_id</code> | <code>str</code> | The channel that the users will be invited to. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5760,7 +5986,9 @@ Rename a public or private channel.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_rename(token, content_type, channel_id, name)
+result = client.admin_conversations.with_raw_response.admin_conversations_rename(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsRenameschema1
@@ -5772,7 +6000,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_rename(
-    token, content_type, channel_id, name
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5795,7 +6023,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to rename. |
 | <code>name</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5843,7 +6071,9 @@ Search for public or private channels in an Enterprise organization.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_search(token, content_type)
+result = client.admin_conversations.with_raw_response.admin_conversations_search(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsSearchschema
@@ -5854,7 +6084,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_conversations.with_raw_response.admin_conversations_search(token, content_type)
+result = await async_client.admin_conversations.with_raw_response.admin_conversations_search(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsSearchschema
@@ -5881,7 +6113,7 @@ match result:
 | <code>search_channel_types</code> | <code>str \| None</code> | The type of channel to include or exclude in the search. For example `private` will search private channels, while `private_exclude` will exclude them. For a full list of types, check the [Types section](#types).<br>**Default**: <code>None</code> |
 | <code>sort</code> | <code>str \| None</code> | Possible values are `relevant` (search ranking based on what we think is closest), `name` (alphabetical), `member_count` (number of users in the channel), and `created` (date channel was created). You can optionally pair this with the `sort_dir` arg to change how it is sorted<br>**Default**: <code>None</code> |
 | <code>sort_dir</code> | <code>str \| None</code> | Sort direction. Possible values are `asc` for ascending order like (1, 2, 3) or (a, b, c), and `desc` for descending order like (3, 2, 1) or (c, b, a)<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5930,7 +6162,7 @@ Set the posting permissions for a public or private channel.
 
 ```python
 result = client.admin_conversations.with_raw_response.admin_conversations_set_conversation_prefs(
-    token, content_type, channel_id, prefs
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5943,7 +6175,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_set_conversation_prefs(
-    token, content_type, channel_id, prefs
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5966,7 +6198,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to set the prefs for |
 | <code>prefs</code> | <code>str</code> | The prefs for this channel in a stringified JSON format. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6014,7 +6246,9 @@ Set the workspaces in an Enterprise grid org that connect to a public or private
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_set_teams(token, content_type, channel_id)
+result = client.admin_conversations.with_raw_response.admin_conversations_set_teams(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6026,7 +6260,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_set_teams(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6051,7 +6285,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.<br>**Default**: <code>None</code> |
 | <code>target_team_ids</code> | <code>str \| None</code> | A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide.<br>**Default**: <code>None</code> |
 | <code>org_channel</code> | <code>bool \| None</code> | True if channel has to be converted to an org channel<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6099,7 +6333,9 @@ Unarchive a public or private channel.
 **Sync**
 
 ```python
-result = client.admin_conversations.with_raw_response.admin_conversations_unarchive(token, content_type, channel_id)
+result = client.admin_conversations.with_raw_response.admin_conversations_unarchive(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdminConversationsUnarchiveschema
@@ -6111,7 +6347,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations.with_raw_response.admin_conversations_unarchive(
-    token, content_type, channel_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6133,7 +6369,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.conversations:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel_id</code> | <code>str</code> | The channel to unarchive. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6186,7 +6422,7 @@ List all disconnected channels—i.e., channels that were once connected to othe
 
 ```python
 result = client.admin_conversations_ekm.with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -6199,7 +6435,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations_ekm.with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -6224,7 +6460,7 @@ match result:
 | <code>team_ids</code> | <code>str \| None</code> | A comma-separated list of the workspaces to which the channels you would like returned belong.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6277,7 +6513,7 @@ Add an allowlist of IDP groups for accessing a channel
 
 ```python
 result = client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_add_group(
-    content_type, token, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6290,7 +6526,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_add_group(
-    content_type, token, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6314,7 +6550,7 @@ match result:
 | <code>group_id</code> | <code>str</code> | The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel. |
 | <code>channel_id</code> | <code>str</code> | The channel to link this group to. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6363,7 +6599,7 @@ List all IDP Groups linked to a channel
 
 ```python
 result = client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_list_groups(
-    token, channel_id, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -6376,7 +6612,7 @@ match result:
 
 ```python
 result = await async_client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_list_groups(
-    token, channel_id, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -6399,7 +6635,7 @@ match result:
 | <code>channel_id</code> | <code>str</code> | Value sent with the request. |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6448,7 +6684,11 @@ Remove a linked IDP group linked from a private channel
 
 ```python
 result = client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_remove_group(
-    content_type, token, team_id, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
 )
 match result:
     case Success(payload=payload):
@@ -6461,7 +6701,11 @@ match result:
 
 ```python
 result = await async_client.admin_conversations_restrict_access.with_raw_response.admin_conversations_restrict_access_remove_group(
-    content_type, token, team_id, group_id, channel_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
 )
 match result:
     case Success(payload=payload):
@@ -6485,7 +6729,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. |
 | <code>group_id</code> | <code>str</code> | The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel. |
 | <code>channel_id</code> | <code>str</code> | The channel to remove the linked group from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6537,7 +6781,9 @@ Add an emoji.
 **Sync**
 
 ```python
-result = client.admin_emoji.with_raw_response.admin_emoji_add(content_type, token, name, url)
+result = client.admin_emoji.with_raw_response.admin_emoji_add(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6548,7 +6794,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_emoji.with_raw_response.admin_emoji_add(content_type, token, name, url)
+result = await async_client.admin_emoji.with_raw_response.admin_emoji_add(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6570,7 +6818,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>url</code> | <code>str</code> | The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6618,7 +6866,9 @@ Add an emoji alias.
 **Sync**
 
 ```python
-result = client.admin_emoji.with_raw_response.admin_emoji_add_alias(content_type, token, name, alias_for)
+result = client.admin_emoji.with_raw_response.admin_emoji_add_alias(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6629,7 +6879,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_emoji.with_raw_response.admin_emoji_add_alias(content_type, token, name, alias_for)
+result = await async_client.admin_emoji.with_raw_response.admin_emoji_add_alias(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6651,7 +6903,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>alias_for</code> | <code>str</code> | The alias of the emoji. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6699,7 +6951,9 @@ List emoji for an Enterprise Grid organization.
 **Sync**
 
 ```python
-result = client.admin_emoji.with_raw_response.admin_emoji_list(token, content_type)
+result = client.admin_emoji.with_raw_response.admin_emoji_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6710,7 +6964,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_emoji.with_raw_response.admin_emoji_list(token, content_type)
+result = await async_client.admin_emoji.with_raw_response.admin_emoji_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6732,7 +6988,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6780,7 +7036,9 @@ Remove an emoji across an Enterprise Grid organization
 **Sync**
 
 ```python
-result = client.admin_emoji.with_raw_response.admin_emoji_remove(content_type, token, name)
+result = client.admin_emoji.with_raw_response.admin_emoji_remove(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6791,7 +7049,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_emoji.with_raw_response.admin_emoji_remove(content_type, token, name)
+result = await async_client.admin_emoji.with_raw_response.admin_emoji_remove(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6812,7 +7072,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6860,7 +7120,9 @@ Rename an emoji.
 **Sync**
 
 ```python
-result = client.admin_emoji.with_raw_response.admin_emoji_rename(content_type, token, name, new_name)
+result = client.admin_emoji.with_raw_response.admin_emoji_rename(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6871,7 +7133,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_emoji.with_raw_response.admin_emoji_rename(content_type, token, name, new_name)
+result = await async_client.admin_emoji.with_raw_response.admin_emoji_rename(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -6893,7 +7157,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>name</code> | <code>str</code> | The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included. |
 | <code>new_name</code> | <code>str</code> | The new name of the emoji. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6946,7 +7210,7 @@ Approve a workspace invite request.
 
 ```python
 result = client.admin_invite_requests.with_raw_response.admin_invite_requests_approve(
-    token, content_type, invite_request_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6959,7 +7223,7 @@ match result:
 
 ```python
 result = await async_client.admin_invite_requests.with_raw_response.admin_invite_requests_approve(
-    token, content_type, invite_request_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -6982,7 +7246,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>invite_request_id</code> | <code>str</code> | ID of the request to invite. |
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite request was made.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7031,7 +7295,7 @@ Deny a workspace invite request.
 
 ```python
 result = client.admin_invite_requests.with_raw_response.admin_invite_requests_deny(
-    token, content_type, invite_request_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7044,7 +7308,7 @@ match result:
 
 ```python
 result = await async_client.admin_invite_requests.with_raw_response.admin_invite_requests_deny(
-    token, content_type, invite_request_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7067,7 +7331,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>invite_request_id</code> | <code>str</code> | ID of the request to invite. |
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite request was made.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7115,7 +7379,9 @@ List all pending workspace invite requests.
 **Sync**
 
 ```python
-result = client.admin_invite_requests.with_raw_response.admin_invite_requests_list(token, content_type)
+result = client.admin_invite_requests.with_raw_response.admin_invite_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7126,7 +7392,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_invite_requests.with_raw_response.admin_invite_requests_list(token, content_type)
+result = await async_client.admin_invite_requests.with_raw_response.admin_invite_requests_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7149,7 +7417,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous API response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7202,7 +7470,7 @@ List all approved workspace invite requests.
 
 ```python
 result = client.admin_invite_requests_approved.with_raw_response.admin_invite_requests_approved_list(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -7215,7 +7483,7 @@ match result:
 
 ```python
 result = await async_client.admin_invite_requests_approved.with_raw_response.admin_invite_requests_approved_list(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -7239,7 +7507,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous API response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7291,7 +7559,9 @@ List all denied workspace invite requests.
 **Sync**
 
 ```python
-result = client.admin_invite_requests_denied.with_raw_response.admin_invite_requests_denied_list(token, content_type)
+result = client.admin_invite_requests_denied.with_raw_response.admin_invite_requests_denied_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7303,7 +7573,7 @@ match result:
 
 ```python
 result = await async_client.admin_invite_requests_denied.with_raw_response.admin_invite_requests_denied_list(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -7327,7 +7597,7 @@ match result:
 | <code>team_id</code> | <code>str \| None</code> | ID for the workspace where the invite requests were made.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Value of the `next_cursor` field sent as part of the previous api response<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7379,7 +7649,9 @@ Create an Enterprise team.
 **Sync**
 
 ```python
-result = client.admin_teams.with_raw_response.admin_teams_create(token, content_type, team_domain, team_name)
+result = client.admin_teams.with_raw_response.admin_teams_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7391,7 +7663,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams.with_raw_response.admin_teams_create(
-    token, content_type, team_domain, team_name
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7416,7 +7688,7 @@ match result:
 | <code>team_name</code> | <code>str</code> | Team name (for example, Slack Softball Team). |
 | <code>team_description</code> | <code>str \| None</code> | Description for the team.<br>**Default**: <code>None</code> |
 | <code>team_discoverability</code> | <code>str \| None</code> | Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7464,7 +7736,9 @@ List all teams on an Enterprise organization
 **Sync**
 
 ```python
-result = client.admin_teams.with_raw_response.admin_teams_list(token, content_type)
+result = client.admin_teams.with_raw_response.admin_teams_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7475,7 +7749,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_teams.with_raw_response.admin_teams_list(token, content_type)
+result = await async_client.admin_teams.with_raw_response.admin_teams_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7497,7 +7773,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 100 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7549,7 +7825,9 @@ List all of the admins on a given workspace.
 **Sync**
 
 ```python
-result = client.admin_teams_admins.with_raw_response.admin_teams_admins_list(token, team_id, content_type)
+result = client.admin_teams_admins.with_raw_response.admin_teams_admins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7560,7 +7838,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_teams_admins.with_raw_response.admin_teams_admins_list(token, team_id, content_type)
+result = await async_client.admin_teams_admins.with_raw_response.admin_teams_admins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7583,7 +7863,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7635,7 +7915,9 @@ List all of the owners on a given workspace.
 **Sync**
 
 ```python
-result = client.admin_teams_owners.with_raw_response.admin_teams_owners_list(token, team_id, content_type)
+result = client.admin_teams_owners.with_raw_response.admin_teams_owners_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7646,7 +7928,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_teams_owners.with_raw_response.admin_teams_owners_list(token, team_id, content_type)
+result = await async_client.admin_teams_owners.with_raw_response.admin_teams_owners_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7669,7 +7953,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Must be between 1 - 1000 both inclusive.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7721,7 +8005,9 @@ Fetch information about settings in a workspace
 **Sync**
 
 ```python
-result = client.admin_teams_settings.with_raw_response.admin_teams_settings_info(team_id, token, content_type)
+result = client.admin_teams_settings.with_raw_response.admin_teams_settings_info(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -7733,7 +8019,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_info(
-    team_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -7755,7 +8041,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7804,7 +8090,7 @@ Set the default channels of a workspace.
 
 ```python
 result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_default_channels(
-    content_type, token, team_id, channel_ids
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7817,7 +8103,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_set_default_channels(
-    content_type, token, team_id, channel_ids
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7840,7 +8126,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the default channel for. |
 | <code>channel_ids</code> | <code>str</code> | An array of channel IDs. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7889,7 +8175,7 @@ Set the description of a given workspace.
 
 ```python
 result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_description(
-    token, content_type, team_id, description
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7902,7 +8188,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_set_description(
-    token, content_type, team_id, description
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7925,7 +8211,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the description for. |
 | <code>description</code> | <code>str</code> | The new description for the workspace. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7974,7 +8260,7 @@ An API method that allows admins to set the discoverability of a given workspace
 
 ```python
 result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_discoverability(
-    token, content_type, team_id, discoverability
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -7987,7 +8273,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_set_discoverability(
-    token, content_type, team_id, discoverability
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8010,7 +8296,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID of the workspace to set discoverability on. |
 | <code>discoverability</code> | <code>str</code> | This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8059,7 +8345,7 @@ Sets the icon of a workspace.
 
 ```python
 result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_icon(
-    content_type, token, image_url, team_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8072,7 +8358,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_set_icon(
-    content_type, token, image_url, team_id
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8095,7 +8381,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin.teams:write` |
 | <code>image_url</code> | <code>str</code> | Image URL for the icon |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the icon for. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8143,7 +8429,9 @@ Set the name of a given workspace.
 **Sync**
 
 ```python
-result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_name(token, content_type, team_id, name)
+result = client.admin_teams_settings.with_raw_response.admin_teams_settings_set_name(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8155,7 +8443,7 @@ match result:
 
 ```python
 result = await async_client.admin_teams_settings.with_raw_response.admin_teams_settings_set_name(
-    token, content_type, team_id, name
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8178,7 +8466,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID for the workspace to set the name for. |
 | <code>name</code> | <code>str</code> | The new name of the workspace. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8231,7 +8519,7 @@ Add one or more default channels to an IDP group.
 
 ```python
 result = client.admin_usergroups.with_raw_response.admin_usergroups_add_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8244,7 +8532,7 @@ match result:
 
 ```python
 result = await async_client.admin_usergroups.with_raw_response.admin_usergroups_add_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8268,7 +8556,7 @@ match result:
 | <code>usergroup_id</code> | <code>str</code> | ID of the IDP group to add default channels for. |
 | <code>channel_ids</code> | <code>str</code> | Comma separated string of channel IDs. |
 | <code>team_id</code> | <code>str \| None</code> | The workspace to add default channels in.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8317,7 +8605,7 @@ Associate one or more default workspaces with an organization-wide IDP group.
 
 ```python
 result = client.admin_usergroups.with_raw_response.admin_usergroups_add_teams(
-    token, content_type, usergroup_id, team_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8330,7 +8618,7 @@ match result:
 
 ```python
 result = await async_client.admin_usergroups.with_raw_response.admin_usergroups_add_teams(
-    token, content_type, usergroup_id, team_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8354,7 +8642,7 @@ match result:
 | <code>usergroup_id</code> | <code>str</code> | An encoded usergroup (IDP Group) ID. |
 | <code>team_ids</code> | <code>str</code> | A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. |
 | <code>auto_provision</code> | <code>bool \| None</code> | When `true`, this method automatically creates new workspace accounts for the IDP group members.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8402,7 +8690,9 @@ List the channels linked to an org-level IDP group (user group).
 **Sync**
 
 ```python
-result = client.admin_usergroups.with_raw_response.admin_usergroups_list_channels(usergroup_id, token, content_type)
+result = client.admin_usergroups.with_raw_response.admin_usergroups_list_channels(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8414,7 +8704,7 @@ match result:
 
 ```python
 result = await async_client.admin_usergroups.with_raw_response.admin_usergroups_list_channels(
-    usergroup_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -8438,7 +8728,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str \| None</code> | ID of the the workspace.<br>**Default**: <code>None</code> |
 | <code>include_num_members</code> | <code>bool \| None</code> | Flag to include or exclude the count of members per channel.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8487,7 +8777,7 @@ Remove one or more default channels from an org-level IDP group (user group).
 
 ```python
 result = client.admin_usergroups.with_raw_response.admin_usergroups_remove_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8500,7 +8790,7 @@ match result:
 
 ```python
 result = await async_client.admin_usergroups.with_raw_response.admin_usergroups_remove_channels(
-    token, content_type, usergroup_id, channel_ids
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -8523,7 +8813,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>usergroup_id</code> | <code>str</code> | ID of the IDP Group |
 | <code>channel_ids</code> | <code>str</code> | Comma-separated string of channel IDs |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8575,7 +8865,9 @@ Add an Enterprise user to a workspace.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_assign(token, content_type, team_id, user_id)
+result = client.admin_users.with_raw_response.admin_users_assign(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8586,7 +8878,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_assign(token, content_type, team_id, user_id)
+result = await async_client.admin_users.with_raw_response.admin_users_assign(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8611,7 +8905,7 @@ match result:
 | <code>is_restricted</code> | <code>bool \| None</code> | True if user should be added to the workspace as a guest.<br>**Default**: <code>None</code> |
 | <code>is_ultra_restricted</code> | <code>bool \| None</code> | True if user should be added to the workspace as a single-channel guest.<br>**Default**: <code>None</code> |
 | <code>channel_ids</code> | <code>str \| None</code> | Comma separated values of channel IDs to add user in the new workspace.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8659,7 +8953,13 @@ Invite a user to a workspace.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_invite(token, content_type, team_id, email, channel_ids)
+result = client.admin_users.with_raw_response.admin_users_invite(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8671,7 +8971,11 @@ match result:
 
 ```python
 result = await async_client.admin_users.with_raw_response.admin_users_invite(
-    token, content_type, team_id, email, channel_ids
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
 )
 match result:
     case Success(payload=payload):
@@ -8701,7 +9005,7 @@ match result:
 | <code>is_restricted</code> | <code>bool \| None</code> | Is this user a multi-channel guest user? (default: false)<br>**Default**: <code>None</code> |
 | <code>is_ultra_restricted</code> | <code>bool \| None</code> | Is this user a single channel guest user? (default: false)<br>**Default**: <code>None</code> |
 | <code>guest_expiration_ts</code> | <code>str \| None</code> | Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8749,7 +9053,9 @@ List users on a workspace
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_list(team_id, token, content_type)
+result = client.admin_users.with_raw_response.admin_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8760,7 +9066,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_list(team_id, token, content_type)
+result = await async_client.admin_users.with_raw_response.admin_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8783,7 +9091,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Limit for how many users to be retrieved per page<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8831,7 +9139,9 @@ Remove a user from a workspace.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_remove(token, content_type, team_id, user_id)
+result = client.admin_users.with_raw_response.admin_users_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8842,7 +9152,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_remove(token, content_type, team_id, user_id)
+result = await async_client.admin_users.with_raw_response.admin_users_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8864,7 +9176,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to remove. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8912,7 +9224,9 @@ Set an existing guest, regular user, or owner to be an admin user.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_set_admin(token, content_type, team_id, user_id)
+result = client.admin_users.with_raw_response.admin_users_set_admin(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8923,7 +9237,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_set_admin(token, content_type, team_id, user_id)
+result = await async_client.admin_users.with_raw_response.admin_users_set_admin(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -8945,7 +9261,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to designate as an admin. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8994,7 +9310,11 @@ Set an expiration for a guest user
 
 ```python
 result = client.admin_users.with_raw_response.admin_users_set_expiration(
-    token, content_type, team_id, user_id, expiration_ts
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    1,
 )
 match result:
     case Success(payload=payload):
@@ -9007,7 +9327,11 @@ match result:
 
 ```python
 result = await async_client.admin_users.with_raw_response.admin_users_set_expiration(
-    token, content_type, team_id, user_id, expiration_ts
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    1,
 )
 match result:
     case Success(payload=payload):
@@ -9031,7 +9355,7 @@ match result:
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to set an expiration for. |
 | <code>expiration_ts</code> | <code>int</code> | Timestamp when guest account should be disabled. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9079,7 +9403,9 @@ Set an existing guest, regular user, or admin user to be a workspace owner.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_set_owner(token, content_type, team_id, user_id)
+result = client.admin_users.with_raw_response.admin_users_set_owner(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9090,7 +9416,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_set_owner(token, content_type, team_id, user_id)
+result = await async_client.admin_users.with_raw_response.admin_users_set_owner(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9112,7 +9440,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | Id of the user to promote to owner. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9160,7 +9488,9 @@ Set an existing guest user, admin user, or owner to be a regular user.
 **Sync**
 
 ```python
-result = client.admin_users.with_raw_response.admin_users_set_regular(token, content_type, team_id, user_id)
+result = client.admin_users.with_raw_response.admin_users_set_regular(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9171,7 +9501,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.admin_users.with_raw_response.admin_users_set_regular(token, content_type, team_id, user_id)
+result = await async_client.admin_users.with_raw_response.admin_users_set_regular(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9193,7 +9525,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | The ID (`T1234`) of the workspace. |
 | <code>user_id</code> | <code>str</code> | The ID of the user to designate as a regular user. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9246,7 +9578,7 @@ Invalidate a single session for a user by session_id
 
 ```python
 result = client.admin_users_session.with_raw_response.admin_users_session_invalidate(
-    token, content_type, team_id, session_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", 1
 )
 match result:
     case Success(payload=payload):
@@ -9259,7 +9591,7 @@ match result:
 
 ```python
 result = await async_client.admin_users_session.with_raw_response.admin_users_session_invalidate(
-    token, content_type, team_id, session_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", 1
 )
 match result:
     case Success(payload=payload):
@@ -9282,7 +9614,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str</code> | ID of the team that the session belongs to |
 | <code>session_id</code> | <code>int</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9330,7 +9662,9 @@ Wipes all valid sessions on all devices for a given user
 **Sync**
 
 ```python
-result = client.admin_users_session.with_raw_response.admin_users_session_reset(token, content_type, user_id)
+result = client.admin_users_session.with_raw_response.admin_users_session_reset(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9342,7 +9676,7 @@ match result:
 
 ```python
 result = await async_client.admin_users_session.with_raw_response.admin_users_session_reset(
-    token, content_type, user_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -9366,7 +9700,7 @@ match result:
 | <code>user_id</code> | <code>str</code> | The ID of the user to wipe sessions for |
 | <code>mobile_only</code> | <code>bool \| None</code> | Only expire mobile sessions (default: false)<br>**Default**: <code>None</code> |
 | <code>web_only</code> | <code>bool \| None</code> | Only expire web sessions (default: false)<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9418,7 +9752,7 @@ Checks API calling code.
 **Sync**
 
 ```python
-result = client.api2.with_raw_response.api_test(content_type)
+result = client.api2.with_raw_response.api_test(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiTestsuccessschema
@@ -9429,7 +9763,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.api2.with_raw_response.api_test(content_type)
+result = await async_client.api2.with_raw_response.api_test(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiTestsuccessschema
@@ -9450,7 +9784,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>error</code> | <code>str \| None</code> | Error response to return<br>**Default**: <code>None</code> |
 | <code>foo</code> | <code>str \| None</code> | example property to return<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9502,7 +9836,9 @@ Get a list of authorizations for the given event context. Each authorization rep
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_event_authorizations_list(event_context, token, content_type)
+result = client.apps.with_raw_response.apps_event_authorizations_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9513,7 +9849,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_event_authorizations_list(event_context, token, content_type)
+result = await async_client.apps.with_raw_response.apps_event_authorizations_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9536,7 +9874,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9584,7 +9922,7 @@ Returns list of permissions this app has on a team.
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_info(content_type)
+result = client.apps.with_raw_response.apps_permissions_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsInfoschema
@@ -9595,7 +9933,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_permissions_info(content_type)
+result = await async_client.apps.with_raw_response.apps_permissions_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsInfoschema
@@ -9615,7 +9953,7 @@ match result:
 | --- | --- | --- |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `none`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9663,7 +10001,9 @@ Allows an app to request additional scopes
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_request(token, scopes, trigger_id, content_type)
+result = client.apps.with_raw_response.apps_permissions_request(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsRequestschema
@@ -9674,7 +10014,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_permissions_request(token, scopes, trigger_id, content_type)
+result = await async_client.apps.with_raw_response.apps_permissions_request(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsRequestschema
@@ -9696,7 +10038,7 @@ match result:
 | <code>scopes</code> | <code>str</code> | A comma separated list of scopes to request for |
 | <code>trigger_id</code> | <code>str</code> | Token used to trigger the permissions API |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9744,7 +10086,9 @@ Returns list of resource grants this app has on a team.
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_resources_list(token, content_type)
+result = client.apps.with_raw_response.apps_permissions_resources_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsResourcesListsuccessschema
@@ -9755,7 +10099,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_permissions_resources_list(token, content_type)
+result = await async_client.apps.with_raw_response.apps_permissions_resources_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsResourcesListsuccessschema
@@ -9777,7 +10123,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9825,7 +10171,9 @@ Returns list of scopes this app has on a team.
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_scopes_list(token, content_type)
+result = client.apps.with_raw_response.apps_permissions_scopes_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiPermissionsScopesListsuccessschema
@@ -9836,7 +10184,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_permissions_scopes_list(token, content_type)
+result = await async_client.apps.with_raw_response.apps_permissions_scopes_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiPermissionsScopesListsuccessschema
@@ -9856,7 +10206,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9904,7 +10254,9 @@ Returns list of user grants and corresponding scopes this app has on a team.
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_users_list(token, content_type)
+result = client.apps.with_raw_response.apps_permissions_users_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9915,7 +10267,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_permissions_users_list(token, content_type)
+result = await async_client.apps.with_raw_response.apps_permissions_users_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9937,7 +10291,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9985,7 +10339,13 @@ Enables an app to trigger a permissions modal to grant an app access to a user a
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_permissions_users_request(token, scopes, trigger_id, user, content_type)
+result = client.apps.with_raw_response.apps_permissions_users_request(
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -9997,7 +10357,11 @@ match result:
 
 ```python
 result = await async_client.apps.with_raw_response.apps_permissions_users_request(
-    token, scopes, trigger_id, user, content_type
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
 )
 match result:
     case Success(payload=payload):
@@ -10021,7 +10385,7 @@ match result:
 | <code>trigger_id</code> | <code>str</code> | Token used to trigger the request |
 | <code>user</code> | <code>str</code> | The user this scope is being requested for |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10069,7 +10433,7 @@ Uninstalls your app from a workspace.
 **Sync**
 
 ```python
-result = client.apps.with_raw_response.apps_uninstall(content_type)
+result = client.apps.with_raw_response.apps_uninstall(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsUninstallschema
@@ -10080,7 +10444,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps.with_raw_response.apps_uninstall(content_type)
+result = await async_client.apps.with_raw_response.apps_uninstall(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsUninstallschema
@@ -10102,7 +10466,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `none`<br>**Default**: <code>None</code> |
 | <code>client_id</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
 | <code>client_secret</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10155,7 +10519,7 @@ Get a list of authorizations for the given event context. Each authorization rep
 
 ```python
 result = client.apps_event_authorizations.with_raw_response.apps_event_authorizations_list(
-    event_context, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -10168,7 +10532,7 @@ match result:
 
 ```python
 result = await async_client.apps_event_authorizations.with_raw_response.apps_event_authorizations_list(
-    event_context, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -10192,7 +10556,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10244,7 +10608,7 @@ Returns list of permissions this app has on a team.
 **Sync**
 
 ```python
-result = client.apps_permissions.with_raw_response.apps_permissions_info(content_type)
+result = client.apps_permissions.with_raw_response.apps_permissions_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsInfoschema
@@ -10255,7 +10619,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps_permissions.with_raw_response.apps_permissions_info(content_type)
+result = await async_client.apps_permissions.with_raw_response.apps_permissions_info(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsInfoschema
@@ -10275,7 +10641,7 @@ match result:
 | --- | --- | --- |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `none`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10323,7 +10689,9 @@ Allows an app to request additional scopes
 **Sync**
 
 ```python
-result = client.apps_permissions.with_raw_response.apps_permissions_request(token, scopes, trigger_id, content_type)
+result = client.apps_permissions.with_raw_response.apps_permissions_request(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsRequestschema
@@ -10335,7 +10703,7 @@ match result:
 
 ```python
 result = await async_client.apps_permissions.with_raw_response.apps_permissions_request(
-    token, scopes, trigger_id, content_type
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -10358,7 +10726,7 @@ match result:
 | <code>scopes</code> | <code>str</code> | A comma separated list of scopes to request for |
 | <code>trigger_id</code> | <code>str</code> | Token used to trigger the permissions API |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10410,7 +10778,9 @@ Returns list of resource grants this app has on a team.
 **Sync**
 
 ```python
-result = client.apps_permissions_resources.with_raw_response.apps_permissions_resources_list(token, content_type)
+result = client.apps_permissions_resources.with_raw_response.apps_permissions_resources_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AppsPermissionsResourcesListsuccessschema
@@ -10422,7 +10792,7 @@ match result:
 
 ```python
 result = await async_client.apps_permissions_resources.with_raw_response.apps_permissions_resources_list(
-    token, content_type
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -10445,7 +10815,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10497,7 +10867,9 @@ Returns list of scopes this app has on a team.
 **Sync**
 
 ```python
-result = client.apps_permissions_scopes.with_raw_response.apps_permissions_scopes_list(token, content_type)
+result = client.apps_permissions_scopes.with_raw_response.apps_permissions_scopes_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiPermissionsScopesListsuccessschema
@@ -10508,7 +10880,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps_permissions_scopes.with_raw_response.apps_permissions_scopes_list(token, content_type)
+result = await async_client.apps_permissions_scopes.with_raw_response.apps_permissions_scopes_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApiPermissionsScopesListsuccessschema
@@ -10528,7 +10902,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10580,7 +10954,9 @@ Returns list of user grants and corresponding scopes this app has on a team.
 **Sync**
 
 ```python
-result = client.apps_permissions_users.with_raw_response.apps_permissions_users_list(token, content_type)
+result = client.apps_permissions_users.with_raw_response.apps_permissions_users_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -10591,7 +10967,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apps_permissions_users.with_raw_response.apps_permissions_users_list(token, content_type)
+result = await async_client.apps_permissions_users.with_raw_response.apps_permissions_users_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -10613,7 +10991,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10662,7 +11040,11 @@ Enables an app to trigger a permissions modal to grant an app access to a user a
 
 ```python
 result = client.apps_permissions_users.with_raw_response.apps_permissions_users_request(
-    token, scopes, trigger_id, user, content_type
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
 )
 match result:
     case Success(payload=payload):
@@ -10675,7 +11057,11 @@ match result:
 
 ```python
 result = await async_client.apps_permissions_users.with_raw_response.apps_permissions_users_request(
-    token, scopes, trigger_id, user, content_type
+    "some example string",
+    "some example string",
+    "some example string",
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
 )
 match result:
     case Success(payload=payload):
@@ -10699,7 +11085,7 @@ match result:
 | <code>trigger_id</code> | <code>str</code> | Token used to trigger the request |
 | <code>user</code> | <code>str</code> | The user this scope is being requested for |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10751,7 +11137,9 @@ Revokes a token.
 **Sync**
 
 ```python
-result = client.auth_api.with_raw_response.auth_revoke(token, content_type)
+result = client.auth_api.with_raw_response.auth_revoke(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AuthRevokeschema
@@ -10762,7 +11150,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.auth_api.with_raw_response.auth_revoke(token, content_type)
+result = await async_client.auth_api.with_raw_response.auth_revoke(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AuthRevokeschema
@@ -10783,7 +11173,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>test</code> | <code>bool \| None</code> | Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10831,7 +11221,9 @@ Checks authentication & identity.
 **Sync**
 
 ```python
-result = client.auth_api.with_raw_response.auth_test(token, content_type)
+result = client.auth_api.with_raw_response.auth_test(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AuthTestsuccessschema
@@ -10842,7 +11234,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.auth_api.with_raw_response.auth_test(token, content_type)
+result = await async_client.auth_api.with_raw_response.auth_test(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AuthTestsuccessschema
@@ -10862,7 +11256,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10914,7 +11308,7 @@ Gets information about a bot user.
 **Sync**
 
 ```python
-result = client.bots.with_raw_response.bots_info(token, content_type)
+result = client.bots.with_raw_response.bots_info("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BotsInfoschema
@@ -10925,7 +11319,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bots.with_raw_response.bots_info(token, content_type)
+result = await async_client.bots.with_raw_response.bots_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BotsInfoschema
@@ -10946,7 +11342,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>bot</code> | <code>str \| None</code> | Bot user to get info on<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10998,7 +11394,9 @@ Registers a new Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_add(token, content_type, external_unique_id, join_url)
+result = client.calls.with_raw_response.calls_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11009,7 +11407,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_add(token, content_type, external_unique_id, join_url)
+result = await async_client.calls.with_raw_response.calls_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11037,7 +11437,7 @@ match result:
 | <code>title</code> | <code>str \| None</code> | The name of the Call.<br>**Default**: <code>None</code> |
 | <code>created_by</code> | <code>str \| None</code> | The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional and defaults to the authed user of the token. Otherwise, the field is required.<br>**Default**: <code>None</code> |
 | <code>users</code> | <code>str \| None</code> | The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11062,7 +11462,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_end(token: str, content_type: ContentTypeOrStr, id: str, *, duration: int | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_end(token: str, content_type: ContentTypeOrStr, id_: str, *, duration: int | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11085,7 +11485,9 @@ Ends a Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_end(token, content_type, id)
+result = client.calls.with_raw_response.calls_end(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11096,7 +11498,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_end(token, content_type, id)
+result = await async_client.calls.with_raw_response.calls_end(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11116,9 +11520,9 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned when registering the call using the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned when registering the call using the /methods/calls.add method. |
 | <code>duration</code> | <code>int \| None</code> | Call duration in seconds<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11143,7 +11547,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_info(id: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_info(id_: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11166,7 +11570,9 @@ Returns information about a Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_info(id, token, content_type)
+result = client.calls.with_raw_response.calls_info(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11177,7 +11583,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_info(id, token, content_type)
+result = await async_client.calls.with_raw_response.calls_info(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11195,10 +11603,10 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | `id` of the Call returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` of the Call returned by the /methods/calls.add method. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11223,7 +11631,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_participants_add(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_participants_add(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11246,7 +11654,9 @@ Registers new participants added to a Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_participants_add(token, content_type, id, users)
+result = client.calls.with_raw_response.calls_participants_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11257,7 +11667,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_participants_add(token, content_type, id, users)
+result = await async_client.calls.with_raw_response.calls_participants_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11277,9 +11689,9 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
 | <code>users</code> | <code>str</code> | The list of users to add as participants in the Call. [Read more on how to specify users here](/apis/calls#users). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11304,7 +11716,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11327,7 +11739,9 @@ Registers participants removed from a Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_participants_remove(token, content_type, id, users)
+result = client.calls.with_raw_response.calls_participants_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11338,7 +11752,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_participants_remove(token, content_type, id, users)
+result = await async_client.calls.with_raw_response.calls_participants_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11358,9 +11774,9 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
 | <code>users</code> | <code>str</code> | The list of users to remove as participants in the Call. [Read more on how to specify users here](/apis/calls#users). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11385,7 +11801,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_update(token: str, content_type: ContentTypeOrStr, id: str, *, title: str | None = None, join_url: str | None = None, desktop_app_join_url: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_update(token: str, content_type: ContentTypeOrStr, id_: str, *, title: str | None = None, join_url: str | None = None, desktop_app_join_url: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11408,7 +11824,9 @@ Updates information about a Call.
 **Sync**
 
 ```python
-result = client.calls.with_raw_response.calls_update(token, content_type, id)
+result = client.calls.with_raw_response.calls_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11419,7 +11837,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls.with_raw_response.calls_update(token, content_type, id)
+result = await async_client.calls.with_raw_response.calls_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11439,11 +11859,11 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
 | <code>title</code> | <code>str \| None</code> | The name of the Call.<br>**Default**: <code>None</code> |
 | <code>join_url</code> | <code>str \| None</code> | The URL required for a client to join the Call.<br>**Default**: <code>None</code> |
 | <code>desktop_app_join_url</code> | <code>str \| None</code> | When supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11472,7 +11892,7 @@ match result:
 > Source: [CallsParticipants](slack_web_api/apis/calls_participants.py)
 
 <details>
-<summary><code>def calls_participants_add(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_participants_add(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11495,7 +11915,9 @@ Registers new participants added to a Call.
 **Sync**
 
 ```python
-result = client.calls_participants.with_raw_response.calls_participants_add(token, content_type, id, users)
+result = client.calls_participants.with_raw_response.calls_participants_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11506,7 +11928,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.calls_participants.with_raw_response.calls_participants_add(token, content_type, id, users)
+result = await async_client.calls_participants.with_raw_response.calls_participants_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11526,9 +11950,9 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
 | <code>users</code> | <code>str</code> | The list of users to add as participants in the Call. [Read more on how to specify users here](/apis/calls#users). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11553,7 +11977,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11576,7 +12000,9 @@ Registers participants removed from a Call.
 **Sync**
 
 ```python
-result = client.calls_participants.with_raw_response.calls_participants_remove(token, content_type, id, users)
+result = client.calls_participants.with_raw_response.calls_participants_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -11588,7 +12014,7 @@ match result:
 
 ```python
 result = await async_client.calls_participants.with_raw_response.calls_participants_remove(
-    token, content_type, id, users
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -11609,9 +12035,9 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `calls:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>id</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
+| <code>id_</code> | <code>str</code> | `id` returned by the /methods/calls.add method. |
 | <code>users</code> | <code>str</code> | The list of users to remove as participants in the Call. [Read more on how to specify users here](/apis/calls#users). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11663,7 +12089,7 @@ Deletes a message.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_delete(content_type)
+result = client.chat.with_raw_response.chat_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatDeletesuccessschema
@@ -11674,7 +12100,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_delete(content_type)
+result = await async_client.chat.with_raw_response.chat_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatDeletesuccessschema
@@ -11697,7 +12123,7 @@ match result:
 | <code>ts</code> | <code>float \| None</code> | Timestamp of the message to be deleted.<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Channel containing the message to be deleted.<br>**Default**: <code>None</code> |
 | <code>as_user</code> | <code>bool \| None</code> | Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11745,7 +12171,9 @@ Deletes a pending scheduled message from the queue.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_delete_scheduled_message(token, content_type, channel, scheduled_message_id)
+result = client.chat.with_raw_response.chat_delete_scheduled_message(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatDeleteScheduledMessageschema
@@ -11757,7 +12185,7 @@ match result:
 
 ```python
 result = await async_client.chat.with_raw_response.chat_delete_scheduled_message(
-    token, content_type, channel, scheduled_message_id
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -11781,7 +12209,7 @@ match result:
 | <code>channel</code> | <code>str</code> | The channel the scheduled_message is posting to |
 | <code>scheduled_message_id</code> | <code>str</code> | `scheduled_message_id` returned from call to chat.scheduleMessage |
 | <code>as_user</code> | <code>bool \| None</code> | Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11829,7 +12257,9 @@ Retrieve a permalink URL for a specific extant message
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_get_permalink(token, channel, message_ts, content_type)
+result = client.chat.with_raw_response.chat_get_permalink(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatGetPermalinksuccessschema
@@ -11840,7 +12270,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_get_permalink(token, channel, message_ts, content_type)
+result = await async_client.chat.with_raw_response.chat_get_permalink(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatGetPermalinksuccessschema
@@ -11862,7 +12294,7 @@ match result:
 | <code>channel</code> | <code>str</code> | The ID of the conversation or channel containing the message |
 | <code>message_ts</code> | <code>str</code> | A message's `ts` value, uniquely identifying it within a channel |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11910,7 +12342,7 @@ Share a me message into a channel.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_me_message(content_type)
+result = client.chat.with_raw_response.chat_me_message(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatMeMessageschema
@@ -11921,7 +12353,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_me_message(content_type)
+result = await async_client.chat.with_raw_response.chat_me_message(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatMeMessageschema
@@ -11943,7 +12375,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `chat:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.<br>**Default**: <code>None</code> |
 | <code>text</code> | <code>str \| None</code> | Text of the message to send.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11991,7 +12423,9 @@ Sends an ephemeral message to a user in a channel.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_post_ephemeral(token, content_type, channel, user)
+result = client.chat.with_raw_response.chat_post_ephemeral(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatPostEphemeralsuccessschema
@@ -12002,7 +12436,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_post_ephemeral(token, content_type, channel, user)
+result = await async_client.chat.with_raw_response.chat_post_ephemeral(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatPostEphemeralsuccessschema
@@ -12034,7 +12470,7 @@ match result:
 | <code>text</code> | <code>str \| None</code> | How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.<br>**Default**: <code>None</code> |
 | <code>thread_ts</code> | <code>str \| None</code> | Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.<br>**Default**: <code>None</code> |
 | <code>username</code> | <code>str \| None</code> | Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12082,7 +12518,9 @@ Sends a message to a channel.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_post_message(token, content_type, channel)
+result = client.chat.with_raw_response.chat_post_message(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatPostMessagesuccessschema
@@ -12093,7 +12531,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_post_message(token, content_type, channel)
+result = await async_client.chat.with_raw_response.chat_post_message(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatPostMessagesuccessschema
@@ -12128,7 +12568,7 @@ match result:
 | <code>unfurl_links</code> | <code>bool \| None</code> | Pass true to enable unfurling of primarily text-based content.<br>**Default**: <code>None</code> |
 | <code>unfurl_media</code> | <code>bool \| None</code> | Pass false to disable unfurling of media content.<br>**Default**: <code>None</code> |
 | <code>username</code> | <code>str \| None</code> | Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12176,7 +12616,7 @@ Schedules a message to be sent to a channel.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_schedule_message(content_type)
+result = client.chat.with_raw_response.chat_schedule_message(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduleMessagesuccessschema
@@ -12187,7 +12627,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_schedule_message(content_type)
+result = await async_client.chat.with_raw_response.chat_schedule_message(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduleMessagesuccessschema
@@ -12219,7 +12659,7 @@ match result:
 | <code>unfurl_media</code> | <code>bool \| None</code> | Pass false to disable unfurling of media content.<br>**Default**: <code>None</code> |
 | <code>thread_ts</code> | <code>float \| None</code> | Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.<br>**Default**: <code>None</code> |
 | <code>reply_broadcast</code> | <code>bool \| None</code> | Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12267,7 +12707,7 @@ Returns a list of scheduled messages.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_scheduled_messages_list(content_type)
+result = client.chat.with_raw_response.chat_scheduled_messages_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduledMessagesListschema
@@ -12278,7 +12718,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_scheduled_messages_list(content_type)
+result = await async_client.chat.with_raw_response.chat_scheduled_messages_list(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduledMessagesListschema
@@ -12303,7 +12745,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | Maximum number of original entries to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.<br>**Default**: <code>None</code> |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `none`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12351,7 +12793,9 @@ Provide custom unfurl behavior for user-posted URLs
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_unfurl(token, content_type, channel, ts)
+result = client.chat.with_raw_response.chat_unfurl(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatUnfurlsuccessschema
@@ -12362,7 +12806,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_unfurl(token, content_type, channel, ts)
+result = await async_client.chat.with_raw_response.chat_unfurl(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatUnfurlsuccessschema
@@ -12388,7 +12834,7 @@ match result:
 | <code>user_auth_message</code> | <code>str \| None</code> | Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior<br>**Default**: <code>None</code> |
 | <code>user_auth_required</code> | <code>bool \| None</code> | Set to `true` or `1` to indicate the user must install your Slack app to trigger unfurls for this domain<br>**Default**: <code>None</code> |
 | <code>user_auth_url</code> | <code>str \| None</code> | Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12436,7 +12882,9 @@ Updates a message.
 **Sync**
 
 ```python
-result = client.chat.with_raw_response.chat_update(token, content_type, channel, ts)
+result = client.chat.with_raw_response.chat_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatUpdatesuccessschema
@@ -12447,7 +12895,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat.with_raw_response.chat_update(token, content_type, channel, ts)
+result = await async_client.chat.with_raw_response.chat_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatUpdatesuccessschema
@@ -12475,7 +12925,7 @@ match result:
 | <code>link_names</code> | <code>str \| None</code> | Find and link channel names and usernames. Defaults to `none`. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, `none`.<br>**Default**: <code>None</code> |
 | <code>parse</code> | <code>str \| None</code> | Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, `client`.<br>**Default**: <code>None</code> |
 | <code>text</code> | <code>str \| None</code> | New text for the message, using the [default formatting rules](/reference/surfaces/formatting). It's not required when presenting `blocks` or `attachments`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12527,7 +12977,9 @@ Returns a list of scheduled messages.
 **Sync**
 
 ```python
-result = client.chat_scheduled_messages.with_raw_response.chat_scheduled_messages_list(content_type)
+result = client.chat_scheduled_messages.with_raw_response.chat_scheduled_messages_list(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduledMessagesListschema
@@ -12538,7 +12990,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.chat_scheduled_messages.with_raw_response.chat_scheduled_messages_list(content_type)
+result = await async_client.chat_scheduled_messages.with_raw_response.chat_scheduled_messages_list(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChatScheduledMessagesListschema
@@ -12563,7 +13017,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | Maximum number of original entries to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.<br>**Default**: <code>None</code> |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `none`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12615,7 +13069,7 @@ Archives a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_archive(content_type)
+result = client.conversations.with_raw_response.conversations_archive(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsArchivesuccessschema
@@ -12626,7 +13080,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_archive(content_type)
+result = await async_client.conversations.with_raw_response.conversations_archive(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsArchivesuccessschema
@@ -12647,7 +13103,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | ID of conversation to archive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12695,7 +13151,7 @@ Closes a direct message or multi-person direct message.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_close(content_type)
+result = client.conversations.with_raw_response.conversations_close(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsClosesuccessschema
@@ -12706,7 +13162,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_close(content_type)
+result = await async_client.conversations.with_raw_response.conversations_close(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsClosesuccessschema
@@ -12727,7 +13185,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Conversation to close.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12775,7 +13233,7 @@ Initiates a public or private channel-based conversation
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_create(content_type)
+result = client.conversations.with_raw_response.conversations_create(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsCreatesuccessschema
@@ -12786,7 +13244,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_create(content_type)
+result = await async_client.conversations.with_raw_response.conversations_create(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsCreatesuccessschema
@@ -12808,7 +13268,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>name</code> | <code>str \| None</code> | Name of the public or private channel to create<br>**Default**: <code>None</code> |
 | <code>is_private</code> | <code>bool \| None</code> | Create a private channel instead of a public one<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12856,7 +13316,7 @@ Fetches a conversation's history of messages and events.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_history(content_type)
+result = client.conversations.with_raw_response.conversations_history(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsHistorysuccessschema
@@ -12867,7 +13327,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_history(content_type)
+result = await async_client.conversations.with_raw_response.conversations_history(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsHistorysuccessschema
@@ -12893,7 +13355,7 @@ match result:
 | <code>inclusive</code> | <code>bool \| None</code> | Include messages with latest or oldest timestamp in results only when either timestamp is specified.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12941,7 +13403,7 @@ Retrieve information about a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_info(content_type)
+result = client.conversations.with_raw_response.conversations_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsInfosuccessschema
@@ -12952,7 +13414,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_info(content_type)
+result = await async_client.conversations.with_raw_response.conversations_info(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsInfosuccessschema
@@ -12975,7 +13439,7 @@ match result:
 | <code>channel</code> | <code>str \| None</code> | Conversation ID to learn more about<br>**Default**: <code>None</code> |
 | <code>include_locale</code> | <code>bool \| None</code> | Set this to `true` to receive the locale for this conversation. Defaults to `false`<br>**Default**: <code>None</code> |
 | <code>include_num_members</code> | <code>bool \| None</code> | Set to `true` to include the member count for the specified conversation. Defaults to `false`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13023,7 +13487,7 @@ Invites users to a channel.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_invite(content_type)
+result = client.conversations.with_raw_response.conversations_invite(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsInviteerrorschema
@@ -13034,7 +13498,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_invite(content_type)
+result = await async_client.conversations.with_raw_response.conversations_invite(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsInviteerrorschema
@@ -13056,7 +13522,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | The ID of the public or private channel to invite user(s) to.<br>**Default**: <code>None</code> |
 | <code>users</code> | <code>str \| None</code> | A comma separated list of user IDs. Up to 1000 users may be listed.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13104,7 +13570,7 @@ Joins an existing conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_join(content_type)
+result = client.conversations.with_raw_response.conversations_join(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsJoinsuccessschema
@@ -13115,7 +13581,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_join(content_type)
+result = await async_client.conversations.with_raw_response.conversations_join(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsJoinsuccessschema
@@ -13136,7 +13604,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `channels:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | ID of conversation to join<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13184,7 +13652,7 @@ Removes a user from a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_kick(content_type)
+result = client.conversations.with_raw_response.conversations_kick(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsKicksuccessschema
@@ -13195,7 +13663,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_kick(content_type)
+result = await async_client.conversations.with_raw_response.conversations_kick(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsKicksuccessschema
@@ -13217,7 +13687,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | ID of conversation to remove user from.<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | User ID to be removed.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13265,7 +13735,7 @@ Leaves a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_leave(content_type)
+result = client.conversations.with_raw_response.conversations_leave(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsLeavesuccessschema
@@ -13276,7 +13746,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_leave(content_type)
+result = await async_client.conversations.with_raw_response.conversations_leave(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsLeavesuccessschema
@@ -13297,7 +13769,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Conversation to leave<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13345,7 +13817,7 @@ Lists all channels in a Slack team.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_list(content_type)
+result = client.conversations.with_raw_response.conversations_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsListsuccessschema
@@ -13356,7 +13828,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_list(content_type)
+result = await async_client.conversations.with_raw_response.conversations_list(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsListsuccessschema
@@ -13380,7 +13854,7 @@ match result:
 | <code>types</code> | <code>str \| None</code> | Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached. Must be an integer no larger than 1000.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13428,7 +13902,7 @@ Sets the read cursor in a channel.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_mark(content_type)
+result = client.conversations.with_raw_response.conversations_mark(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsMarksuccessschema
@@ -13439,7 +13913,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_mark(content_type)
+result = await async_client.conversations.with_raw_response.conversations_mark(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsMarksuccessschema
@@ -13461,7 +13937,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Channel or conversation to set the read cursor for.<br>**Default**: <code>None</code> |
 | <code>ts</code> | <code>float \| None</code> | Unique identifier of message you want marked as most recently seen in this conversation.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13509,7 +13985,7 @@ Retrieve members of a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_members(content_type)
+result = client.conversations.with_raw_response.conversations_members(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsMemberssuccessschema
@@ -13520,7 +13996,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_members(content_type)
+result = await async_client.conversations.with_raw_response.conversations_members(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsMemberssuccessschema
@@ -13543,7 +14021,7 @@ match result:
 | <code>channel</code> | <code>str \| None</code> | ID of the conversation to retrieve members for<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13591,7 +14069,7 @@ Opens or resumes a direct message or multi-person direct message.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_open(content_type)
+result = client.conversations.with_raw_response.conversations_open(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsOpensuccessschema
@@ -13602,7 +14080,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_open(content_type)
+result = await async_client.conversations.with_raw_response.conversations_open(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsOpensuccessschema
@@ -13625,7 +14105,7 @@ match result:
 | <code>channel</code> | <code>str \| None</code> | Resume a conversation by supplying an `im` or `mpim`'s ID. Or provide the `users` field instead.<br>**Default**: <code>None</code> |
 | <code>users</code> | <code>str \| None</code> | Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a `channel` when not supplying `users`.<br>**Default**: <code>None</code> |
 | <code>return_im</code> | <code>bool \| None</code> | Boolean, indicates you want the full IM channel definition in the response.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13673,7 +14153,7 @@ Renames a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_rename(content_type)
+result = client.conversations.with_raw_response.conversations_rename(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsRenamesuccessschema
@@ -13684,7 +14164,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_rename(content_type)
+result = await async_client.conversations.with_raw_response.conversations_rename(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsRenamesuccessschema
@@ -13706,7 +14188,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | ID of conversation to rename<br>**Default**: <code>None</code> |
 | <code>name</code> | <code>str \| None</code> | New name for conversation.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13754,7 +14236,7 @@ Retrieve a thread of messages posted to a conversation
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_replies(content_type)
+result = client.conversations.with_raw_response.conversations_replies(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsRepliessuccessschema
@@ -13765,7 +14247,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_replies(content_type)
+result = await async_client.conversations.with_raw_response.conversations_replies(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsRepliessuccessschema
@@ -13792,7 +14276,7 @@ match result:
 | <code>inclusive</code> | <code>bool \| None</code> | Include messages with latest or oldest timestamp in results only when either timestamp is specified.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13840,7 +14324,7 @@ Sets the purpose for a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_set_purpose(content_type)
+result = client.conversations.with_raw_response.conversations_set_purpose(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsSetPurposesuccessschema
@@ -13851,7 +14335,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_set_purpose(content_type)
+result = await async_client.conversations.with_raw_response.conversations_set_purpose(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsSetPurposesuccessschema
@@ -13873,7 +14359,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Conversation to set the purpose of<br>**Default**: <code>None</code> |
 | <code>purpose</code> | <code>str \| None</code> | A new, specialer purpose<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13921,7 +14407,7 @@ Sets the topic for a conversation.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_set_topic(content_type)
+result = client.conversations.with_raw_response.conversations_set_topic(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsSetTopicsuccessschema
@@ -13932,7 +14418,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_set_topic(content_type)
+result = await async_client.conversations.with_raw_response.conversations_set_topic(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsSetTopicsuccessschema
@@ -13954,7 +14442,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Conversation to set the topic of<br>**Default**: <code>None</code> |
 | <code>topic</code> | <code>str \| None</code> | The new topic string. Does not support formatting or linkification.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14002,7 +14490,7 @@ Reverses conversation archival.
 **Sync**
 
 ```python
-result = client.conversations.with_raw_response.conversations_unarchive(content_type)
+result = client.conversations.with_raw_response.conversations_unarchive(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsUnarchivesuccessschema
@@ -14013,7 +14501,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.conversations.with_raw_response.conversations_unarchive(content_type)
+result = await async_client.conversations.with_raw_response.conversations_unarchive(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ConversationsUnarchivesuccessschema
@@ -14034,7 +14524,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `conversations:write`<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | ID of conversation to unarchive<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14086,7 +14576,9 @@ Open a dialog with a user
 **Sync**
 
 ```python
-result = client.dialog.with_raw_response.dialog_open(dialog, trigger_id, token, content_type)
+result = client.dialog.with_raw_response.dialog_open(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DialogOpenschema
@@ -14097,7 +14589,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dialog.with_raw_response.dialog_open(dialog, trigger_id, token, content_type)
+result = await async_client.dialog.with_raw_response.dialog_open(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DialogOpenschema
@@ -14119,7 +14613,7 @@ match result:
 | <code>trigger_id</code> | <code>str</code> | Exchange a trigger to post to the user. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14171,7 +14665,7 @@ Ends the current user's Do Not Disturb session immediately.
 **Sync**
 
 ```python
-result = client.dnd.with_raw_response.dnd_end_dnd(token, content_type)
+result = client.dnd.with_raw_response.dnd_end_dnd("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndEndDndschema
@@ -14182,7 +14676,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dnd.with_raw_response.dnd_end_dnd(token, content_type)
+result = await async_client.dnd.with_raw_response.dnd_end_dnd(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndEndDndschema
@@ -14202,7 +14698,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `dnd:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14250,7 +14746,9 @@ Ends the current user's snooze mode immediately.
 **Sync**
 
 ```python
-result = client.dnd.with_raw_response.dnd_end_snooze(token, content_type)
+result = client.dnd.with_raw_response.dnd_end_snooze(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndEndSnoozeschema
@@ -14261,7 +14759,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dnd.with_raw_response.dnd_end_snooze(token, content_type)
+result = await async_client.dnd.with_raw_response.dnd_end_snooze(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndEndSnoozeschema
@@ -14281,7 +14781,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `dnd:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14329,7 +14829,7 @@ Retrieves a user's current Do Not Disturb status.
 **Sync**
 
 ```python
-result = client.dnd.with_raw_response.dnd_info(content_type)
+result = client.dnd.with_raw_response.dnd_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndInfoschema
@@ -14340,7 +14840,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dnd.with_raw_response.dnd_info(content_type)
+result = await async_client.dnd.with_raw_response.dnd_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndInfoschema
@@ -14361,7 +14861,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `dnd:read`<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | User to fetch status for (defaults to current user)<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14409,7 +14909,9 @@ Turns on Do Not Disturb mode for the current user, or changes its duration.
 **Sync**
 
 ```python
-result = client.dnd.with_raw_response.dnd_set_snooze(content_type, token, num_minutes)
+result = client.dnd.with_raw_response.dnd_set_snooze(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndSetSnoozeschema
@@ -14420,7 +14922,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dnd.with_raw_response.dnd_set_snooze(content_type, token, num_minutes)
+result = await async_client.dnd.with_raw_response.dnd_set_snooze(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DndSetSnoozeschema
@@ -14441,7 +14945,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `dnd:write` |
 | <code>num_minutes</code> | <code>str</code> | Number of minutes, from now, to snooze until. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14489,7 +14993,7 @@ Retrieves the Do Not Disturb status for up to 50 users on a team.
 **Sync**
 
 ```python
-result = client.dnd.with_raw_response.dnd_team_info(content_type)
+result = client.dnd.with_raw_response.dnd_team_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -14500,7 +15004,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.dnd.with_raw_response.dnd_team_info(content_type)
+result = await async_client.dnd.with_raw_response.dnd_team_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -14521,7 +15025,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `dnd:read`<br>**Default**: <code>None</code> |
 | <code>users</code> | <code>str \| None</code> | Comma-separated list of users to fetch Do Not Disturb status for<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14573,7 +15077,7 @@ Lists custom emoji for a team.
 **Sync**
 
 ```python
-result = client.emoji.with_raw_response.emoji_list(token, content_type)
+result = client.emoji.with_raw_response.emoji_list("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -14584,7 +15088,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.emoji.with_raw_response.emoji_list(token, content_type)
+result = await async_client.emoji.with_raw_response.emoji_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -14604,7 +15110,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `emoji:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14633,7 +15139,7 @@ match result:
 > Source: [Files](slack_web_api/apis/files.py)
 
 <details>
-<summary><code>def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[FilesCommentsDeleteschema, RawError]</code></summary>
+<summary><code>def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id_: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[FilesCommentsDeleteschema, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14656,7 +15162,7 @@ Deletes an existing comment on a file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_comments_delete(content_type)
+result = client.files.with_raw_response.files_comments_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesCommentsDeleteschema
@@ -14667,7 +15173,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_comments_delete(content_type)
+result = await async_client.files.with_raw_response.files_comments_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesCommentsDeleteschema
@@ -14688,8 +15194,8 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `files:write:user`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | File to delete a comment from.<br>**Default**: <code>None</code> |
-| <code>id</code> | <code>str \| None</code> | The comment to delete.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str \| None</code> | The comment to delete.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14737,7 +15243,7 @@ Deletes a file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_delete(content_type)
+result = client.files.with_raw_response.files_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesDeleteschema
@@ -14748,7 +15254,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_delete(content_type)
+result = await async_client.files.with_raw_response.files_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesDeleteschema
@@ -14769,7 +15275,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `files:write:user`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | ID of file to delete.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14817,7 +15323,7 @@ Gets information about a file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_info(content_type)
+result = client.files.with_raw_response.files_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesInfoschema
@@ -14828,7 +15334,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_info(content_type)
+result = await async_client.files.with_raw_response.files_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesInfoschema
@@ -14853,7 +15359,7 @@ match result:
 | <code>page</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Parameter for pagination. File comments are paginated for a single file. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection of comments.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14901,7 +15407,7 @@ List for a team, in a channel, or from a user with applied filters.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_list(content_type)
+result = client.files.with_raw_response.files_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesListschema
@@ -14912,7 +15418,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_list(content_type)
+result = await async_client.files.with_raw_response.files_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesListschema
@@ -14940,7 +15446,7 @@ match result:
 | <code>count</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>page</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>show_files_hidden_by_limit</code> | <code>bool \| None</code> | Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14988,7 +15494,7 @@ Adds a file from a remote service
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_add(content_type)
+result = client.files.with_raw_response.files_remote_add(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -14999,7 +15505,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_add(content_type)
+result = await async_client.files.with_raw_response.files_remote_add(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15025,7 +15531,7 @@ match result:
 | <code>external_url</code> | <code>str \| None</code> | URL of the remote file.<br>**Default**: <code>None</code> |
 | <code>preview_image</code> | <code>str \| None</code> | Preview of the document via `multipart/form-data`.<br>**Default**: <code>None</code> |
 | <code>indexable_file_contents</code> | <code>str \| None</code> | A text file (txt, pdf, doc, etc.) containing textual search terms that are used to improve discovery of the remote file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15073,7 +15579,7 @@ Retrieve information about a remote file added to Slack
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_info(content_type)
+result = client.files.with_raw_response.files_remote_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15084,7 +15590,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_info(content_type)
+result = await async_client.files.with_raw_response.files_remote_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15106,7 +15612,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `remote_files:read`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | Specify a file by providing its ID.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | Creator defined GUID for the file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15154,7 +15660,7 @@ Retrieve information about a remote file added to Slack
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_list(content_type)
+result = client.files.with_raw_response.files_remote_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15165,7 +15671,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_list(content_type)
+result = await async_client.files.with_raw_response.files_remote_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15190,7 +15696,7 @@ match result:
 | <code>ts_to</code> | <code>float \| None</code> | Filter files created before this timestamp (inclusive).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15238,7 +15744,7 @@ Remove a remote file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_remove(content_type)
+result = client.files.with_raw_response.files_remote_remove(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15249,7 +15755,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_remove(content_type)
+result = await async_client.files.with_raw_response.files_remote_remove(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15271,7 +15777,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `remote_files:write`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | Specify a file by providing its ID.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | Creator defined GUID for the file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15319,7 +15825,7 @@ Share a remote file into a channel.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_share(content_type)
+result = client.files.with_raw_response.files_remote_share(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15330,7 +15836,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_share(content_type)
+result = await async_client.files.with_raw_response.files_remote_share(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15353,7 +15859,7 @@ match result:
 | <code>file</code> | <code>str \| None</code> | Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.<br>**Default**: <code>None</code> |
 | <code>channels</code> | <code>str \| None</code> | Comma-separated list of channel IDs where the file will be shared.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15401,7 +15907,7 @@ Updates an existing remote file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_remote_update(content_type)
+result = client.files.with_raw_response.files_remote_update(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15412,7 +15918,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_remote_update(content_type)
+result = await async_client.files.with_raw_response.files_remote_update(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15439,7 +15945,7 @@ match result:
 | <code>external_url</code> | <code>str \| None</code> | URL of the remote file.<br>**Default**: <code>None</code> |
 | <code>preview_image</code> | <code>str \| None</code> | Preview of the document via `multipart/form-data`.<br>**Default**: <code>None</code> |
 | <code>indexable_file_contents</code> | <code>str \| None</code> | File containing contents that can be used to improve searchability for the remote file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15487,7 +15993,7 @@ Revokes public/external sharing access for a file
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_revoke_public_url(content_type)
+result = client.files.with_raw_response.files_revoke_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesRevokePublicUrlschema
@@ -15498,7 +16004,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_revoke_public_url(content_type)
+result = await async_client.files.with_raw_response.files_revoke_public_url(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesRevokePublicUrlschema
@@ -15519,7 +16027,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `files:write:user`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | File to revoke<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15567,7 +16075,7 @@ Enables a file for public/external sharing.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_shared_public_url(content_type)
+result = client.files.with_raw_response.files_shared_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesSharedPublicUrlschema
@@ -15578,7 +16086,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_shared_public_url(content_type)
+result = await async_client.files.with_raw_response.files_shared_public_url(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesSharedPublicUrlschema
@@ -15599,7 +16109,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `files:write:user`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | File to share<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15647,7 +16157,7 @@ Uploads or creates a file.
 **Sync**
 
 ```python
-result = client.files.with_raw_response.files_upload(content_type)
+result = client.files.with_raw_response.files_upload(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesUploadschema
@@ -15658,7 +16168,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files.with_raw_response.files_upload(content_type)
+result = await async_client.files.with_raw_response.files_upload(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesUploadschema
@@ -15686,7 +16196,7 @@ match result:
 | <code>initial_comment</code> | <code>str \| None</code> | The message text introducing the file in specified `channels`.<br>**Default**: <code>None</code> |
 | <code>channels</code> | <code>str \| None</code> | Comma-separated list of channel names or IDs where the file will be shared.<br>**Default**: <code>None</code> |
 | <code>thread_ts</code> | <code>float \| None</code> | Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15715,7 +16225,7 @@ match result:
 > Source: [FilesComments](slack_web_api/apis/files_comments.py)
 
 <details>
-<summary><code>def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[FilesCommentsDeleteschema, RawError]</code></summary>
+<summary><code>def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id_: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[FilesCommentsDeleteschema, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -15738,7 +16248,7 @@ Deletes an existing comment on a file.
 **Sync**
 
 ```python
-result = client.files_comments.with_raw_response.files_comments_delete(content_type)
+result = client.files_comments.with_raw_response.files_comments_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesCommentsDeleteschema
@@ -15749,7 +16259,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_comments.with_raw_response.files_comments_delete(content_type)
+result = await async_client.files_comments.with_raw_response.files_comments_delete(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type FilesCommentsDeleteschema
@@ -15770,8 +16282,8 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `files:write:user`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | File to delete a comment from.<br>**Default**: <code>None</code> |
-| <code>id</code> | <code>str \| None</code> | The comment to delete.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str \| None</code> | The comment to delete.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15823,7 +16335,7 @@ Adds a file from a remote service
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_add(content_type)
+result = client.files_remote.with_raw_response.files_remote_add(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15834,7 +16346,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_add(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_add(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15860,7 +16374,7 @@ match result:
 | <code>external_url</code> | <code>str \| None</code> | URL of the remote file.<br>**Default**: <code>None</code> |
 | <code>preview_image</code> | <code>str \| None</code> | Preview of the document via `multipart/form-data`.<br>**Default**: <code>None</code> |
 | <code>indexable_file_contents</code> | <code>str \| None</code> | A text file (txt, pdf, doc, etc.) containing textual search terms that are used to improve discovery of the remote file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15908,7 +16422,7 @@ Retrieve information about a remote file added to Slack
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_info(content_type)
+result = client.files_remote.with_raw_response.files_remote_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15919,7 +16433,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_info(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_info(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -15941,7 +16457,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `remote_files:read`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | Specify a file by providing its ID.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | Creator defined GUID for the file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15989,7 +16505,7 @@ Retrieve information about a remote file added to Slack
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_list(content_type)
+result = client.files_remote.with_raw_response.files_remote_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16000,7 +16516,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_list(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_list(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16025,7 +16543,7 @@ match result:
 | <code>ts_to</code> | <code>float \| None</code> | Filter files created before this timestamp (inclusive).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16073,7 +16591,7 @@ Remove a remote file.
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_remove(content_type)
+result = client.files_remote.with_raw_response.files_remote_remove(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16084,7 +16602,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_remove(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_remove(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16106,7 +16626,7 @@ match result:
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `remote_files:write`<br>**Default**: <code>None</code> |
 | <code>file</code> | <code>str \| None</code> | Specify a file by providing its ID.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | Creator defined GUID for the file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16154,7 +16674,7 @@ Share a remote file into a channel.
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_share(content_type)
+result = client.files_remote.with_raw_response.files_remote_share(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16165,7 +16685,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_share(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_share(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16188,7 +16710,7 @@ match result:
 | <code>file</code> | <code>str \| None</code> | Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.<br>**Default**: <code>None</code> |
 | <code>channels</code> | <code>str \| None</code> | Comma-separated list of channel IDs where the file will be shared.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16236,7 +16758,7 @@ Updates an existing remote file.
 **Sync**
 
 ```python
-result = client.files_remote.with_raw_response.files_remote_update(content_type)
+result = client.files_remote.with_raw_response.files_remote_update(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16247,7 +16769,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.files_remote.with_raw_response.files_remote_update(content_type)
+result = await async_client.files_remote.with_raw_response.files_remote_update(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16274,7 +16798,7 @@ match result:
 | <code>external_url</code> | <code>str \| None</code> | URL of the remote file.<br>**Default**: <code>None</code> |
 | <code>preview_image</code> | <code>str \| None</code> | Preview of the document via `multipart/form-data`.<br>**Default**: <code>None</code> |
 | <code>indexable_file_contents</code> | <code>str \| None</code> | File containing contents that can be used to improve searchability for the remote file.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16326,7 +16850,9 @@ For Enterprise Grid workspaces, map local user IDs to global user IDs
 **Sync**
 
 ```python
-result = client.migration.with_raw_response.migration_exchange(token, users, content_type)
+result = client.migration.with_raw_response.migration_exchange(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type MigrationExchangesuccessschema
@@ -16337,7 +16863,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.migration.with_raw_response.migration_exchange(token, users, content_type)
+result = await async_client.migration.with_raw_response.migration_exchange(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type MigrationExchangesuccessschema
@@ -16360,7 +16888,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team_id</code> | <code>str \| None</code> | Specify team_id starts with `T` in case of Org Token<br>**Default**: <code>None</code> |
 | <code>to_old</code> | <code>bool \| None</code> | Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16412,7 +16940,7 @@ Exchanges a temporary OAuth verifier code for an access token.
 **Sync**
 
 ```python
-result = client.oauth.with_raw_response.oauth_access(content_type)
+result = client.oauth.with_raw_response.oauth_access(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16423,7 +16951,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth.with_raw_response.oauth_access(content_type)
+result = await async_client.oauth.with_raw_response.oauth_access(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16447,7 +16975,7 @@ match result:
 | <code>code</code> | <code>str \| None</code> | The `code` param returned via the OAuth callback.<br>**Default**: <code>None</code> |
 | <code>redirect_uri</code> | <code>str \| None</code> | This must match the originally submitted URI (if one was sent).<br>**Default**: <code>None</code> |
 | <code>single_channel</code> | <code>bool \| None</code> | Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16495,7 +17023,7 @@ Exchanges a temporary OAuth verifier code for a workspace token.
 **Sync**
 
 ```python
-result = client.oauth.with_raw_response.oauth_token(content_type)
+result = client.oauth.with_raw_response.oauth_token(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16506,7 +17034,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth.with_raw_response.oauth_token(content_type)
+result = await async_client.oauth.with_raw_response.oauth_token(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16530,7 +17058,7 @@ match result:
 | <code>code</code> | <code>str \| None</code> | The `code` param returned via the OAuth callback.<br>**Default**: <code>None</code> |
 | <code>redirect_uri</code> | <code>str \| None</code> | This must match the originally submitted URI (if one was sent).<br>**Default**: <code>None</code> |
 | <code>single_channel</code> | <code>bool \| None</code> | Request the user to add your app only to a single channel.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16578,7 +17106,9 @@ Exchanges a temporary OAuth verifier code for an access token.
 **Sync**
 
 ```python
-result = client.oauth.with_raw_response.oauth_v2_access(code, content_type)
+result = client.oauth.with_raw_response.oauth_v2_access(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16589,7 +17119,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth.with_raw_response.oauth_v2_access(code, content_type)
+result = await async_client.oauth.with_raw_response.oauth_v2_access(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16612,7 +17144,7 @@ match result:
 | <code>client_id</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
 | <code>client_secret</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
 | <code>redirect_uri</code> | <code>str \| None</code> | This must match the originally submitted URI (if one was sent).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16664,7 +17196,9 @@ Exchanges a temporary OAuth verifier code for an access token.
 **Sync**
 
 ```python
-result = client.oauth_v2.with_raw_response.oauth_v2_access(code, content_type)
+result = client.oauth_v2.with_raw_response.oauth_v2_access(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16675,7 +17209,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth_v2.with_raw_response.oauth_v2_access(code, content_type)
+result = await async_client.oauth_v2.with_raw_response.oauth_v2_access(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -16698,7 +17234,7 @@ match result:
 | <code>client_id</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
 | <code>client_secret</code> | <code>str \| None</code> | Issued when you created your application.<br>**Default**: <code>None</code> |
 | <code>redirect_uri</code> | <code>str \| None</code> | This must match the originally submitted URI (if one was sent).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16750,7 +17286,9 @@ Pins an item to a channel.
 **Sync**
 
 ```python
-result = client.pins.with_raw_response.pins_add(token, content_type, channel)
+result = client.pins.with_raw_response.pins_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PinsAddschema
@@ -16761,7 +17299,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.pins.with_raw_response.pins_add(token, content_type, channel)
+result = await async_client.pins.with_raw_response.pins_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PinsAddschema
@@ -16783,7 +17323,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel</code> | <code>str</code> | Channel to pin the item in. |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to pin.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16831,7 +17371,9 @@ Lists items pinned to a channel.
 **Sync**
 
 ```python
-result = client.pins.with_raw_response.pins_list(token, channel, content_type)
+result = client.pins.with_raw_response.pins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -16842,7 +17384,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.pins.with_raw_response.pins_list(token, channel, content_type)
+result = await async_client.pins.with_raw_response.pins_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -16863,7 +17407,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `pins:read` |
 | <code>channel</code> | <code>str</code> | Channel to get pinned items for. |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16911,7 +17455,9 @@ Un-pins an item from a channel.
 **Sync**
 
 ```python
-result = client.pins.with_raw_response.pins_remove(token, content_type, channel)
+result = client.pins.with_raw_response.pins_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PinsRemoveschema
@@ -16922,7 +17468,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.pins.with_raw_response.pins_remove(token, content_type, channel)
+result = await async_client.pins.with_raw_response.pins_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PinsRemoveschema
@@ -16944,7 +17492,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>channel</code> | <code>str</code> | Channel where the item is pinned to. |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to un-pin.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16996,7 +17544,13 @@ Adds a reaction to an item.
 **Sync**
 
 ```python
-result = client.reactions.with_raw_response.reactions_add(token, content_type, channel, name, timestamp)
+result = client.reactions.with_raw_response.reactions_add(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsAddschema
@@ -17007,7 +17561,13 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reactions.with_raw_response.reactions_add(token, content_type, channel, name, timestamp)
+result = await async_client.reactions.with_raw_response.reactions_add(
+    "some example string",
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED,
+    "some example string",
+    "some example string",
+    "some example string",
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsAddschema
@@ -17030,7 +17590,7 @@ match result:
 | <code>channel</code> | <code>str</code> | Channel where the message to add reaction to was posted. |
 | <code>name</code> | <code>str</code> | Reaction (emoji) name. |
 | <code>timestamp</code> | <code>str</code> | Timestamp of the message to add reaction to. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17078,7 +17638,9 @@ Gets reactions for an item.
 **Sync**
 
 ```python
-result = client.reactions.with_raw_response.reactions_get(token, content_type)
+result = client.reactions.with_raw_response.reactions_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -17089,7 +17651,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reactions.with_raw_response.reactions_get(token, content_type)
+result = await async_client.reactions.with_raw_response.reactions_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -17114,7 +17678,7 @@ match result:
 | <code>file_comment</code> | <code>str \| None</code> | File comment to get reactions for.<br>**Default**: <code>None</code> |
 | <code>full</code> | <code>bool \| None</code> | If true always return the complete reaction list.<br>**Default**: <code>None</code> |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to get reactions for.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17162,7 +17726,9 @@ Lists reactions made by a user.
 **Sync**
 
 ```python
-result = client.reactions.with_raw_response.reactions_list(token, content_type)
+result = client.reactions.with_raw_response.reactions_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsListschema
@@ -17173,7 +17739,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reactions.with_raw_response.reactions_list(token, content_type)
+result = await async_client.reactions.with_raw_response.reactions_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsListschema
@@ -17199,7 +17767,7 @@ match result:
 | <code>page</code> | <code>int \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17247,7 +17815,9 @@ Removes a reaction from an item.
 **Sync**
 
 ```python
-result = client.reactions.with_raw_response.reactions_remove(token, content_type, name)
+result = client.reactions.with_raw_response.reactions_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsRemoveschema
@@ -17258,7 +17828,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reactions.with_raw_response.reactions_remove(token, content_type, name)
+result = await async_client.reactions.with_raw_response.reactions_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReactionsRemoveschema
@@ -17283,7 +17855,7 @@ match result:
 | <code>file_comment</code> | <code>str \| None</code> | File comment to remove reaction from.<br>**Default**: <code>None</code> |
 | <code>channel</code> | <code>str \| None</code> | Channel where the message to remove reaction from was posted.<br>**Default**: <code>None</code> |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to remove reaction from.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17335,7 +17907,9 @@ Creates a reminder.
 **Sync**
 
 ```python
-result = client.reminders.with_raw_response.reminders_add(token, content_type, text, time)
+result = client.reminders.with_raw_response.reminders_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersAddschema
@@ -17346,7 +17920,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reminders.with_raw_response.reminders_add(token, content_type, text, time)
+result = await async_client.reminders.with_raw_response.reminders_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersAddschema
@@ -17369,7 +17945,7 @@ match result:
 | <code>text</code> | <code>str</code> | The content of the reminder |
 | <code>time</code> | <code>str</code> | When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday") |
 | <code>user</code> | <code>str \| None</code> | The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17417,7 +17993,7 @@ Marks a reminder as complete.
 **Sync**
 
 ```python
-result = client.reminders.with_raw_response.reminders_complete(content_type)
+result = client.reminders.with_raw_response.reminders_complete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersCompleteschema
@@ -17428,7 +18004,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reminders.with_raw_response.reminders_complete(content_type)
+result = await async_client.reminders.with_raw_response.reminders_complete(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersCompleteschema
@@ -17449,7 +18027,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `reminders:write`<br>**Default**: <code>None</code> |
 | <code>reminder</code> | <code>str \| None</code> | The ID of the reminder to be marked as complete<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17497,7 +18075,7 @@ Deletes a reminder.
 **Sync**
 
 ```python
-result = client.reminders.with_raw_response.reminders_delete(content_type)
+result = client.reminders.with_raw_response.reminders_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersDeleteschema
@@ -17508,7 +18086,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reminders.with_raw_response.reminders_delete(content_type)
+result = await async_client.reminders.with_raw_response.reminders_delete(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersDeleteschema
@@ -17529,7 +18107,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `reminders:write`<br>**Default**: <code>None</code> |
 | <code>reminder</code> | <code>str \| None</code> | The ID of the reminder<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17577,7 +18155,7 @@ Gets information about a reminder.
 **Sync**
 
 ```python
-result = client.reminders.with_raw_response.reminders_info(content_type)
+result = client.reminders.with_raw_response.reminders_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersInfoschema
@@ -17588,7 +18166,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reminders.with_raw_response.reminders_info(content_type)
+result = await async_client.reminders.with_raw_response.reminders_info(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersInfoschema
@@ -17609,7 +18187,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `reminders:read`<br>**Default**: <code>None</code> |
 | <code>reminder</code> | <code>str \| None</code> | The ID of the reminder<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17657,7 +18235,7 @@ Lists all reminders created by or for a given user.
 **Sync**
 
 ```python
-result = client.reminders.with_raw_response.reminders_list(content_type)
+result = client.reminders.with_raw_response.reminders_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersListschema
@@ -17668,7 +18246,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.reminders.with_raw_response.reminders_list(content_type)
+result = await async_client.reminders.with_raw_response.reminders_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemindersListschema
@@ -17688,7 +18266,7 @@ match result:
 | --- | --- | --- |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `reminders:read`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17740,7 +18318,7 @@ Starts a Real Time Messaging session.
 **Sync**
 
 ```python
-result = client.rtm.with_raw_response.rtm_connect(token, content_type)
+result = client.rtm.with_raw_response.rtm_connect("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RtmConnectschema
@@ -17751,7 +18329,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.rtm.with_raw_response.rtm_connect(token, content_type)
+result = await async_client.rtm.with_raw_response.rtm_connect(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RtmConnectschema
@@ -17773,7 +18353,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>batch_presence_aware</code> | <code>bool \| None</code> | Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events.<br>**Default**: <code>None</code> |
 | <code>presence_sub</code> | <code>bool \| None</code> | Only deliver presence events when requested by subscription<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17825,7 +18405,9 @@ Searches for messages matching a query.
 **Sync**
 
 ```python
-result = client.search.with_raw_response.search_messages(token, query, content_type)
+result = client.search.with_raw_response.search_messages(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -17836,7 +18418,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.search.with_raw_response.search_messages(token, query, content_type)
+result = await async_client.search.with_raw_response.search_messages(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -17862,7 +18446,7 @@ match result:
 | <code>page</code> | <code>int \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>sort</code> | <code>str \| None</code> | Return matches sorted by either `score` or `timestamp`.<br>**Default**: <code>None</code> |
 | <code>sort_dir</code> | <code>str \| None</code> | Change sort direction to ascending (`asc`) or descending (`desc`).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17914,7 +18498,7 @@ Adds a star to an item.
 **Sync**
 
 ```python
-result = client.stars.with_raw_response.stars_add(token, content_type)
+result = client.stars.with_raw_response.stars_add("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsAddschema
@@ -17925,7 +18509,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.stars.with_raw_response.stars_add(token, content_type)
+result = await async_client.stars.with_raw_response.stars_add(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsAddschema
@@ -17949,7 +18535,7 @@ match result:
 | <code>file</code> | <code>str \| None</code> | File to add star to.<br>**Default**: <code>None</code> |
 | <code>file_comment</code> | <code>str \| None</code> | File comment to add star to.<br>**Default**: <code>None</code> |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to add star to.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17997,7 +18583,7 @@ Lists stars for a user.
 **Sync**
 
 ```python
-result = client.stars.with_raw_response.stars_list(content_type)
+result = client.stars.with_raw_response.stars_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsListschema
@@ -18008,7 +18594,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.stars.with_raw_response.stars_list(content_type)
+result = await async_client.stars.with_raw_response.stars_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsListschema
@@ -18032,7 +18618,7 @@ match result:
 | <code>page</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18080,7 +18666,9 @@ Removes a star from an item.
 **Sync**
 
 ```python
-result = client.stars.with_raw_response.stars_remove(token, content_type)
+result = client.stars.with_raw_response.stars_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsRemoveschema
@@ -18091,7 +18679,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.stars.with_raw_response.stars_remove(token, content_type)
+result = await async_client.stars.with_raw_response.stars_remove(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StarsRemoveschema
@@ -18115,7 +18705,7 @@ match result:
 | <code>file</code> | <code>str \| None</code> | File to remove star from.<br>**Default**: <code>None</code> |
 | <code>file_comment</code> | <code>str \| None</code> | File comment to remove star from.<br>**Default**: <code>None</code> |
 | <code>timestamp</code> | <code>str \| None</code> | Timestamp of the message to remove star from.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18167,7 +18757,9 @@ Gets the access logs for the current team.
 **Sync**
 
 ```python
-result = client.team_api.with_raw_response.team_access_logs(token, content_type)
+result = client.team_api.with_raw_response.team_access_logs(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamAccessLogsschema
@@ -18178,7 +18770,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_api.with_raw_response.team_access_logs(token, content_type)
+result = await async_client.team_api.with_raw_response.team_access_logs(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamAccessLogsschema
@@ -18201,7 +18795,7 @@ match result:
 | <code>before</code> | <code>str \| None</code> | End of time range of logs to include in results (inclusive).<br>**Default**: <code>None</code> |
 | <code>count</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>page</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18249,7 +18843,9 @@ Gets billable users information for the current team.
 **Sync**
 
 ```python
-result = client.team_api.with_raw_response.team_billable_info(token, content_type)
+result = client.team_api.with_raw_response.team_billable_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -18260,7 +18856,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_api.with_raw_response.team_billable_info(token, content_type)
+result = await async_client.team_api.with_raw_response.team_billable_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -18281,7 +18879,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `admin` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>user</code> | <code>str \| None</code> | A user to retrieve the billable information for. Defaults to all users.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18329,7 +18927,9 @@ Gets information about the current team.
 **Sync**
 
 ```python
-result = client.team_api.with_raw_response.team_info(token, content_type)
+result = client.team_api.with_raw_response.team_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamInfoschema
@@ -18340,7 +18940,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_api.with_raw_response.team_info(token, content_type)
+result = await async_client.team_api.with_raw_response.team_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamInfoschema
@@ -18361,7 +18963,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `team:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>team</code> | <code>str \| None</code> | Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18409,7 +19011,9 @@ Gets the integration logs for the current team.
 **Sync**
 
 ```python
-result = client.team_api.with_raw_response.team_integration_logs(token, content_type)
+result = client.team_api.with_raw_response.team_integration_logs(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamIntegrationLogsschema
@@ -18420,7 +19024,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_api.with_raw_response.team_integration_logs(token, content_type)
+result = await async_client.team_api.with_raw_response.team_integration_logs(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamIntegrationLogsschema
@@ -18446,7 +19052,7 @@ match result:
 | <code>page</code> | <code>str \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
 | <code>service_id</code> | <code>str \| None</code> | Filter logs to this service. Defaults to all logs.<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | Filter logs generated by this user’s actions. Defaults to all logs.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18494,7 +19100,9 @@ Retrieve a team's profile.
 **Sync**
 
 ```python
-result = client.team_api.with_raw_response.team_profile_get(token, content_type)
+result = client.team_api.with_raw_response.team_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamProfileGetsuccessschema
@@ -18505,7 +19113,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_api.with_raw_response.team_profile_get(token, content_type)
+result = await async_client.team_api.with_raw_response.team_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamProfileGetsuccessschema
@@ -18526,7 +19136,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users.profile:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>visibility</code> | <code>str \| None</code> | Filter by visibility.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18578,7 +19188,9 @@ Retrieve a team's profile.
 **Sync**
 
 ```python
-result = client.team_profile.with_raw_response.team_profile_get(token, content_type)
+result = client.team_profile.with_raw_response.team_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamProfileGetsuccessschema
@@ -18589,7 +19201,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team_profile.with_raw_response.team_profile_get(token, content_type)
+result = await async_client.team_profile.with_raw_response.team_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TeamProfileGetsuccessschema
@@ -18610,7 +19224,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users.profile:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>visibility</code> | <code>str \| None</code> | Filter by visibility.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18662,7 +19276,9 @@ Create a User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_create(token, content_type, name)
+result = client.usergroups.with_raw_response.usergroups_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsCreateschema
@@ -18673,7 +19289,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_create(token, content_type, name)
+result = await async_client.usergroups.with_raw_response.usergroups_create(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsCreateschema
@@ -18698,7 +19316,7 @@ match result:
 | <code>description</code> | <code>str \| None</code> | A short description of the User Group.<br>**Default**: <code>None</code> |
 | <code>handle</code> | <code>str \| None</code> | A mention handle. Must be unique among channels, users and User Groups.<br>**Default**: <code>None</code> |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in each User Group.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18746,7 +19364,9 @@ Disable an existing User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_disable(token, content_type, usergroup)
+result = client.usergroups.with_raw_response.usergroups_disable(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsDisableschema
@@ -18757,7 +19377,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_disable(token, content_type, usergroup)
+result = await async_client.usergroups.with_raw_response.usergroups_disable(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsDisableschema
@@ -18779,7 +19401,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to disable. |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in the User Group.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18827,7 +19449,9 @@ Enable a User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_enable(token, content_type, usergroup)
+result = client.usergroups.with_raw_response.usergroups_enable(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsEnableschema
@@ -18838,7 +19462,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_enable(token, content_type, usergroup)
+result = await async_client.usergroups.with_raw_response.usergroups_enable(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsEnableschema
@@ -18860,7 +19486,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to enable. |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in the User Group.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18908,7 +19534,9 @@ List all User Groups for a team
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_list(token, content_type)
+result = client.usergroups.with_raw_response.usergroups_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsListschema
@@ -18919,7 +19547,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_list(token, content_type)
+result = await async_client.usergroups.with_raw_response.usergroups_list(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsListschema
@@ -18942,7 +19572,7 @@ match result:
 | <code>include_users</code> | <code>bool \| None</code> | Include the list of users for each User Group.<br>**Default**: <code>None</code> |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in each User Group.<br>**Default**: <code>None</code> |
 | <code>include_disabled</code> | <code>bool \| None</code> | Include disabled User Groups.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18990,7 +19620,9 @@ Update an existing User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_update(token, content_type, usergroup)
+result = client.usergroups.with_raw_response.usergroups_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUpdateschema
@@ -19001,7 +19633,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_update(token, content_type, usergroup)
+result = await async_client.usergroups.with_raw_response.usergroups_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUpdateschema
@@ -19027,7 +19661,7 @@ match result:
 | <code>channels</code> | <code>str \| None</code> | A comma separated string of encoded channel IDs for which the User Group uses as a default.<br>**Default**: <code>None</code> |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in the User Group.<br>**Default**: <code>None</code> |
 | <code>name</code> | <code>str \| None</code> | A name for the User Group. Must be unique among User Groups.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19075,7 +19709,9 @@ List all users in a User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_users_list(token, usergroup, content_type)
+result = client.usergroups.with_raw_response.usergroups_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersListschema
@@ -19086,7 +19722,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_users_list(token, usergroup, content_type)
+result = await async_client.usergroups.with_raw_response.usergroups_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersListschema
@@ -19108,7 +19746,7 @@ match result:
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to update. |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>include_disabled</code> | <code>bool \| None</code> | Allow results that involve disabled User Groups.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19156,7 +19794,9 @@ Update the list of users for a User Group
 **Sync**
 
 ```python
-result = client.usergroups.with_raw_response.usergroups_users_update(token, content_type, usergroup, users)
+result = client.usergroups.with_raw_response.usergroups_users_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersUpdateschema
@@ -19167,7 +19807,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups.with_raw_response.usergroups_users_update(token, content_type, usergroup, users)
+result = await async_client.usergroups.with_raw_response.usergroups_users_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersUpdateschema
@@ -19190,7 +19832,7 @@ match result:
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to update. |
 | <code>users</code> | <code>str</code> | A comma separated string of encoded user IDs that represent the entire list of users for the User Group. |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in the User Group.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19242,7 +19884,9 @@ List all users in a User Group
 **Sync**
 
 ```python
-result = client.usergroups_users.with_raw_response.usergroups_users_list(token, usergroup, content_type)
+result = client.usergroups_users.with_raw_response.usergroups_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersListschema
@@ -19253,7 +19897,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.usergroups_users.with_raw_response.usergroups_users_list(token, usergroup, content_type)
+result = await async_client.usergroups_users.with_raw_response.usergroups_users_list(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersListschema
@@ -19275,7 +19921,7 @@ match result:
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to update. |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>include_disabled</code> | <code>bool \| None</code> | Allow results that involve disabled User Groups.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19323,7 +19969,9 @@ Update the list of users for a User Group
 **Sync**
 
 ```python
-result = client.usergroups_users.with_raw_response.usergroups_users_update(token, content_type, usergroup, users)
+result = client.usergroups_users.with_raw_response.usergroups_users_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsergroupsUsersUpdateschema
@@ -19335,7 +19983,7 @@ match result:
 
 ```python
 result = await async_client.usergroups_users.with_raw_response.usergroups_users_update(
-    token, content_type, usergroup, users
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -19359,7 +20007,7 @@ match result:
 | <code>usergroup</code> | <code>str</code> | The encoded ID of the User Group to update. |
 | <code>users</code> | <code>str</code> | A comma separated string of encoded user IDs that represent the entire list of users for the User Group. |
 | <code>include_count</code> | <code>bool \| None</code> | Include the number of users in the User Group.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19411,7 +20059,7 @@ List conversations the calling user may access.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_conversations(content_type)
+result = client.users.with_raw_response.users_conversations(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersConversationssuccessschema
@@ -19422,7 +20070,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_conversations(content_type)
+result = await async_client.users.with_raw_response.users_conversations(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersConversationssuccessschema
@@ -19447,7 +20095,7 @@ match result:
 | <code>exclude_archived</code> | <code>bool \| None</code> | Set to `true` to exclude archived channels from the list<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached. Must be an integer no larger than 1000.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19495,7 +20143,9 @@ Delete the user profile photo
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_delete_photo(content_type, token)
+result = client.users.with_raw_response.users_delete_photo(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersDeletePhotoschema
@@ -19506,7 +20156,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_delete_photo(content_type, token)
+result = await async_client.users.with_raw_response.users_delete_photo(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersDeletePhotoschema
@@ -19526,7 +20178,7 @@ match result:
 | --- | --- | --- |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users.profile:write` |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19574,7 +20226,9 @@ Gets user presence information.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_get_presence(token, content_type)
+result = client.users.with_raw_response.users_get_presence(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApimethodusersGetPresence
@@ -19585,7 +20239,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_get_presence(token, content_type)
+result = await async_client.users.with_raw_response.users_get_presence(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ApimethodusersGetPresence
@@ -19606,7 +20262,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users:read` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>user</code> | <code>str \| None</code> | User to get presence info on. Defaults to the authed user.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19654,7 +20310,7 @@ Get a user's identity.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_identity(content_type)
+result = client.users.with_raw_response.users_identity(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -19665,7 +20321,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_identity(content_type)
+result = await async_client.users.with_raw_response.users_identity(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Any
@@ -19685,7 +20341,7 @@ match result:
 | --- | --- | --- |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>token</code> | <code>str \| None</code> | Authentication token. Requires scope: `identity.basic`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19733,7 +20389,7 @@ Gets information about a user.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_info(token, content_type)
+result = client.users.with_raw_response.users_info("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersInfosuccessschema
@@ -19744,7 +20400,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_info(token, content_type)
+result = await async_client.users.with_raw_response.users_info(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersInfosuccessschema
@@ -19766,7 +20424,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>include_locale</code> | <code>bool \| None</code> | Set this to `true` to receive the locale for this user. Defaults to `false`<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | User to get info on<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19814,7 +20472,7 @@ Lists all users in a Slack team.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_list(content_type)
+result = client.users.with_raw_response.users_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersListschema
@@ -19825,7 +20483,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_list(content_type)
+result = await async_client.users.with_raw_response.users_list(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersListschema
@@ -19848,7 +20506,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection.<br>**Default**: <code>None</code> |
 | <code>include_locale</code> | <code>bool \| None</code> | Set this to `true` to receive the locale for users. Defaults to `false`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19896,7 +20554,9 @@ Find a user with an email address.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_lookup_by_email(token, email, content_type)
+result = client.users.with_raw_response.users_lookup_by_email(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersLookupByEmailsuccessschema
@@ -19907,7 +20567,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_lookup_by_email(token, email, content_type)
+result = await async_client.users.with_raw_response.users_lookup_by_email(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersLookupByEmailsuccessschema
@@ -19928,7 +20590,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users:read.email` |
 | <code>email</code> | <code>str</code> | An email address belonging to a user in the workspace |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19976,7 +20638,9 @@ Retrieves a user's profile information.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_profile_get(token, content_type)
+result = client.users.with_raw_response.users_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileGetschema
@@ -19987,7 +20651,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_profile_get(token, content_type)
+result = await async_client.users.with_raw_response.users_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileGetschema
@@ -20009,7 +20675,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>include_labels</code> | <code>bool \| None</code> | Include labels for each ID in custom profile fields<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | User to retrieve profile info for<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20057,7 +20723,9 @@ Set the profile information for a user.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_profile_set(token, content_type)
+result = client.users.with_raw_response.users_profile_set(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileSetschema
@@ -20068,7 +20736,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_profile_set(token, content_type)
+result = await async_client.users.with_raw_response.users_profile_set(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileSetschema
@@ -20092,7 +20762,7 @@ match result:
 | <code>profile</code> | <code>str \| None</code> | Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | ID of user to change. This argument may only be specified by team admins on paid teams.<br>**Default**: <code>None</code> |
 | <code>value</code> | <code>str \| None</code> | Value to set a single key to. Usable only if `profile` is not passed.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20140,7 +20810,9 @@ Marked a user as active. Deprecated and non-functional.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_set_active(token, content_type)
+result = client.users.with_raw_response.users_set_active(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetActiveschema
@@ -20151,7 +20823,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_set_active(token, content_type)
+result = await async_client.users.with_raw_response.users_set_active(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetActiveschema
@@ -20171,7 +20845,7 @@ match result:
 | --- | --- | --- |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20219,7 +20893,9 @@ Set the user profile photo
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_set_photo(content_type, token)
+result = client.users.with_raw_response.users_set_photo(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetPhotoschema
@@ -20230,7 +20906,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_set_photo(content_type, token)
+result = await async_client.users.with_raw_response.users_set_photo(
+    ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetPhotoschema
@@ -20254,7 +20932,7 @@ match result:
 | <code>crop_x</code> | <code>str \| None</code> | X coordinate of top-left corner of crop box<br>**Default**: <code>None</code> |
 | <code>crop_y</code> | <code>str \| None</code> | Y coordinate of top-left corner of crop box<br>**Default**: <code>None</code> |
 | <code>image</code> | <code>str \| None</code> | File contents via `multipart/form-data`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20302,7 +20980,9 @@ Manually sets user presence.
 **Sync**
 
 ```python
-result = client.users.with_raw_response.users_set_presence(token, content_type, presence)
+result = client.users.with_raw_response.users_set_presence(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetPresenceschema
@@ -20313,7 +20993,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users.with_raw_response.users_set_presence(token, content_type, presence)
+result = await async_client.users.with_raw_response.users_set_presence(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED, "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersSetPresenceschema
@@ -20334,7 +21016,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `users:write` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>presence</code> | <code>str</code> | Either `auto` or `away` |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20386,7 +21068,9 @@ Retrieves a user's profile information.
 **Sync**
 
 ```python
-result = client.users_profile.with_raw_response.users_profile_get(token, content_type)
+result = client.users_profile.with_raw_response.users_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileGetschema
@@ -20397,7 +21081,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users_profile.with_raw_response.users_profile_get(token, content_type)
+result = await async_client.users_profile.with_raw_response.users_profile_get(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileGetschema
@@ -20419,7 +21105,7 @@ match result:
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>include_labels</code> | <code>bool \| None</code> | Include labels for each ID in custom profile fields<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | User to retrieve profile info for<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20467,7 +21153,9 @@ Set the profile information for a user.
 **Sync**
 
 ```python
-result = client.users_profile.with_raw_response.users_profile_set(token, content_type)
+result = client.users_profile.with_raw_response.users_profile_set(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileSetschema
@@ -20478,7 +21166,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.users_profile.with_raw_response.users_profile_set(token, content_type)
+result = await async_client.users_profile.with_raw_response.users_profile_set(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UsersProfileSetschema
@@ -20502,7 +21192,7 @@ match result:
 | <code>profile</code> | <code>str \| None</code> | Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.<br>**Default**: <code>None</code> |
 | <code>user</code> | <code>str \| None</code> | ID of user to change. This argument may only be specified by team admins on paid teams.<br>**Default**: <code>None</code> |
 | <code>value</code> | <code>str \| None</code> | Value to set a single key to. Usable only if `profile` is not passed.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20554,7 +21244,9 @@ Open a view for a user.
 **Sync**
 
 ```python
-result = client.views.with_raw_response.views_open(trigger_id, view, token, content_type)
+result = client.views.with_raw_response.views_open(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20565,7 +21257,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.views.with_raw_response.views_open(trigger_id, view, token, content_type)
+result = await async_client.views.with_raw_response.views_open(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20587,7 +21281,7 @@ match result:
 | <code>view</code> | <code>str</code> | A [view payload](/reference/surfaces/views). This must be a JSON-encoded string. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20612,7 +21306,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def views_publish(user_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, hash: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def views_publish(user_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -20635,7 +21329,9 @@ Publish a static view for a User.
 **Sync**
 
 ```python
-result = client.views.with_raw_response.views_publish(user_id, view, token, content_type)
+result = client.views.with_raw_response.views_publish(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20646,7 +21342,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.views.with_raw_response.views_publish(user_id, view, token, content_type)
+result = await async_client.views.with_raw_response.views_publish(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20668,8 +21366,8 @@ match result:
 | <code>view</code> | <code>str</code> | A [view payload](/reference/surfaces/views). This must be a JSON-encoded string. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>hash</code> | <code>str \| None</code> | A string that represents view state to protect against possible race conditions.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>hash_</code> | <code>str \| None</code> | A string that represents view state to protect against possible race conditions.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20717,7 +21415,9 @@ Push a view onto the stack of a root view.
 **Sync**
 
 ```python
-result = client.views.with_raw_response.views_push(trigger_id, view, token, content_type)
+result = client.views.with_raw_response.views_push(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20728,7 +21428,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.views.with_raw_response.views_push(trigger_id, view, token, content_type)
+result = await async_client.views.with_raw_response.views_push(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20750,7 +21452,7 @@ match result:
 | <code>view</code> | <code>str</code> | A [view payload](/reference/surfaces/views). This must be a JSON-encoded string. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `none` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20775,7 +21477,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def views_update(token: str, content_type: ContentTypeOrStr, *, view_id: str | None = None, external_id: str | None = None, view: str | None = None, hash: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
+<summary><code>def views_update(token: str, content_type: ContentTypeOrStr, *, view_id: str | None = None, external_id: str | None = None, view: str | None = None, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[Defaultsuccesstemplate, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -20798,7 +21500,9 @@ Update an existing view.
 **Sync**
 
 ```python
-result = client.views.with_raw_response.views_update(token, content_type)
+result = client.views.with_raw_response.views_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20809,7 +21513,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.views.with_raw_response.views_update(token, content_type)
+result = await async_client.views.with_raw_response.views_update(
+    "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20832,8 +21538,8 @@ match result:
 | <code>view_id</code> | <code>str \| None</code> | A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.<br>**Default**: <code>None</code> |
 | <code>external_id</code> | <code>str \| None</code> | A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.<br>**Default**: <code>None</code> |
 | <code>view</code> | <code>str \| None</code> | A [view object](/reference/surfaces/views). This must be a JSON-encoded string.<br>**Default**: <code>None</code> |
-| <code>hash</code> | <code>str \| None</code> | A string that represents view state to protect against possible race conditions.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>hash_</code> | <code>str \| None</code> | A string that represents view state to protect against possible race conditions.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20885,7 +21591,9 @@ Indicate that an app's step in a workflow completed execution.
 **Sync**
 
 ```python
-result = client.workflows.with_raw_response.workflows_step_completed(workflow_step_execute_id, token, content_type)
+result = client.workflows.with_raw_response.workflows_step_completed(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20897,7 +21605,7 @@ match result:
 
 ```python
 result = await async_client.workflows.with_raw_response.workflows_step_completed(
-    workflow_step_execute_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -20920,7 +21628,7 @@ match result:
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `workflow.steps:execute` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
 | <code>outputs</code> | <code>str \| None</code> | Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your /reference/workflows/workflow_step#output array from your `workflow_step` object.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20968,7 +21676,9 @@ Indicate that an app's step in a workflow failed to execute.
 **Sync**
 
 ```python
-result = client.workflows.with_raw_response.workflows_step_failed(workflow_step_execute_id, error, token, content_type)
+result = client.workflows.with_raw_response.workflows_step_failed(
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -20980,7 +21690,7 @@ match result:
 
 ```python
 result = await async_client.workflows.with_raw_response.workflows_step_failed(
-    workflow_step_execute_id, error, token, content_type
+    "some example string", "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -21003,7 +21713,7 @@ match result:
 | <code>error</code> | <code>str</code> | A JSON-based object with a `message` property that should contain a human readable error message. |
 | <code>token</code> | <code>str</code> | Authentication token. Requires scope: `workflow.steps:execute` |
 | <code>content_type</code> | <code>[ContentTypeOrStr](slack_web_api/models/enums/content_type.py)</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21051,7 +21761,9 @@ Update the configuration for a workflow extension step.
 **Sync**
 
 ```python
-result = client.workflows.with_raw_response.workflows_update_step(workflow_step_edit_id, token, content_type)
+result = client.workflows.with_raw_response.workflows_update_step(
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type Defaultsuccesstemplate
@@ -21063,7 +21775,7 @@ match result:
 
 ```python
 result = await async_client.workflows.with_raw_response.workflows_update_step(
-    workflow_step_edit_id, token, content_type
+    "some example string", "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
 )
 match result:
     case Success(payload=payload):
@@ -21089,7 +21801,7 @@ match result:
 | <code>outputs</code> | <code>str \| None</code> | An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.<br>**Default**: <code>None</code> |
 | <code>step_name</code> | <code>str \| None</code> | An optional field that can be used to override the step name that is shown in the Workflow Builder.<br>**Default**: <code>None</code> |
 | <code>step_image_url</code> | <code>str \| None</code> | An optional field that can be used to override app image that is shown in the Workflow Builder.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](slack_web_api/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>

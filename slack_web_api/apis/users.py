@@ -11,10 +11,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.apimethodusers_get_presence import ApimethodusersGetPresence
 from ..models.enums.content_type import ContentTypeOrStr
@@ -62,7 +64,8 @@ class Users:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response with only public channels. Note how ``num_members`` and ``is_member`` are not
@@ -70,16 +73,18 @@ class Users:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_conversations(
-            content_type,
-            token=token,
-            user=user,
-            types=types,
-            exclude_archived=exclude_archived,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_conversations(
+                content_type,
+                token=token,
+                user=user,
+                types=types,
+                exclude_archived=exclude_archived,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def users_delete_photo(
         self, content_type: ContentTypeOrStr, token: str, *, request_options: RequestOptionsOrDict | None = None
@@ -89,14 +94,15 @@ class Users:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``users.profile:write``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_delete_photo(content_type, token, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.users_delete_photo(content_type, token, request_options=request_options))
 
     def users_get_presence(
         self,
@@ -112,7 +118,8 @@ class Users:
             token: Authentication token. Requires scope: ``users:read``
             content_type: Value sent with the request.
             user: User to get presence info on. Defaults to the authed user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             When requesting information for a different user, this method just returns the current presence (either
@@ -120,9 +127,9 @@ class Users:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_get_presence(
-            token, content_type, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_get_presence(token, content_type, user=user, request_options=request_options)
+        )
 
     def users_identity(
         self,
@@ -136,16 +143,17 @@ class Users:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``identity.basic``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             You will receive at a minimum the following information:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_identity(
-            content_type, token=token, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_identity(content_type, token=token, request_options=request_options)
+        )
 
     def users_info(
         self,
@@ -163,16 +171,19 @@ class Users:
             content_type: Value sent with the request.
             include_locale: Set this to ``true`` to receive the locale for this user. Defaults to ``false``
             user: User to get info on
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_info(
-            token, content_type, include_locale=include_locale, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_info(
+                token, content_type, include_locale=include_locale, user=user, request_options=request_options
+            ),
+        )
 
     def users_list(
         self,
@@ -197,21 +208,24 @@ class Users:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             include_locale: Set this to ``true`` to receive the locale for users. Defaults to ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_list(
-            content_type,
-            token=token,
-            limit=limit,
-            cursor=cursor,
-            include_locale=include_locale,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_list(
+                content_type,
+                token=token,
+                limit=limit,
+                cursor=cursor,
+                include_locale=include_locale,
+                request_options=request_options,
+            ),
+        )
 
     def users_lookup_by_email(
         self,
@@ -227,16 +241,17 @@ class Users:
             token: Authentication token. Requires scope: ``users:read.email``
             email: An email address belonging to a user in the workspace
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_lookup_by_email(
-            token, email, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_lookup_by_email(token, email, content_type, request_options=request_options)
+        )
 
     def users_profile_get(
         self,
@@ -254,16 +269,19 @@ class Users:
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_profile_get(
-            token, content_type, include_labels=include_labels, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_profile_get(
+                token, content_type, include_labels=include_labels, user=user, request_options=request_options
+            ),
+        )
 
     def users_profile_set(
         self,
@@ -286,16 +304,19 @@ class Users:
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_profile_set(
-            token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_profile_set(
+                token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
+            ),
+        )
 
     def users_set_active(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -305,14 +326,15 @@ class Users:
         Args:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_set_active(token, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.users_set_active(token, content_type, request_options=request_options))
 
     def users_set_photo(
         self,
@@ -334,22 +356,25 @@ class Users:
             crop_x: X coordinate of top-left corner of crop box
             crop_y: Y coordinate of top-left corner of crop box
             image: File contents via ``multipart/form-data``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_set_photo(
-            content_type,
-            token,
-            crop_w=crop_w,
-            crop_x=crop_x,
-            crop_y=crop_y,
-            image=image,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_set_photo(
+                content_type,
+                token,
+                crop_w=crop_w,
+                crop_x=crop_x,
+                crop_y=crop_y,
+                image=image,
+                request_options=request_options,
+            ),
+        )
 
     def users_set_presence(
         self,
@@ -365,16 +390,17 @@ class Users:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
             presence: Either ``auto`` or ``away``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_set_presence(
-            token, content_type, presence, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_set_presence(token, content_type, presence, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> UsersWithRawResponse:
@@ -412,7 +438,8 @@ class AsyncUsers:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response with only public channels. Note how ``num_members`` and ``is_member`` are not
@@ -420,7 +447,7 @@ class AsyncUsers:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_conversations(
                 content_type,
                 token=token,
@@ -430,8 +457,8 @@ class AsyncUsers:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_delete_photo(
         self, content_type: ContentTypeOrStr, token: str, *, request_options: RequestOptionsOrDict | None = None
@@ -441,16 +468,17 @@ class AsyncUsers:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``users.profile:write``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_delete_photo(content_type, token, request_options=request_options)
-        ).unwrap()
+        )
 
     async def users_get_presence(
         self,
@@ -466,7 +494,8 @@ class AsyncUsers:
             token: Authentication token. Requires scope: ``users:read``
             content_type: Value sent with the request.
             user: User to get presence info on. Defaults to the authed user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             When requesting information for a different user, this method just returns the current presence (either
@@ -474,11 +503,11 @@ class AsyncUsers:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_get_presence(
                 token, content_type, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_identity(
         self,
@@ -492,16 +521,17 @@ class AsyncUsers:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``identity.basic``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             You will receive at a minimum the following information:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_identity(content_type, token=token, request_options=request_options)
-        ).unwrap()
+        )
 
     async def users_info(
         self,
@@ -519,18 +549,19 @@ class AsyncUsers:
             content_type: Value sent with the request.
             include_locale: Set this to ``true`` to receive the locale for this user. Defaults to ``false``
             user: User to get info on
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_info(
                 token, content_type, include_locale=include_locale, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_list(
         self,
@@ -555,14 +586,15 @@ class AsyncUsers:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             include_locale: Set this to ``true`` to receive the locale for users. Defaults to ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_list(
                 content_type,
                 token=token,
@@ -570,8 +602,8 @@ class AsyncUsers:
                 cursor=cursor,
                 include_locale=include_locale,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_lookup_by_email(
         self,
@@ -587,18 +619,19 @@ class AsyncUsers:
             token: Authentication token. Requires scope: ``users:read.email``
             email: An email address belonging to a user in the workspace
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_lookup_by_email(
                 token, email, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_profile_get(
         self,
@@ -616,18 +649,19 @@ class AsyncUsers:
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_profile_get(
                 token, content_type, include_labels=include_labels, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_profile_set(
         self,
@@ -650,18 +684,19 @@ class AsyncUsers:
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_profile_set(
                 token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_set_active(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -671,16 +706,17 @@ class AsyncUsers:
         Args:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_set_active(token, content_type, request_options=request_options)
-        ).unwrap()
+        )
 
     async def users_set_photo(
         self,
@@ -702,14 +738,15 @@ class AsyncUsers:
             crop_x: X coordinate of top-left corner of crop box
             crop_y: Y coordinate of top-left corner of crop box
             image: File contents via ``multipart/form-data``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_set_photo(
                 content_type,
                 token,
@@ -718,8 +755,8 @@ class AsyncUsers:
                 crop_y=crop_y,
                 image=image,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_set_presence(
         self,
@@ -735,18 +772,19 @@ class AsyncUsers:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
             presence: Either ``auto`` or ``away``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_set_presence(
                 token, content_type, presence, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncUsersWithRawResponse:
@@ -781,7 +819,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -811,7 +850,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``users.profile:write``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -819,7 +859,7 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="POST",
             url_template=self._server.default("/users.deletePhoto"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
-            body=form_body([param[str]("token", token)]),
+            body=form_body(param[str]("token", token)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsersDeletePhotoschema],
             error_mapper=raw_error_response,
@@ -840,7 +880,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``users:read``
             content_type: Value sent with the request.
             user: User to get presence info on. Defaults to the authed user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -867,7 +908,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``identity.basic``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -898,7 +940,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             include_locale: Set this to ``true`` to receive the locale for this user. Defaults to ``false``
             user: User to get info on
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -940,7 +983,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             include_locale: Set this to ``true`` to receive the locale for users. Defaults to ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -974,7 +1018,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``users:read.email``
             email: An email address belonging to a user in the workspace
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1005,7 +1050,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1045,7 +1091,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1058,12 +1105,10 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("name", name),
-                    param[str | None]("profile", profile),
-                    param[str | None]("user", user),
-                    param[str | None]("value", value),
-                ],
+                param[str | None]("name", name),
+                param[str | None]("profile", profile),
+                param[str | None]("user", user),
+                param[str | None]("value", value),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsersProfileSetschema],
@@ -1079,7 +1124,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1117,7 +1163,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             crop_x: X coordinate of top-left corner of crop box
             crop_y: Y coordinate of top-left corner of crop box
             image: File contents via ``multipart/form-data``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1126,13 +1173,11 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             url_template=self._server.default("/users.setPhoto"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str | None]("crop_w", crop_w),
-                    param[str | None]("crop_x", crop_x),
-                    param[str | None]("crop_y", crop_y),
-                    param[str | None]("image", image),
-                ],
+                param[str]("token", token),
+                param[str | None]("crop_w", crop_w),
+                param[str | None]("crop_x", crop_x),
+                param[str | None]("crop_y", crop_y),
+                param[str | None]("image", image),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsersSetPhotoschema],
@@ -1154,7 +1199,8 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
             presence: Either ``auto`` or ``away``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1166,7 +1212,7 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("presence", presence)]),
+            body=form_body(param[str]("presence", presence)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsersSetPresenceschema],
             error_mapper=raw_error_response,
@@ -1202,7 +1248,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1219,7 +1266,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersConversationssuccessschema],
+            decoder=async_json_decoder[UsersConversationssuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1232,7 +1279,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``users.profile:write``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1240,9 +1288,9 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="POST",
             url_template=self._server.default("/users.deletePhoto"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
-            body=form_body([param[str]("token", token)]),
+            body=form_body(param[str]("token", token)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersDeletePhotoschema],
+            decoder=async_json_decoder[UsersDeletePhotoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1261,7 +1309,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             token: Authentication token. Requires scope: ``users:read``
             content_type: Value sent with the request.
             user: User to get presence info on. Defaults to the authed user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1271,7 +1320,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str]("token", token), param[str | None]("user", user)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ApimethodusersGetPresence],
+            decoder=async_json_decoder[ApimethodusersGetPresence],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1288,7 +1337,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``identity.basic``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1298,7 +1348,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str | None]("token", token)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Any],
+            decoder=async_json_decoder[Any],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1319,7 +1369,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             include_locale: Set this to ``true`` to receive the locale for this user. Defaults to ``false``
             user: User to get info on
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1333,7 +1384,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersInfosuccessschema],
+            decoder=async_json_decoder[UsersInfosuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1361,7 +1412,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             include_locale: Set this to ``true`` to receive the locale for users. Defaults to ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1376,7 +1428,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersListschema],
+            decoder=async_json_decoder[UsersListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1395,7 +1447,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             token: Authentication token. Requires scope: ``users:read.email``
             email: An email address belonging to a user in the workspace
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1405,7 +1458,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str]("token", token), param[str]("email", email)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersLookupByEmailsuccessschema],
+            decoder=async_json_decoder[UsersLookupByEmailsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1426,7 +1479,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1440,7 +1494,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersProfileGetschema],
+            decoder=async_json_decoder[UsersProfileGetschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1466,7 +1520,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1479,15 +1534,13 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("name", name),
-                    param[str | None]("profile", profile),
-                    param[str | None]("user", user),
-                    param[str | None]("value", value),
-                ],
+                param[str | None]("name", name),
+                param[str | None]("profile", profile),
+                param[str | None]("user", user),
+                param[str | None]("value", value),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersProfileSetschema],
+            decoder=async_json_decoder[UsersProfileSetschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1500,7 +1553,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1513,7 +1567,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersSetActiveschema],
+            decoder=async_json_decoder[UsersSetActiveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1538,7 +1592,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             crop_x: X coordinate of top-left corner of crop box
             crop_y: Y coordinate of top-left corner of crop box
             image: File contents via ``multipart/form-data``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1547,16 +1602,14 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/users.setPhoto"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str | None]("crop_w", crop_w),
-                    param[str | None]("crop_x", crop_x),
-                    param[str | None]("crop_y", crop_y),
-                    param[str | None]("image", image),
-                ],
+                param[str]("token", token),
+                param[str | None]("crop_w", crop_w),
+                param[str | None]("crop_x", crop_x),
+                param[str | None]("crop_y", crop_y),
+                param[str | None]("image", image),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersSetPhotoschema],
+            decoder=async_json_decoder[UsersSetPhotoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1575,7 +1628,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             token: Authentication token. Requires scope: ``users:write``
             content_type: Value sent with the request.
             presence: Either ``auto`` or ``away``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1587,9 +1641,9 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("presence", presence)]),
+            body=form_body(param[str]("presence", presence)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersSetPresenceschema],
+            decoder=async_json_decoder[UsersSetPresenceschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

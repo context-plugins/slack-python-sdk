@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 
@@ -10,10 +10,10 @@ from ..core import SdkBaseModel
 class UsersInfosuccessschema(SdkBaseModel):
     """Schema for successful response from users.info method"""
 
-    ok: Literal["True"] = "True"
+    ok: bool
     user: Any
 
 
 class UsersInfosuccessschemaDict(TypedDict):
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     user: Any

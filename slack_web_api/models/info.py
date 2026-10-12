@@ -21,9 +21,9 @@ class Info(SdkBaseModel):
 
 
 class InfoDict(TypedDict):
-    app_home: AppHome | AppHomeDict
-    channel: Channel | ChannelDict
-    group: Group | GroupDict
-    im: Im | ImDict
-    mpim: Mpim | MpimDict
-    team: Team | TeamDict
+    app_home: AppHomeDict
+    channel: ChannelDict
+    group: GroupDict
+    im: ImDict
+    mpim: MpimDict
+    team: TeamDict

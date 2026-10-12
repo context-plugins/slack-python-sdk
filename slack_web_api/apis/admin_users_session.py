@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -40,16 +42,19 @@ class AdminUsersSession:
             content_type: Value sent with the request.
             team_id: ID of the team that the session belongs to
             session_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_session_invalidate(
-            token, content_type, team_id, session_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_session_invalidate(
+                token, content_type, team_id, session_id, request_options=request_options
+            ),
+        )
 
     def admin_users_session_reset(
         self,
@@ -69,16 +74,24 @@ class AdminUsersSession:
             user_id: The ID of the user to wipe sessions for
             mobile_only: Only expire mobile sessions (default: false)
             web_only: Only expire web sessions (default: false)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_session_reset(
-            token, content_type, user_id, mobile_only=mobile_only, web_only=web_only, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_session_reset(
+                token,
+                content_type,
+                user_id,
+                mobile_only=mobile_only,
+                web_only=web_only,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminUsersSessionWithRawResponse:
@@ -105,18 +118,19 @@ class AsyncAdminUsersSession:
             content_type: Value sent with the request.
             team_id: ID of the team that the session belongs to
             session_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_session_invalidate(
                 token, content_type, team_id, session_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_session_reset(
         self,
@@ -136,14 +150,15 @@ class AsyncAdminUsersSession:
             user_id: The ID of the user to wipe sessions for
             mobile_only: Only expire mobile sessions (default: false)
             web_only: Only expire web sessions (default: false)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_session_reset(
                 token,
                 content_type,
@@ -151,8 +166,8 @@ class AsyncAdminUsersSession:
                 mobile_only=mobile_only,
                 web_only=web_only,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminUsersSessionWithRawResponse:
@@ -176,7 +191,8 @@ class AdminUsersSessionWithRawResponse(SecuredRawResponse[RawClient, Server, Aut
             content_type: Value sent with the request.
             team_id: ID of the team that the session belongs to
             session_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -188,7 +204,7 @@ class AdminUsersSessionWithRawResponse(SecuredRawResponse[RawClient, Server, Aut
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[int]("session_id", session_id)]),
+            body=form_body(param[str]("team_id", team_id), param[int]("session_id", session_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -213,7 +229,8 @@ class AdminUsersSessionWithRawResponse(SecuredRawResponse[RawClient, Server, Aut
             user_id: The ID of the user to wipe sessions for
             mobile_only: Only expire mobile sessions (default: false)
             web_only: Only expire web sessions (default: false)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -226,11 +243,9 @@ class AdminUsersSessionWithRawResponse(SecuredRawResponse[RawClient, Server, Aut
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("user_id", user_id),
-                    param[bool | None]("mobile_only", mobile_only),
-                    param[bool | None]("web_only", web_only),
-                ],
+                param[str]("user_id", user_id),
+                param[bool | None]("mobile_only", mobile_only),
+                param[bool | None]("web_only", web_only),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -256,7 +271,8 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
             content_type: Value sent with the request.
             team_id: ID of the team that the session belongs to
             session_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -268,9 +284,9 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[int]("session_id", session_id)]),
+            body=form_body(param[str]("team_id", team_id), param[int]("session_id", session_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -293,7 +309,8 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
             user_id: The ID of the user to wipe sessions for
             mobile_only: Only expire mobile sessions (default: false)
             web_only: Only expire web sessions (default: false)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -306,14 +323,12 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("user_id", user_id),
-                    param[bool | None]("mobile_only", mobile_only),
-                    param[bool | None]("web_only", web_only),
-                ],
+                param[str]("user_id", user_id),
+                param[bool | None]("mobile_only", mobile_only),
+                param[bool | None]("web_only", web_only),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

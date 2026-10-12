@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.stars_addschema import StarsAddschema
@@ -47,22 +49,25 @@ class Stars:
             file: File to add star to.
             file_comment: File comment to add star to.
             timestamp: Timestamp of the message to add star to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.stars_add(
-            token,
-            content_type,
-            channel=channel,
-            file=file,
-            file_comment=file_comment,
-            timestamp=timestamp,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.stars_add(
+                token,
+                content_type,
+                channel=channel,
+                file=file,
+                file_comment=file_comment,
+                timestamp=timestamp,
+                request_options=request_options,
+            ),
+        )
 
     def stars_list(
         self,
@@ -87,22 +92,25 @@ class Stars:
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.stars_list(
-            content_type,
-            token=token,
-            count=count,
-            page=page,
-            cursor=cursor,
-            limit=limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.stars_list(
+                content_type,
+                token=token,
+                count=count,
+                page=page,
+                cursor=cursor,
+                limit=limit,
+                request_options=request_options,
+            ),
+        )
 
     def stars_remove(
         self,
@@ -125,22 +133,25 @@ class Stars:
             file: File to remove star from.
             file_comment: File comment to remove star from.
             timestamp: Timestamp of the message to remove star from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.stars_remove(
-            token,
-            content_type,
-            channel=channel,
-            file=file,
-            file_comment=file_comment,
-            timestamp=timestamp,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.stars_remove(
+                token,
+                content_type,
+                channel=channel,
+                file=file,
+                file_comment=file_comment,
+                timestamp=timestamp,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> StarsWithRawResponse:
@@ -172,14 +183,15 @@ class AsyncStars:
             file: File to add star to.
             file_comment: File comment to add star to.
             timestamp: Timestamp of the message to add star to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.stars_add(
                 token,
                 content_type,
@@ -188,8 +200,8 @@ class AsyncStars:
                 file_comment=file_comment,
                 timestamp=timestamp,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def stars_list(
         self,
@@ -214,14 +226,15 @@ class AsyncStars:
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.stars_list(
                 content_type,
                 token=token,
@@ -230,8 +243,8 @@ class AsyncStars:
                 cursor=cursor,
                 limit=limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def stars_remove(
         self,
@@ -254,14 +267,15 @@ class AsyncStars:
             file: File to remove star from.
             file_comment: File comment to remove star from.
             timestamp: Timestamp of the message to remove star from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.stars_remove(
                 token,
                 content_type,
@@ -270,8 +284,8 @@ class AsyncStars:
                 file_comment=file_comment,
                 timestamp=timestamp,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncStarsWithRawResponse:
@@ -300,7 +314,8 @@ class StarsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             file: File to add star to.
             file_comment: File comment to add star to.
             timestamp: Timestamp of the message to add star to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -313,12 +328,10 @@ class StarsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[StarsAddschema],
@@ -349,7 +362,8 @@ class StarsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -391,7 +405,8 @@ class StarsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             file: File to remove star from.
             file_comment: File comment to remove star from.
             timestamp: Timestamp of the message to remove star from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -404,12 +419,10 @@ class StarsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[StarsRemoveschema],
@@ -440,7 +453,8 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             file: File to add star to.
             file_comment: File comment to add star to.
             timestamp: Timestamp of the message to add star to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -453,15 +467,13 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[StarsAddschema],
+            decoder=async_json_decoder[StarsAddschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -489,7 +501,8 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -505,7 +518,7 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[StarsListschema],
+            decoder=async_json_decoder[StarsListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -531,7 +544,8 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             file: File to remove star from.
             file_comment: File comment to remove star from.
             timestamp: Timestamp of the message to remove star from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -544,15 +558,13 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[StarsRemoveschema],
+            decoder=async_json_decoder[StarsRemoveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

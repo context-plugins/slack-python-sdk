@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.usergroups_createschema import UsergroupsCreateschema
@@ -52,23 +54,26 @@ class Usergroups:
             description: A short description of the User Group.
             handle: A mention handle. Must be unique among channels, users and User Groups.
             include_count: Include the number of users in each User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_create(
-            token,
-            content_type,
-            name,
-            channels=channels,
-            description=description,
-            handle=handle,
-            include_count=include_count,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_create(
+                token,
+                content_type,
+                name,
+                channels=channels,
+                description=description,
+                handle=handle,
+                include_count=include_count,
+                request_options=request_options,
+            ),
+        )
 
     def usergroups_disable(
         self,
@@ -86,16 +91,19 @@ class Usergroups:
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to disable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_disable(
-            token, content_type, usergroup, include_count=include_count, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_disable(
+                token, content_type, usergroup, include_count=include_count, request_options=request_options
+            ),
+        )
 
     def usergroups_enable(
         self,
@@ -113,16 +121,19 @@ class Usergroups:
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to enable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_enable(
-            token, content_type, usergroup, include_count=include_count, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_enable(
+                token, content_type, usergroup, include_count=include_count, request_options=request_options
+            ),
+        )
 
     def usergroups_list(
         self,
@@ -142,21 +153,24 @@ class Usergroups:
             include_users: Include the list of users for each User Group.
             include_count: Include the number of users in each User Group.
             include_disabled: Include disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_list(
-            token,
-            content_type,
-            include_users=include_users,
-            include_count=include_count,
-            include_disabled=include_disabled,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_list(
+                token,
+                content_type,
+                include_users=include_users,
+                include_count=include_count,
+                include_disabled=include_disabled,
+                request_options=request_options,
+            ),
+        )
 
     def usergroups_update(
         self,
@@ -182,24 +196,27 @@ class Usergroups:
             channels: A comma separated string of encoded channel IDs for which the User Group uses as a default.
             include_count: Include the number of users in the User Group.
             name: A name for the User Group. Must be unique among User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_update(
-            token,
-            content_type,
-            usergroup,
-            handle=handle,
-            description=description,
-            channels=channels,
-            include_count=include_count,
-            name=name,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_update(
+                token,
+                content_type,
+                usergroup,
+                handle=handle,
+                description=description,
+                channels=channels,
+                include_count=include_count,
+                name=name,
+                request_options=request_options,
+            ),
+        )
 
     def usergroups_users_list(
         self,
@@ -217,16 +234,19 @@ class Usergroups:
             usergroup: The encoded ID of the User Group to update.
             content_type: Value sent with the request.
             include_disabled: Allow results that involve disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_users_list(
-            token, usergroup, content_type, include_disabled=include_disabled, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_users_list(
+                token, usergroup, content_type, include_disabled=include_disabled, request_options=request_options
+            ),
+        )
 
     def usergroups_users_update(
         self,
@@ -247,16 +267,19 @@ class Usergroups:
             users: A comma separated string of encoded user IDs that represent the entire list of users for the User
                 Group.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.usergroups_users_update(
-            token, content_type, usergroup, users, include_count=include_count, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.usergroups_users_update(
+                token, content_type, usergroup, users, include_count=include_count, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> UsergroupsWithRawResponse:
@@ -289,14 +312,15 @@ class AsyncUsergroups:
             description: A short description of the User Group.
             handle: A mention handle. Must be unique among channels, users and User Groups.
             include_count: Include the number of users in each User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_create(
                 token,
                 content_type,
@@ -306,8 +330,8 @@ class AsyncUsergroups:
                 handle=handle,
                 include_count=include_count,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_disable(
         self,
@@ -325,18 +349,19 @@ class AsyncUsergroups:
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to disable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_disable(
                 token, content_type, usergroup, include_count=include_count, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_enable(
         self,
@@ -354,18 +379,19 @@ class AsyncUsergroups:
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to enable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_enable(
                 token, content_type, usergroup, include_count=include_count, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_list(
         self,
@@ -385,14 +411,15 @@ class AsyncUsergroups:
             include_users: Include the list of users for each User Group.
             include_count: Include the number of users in each User Group.
             include_disabled: Include disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_list(
                 token,
                 content_type,
@@ -400,8 +427,8 @@ class AsyncUsergroups:
                 include_count=include_count,
                 include_disabled=include_disabled,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_update(
         self,
@@ -427,14 +454,15 @@ class AsyncUsergroups:
             channels: A comma separated string of encoded channel IDs for which the User Group uses as a default.
             include_count: Include the number of users in the User Group.
             name: A name for the User Group. Must be unique among User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_update(
                 token,
                 content_type,
@@ -445,8 +473,8 @@ class AsyncUsergroups:
                 include_count=include_count,
                 name=name,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_users_list(
         self,
@@ -464,18 +492,19 @@ class AsyncUsergroups:
             usergroup: The encoded ID of the User Group to update.
             content_type: Value sent with the request.
             include_disabled: Allow results that involve disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_users_list(
                 token, usergroup, content_type, include_disabled=include_disabled, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def usergroups_users_update(
         self,
@@ -496,18 +525,19 @@ class AsyncUsergroups:
             users: A comma separated string of encoded user IDs that represent the entire list of users for the User
                 Group.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.usergroups_users_update(
                 token, content_type, usergroup, users, include_count=include_count, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncUsergroupsWithRawResponse:
@@ -537,7 +567,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             description: A short description of the User Group.
             handle: A mention handle. Must be unique among channels, users and User Groups.
             include_count: Include the number of users in each User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -550,13 +581,11 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[str | None]("channels", channels),
-                    param[str | None]("description", description),
-                    param[str | None]("handle", handle),
-                    param[bool | None]("include_count", include_count),
-                ],
+                param[str]("name", name),
+                param[str | None]("channels", channels),
+                param[str | None]("description", description),
+                param[str | None]("handle", handle),
+                param[bool | None]("include_count", include_count),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsergroupsCreateschema],
@@ -580,7 +609,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to disable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -592,7 +622,7 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)]),
+            body=form_body(param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsergroupsDisableschema],
             error_mapper=raw_error_response,
@@ -615,7 +645,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to enable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -627,7 +658,7 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)]),
+            body=form_body(param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsergroupsEnableschema],
             error_mapper=raw_error_response,
@@ -652,7 +683,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             include_users: Include the list of users for each User Group.
             include_count: Include the number of users in each User Group.
             include_disabled: Include disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -696,7 +728,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             channels: A comma separated string of encoded channel IDs for which the User Group uses as a default.
             include_count: Include the number of users in the User Group.
             name: A name for the User Group. Must be unique among User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -709,14 +742,12 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup", usergroup),
-                    param[str | None]("handle", handle),
-                    param[str | None]("description", description),
-                    param[str | None]("channels", channels),
-                    param[bool | None]("include_count", include_count),
-                    param[str | None]("name", name),
-                ],
+                param[str]("usergroup", usergroup),
+                param[str | None]("handle", handle),
+                param[str | None]("description", description),
+                param[str | None]("channels", channels),
+                param[bool | None]("include_count", include_count),
+                param[str | None]("name", name),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsergroupsUpdateschema],
@@ -740,7 +771,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             usergroup: The encoded ID of the User Group to update.
             content_type: Value sent with the request.
             include_disabled: Allow results that involve disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -778,7 +810,8 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             users: A comma separated string of encoded user IDs that represent the entire list of users for the User
                 Group.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -791,11 +824,9 @@ class UsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup", usergroup),
-                    param[str]("users", users),
-                    param[bool | None]("include_count", include_count),
-                ],
+                param[str]("usergroup", usergroup),
+                param[str]("users", users),
+                param[bool | None]("include_count", include_count),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsergroupsUsersUpdateschema],
@@ -827,7 +858,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             description: A short description of the User Group.
             handle: A mention handle. Must be unique among channels, users and User Groups.
             include_count: Include the number of users in each User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -840,16 +872,14 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[str | None]("channels", channels),
-                    param[str | None]("description", description),
-                    param[str | None]("handle", handle),
-                    param[bool | None]("include_count", include_count),
-                ],
+                param[str]("name", name),
+                param[str | None]("channels", channels),
+                param[str | None]("description", description),
+                param[str | None]("handle", handle),
+                param[bool | None]("include_count", include_count),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsCreateschema],
+            decoder=async_json_decoder[UsergroupsCreateschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -870,7 +900,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to disable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -882,9 +913,9 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)]),
+            body=form_body(param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsDisableschema],
+            decoder=async_json_decoder[UsergroupsDisableschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -905,7 +936,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             usergroup: The encoded ID of the User Group to enable.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -917,9 +949,9 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)]),
+            body=form_body(param[str]("usergroup", usergroup), param[bool | None]("include_count", include_count)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsEnableschema],
+            decoder=async_json_decoder[UsergroupsEnableschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -942,7 +974,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             include_users: Include the list of users for each User Group.
             include_count: Include the number of users in each User Group.
             include_disabled: Include disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -957,7 +990,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsListschema],
+            decoder=async_json_decoder[UsergroupsListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -986,7 +1019,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             channels: A comma separated string of encoded channel IDs for which the User Group uses as a default.
             include_count: Include the number of users in the User Group.
             name: A name for the User Group. Must be unique among User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -999,17 +1033,15 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup", usergroup),
-                    param[str | None]("handle", handle),
-                    param[str | None]("description", description),
-                    param[str | None]("channels", channels),
-                    param[bool | None]("include_count", include_count),
-                    param[str | None]("name", name),
-                ],
+                param[str]("usergroup", usergroup),
+                param[str | None]("handle", handle),
+                param[str | None]("description", description),
+                param[str | None]("channels", channels),
+                param[bool | None]("include_count", include_count),
+                param[str | None]("name", name),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsUpdateschema],
+            decoder=async_json_decoder[UsergroupsUpdateschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1030,7 +1062,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             usergroup: The encoded ID of the User Group to update.
             content_type: Value sent with the request.
             include_disabled: Allow results that involve disabled User Groups.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1044,7 +1077,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsUsersListschema],
+            decoder=async_json_decoder[UsergroupsUsersListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1068,7 +1101,8 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             users: A comma separated string of encoded user IDs that represent the entire list of users for the User
                 Group.
             include_count: Include the number of users in the User Group.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1081,14 +1115,12 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup", usergroup),
-                    param[str]("users", users),
-                    param[bool | None]("include_count", include_count),
-                ],
+                param[str]("usergroup", usergroup),
+                param[str]("users", users),
+                param[bool | None]("include_count", include_count),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsergroupsUsersUpdateschema],
+            decoder=async_json_decoder[UsergroupsUsersUpdateschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

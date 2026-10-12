@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -12,7 +12,7 @@ class MigrationExchangesuccessschema(SdkBaseModel):
 
     enterprise_id: str
     invalid_user_ids: Optional[list[str]] = UNSET
-    ok: Literal["True"] = "True"
+    ok: bool
     team_id: str
     user_id_map: Optional[Any] = UNSET
 
@@ -20,6 +20,6 @@ class MigrationExchangesuccessschema(SdkBaseModel):
 class MigrationExchangesuccessschemaDict(TypedDict):
     enterprise_id: str
     invalid_user_ids: NotRequired[list[str]]
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     team_id: str
     user_id_map: NotRequired[Any]

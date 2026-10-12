@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -37,16 +39,17 @@ class Views:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the opened view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.views_open(
-            trigger_id, view, token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.views_open(trigger_id, view, token, content_type, request_options=request_options)
+        )
 
     def views_publish(
         self,
@@ -55,7 +58,7 @@ class Views:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Publish a static view for a User.
@@ -65,17 +68,20 @@ class Views:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the published view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.views_publish(
-            user_id, view, token, content_type, hash=hash, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.views_publish(
+                user_id, view, token, content_type, hash_=hash_, request_options=request_options
+            ),
+        )
 
     def views_push(
         self,
@@ -93,16 +99,17 @@ class Views:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the pushed view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.views_push(
-            trigger_id, view, token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.views_push(trigger_id, view, token, content_type, request_options=request_options)
+        )
 
     def views_update(
         self,
@@ -112,7 +119,7 @@ class Views:
         view_id: str | None = None,
         external_id: str | None = None,
         view: str | None = None,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Update an existing view.
@@ -124,23 +131,26 @@ class Views:
             external_id: A unique identifier of the view set by the developer. Must be unique for all views on a team.
                 Max length of 255 characters. Either ``view_id`` or ``external_id`` is required.
             view: A `view object </reference/surfaces/views>`__. This must be a JSON-encoded string.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the updated view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.views_update(
-            token,
-            content_type,
-            view_id=view_id,
-            external_id=external_id,
-            view=view,
-            hash=hash,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.views_update(
+                token,
+                content_type,
+                view_id=view_id,
+                external_id=external_id,
+                view=view,
+                hash_=hash_,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> ViewsWithRawResponse:
@@ -167,18 +177,19 @@ class AsyncViews:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the opened view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.views_open(
                 trigger_id, view, token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def views_publish(
         self,
@@ -187,7 +198,7 @@ class AsyncViews:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Publish a static view for a User.
@@ -197,19 +208,20 @@ class AsyncViews:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the published view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.views_publish(
-                user_id, view, token, content_type, hash=hash, request_options=request_options
-            )
-        ).unwrap()
+                user_id, view, token, content_type, hash_=hash_, request_options=request_options
+            ),
+        )
 
     async def views_push(
         self,
@@ -227,18 +239,19 @@ class AsyncViews:
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the pushed view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.views_push(
                 trigger_id, view, token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def views_update(
         self,
@@ -248,7 +261,7 @@ class AsyncViews:
         view_id: str | None = None,
         external_id: str | None = None,
         view: str | None = None,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Update an existing view.
@@ -260,25 +273,26 @@ class AsyncViews:
             external_id: A unique identifier of the view set by the developer. Must be unique for all views on a team.
                 Max length of 255 characters. Either ``view_id`` or ``external_id`` is required.
             view: A `view object </reference/surfaces/views>`__. This must be a JSON-encoded string.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response includes the updated view payload.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.views_update(
                 token,
                 content_type,
                 view_id=view_id,
                 external_id=external_id,
                 view=view,
-                hash=hash,
+                hash_=hash_,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncViewsWithRawResponse:
@@ -302,7 +316,8 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -324,7 +339,7 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Publish a static view for a User.
@@ -334,15 +349,16 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/views.publish"),
-            query_params=[param[str]("user_id", user_id), param[str]("view", view), param[str | None]("hash", hash)],
+            query_params=[param[str]("user_id", user_id), param[str]("view", view), param[str | None]("hash", hash_)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -366,7 +382,8 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -389,7 +406,7 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         view_id: str | None = None,
         external_id: str | None = None,
         view: str | None = None,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Update an existing view.
@@ -401,8 +418,9 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             external_id: A unique identifier of the view set by the developer. Must be unique for all views on a team.
                 Max length of 255 characters. Either ``view_id`` or ``external_id`` is required.
             view: A `view object </reference/surfaces/views>`__. This must be a JSON-encoded string.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -413,7 +431,7 @@ class ViewsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("view_id", view_id),
                 param[str | None]("external_id", external_id),
                 param[str | None]("view", view),
-                param[str | None]("hash", hash),
+                param[str | None]("hash", hash_),
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
@@ -440,7 +458,8 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -450,7 +469,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str]("trigger_id", trigger_id), param[str]("view", view)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -462,7 +481,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Publish a static view for a User.
@@ -472,18 +491,19 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/views.publish"),
-            query_params=[param[str]("user_id", user_id), param[str]("view", view), param[str | None]("hash", hash)],
+            query_params=[param[str]("user_id", user_id), param[str]("view", view), param[str | None]("hash", hash_)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -504,7 +524,8 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             view: A `view payload </reference/surfaces/views>`__. This must be a JSON-encoded string.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -514,7 +535,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str]("trigger_id", trigger_id), param[str]("view", view)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -527,7 +548,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         view_id: str | None = None,
         external_id: str | None = None,
         view: str | None = None,
-        hash: str | None = None,
+        hash_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Update an existing view.
@@ -539,8 +560,9 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             external_id: A unique identifier of the view set by the developer. Must be unique for all views on a team.
                 Max length of 255 characters. Either ``view_id`` or ``external_id`` is required.
             view: A `view object </reference/surfaces/views>`__. This must be a JSON-encoded string.
-            hash: A string that represents view state to protect against possible race conditions.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            hash_: A string that represents view state to protect against possible race conditions.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -551,11 +573,11 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("view_id", view_id),
                 param[str | None]("external_id", external_id),
                 param[str | None]("view", view),
-                param[str | None]("hash", hash),
+                param[str | None]("hash", hash_),
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

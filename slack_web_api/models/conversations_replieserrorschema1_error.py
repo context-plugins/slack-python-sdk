@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -16,7 +14,7 @@ class ConversationsReplieserrorschema1Error(SdkBaseModel):
 
     error: ConversationsRepliesErrorEnumOrStr
     needed: Optional[str] = UNSET
-    ok: Literal["False"] = "False"
+    ok: bool
     provided: Optional[str] = UNSET
 
 
@@ -24,5 +22,5 @@ class ConversationsReplieserrorschema1ErrorDict(TypedDict):
     callstack: NotRequired[str]
     error: ConversationsRepliesErrorEnumOrStr
     needed: NotRequired[str]
-    ok: NotRequired[Literal["False"]]
+    ok: bool
     provided: NotRequired[str]

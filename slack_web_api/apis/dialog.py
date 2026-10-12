@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.dialog_openschema import DialogOpenschema
 from ..models.enums.content_type import ContentTypeOrStr
@@ -37,16 +39,19 @@ class Dialog:
             trigger_id: Exchange a trigger to post to the user.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response is quite minimal.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dialog_open(
-            dialog, trigger_id, token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.dialog_open(
+                dialog, trigger_id, token, content_type, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> DialogWithRawResponse:
@@ -73,18 +78,19 @@ class AsyncDialog:
             trigger_id: Exchange a trigger to post to the user.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response is quite minimal.
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dialog_open(
                 dialog, trigger_id, token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncDialogWithRawResponse:
@@ -108,7 +114,8 @@ class DialogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             trigger_id: Exchange a trigger to post to the user.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -141,7 +148,8 @@ class AsyncDialogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             trigger_id: Exchange a trigger to post to the user.
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -151,7 +159,7 @@ class AsyncDialogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             query_params=[param[str]("dialog", dialog), param[str]("trigger_id", trigger_id)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[DialogOpenschema],
+            decoder=async_json_decoder[DialogOpenschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -15,5 +15,5 @@ class Mpim(SdkBaseModel):
 
 
 class MpimDict(TypedDict):
-    resources: NotRequired[ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict]
+    resources: NotRequired[ResourcesininfofromappsPermissionsInfoDict]
     scopes: NotRequired[list[str]]

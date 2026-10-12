@@ -12,5 +12,5 @@ class ExternalOrgMigrations(SdkBaseModel):
 
 
 class ExternalOrgMigrationsDict(TypedDict):
-    current: list[Current | CurrentDict]
+    current: list[CurrentDict]
     date_updated: int

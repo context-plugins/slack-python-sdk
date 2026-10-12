@@ -15,5 +15,5 @@ class AppHome(SdkBaseModel):
 
 
 class AppHomeDict(TypedDict):
-    resources: NotRequired[ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict]
+    resources: NotRequired[ResourcesininfofromappsPermissionsInfoDict]
     scopes: NotRequired[list[str]]

@@ -15,5 +15,5 @@ class Team(SdkBaseModel):
 
 
 class TeamDict(TypedDict):
-    resources: ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict
+    resources: ResourcesininfofromappsPermissionsInfoDict
     scopes: list[str]

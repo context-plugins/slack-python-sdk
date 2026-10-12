@@ -19,7 +19,7 @@ class Message(SdkBaseModel):
 
 class MessageDict(TypedDict):
     bot_id: str
-    bot_profile: NotRequired[BotProfileObject | BotProfileObjectDict]
+    bot_profile: NotRequired[BotProfileObjectDict]
     team: str
     text: str
     type_: str

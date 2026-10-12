@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -46,23 +48,26 @@ class AdminUsers:
             is_restricted: True if user should be added to the workspace as a guest.
             is_ultra_restricted: True if user should be added to the workspace as a single-channel guest.
             channel_ids: Comma separated values of channel IDs to add user in the new workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_assign(
-            token,
-            content_type,
-            team_id,
-            user_id,
-            is_restricted=is_restricted,
-            is_ultra_restricted=is_ultra_restricted,
-            channel_ids=channel_ids,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_assign(
+                token,
+                content_type,
+                team_id,
+                user_id,
+                is_restricted=is_restricted,
+                is_ultra_restricted=is_ultra_restricted,
+                channel_ids=channel_ids,
+                request_options=request_options,
+            ),
+        )
 
     def admin_users_invite(
         self,
@@ -96,27 +101,30 @@ class AdminUsers:
             is_ultra_restricted: Is this user a single channel guest user? (default: false)
             guest_expiration_ts: Timestamp when guest account should be disabled. Only include this timestamp if you are
                 inviting a guest user and you want their account to expire on a certain date.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_invite(
-            token,
-            content_type,
-            team_id,
-            email,
-            channel_ids,
-            custom_message=custom_message,
-            real_name=real_name,
-            resend=resend,
-            is_restricted=is_restricted,
-            is_ultra_restricted=is_ultra_restricted,
-            guest_expiration_ts=guest_expiration_ts,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_invite(
+                token,
+                content_type,
+                team_id,
+                email,
+                channel_ids,
+                custom_message=custom_message,
+                real_name=real_name,
+                resend=resend,
+                is_restricted=is_restricted,
+                is_ultra_restricted=is_ultra_restricted,
+                guest_expiration_ts=guest_expiration_ts,
+                request_options=request_options,
+            ),
+        )
 
     def admin_users_list(
         self,
@@ -136,16 +144,19 @@ class AdminUsers:
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
             limit: Limit for how many users to be retrieved per page
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_list(
-            team_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_list(
+                team_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def admin_users_remove(
         self,
@@ -163,16 +174,19 @@ class AdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_remove(
-            token, content_type, team_id, user_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_remove(
+                token, content_type, team_id, user_id, request_options=request_options
+            ),
+        )
 
     def admin_users_set_admin(
         self,
@@ -190,16 +204,19 @@ class AdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as an admin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_set_admin(
-            token, content_type, team_id, user_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_set_admin(
+                token, content_type, team_id, user_id, request_options=request_options
+            ),
+        )
 
     def admin_users_set_expiration(
         self,
@@ -219,16 +236,19 @@ class AdminUsers:
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to set an expiration for.
             expiration_ts: Timestamp when guest account should be disabled.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_set_expiration(
-            token, content_type, team_id, user_id, expiration_ts, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_set_expiration(
+                token, content_type, team_id, user_id, expiration_ts, request_options=request_options
+            ),
+        )
 
     def admin_users_set_owner(
         self,
@@ -246,16 +266,19 @@ class AdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: Id of the user to promote to owner.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_set_owner(
-            token, content_type, team_id, user_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_set_owner(
+                token, content_type, team_id, user_id, request_options=request_options
+            ),
+        )
 
     def admin_users_set_regular(
         self,
@@ -273,16 +296,19 @@ class AdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as a regular user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_users_set_regular(
-            token, content_type, team_id, user_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_users_set_regular(
+                token, content_type, team_id, user_id, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminUsersWithRawResponse:
@@ -315,14 +341,15 @@ class AsyncAdminUsers:
             is_restricted: True if user should be added to the workspace as a guest.
             is_ultra_restricted: True if user should be added to the workspace as a single-channel guest.
             channel_ids: Comma separated values of channel IDs to add user in the new workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_assign(
                 token,
                 content_type,
@@ -332,8 +359,8 @@ class AsyncAdminUsers:
                 is_ultra_restricted=is_ultra_restricted,
                 channel_ids=channel_ids,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_invite(
         self,
@@ -367,14 +394,15 @@ class AsyncAdminUsers:
             is_ultra_restricted: Is this user a single channel guest user? (default: false)
             guest_expiration_ts: Timestamp when guest account should be disabled. Only include this timestamp if you are
                 inviting a guest user and you want their account to expire on a certain date.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_invite(
                 token,
                 content_type,
@@ -388,8 +416,8 @@ class AsyncAdminUsers:
                 is_ultra_restricted=is_ultra_restricted,
                 guest_expiration_ts=guest_expiration_ts,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_list(
         self,
@@ -409,18 +437,19 @@ class AsyncAdminUsers:
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
             limit: Limit for how many users to be retrieved per page
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_list(
                 team_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_remove(
         self,
@@ -438,18 +467,19 @@ class AsyncAdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_remove(
                 token, content_type, team_id, user_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_set_admin(
         self,
@@ -467,18 +497,19 @@ class AsyncAdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as an admin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_set_admin(
                 token, content_type, team_id, user_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_set_expiration(
         self,
@@ -498,18 +529,19 @@ class AsyncAdminUsers:
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to set an expiration for.
             expiration_ts: Timestamp when guest account should be disabled.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_set_expiration(
                 token, content_type, team_id, user_id, expiration_ts, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_set_owner(
         self,
@@ -527,18 +559,19 @@ class AsyncAdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: Id of the user to promote to owner.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_set_owner(
                 token, content_type, team_id, user_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_users_set_regular(
         self,
@@ -556,18 +589,19 @@ class AsyncAdminUsers:
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as a regular user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_users_set_regular(
                 token, content_type, team_id, user_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminUsersWithRawResponse:
@@ -597,7 +631,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             is_restricted: True if user should be added to the workspace as a guest.
             is_ultra_restricted: True if user should be added to the workspace as a single-channel guest.
             channel_ids: Comma separated values of channel IDs to add user in the new workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -610,13 +645,11 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("user_id", user_id),
-                    param[bool | None]("is_restricted", is_restricted),
-                    param[bool | None]("is_ultra_restricted", is_ultra_restricted),
-                    param[str | None]("channel_ids", channel_ids),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("user_id", user_id),
+                param[bool | None]("is_restricted", is_restricted),
+                param[bool | None]("is_ultra_restricted", is_ultra_restricted),
+                param[str | None]("channel_ids", channel_ids),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -656,7 +689,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             is_ultra_restricted: Is this user a single channel guest user? (default: false)
             guest_expiration_ts: Timestamp when guest account should be disabled. Only include this timestamp if you are
                 inviting a guest user and you want their account to expire on a certain date.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -669,17 +703,15 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("email", email),
-                    param[str]("channel_ids", channel_ids),
-                    param[str | None]("custom_message", custom_message),
-                    param[str | None]("real_name", real_name),
-                    param[bool | None]("resend", resend),
-                    param[bool | None]("is_restricted", is_restricted),
-                    param[bool | None]("is_ultra_restricted", is_ultra_restricted),
-                    param[str | None]("guest_expiration_ts", guest_expiration_ts),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("email", email),
+                param[str]("channel_ids", channel_ids),
+                param[str | None]("custom_message", custom_message),
+                param[str | None]("real_name", real_name),
+                param[bool | None]("resend", resend),
+                param[bool | None]("is_restricted", is_restricted),
+                param[bool | None]("is_ultra_restricted", is_ultra_restricted),
+                param[str | None]("guest_expiration_ts", guest_expiration_ts),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -705,7 +737,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
             limit: Limit for how many users to be retrieved per page
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -738,7 +771,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -750,7 +784,7 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -773,7 +807,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as an admin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -785,7 +820,7 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -810,7 +845,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to set an expiration for.
             expiration_ts: Timestamp when guest account should be disabled.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -823,11 +859,9 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("user_id", user_id),
-                    param[int]("expiration_ts", expiration_ts),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("user_id", user_id),
+                param[int]("expiration_ts", expiration_ts),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -851,7 +885,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: Id of the user to promote to owner.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -863,7 +898,7 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -886,7 +921,8 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as a regular user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -898,7 +934,7 @@ class AdminUsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -929,7 +965,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             is_restricted: True if user should be added to the workspace as a guest.
             is_ultra_restricted: True if user should be added to the workspace as a single-channel guest.
             channel_ids: Comma separated values of channel IDs to add user in the new workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -942,16 +979,14 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("user_id", user_id),
-                    param[bool | None]("is_restricted", is_restricted),
-                    param[bool | None]("is_ultra_restricted", is_ultra_restricted),
-                    param[str | None]("channel_ids", channel_ids),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("user_id", user_id),
+                param[bool | None]("is_restricted", is_restricted),
+                param[bool | None]("is_ultra_restricted", is_ultra_restricted),
+                param[str | None]("channel_ids", channel_ids),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -988,7 +1023,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             is_ultra_restricted: Is this user a single channel guest user? (default: false)
             guest_expiration_ts: Timestamp when guest account should be disabled. Only include this timestamp if you are
                 inviting a guest user and you want their account to expire on a certain date.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1001,20 +1037,18 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("email", email),
-                    param[str]("channel_ids", channel_ids),
-                    param[str | None]("custom_message", custom_message),
-                    param[str | None]("real_name", real_name),
-                    param[bool | None]("resend", resend),
-                    param[bool | None]("is_restricted", is_restricted),
-                    param[bool | None]("is_ultra_restricted", is_ultra_restricted),
-                    param[str | None]("guest_expiration_ts", guest_expiration_ts),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("email", email),
+                param[str]("channel_ids", channel_ids),
+                param[str | None]("custom_message", custom_message),
+                param[str | None]("real_name", real_name),
+                param[bool | None]("resend", resend),
+                param[bool | None]("is_restricted", is_restricted),
+                param[bool | None]("is_ultra_restricted", is_ultra_restricted),
+                param[str | None]("guest_expiration_ts", guest_expiration_ts),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1037,7 +1071,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
             limit: Limit for how many users to be retrieved per page
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1049,7 +1084,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1070,7 +1105,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1082,9 +1118,9 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1105,7 +1141,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as an admin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1117,9 +1154,9 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1142,7 +1179,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to set an expiration for.
             expiration_ts: Timestamp when guest account should be disabled.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1155,14 +1193,12 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_id", team_id),
-                    param[str]("user_id", user_id),
-                    param[int]("expiration_ts", expiration_ts),
-                ],
+                param[str]("team_id", team_id),
+                param[str]("user_id", user_id),
+                param[int]("expiration_ts", expiration_ts),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1183,7 +1219,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: Id of the user to promote to owner.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1195,9 +1232,9 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1218,7 +1255,8 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             team_id: The ID (``T1234``) of the workspace.
             user_id: The ID of the user to designate as a regular user.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1230,9 +1268,9 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("user_id", user_id)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("user_id", user_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

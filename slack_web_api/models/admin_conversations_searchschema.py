@@ -14,5 +14,5 @@ class AdminConversationsSearchschema(SdkBaseModel):
 
 
 class AdminConversationsSearchschemaDict(TypedDict):
-    channels: list[ChannelObject | ChannelObjectDict]
+    channels: list[ChannelObjectDict]
     next_cursor: str

@@ -31,6 +31,6 @@ class FileCommentObjectDict(TypedDict):
     num_stars: NotRequired[int]
     pinned_info: NotRequired[Any]
     pinned_to: NotRequired[list[str]]
-    reactions: NotRequired[list[Reactionobject | ReactionobjectDict]]
+    reactions: NotRequired[list[ReactionobjectDict]]
     timestamp: int
     user: str

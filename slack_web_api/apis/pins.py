@@ -11,10 +11,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.pins_addschema import PinsAddschema
@@ -42,16 +44,19 @@ class Pins:
             content_type: Value sent with the request.
             channel: Channel to pin the item in.
             timestamp: Timestamp of the message to pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pins_add(
-            token, content_type, channel, timestamp=timestamp, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pins_add(
+                token, content_type, channel, timestamp=timestamp, request_options=request_options
+            ),
+        )
 
     def pins_list(
         self,
@@ -67,14 +72,15 @@ class Pins:
             token: Authentication token. Requires scope: ``pins:read``
             channel: Channel to get pinned items for.
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pins_list(token, channel, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.pins_list(token, channel, content_type, request_options=request_options))
 
     def pins_remove(
         self,
@@ -92,16 +98,19 @@ class Pins:
             content_type: Value sent with the request.
             channel: Channel where the item is pinned to.
             timestamp: Timestamp of the message to un-pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pins_remove(
-            token, content_type, channel, timestamp=timestamp, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pins_remove(
+                token, content_type, channel, timestamp=timestamp, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> PinsWithRawResponse:
@@ -128,18 +137,19 @@ class AsyncPins:
             content_type: Value sent with the request.
             channel: Channel to pin the item in.
             timestamp: Timestamp of the message to pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pins_add(
                 token, content_type, channel, timestamp=timestamp, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pins_list(
         self,
@@ -155,16 +165,17 @@ class AsyncPins:
             token: Authentication token. Requires scope: ``pins:read``
             channel: Channel to get pinned items for.
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pins_list(token, channel, content_type, request_options=request_options)
-        ).unwrap()
+        )
 
     async def pins_remove(
         self,
@@ -182,18 +193,19 @@ class AsyncPins:
             content_type: Value sent with the request.
             channel: Channel where the item is pinned to.
             timestamp: Timestamp of the message to un-pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pins_remove(
                 token, content_type, channel, timestamp=timestamp, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncPinsWithRawResponse:
@@ -217,7 +229,8 @@ class PinsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             channel: Channel to pin the item in.
             timestamp: Timestamp of the message to pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -229,7 +242,7 @@ class PinsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel", channel), param[str | None]("timestamp", timestamp)]),
+            body=form_body(param[str]("channel", channel), param[str | None]("timestamp", timestamp)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[PinsAddschema],
             error_mapper=raw_error_response,
@@ -250,7 +263,8 @@ class PinsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``pins:read``
             channel: Channel to get pinned items for.
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -281,7 +295,8 @@ class PinsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             channel: Channel where the item is pinned to.
             timestamp: Timestamp of the message to un-pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -293,7 +308,7 @@ class PinsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel", channel), param[str | None]("timestamp", timestamp)]),
+            body=form_body(param[str]("channel", channel), param[str | None]("timestamp", timestamp)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[PinsRemoveschema],
             error_mapper=raw_error_response,
@@ -318,7 +333,8 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             content_type: Value sent with the request.
             channel: Channel to pin the item in.
             timestamp: Timestamp of the message to pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -330,9 +346,9 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel", channel), param[str | None]("timestamp", timestamp)]),
+            body=form_body(param[str]("channel", channel), param[str | None]("timestamp", timestamp)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[PinsAddschema],
+            decoder=async_json_decoder[PinsAddschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -351,7 +367,8 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             token: Authentication token. Requires scope: ``pins:read``
             channel: Channel to get pinned items for.
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -361,7 +378,7 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             query_params=[param[str]("token", token), param[str]("channel", channel)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Any],
+            decoder=async_json_decoder[Any],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -382,7 +399,8 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             content_type: Value sent with the request.
             channel: Channel where the item is pinned to.
             timestamp: Timestamp of the message to un-pin.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -394,9 +412,9 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel", channel), param[str | None]("timestamp", timestamp)]),
+            body=form_body(param[str]("channel", channel), param[str | None]("timestamp", timestamp)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[PinsRemoveschema],
+            decoder=async_json_decoder[PinsRemoveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

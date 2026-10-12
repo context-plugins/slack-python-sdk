@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -13,11 +13,11 @@ class ConversationsOpensuccessschema(SdkBaseModel):
     already_open: Optional[bool] = UNSET
     channel: Any
     no_op: Optional[bool] = UNSET
-    ok: Literal["True"] = "True"
+    ok: bool
 
 
 class ConversationsOpensuccessschemaDict(TypedDict):
     already_open: NotRequired[bool]
     channel: Any
     no_op: NotRequired[bool]
-    ok: NotRequired[Literal["True"]]
+    ok: bool

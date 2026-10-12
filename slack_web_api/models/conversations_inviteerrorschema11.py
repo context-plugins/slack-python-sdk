@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -21,16 +19,14 @@ class ConversationsInviteerrorschema11(SdkBaseModel):
     error: Optional[ConversationsInviteErrorEnumOrStr] = UNSET
     errors: Optional[list[Errorsisreturnedwhenanerrorassociatesanuser]] = UNSET
     needed: Optional[str] = UNSET
-    ok: Literal["False"] = "False"
+    ok: bool
     provided: Optional[str] = UNSET
 
 
 class ConversationsInviteerrorschema11Dict(TypedDict):
     callstack: NotRequired[str]
     error: NotRequired[ConversationsInviteErrorEnumOrStr]
-    errors: NotRequired[
-        list[Errorsisreturnedwhenanerrorassociatesanuser | ErrorsisreturnedwhenanerrorassociatesanuserDict]
-    ]
+    errors: NotRequired[list[ErrorsisreturnedwhenanerrorassociatesanuserDict]]
     needed: NotRequired[str]
-    ok: NotRequired[Literal["False"]]
+    ok: bool
     provided: NotRequired[str]

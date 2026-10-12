@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.auth_revokeschema import AuthRevokeschema
 from ..models.auth_testsuccessschema import AuthTestsuccessschema
@@ -37,16 +39,17 @@ class AuthApi:
             content_type: Value sent with the request.
             test: Setting this parameter to ``1`` triggers a _testing mode_ where the specified token will not actually
                 be revoked.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.auth_revoke(
-            token, content_type, test=test, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.auth_revoke(token, content_type, test=test, request_options=request_options)
+        )
 
     def auth_test(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -56,14 +59,15 @@ class AuthApi:
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.auth_test(token, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.auth_test(token, content_type, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AuthApiWithRawResponse:
@@ -89,16 +93,17 @@ class AsyncAuthApi:
             content_type: Value sent with the request.
             test: Setting this parameter to ``1`` triggers a _testing mode_ where the specified token will not actually
                 be revoked.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.auth_revoke(token, content_type, test=test, request_options=request_options)
-        ).unwrap()
+        )
 
     async def auth_test(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -108,14 +113,15 @@ class AsyncAuthApi:
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.auth_test(token, content_type, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.auth_test(token, content_type, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncAuthApiWithRawResponse:
@@ -138,7 +144,8 @@ class AuthApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             content_type: Value sent with the request.
             test: Setting this parameter to ``1`` triggers a _testing mode_ where the specified token will not actually
                 be revoked.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -161,7 +168,8 @@ class AuthApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -192,7 +200,8 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             content_type: Value sent with the request.
             test: Setting this parameter to ``1`` triggers a _testing mode_ where the specified token will not actually
                 be revoked.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -202,7 +211,7 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             query_params=[param[str]("token", token), param[bool | None]("test", test)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AuthRevokeschema],
+            decoder=async_json_decoder[AuthRevokeschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -215,7 +224,8 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -224,7 +234,7 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/auth.test"),
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AuthTestsuccessschema],
+            decoder=async_json_decoder[AuthTestsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

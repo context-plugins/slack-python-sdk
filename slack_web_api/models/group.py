@@ -15,5 +15,5 @@ class Group(SdkBaseModel):
 
 
 class GroupDict(TypedDict):
-    resources: NotRequired[ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict]
+    resources: NotRequired[ResourcesininfofromappsPermissionsInfoDict]
     scopes: NotRequired[list[str]]

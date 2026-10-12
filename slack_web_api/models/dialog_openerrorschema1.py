@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -15,10 +13,10 @@ class DialogOpenerrorschema1(SdkBaseModel):
     """Note: PHP callstack is only visible in dev/qa"""
 
     error: DialogOpenErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class DialogOpenerrorschema1Dict(TypedDict):
     callstack: NotRequired[str]
     error: DialogOpenErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

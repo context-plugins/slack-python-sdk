@@ -19,7 +19,7 @@ class BotProfileObject(SdkBaseModel):
 class BotProfileObjectDict(TypedDict):
     app_id: str
     deleted: bool
-    icons: Icons | IconsDict
+    icons: IconsDict
     id: str
     name: str
     team_id: str

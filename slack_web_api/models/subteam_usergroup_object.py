@@ -49,7 +49,7 @@ class SubteamUsergroupObjectDict(TypedDict):
     is_subteam: bool
     is_usergroup: bool
     name: str
-    prefs: Prefs | PrefsDict
+    prefs: PrefsDict
     team_id: str
     updated_by: str
     user_count: NotRequired[int]

@@ -15,5 +15,5 @@ class Channel(SdkBaseModel):
 
 
 class ChannelDict(TypedDict):
-    resources: NotRequired[ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict]
+    resources: NotRequired[ResourcesininfofromappsPermissionsInfoDict]
     scopes: NotRequired[list[str]]

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -13,11 +13,11 @@ class UsersConversationssuccessschema(SdkBaseModel):
     ``num_members`` or ``is_member``"""
 
     channels: list[Any]
-    ok: Literal["True"] = "True"
+    ok: bool
     response_metadata: Optional[ResponseMetadata] = UNSET
 
 
 class UsersConversationssuccessschemaDict(TypedDict):
     channels: list[Any]
-    ok: NotRequired[Literal["True"]]
-    response_metadata: NotRequired[ResponseMetadata | ResponseMetadataDict]
+    ok: bool
+    response_metadata: NotRequired[ResponseMetadataDict]

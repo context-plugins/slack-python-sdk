@@ -19,7 +19,7 @@ class Bot(SdkBaseModel):
 class BotDict(TypedDict):
     app_id: str
     deleted: bool
-    icons: Icons | IconsDict
+    icons: IconsDict
     id: str
     name: str
     updated: int

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 
@@ -13,7 +11,7 @@ class DndEndSnoozeschema(SdkBaseModel):
     dnd_enabled: bool
     next_dnd_end_ts: int
     next_dnd_start_ts: int
-    ok: Literal["True"] = "True"
+    ok: bool
     snooze_enabled: bool
 
 
@@ -21,5 +19,5 @@ class DndEndSnoozeschemaDict(TypedDict):
     dnd_enabled: bool
     next_dnd_end_ts: int
     next_dnd_start_ts: int
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     snooze_enabled: bool

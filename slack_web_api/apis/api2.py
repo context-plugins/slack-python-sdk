@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.api_testsuccessschema import ApiTestsuccessschema
 from ..models.enums.content_type import ContentTypeOrStr
@@ -35,16 +37,17 @@ class Api2:
             content_type: Value sent with the request.
             error: Error response to return
             foo: example property to return
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.api_test(
-            content_type, error=error, foo=foo, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.api_test(content_type, error=error, foo=foo, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> Api2WithRawResponse:
@@ -69,16 +72,17 @@ class AsyncApi2:
             content_type: Value sent with the request.
             error: Error response to return
             foo: example property to return
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.api_test(content_type, error=error, foo=foo, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncApi2WithRawResponse:
@@ -100,7 +104,8 @@ class Api2WithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             error: Error response to return
             foo: example property to return
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -131,7 +136,8 @@ class AsyncApi2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             content_type: Value sent with the request.
             error: Error response to return
             foo: example property to return
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -141,7 +147,7 @@ class AsyncApi2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             query_params=[param[str | None]("error", error), param[str | None]("foo", foo)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ApiTestsuccessschema],
+            decoder=async_json_decoder[ApiTestsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -26,9 +26,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.end`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_end(token: str, content_type: ContentTypeOrStr, id: str, *, duration: int | None = None, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `duration` — form field
+- **Signature**: `def calls_end(token: str, content_type: ContentTypeOrStr, id_: str, *, duration: int | None = None, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `duration` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -42,9 +42,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /calls.info`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_info(id: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `token`, `content_type`
-- **Params**: `id` — query · `token` — header · `content_type` — header `Content-Type`
+- **Signature**: `def calls_info(id_: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `token`, `content_type`
+- **Params**: `id_` — query `id` · `token` — header · `content_type` — header `Content-Type`
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -58,9 +58,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.add`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_participants_add(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`, `users`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `users` — form field
+- **Signature**: `def calls_participants_add(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`, `users`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -74,9 +74,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.remove`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`, `users`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `users` — form field
+- **Signature**: `def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`, `users`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -90,9 +90,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.update`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_update(token: str, content_type: ContentTypeOrStr, id: str, *, title: str | None = None, join_url: str | None = None, desktop_app_join_url: str | None = None, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `title` — form field · `join_url` — form field · `desktop_app_join_url` — form field
+- **Signature**: `def calls_update(token: str, content_type: ContentTypeOrStr, id_: str, *, title: str | None = None, join_url: str | None = None, desktop_app_join_url: str | None = None, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `title` — form field · `join_url` — form field · `desktop_app_join_url` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**

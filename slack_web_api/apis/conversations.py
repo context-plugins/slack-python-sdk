@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.conversations_archivesuccessschema import ConversationsArchivesuccessschema
 from ..models.conversations_closesuccessschema import ConversationsClosesuccessschema
@@ -55,16 +57,19 @@ class Conversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to archive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_archive(
-            content_type, token=token, channel=channel, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_archive(
+                content_type, token=token, channel=channel, request_options=request_options
+            ),
+        )
 
     def conversations_close(
         self,
@@ -80,16 +85,19 @@ class Conversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to close.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_close(
-            content_type, token=token, channel=channel, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_close(
+                content_type, token=token, channel=channel, request_options=request_options
+            ),
+        )
 
     def conversations_create(
         self,
@@ -107,16 +115,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             name: Name of the public or private channel to create
             is_private: Create a private channel instead of a public one
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             If successful, the command returns a rather stark `conversation object </types/conversation>`__
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_create(
-            content_type, token=token, name=name, is_private=is_private, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_create(
+                content_type, token=token, name=name, is_private=is_private, request_options=request_options
+            ),
+        )
 
     def conversations_history(
         self,
@@ -146,24 +157,27 @@ class Conversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response containing a channel's messages
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_history(
-            content_type,
-            token=token,
-            channel=channel,
-            latest=latest,
-            oldest=oldest,
-            inclusive=inclusive,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_history(
+                content_type,
+                token=token,
+                channel=channel,
+                latest=latest,
+                oldest=oldest,
+                inclusive=inclusive,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def conversations_info(
         self,
@@ -184,7 +198,8 @@ class Conversations:
             include_locale: Set this to ``true`` to receive the locale for this conversation. Defaults to ``false``
             include_num_members: Set to ``true`` to include the member count for the specified conversation. Defaults to
                 ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response for a public channel. (Also, a response from a private channel and a multi-party IM
@@ -192,14 +207,16 @@ class Conversations:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_info(
-            content_type,
-            token=token,
-            channel=channel,
-            include_locale=include_locale,
-            include_num_members=include_num_members,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_info(
+                content_type,
+                token=token,
+                channel=channel,
+                include_locale=include_locale,
+                include_num_members=include_num_members,
+                request_options=request_options,
+            ),
+        )
 
     def conversations_invite(
         self,
@@ -217,16 +234,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: The ID of the public or private channel to invite user(s) to.
             users: A comma separated list of user IDs. Up to 1000 users may be listed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response when an invitation is extended
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_invite(
-            content_type, token=token, channel=channel, users=users, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_invite(
+                content_type, token=token, channel=channel, users=users, request_options=request_options
+            ),
+        )
 
     def conversations_join(
         self,
@@ -242,16 +262,19 @@ class Conversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``channels:write``
             channel: ID of conversation to join
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_join(
-            content_type, token=token, channel=channel, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_join(
+                content_type, token=token, channel=channel, request_options=request_options
+            ),
+        )
 
     def conversations_kick(
         self,
@@ -269,16 +292,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to remove user from.
             user: User ID to be removed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_kick(
-            content_type, token=token, channel=channel, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_kick(
+                content_type, token=token, channel=channel, user=user, request_options=request_options
+            ),
+        )
 
     def conversations_leave(
         self,
@@ -294,16 +320,19 @@ class Conversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to leave
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_leave(
-            content_type, token=token, channel=channel, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_leave(
+                content_type, token=token, channel=channel, request_options=request_options
+            ),
+        )
 
     def conversations_list(
         self,
@@ -329,22 +358,25 @@ class Conversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response with only public channels
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_list(
-            content_type,
-            token=token,
-            exclude_archived=exclude_archived,
-            types=types,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_list(
+                content_type,
+                token=token,
+                exclude_archived=exclude_archived,
+                types=types,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def conversations_mark(
         self,
@@ -362,16 +394,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Channel or conversation to set the read cursor for.
             ts: Unique identifier of message you want marked as most recently seen in this conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_mark(
-            content_type, token=token, channel=channel, ts=ts, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_mark(
+                content_type, token=token, channel=channel, ts=ts, request_options=request_options
+            ),
+        )
 
     def conversations_members(
         self,
@@ -394,16 +429,19 @@ class Conversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical paginated success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_members(
-            content_type, token=token, channel=channel, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_members(
+                content_type, token=token, channel=channel, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def conversations_open(
         self,
@@ -426,21 +464,24 @@ class Conversations:
                 the users is preserved whenever a multi-person direct message is returned. Supply a ``channel`` when not
                 supplying ``users``.
             return_im: Boolean, indicates you want the full IM channel definition in the response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_open(
-            content_type,
-            token=token,
-            channel=channel,
-            users=users,
-            return_im=return_im,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_open(
+                content_type,
+                token=token,
+                channel=channel,
+                users=users,
+                return_im=return_im,
+                request_options=request_options,
+            ),
+        )
 
     def conversations_rename(
         self,
@@ -458,16 +499,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to rename
             name: New name for conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_rename(
-            content_type, token=token, channel=channel, name=name, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_rename(
+                content_type, token=token, channel=channel, name=name, request_options=request_options
+            ),
+        )
 
     def conversations_replies(
         self,
@@ -501,25 +545,28 @@ class Conversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_replies(
-            content_type,
-            token=token,
-            channel=channel,
-            ts=ts,
-            latest=latest,
-            oldest=oldest,
-            inclusive=inclusive,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_replies(
+                content_type,
+                token=token,
+                channel=channel,
+                ts=ts,
+                latest=latest,
+                oldest=oldest,
+                inclusive=inclusive,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def conversations_set_purpose(
         self,
@@ -537,16 +584,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the purpose of
             purpose: A new, specialer purpose
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_set_purpose(
-            content_type, token=token, channel=channel, purpose=purpose, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_set_purpose(
+                content_type, token=token, channel=channel, purpose=purpose, request_options=request_options
+            ),
+        )
 
     def conversations_set_topic(
         self,
@@ -564,16 +614,19 @@ class Conversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the topic of
             topic: The new topic string. Does not support formatting or linkification.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_set_topic(
-            content_type, token=token, channel=channel, topic=topic, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_set_topic(
+                content_type, token=token, channel=channel, topic=topic, request_options=request_options
+            ),
+        )
 
     def conversations_unarchive(
         self,
@@ -589,16 +642,19 @@ class Conversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to unarchive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.conversations_unarchive(
-            content_type, token=token, channel=channel, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.conversations_unarchive(
+                content_type, token=token, channel=channel, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> ConversationsWithRawResponse:
@@ -623,18 +679,19 @@ class AsyncConversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to archive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_archive(
                 content_type, token=token, channel=channel, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_close(
         self,
@@ -650,18 +707,19 @@ class AsyncConversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to close.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_close(
                 content_type, token=token, channel=channel, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_create(
         self,
@@ -679,18 +737,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             name: Name of the public or private channel to create
             is_private: Create a private channel instead of a public one
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             If successful, the command returns a rather stark `conversation object </types/conversation>`__
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_create(
                 content_type, token=token, name=name, is_private=is_private, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_history(
         self,
@@ -720,14 +779,15 @@ class AsyncConversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response containing a channel's messages
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_history(
                 content_type,
                 token=token,
@@ -738,8 +798,8 @@ class AsyncConversations:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_info(
         self,
@@ -760,7 +820,8 @@ class AsyncConversations:
             include_locale: Set this to ``true`` to receive the locale for this conversation. Defaults to ``false``
             include_num_members: Set to ``true`` to include the member count for the specified conversation. Defaults to
                 ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response for a public channel. (Also, a response from a private channel and a multi-party IM
@@ -768,7 +829,7 @@ class AsyncConversations:
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_info(
                 content_type,
                 token=token,
@@ -776,8 +837,8 @@ class AsyncConversations:
                 include_locale=include_locale,
                 include_num_members=include_num_members,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_invite(
         self,
@@ -795,18 +856,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: The ID of the public or private channel to invite user(s) to.
             users: A comma separated list of user IDs. Up to 1000 users may be listed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response when an invitation is extended
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_invite(
                 content_type, token=token, channel=channel, users=users, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_join(
         self,
@@ -822,18 +884,19 @@ class AsyncConversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``channels:write``
             channel: ID of conversation to join
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_join(
                 content_type, token=token, channel=channel, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_kick(
         self,
@@ -851,18 +914,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to remove user from.
             user: User ID to be removed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_kick(
                 content_type, token=token, channel=channel, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_leave(
         self,
@@ -878,18 +942,19 @@ class AsyncConversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to leave
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_leave(
                 content_type, token=token, channel=channel, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_list(
         self,
@@ -915,14 +980,15 @@ class AsyncConversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response with only public channels
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_list(
                 content_type,
                 token=token,
@@ -931,8 +997,8 @@ class AsyncConversations:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_mark(
         self,
@@ -950,18 +1016,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Channel or conversation to set the read cursor for.
             ts: Unique identifier of message you want marked as most recently seen in this conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_mark(
                 content_type, token=token, channel=channel, ts=ts, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_members(
         self,
@@ -984,18 +1051,19 @@ class AsyncConversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical paginated success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_members(
                 content_type, token=token, channel=channel, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_open(
         self,
@@ -1018,14 +1086,15 @@ class AsyncConversations:
                 the users is preserved whenever a multi-person direct message is returned. Supply a ``channel`` when not
                 supplying ``users``.
             return_im: Boolean, indicates you want the full IM channel definition in the response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_open(
                 content_type,
                 token=token,
@@ -1033,8 +1102,8 @@ class AsyncConversations:
                 users=users,
                 return_im=return_im,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_rename(
         self,
@@ -1052,18 +1121,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to rename
             name: New name for conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_rename(
                 content_type, token=token, channel=channel, name=name, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_replies(
         self,
@@ -1097,14 +1167,15 @@ class AsyncConversations:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_replies(
                 content_type,
                 token=token,
@@ -1116,8 +1187,8 @@ class AsyncConversations:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_set_purpose(
         self,
@@ -1135,18 +1206,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the purpose of
             purpose: A new, specialer purpose
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_set_purpose(
                 content_type, token=token, channel=channel, purpose=purpose, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_set_topic(
         self,
@@ -1164,18 +1236,19 @@ class AsyncConversations:
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the topic of
             topic: The new topic string. Does not support formatting or linkification.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_set_topic(
                 content_type, token=token, channel=channel, topic=topic, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def conversations_unarchive(
         self,
@@ -1191,18 +1264,19 @@ class AsyncConversations:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to unarchive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.conversations_unarchive(
                 content_type, token=token, channel=channel, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncConversationsWithRawResponse:
@@ -1224,7 +1298,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to archive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1236,7 +1311,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsArchivesuccessschema],
             error_mapper=raw_error_response,
@@ -1257,7 +1332,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to close.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1269,7 +1345,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsClosesuccessschema],
             error_mapper=raw_error_response,
@@ -1292,7 +1368,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             name: Name of the public or private channel to create
             is_private: Create a private channel instead of a public one
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1304,7 +1381,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("name", name), param[bool | None]("is_private", is_private)]),
+            body=form_body(param[str | None]("name", name), param[bool | None]("is_private", is_private)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsCreatesuccessschema],
             error_mapper=raw_error_response,
@@ -1339,7 +1416,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1381,7 +1459,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             include_locale: Set this to ``true`` to receive the locale for this conversation. Defaults to ``false``
             include_num_members: Set to ``true`` to include the member count for the specified conversation. Defaults to
                 ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1417,7 +1496,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: The ID of the public or private channel to invite user(s) to.
             users: A comma separated list of user IDs. Up to 1000 users may be listed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1429,7 +1509,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("users", users)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("users", users)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsInviteerrorschema],
             error_mapper=raw_error_response,
@@ -1450,7 +1530,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``channels:write``
             channel: ID of conversation to join
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1462,7 +1543,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsJoinsuccessschema],
             error_mapper=raw_error_response,
@@ -1485,7 +1566,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to remove user from.
             user: User ID to be removed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1497,7 +1579,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("user", user)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("user", user)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsKicksuccessschema],
             error_mapper=raw_error_response,
@@ -1518,7 +1600,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to leave
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1530,7 +1613,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsLeavesuccessschema],
             error_mapper=raw_error_response,
@@ -1561,7 +1644,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1598,7 +1682,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Channel or conversation to set the read cursor for.
             ts: Unique identifier of message you want marked as most recently seen in this conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1610,7 +1695,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[float | None]("ts", ts)]),
+            body=form_body(param[str | None]("channel", channel), param[float | None]("ts", ts)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsMarksuccessschema],
             error_mapper=raw_error_response,
@@ -1638,7 +1723,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1679,7 +1765,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 the users is preserved whenever a multi-person direct message is returned. Supply a ``channel`` when not
                 supplying ``users``.
             return_im: Boolean, indicates you want the full IM channel definition in the response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1692,11 +1779,9 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("users", users),
-                    param[bool | None]("return_im", return_im),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("users", users),
+                param[bool | None]("return_im", return_im),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsOpensuccessschema],
@@ -1720,7 +1805,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to rename
             name: New name for conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1732,7 +1818,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("name", name)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("name", name)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsRenamesuccessschema],
             error_mapper=raw_error_response,
@@ -1771,7 +1857,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1811,7 +1898,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the purpose of
             purpose: A new, specialer purpose
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1823,7 +1911,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("purpose", purpose)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("purpose", purpose)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsSetPurposesuccessschema],
             error_mapper=raw_error_response,
@@ -1846,7 +1934,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the topic of
             topic: The new topic string. Does not support formatting or linkification.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1858,7 +1947,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("topic", topic)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("topic", topic)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsSetTopicsuccessschema],
             error_mapper=raw_error_response,
@@ -1879,7 +1968,8 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to unarchive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1891,7 +1981,7 @@ class ConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ConversationsUnarchivesuccessschema],
             error_mapper=raw_error_response,
@@ -1914,7 +2004,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to archive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1926,9 +2017,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsArchivesuccessschema],
+            decoder=async_json_decoder[ConversationsArchivesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1947,7 +2038,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to close.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1959,9 +2051,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsClosesuccessschema],
+            decoder=async_json_decoder[ConversationsClosesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1982,7 +2074,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             name: Name of the public or private channel to create
             is_private: Create a private channel instead of a public one
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1994,9 +2087,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("name", name), param[bool | None]("is_private", is_private)]),
+            body=form_body(param[str | None]("name", name), param[bool | None]("is_private", is_private)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsCreatesuccessschema],
+            decoder=async_json_decoder[ConversationsCreatesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2029,7 +2122,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2047,7 +2141,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsHistorysuccessschema],
+            decoder=async_json_decoder[ConversationsHistorysuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2071,7 +2165,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             include_locale: Set this to ``true`` to receive the locale for this conversation. Defaults to ``false``
             include_num_members: Set to ``true`` to include the member count for the specified conversation. Defaults to
                 ``false``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2086,7 +2181,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsInfosuccessschema],
+            decoder=async_json_decoder[ConversationsInfosuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2107,7 +2202,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: The ID of the public or private channel to invite user(s) to.
             users: A comma separated list of user IDs. Up to 1000 users may be listed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2119,9 +2215,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("users", users)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("users", users)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsInviteerrorschema],
+            decoder=async_json_decoder[ConversationsInviteerrorschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2140,7 +2236,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``channels:write``
             channel: ID of conversation to join
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2152,9 +2249,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsJoinsuccessschema],
+            decoder=async_json_decoder[ConversationsJoinsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2175,7 +2272,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to remove user from.
             user: User ID to be removed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2187,9 +2285,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("user", user)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("user", user)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsKicksuccessschema],
+            decoder=async_json_decoder[ConversationsKicksuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2208,7 +2306,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to leave
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2220,9 +2319,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsLeavesuccessschema],
+            decoder=async_json_decoder[ConversationsLeavesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2251,7 +2350,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2267,7 +2367,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsListsuccessschema],
+            decoder=async_json_decoder[ConversationsListsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2288,7 +2388,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Channel or conversation to set the read cursor for.
             ts: Unique identifier of message you want marked as most recently seen in this conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2300,9 +2401,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[float | None]("ts", ts)]),
+            body=form_body(param[str | None]("channel", channel), param[float | None]("ts", ts)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsMarksuccessschema],
+            decoder=async_json_decoder[ConversationsMarksuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2328,7 +2429,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2343,7 +2445,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsMemberssuccessschema],
+            decoder=async_json_decoder[ConversationsMemberssuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2369,7 +2471,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 the users is preserved whenever a multi-person direct message is returned. Supply a ``channel`` when not
                 supplying ``users``.
             return_im: Boolean, indicates you want the full IM channel definition in the response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2382,14 +2485,12 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("users", users),
-                    param[bool | None]("return_im", return_im),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("users", users),
+                param[bool | None]("return_im", return_im),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsOpensuccessschema],
+            decoder=async_json_decoder[ConversationsOpensuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2410,7 +2511,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to rename
             name: New name for conversation.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2422,9 +2524,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("name", name)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("name", name)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsRenamesuccessschema],
+            decoder=async_json_decoder[ConversationsRenamesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2461,7 +2563,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2480,7 +2583,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsRepliessuccessschema],
+            decoder=async_json_decoder[ConversationsRepliessuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2501,7 +2604,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the purpose of
             purpose: A new, specialer purpose
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2513,9 +2617,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("purpose", purpose)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("purpose", purpose)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsSetPurposesuccessschema],
+            decoder=async_json_decoder[ConversationsSetPurposesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2536,7 +2640,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             token: Authentication token. Requires scope: ``conversations:write``
             channel: Conversation to set the topic of
             topic: The new topic string. Does not support formatting or linkification.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2548,9 +2653,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("topic", topic)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("topic", topic)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsSetTopicsuccessschema],
+            decoder=async_json_decoder[ConversationsSetTopicsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2569,7 +2674,8 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``conversations:write``
             channel: ID of conversation to unarchive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2581,9 +2687,9 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel)]),
+            body=form_body(param[str | None]("channel", channel)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ConversationsUnarchivesuccessschema],
+            decoder=async_json_decoder[ConversationsUnarchivesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -58,32 +60,35 @@ class Calls:
                 Otherwise, the field is required.
             users: The list of users to register as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_add(
-            token,
-            content_type,
-            external_unique_id,
-            join_url,
-            external_display_id=external_display_id,
-            desktop_app_join_url=desktop_app_join_url,
-            date_start=date_start,
-            title=title,
-            created_by=created_by,
-            users=users,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calls_add(
+                token,
+                content_type,
+                external_unique_id,
+                join_url,
+                external_display_id=external_display_id,
+                desktop_app_join_url=desktop_app_join_url,
+                date_start=date_start,
+                title=title,
+                created_by=created_by,
+                users=users,
+                request_options=request_options,
+            ),
+        )
 
     def calls_end(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         duration: int | None = None,
         request_options: RequestOptionsOrDict | None = None,
@@ -93,22 +98,25 @@ class Calls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned when registering the call using the /methods/calls.add method.
+            id_: ``id`` returned when registering the call using the /methods/calls.add method.
             duration: Call duration in seconds
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_end(
-            token, content_type, id, duration=duration, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calls_end(
+                token, content_type, id_, duration=duration, request_options=request_options
+            ),
+        )
 
     def calls_info(
         self,
-        id: str,
+        id_: str,
         token: str,
         content_type: ContentTypeOrStr,
         *,
@@ -117,23 +125,24 @@ class Calls:
         """Returns information about a Call.
 
         Args:
-            id: ``id`` of the Call returned by the /methods/calls.add method.
+            id_: ``id`` of the Call returned by the /methods/calls.add method.
             token: Authentication token. Requires scope: ``calls:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_info(id, token, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.calls_info(id_, token, content_type, request_options=request_options))
 
     def calls_participants_add(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -143,25 +152,28 @@ class Calls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to add as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_participants_add(
-            token, content_type, id, users, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calls_participants_add(
+                token, content_type, id_, users, request_options=request_options
+            ),
+        )
 
     def calls_participants_remove(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -171,25 +183,28 @@ class Calls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to remove as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_participants_remove(
-            token, content_type, id, users, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calls_participants_remove(
+                token, content_type, id_, users, request_options=request_options
+            ),
+        )
 
     def calls_update(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         title: str | None = None,
         join_url: str | None = None,
@@ -201,27 +216,30 @@ class Calls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             title: The name of the Call.
             join_url: The URL required for a client to join the Call.
             desktop_app_join_url: When supplied, available Slack clients will attempt to directly launch the 3rd-party
                 Call with this URL.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calls_update(
-            token,
-            content_type,
-            id,
-            title=title,
-            join_url=join_url,
-            desktop_app_join_url=desktop_app_join_url,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calls_update(
+                token,
+                content_type,
+                id_,
+                title=title,
+                join_url=join_url,
+                desktop_app_join_url=desktop_app_join_url,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> CallsWithRawResponse:
@@ -266,14 +284,15 @@ class AsyncCalls:
                 Otherwise, the field is required.
             users: The list of users to register as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calls_add(
                 token,
                 content_type,
@@ -286,14 +305,14 @@ class AsyncCalls:
                 created_by=created_by,
                 users=users,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def calls_end(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         duration: int | None = None,
         request_options: RequestOptionsOrDict | None = None,
@@ -303,24 +322,25 @@ class AsyncCalls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned when registering the call using the /methods/calls.add method.
+            id_: ``id`` returned when registering the call using the /methods/calls.add method.
             duration: Call duration in seconds
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calls_end(
-                token, content_type, id, duration=duration, request_options=request_options
-            )
-        ).unwrap()
+                token, content_type, id_, duration=duration, request_options=request_options
+            ),
+        )
 
     async def calls_info(
         self,
-        id: str,
+        id_: str,
         token: str,
         content_type: ContentTypeOrStr,
         *,
@@ -329,25 +349,26 @@ class AsyncCalls:
         """Returns information about a Call.
 
         Args:
-            id: ``id`` of the Call returned by the /methods/calls.add method.
+            id_: ``id`` of the Call returned by the /methods/calls.add method.
             token: Authentication token. Requires scope: ``calls:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.calls_info(id, token, content_type, request_options=request_options)
-        ).unwrap()
+        return unwrap(
+            await self._with_raw_response.calls_info(id_, token, content_type, request_options=request_options)
+        )
 
     async def calls_participants_add(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -357,27 +378,28 @@ class AsyncCalls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to add as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calls_participants_add(
-                token, content_type, id, users, request_options=request_options
-            )
-        ).unwrap()
+                token, content_type, id_, users, request_options=request_options
+            ),
+        )
 
     async def calls_participants_remove(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -387,27 +409,28 @@ class AsyncCalls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to remove as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calls_participants_remove(
-                token, content_type, id, users, request_options=request_options
-            )
-        ).unwrap()
+                token, content_type, id_, users, request_options=request_options
+            ),
+        )
 
     async def calls_update(
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         title: str | None = None,
         join_url: str | None = None,
@@ -419,29 +442,30 @@ class AsyncCalls:
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             title: The name of the Call.
             join_url: The URL required for a client to join the Call.
             desktop_app_join_url: When supplied, available Slack clients will attempt to directly launch the 3rd-party
                 Call with this URL.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calls_update(
                 token,
                 content_type,
-                id,
+                id_,
                 title=title,
                 join_url=join_url,
                 desktop_app_join_url=desktop_app_join_url,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncCallsWithRawResponse:
@@ -483,7 +507,8 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 Otherwise, the field is required.
             users: The list of users to register as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -496,16 +521,14 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("external_unique_id", external_unique_id),
-                    param[str]("join_url", join_url),
-                    param[str | None]("external_display_id", external_display_id),
-                    param[str | None]("desktop_app_join_url", desktop_app_join_url),
-                    param[int | None]("date_start", date_start),
-                    param[str | None]("title", title),
-                    param[str | None]("created_by", created_by),
-                    param[str | None]("users", users),
-                ],
+                param[str]("external_unique_id", external_unique_id),
+                param[str]("join_url", join_url),
+                param[str | None]("external_display_id", external_display_id),
+                param[str | None]("desktop_app_join_url", desktop_app_join_url),
+                param[int | None]("date_start", date_start),
+                param[str | None]("title", title),
+                param[str | None]("created_by", created_by),
+                param[str | None]("users", users),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -517,7 +540,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         duration: int | None = None,
         request_options: RequestOptionsOrDict | None = None,
@@ -527,9 +550,10 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned when registering the call using the /methods/calls.add method.
+            id_: ``id`` returned when registering the call using the /methods/calls.add method.
             duration: Call duration in seconds
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -541,7 +565,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[int | None]("duration", duration)]),
+            body=form_body(param[str]("id", id_), param[int | None]("duration", duration)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -550,7 +574,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def calls_info(
         self,
-        id: str,
+        id_: str,
         token: str,
         content_type: ContentTypeOrStr,
         *,
@@ -559,17 +583,18 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         """Returns information about a Call.
 
         Args:
-            id: ``id`` of the Call returned by the /methods/calls.add method.
+            id_: ``id`` of the Call returned by the /methods/calls.add method.
             token: Authentication token. Requires scope: ``calls:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/calls.info"),
-            query_params=[param[str]("id", id)],
+            query_params=[param[str]("id", id_)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -581,7 +606,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -591,10 +616,11 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to add as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -606,7 +632,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[str]("users", users)]),
+            body=form_body(param[str]("id", id_), param[str]("users", users)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -617,7 +643,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -627,10 +653,11 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to remove as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -642,7 +669,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[str]("users", users)]),
+            body=form_body(param[str]("id", id_), param[str]("users", users)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -653,7 +680,7 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         title: str | None = None,
         join_url: str | None = None,
@@ -665,12 +692,13 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             title: The name of the Call.
             join_url: The URL required for a client to join the Call.
             desktop_app_join_url: When supplied, available Slack clients will attempt to directly launch the 3rd-party
                 Call with this URL.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -683,12 +711,10 @@ class CallsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("id", id),
-                    param[str | None]("title", title),
-                    param[str | None]("join_url", join_url),
-                    param[str | None]("desktop_app_join_url", desktop_app_join_url),
-                ],
+                param[str]("id", id_),
+                param[str | None]("title", title),
+                param[str | None]("join_url", join_url),
+                param[str | None]("desktop_app_join_url", desktop_app_join_url),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -732,7 +758,8 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 Otherwise, the field is required.
             users: The list of users to register as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -745,19 +772,17 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("external_unique_id", external_unique_id),
-                    param[str]("join_url", join_url),
-                    param[str | None]("external_display_id", external_display_id),
-                    param[str | None]("desktop_app_join_url", desktop_app_join_url),
-                    param[int | None]("date_start", date_start),
-                    param[str | None]("title", title),
-                    param[str | None]("created_by", created_by),
-                    param[str | None]("users", users),
-                ],
+                param[str]("external_unique_id", external_unique_id),
+                param[str]("join_url", join_url),
+                param[str | None]("external_display_id", external_display_id),
+                param[str | None]("desktop_app_join_url", desktop_app_join_url),
+                param[int | None]("date_start", date_start),
+                param[str | None]("title", title),
+                param[str | None]("created_by", created_by),
+                param[str | None]("users", users),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -766,7 +791,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         duration: int | None = None,
         request_options: RequestOptionsOrDict | None = None,
@@ -776,9 +801,10 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned when registering the call using the /methods/calls.add method.
+            id_: ``id`` returned when registering the call using the /methods/calls.add method.
             duration: Call duration in seconds
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -790,16 +816,16 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[int | None]("duration", duration)]),
+            body=form_body(param[str]("id", id_), param[int | None]("duration", duration)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def calls_info(
         self,
-        id: str,
+        id_: str,
         token: str,
         content_type: ContentTypeOrStr,
         *,
@@ -808,20 +834,21 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         """Returns information about a Call.
 
         Args:
-            id: ``id`` of the Call returned by the /methods/calls.add method.
+            id_: ``id`` of the Call returned by the /methods/calls.add method.
             token: Authentication token. Requires scope: ``calls:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/calls.info"),
-            query_params=[param[str]("id", id)],
+            query_params=[param[str]("id", id_)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -830,7 +857,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -840,10 +867,11 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to add as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -855,9 +883,9 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[str]("users", users)]),
+            body=form_body(param[str]("id", id_), param[str]("users", users)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -866,7 +894,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         users: str,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -876,10 +904,11 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             users: The list of users to remove as participants in the Call. `Read more on how to specify users here
                 </apis/calls#users>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -891,9 +920,9 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("id", id), param[str]("users", users)]),
+            body=form_body(param[str]("id", id_), param[str]("users", users)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -902,7 +931,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         self,
         token: str,
         content_type: ContentTypeOrStr,
-        id: str,
+        id_: str,
         *,
         title: str | None = None,
         join_url: str | None = None,
@@ -914,12 +943,13 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             token: Authentication token. Requires scope: ``calls:write``
             content_type: Value sent with the request.
-            id: ``id`` returned by the /methods/calls.add method.
+            id_: ``id`` returned by the /methods/calls.add method.
             title: The name of the Call.
             join_url: The URL required for a client to join the Call.
             desktop_app_join_url: When supplied, available Slack clients will attempt to directly launch the 3rd-party
                 Call with this URL.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -932,15 +962,13 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("id", id),
-                    param[str | None]("title", title),
-                    param[str | None]("join_url", join_url),
-                    param[str | None]("desktop_app_join_url", desktop_app_join_url),
-                ],
+                param[str]("id", id_),
+                param[str | None]("title", title),
+                param[str | None]("join_url", join_url),
+                param[str | None]("desktop_app_join_url", desktop_app_join_url),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

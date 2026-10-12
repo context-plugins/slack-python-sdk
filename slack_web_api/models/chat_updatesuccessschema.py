@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 from .messageobject1 import Messageobject1, Messageobject1Dict
@@ -13,14 +11,14 @@ class ChatUpdatesuccessschema(SdkBaseModel):
 
     channel: str
     message: Messageobject1
-    ok: Literal["True"] = "True"
+    ok: bool
     text: str
     ts: str
 
 
 class ChatUpdatesuccessschemaDict(TypedDict):
     channel: str
-    message: Messageobject1 | Messageobject1Dict
-    ok: NotRequired[Literal["True"]]
+    message: Messageobject1Dict
+    ok: bool
     text: str
     ts: str

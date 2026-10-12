@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.dnd_end_dndschema import DndEndDndschema
@@ -36,14 +38,15 @@ class Dnd:
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dnd_end_dnd(token, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.dnd_end_dnd(token, content_type, request_options=request_options))
 
     def dnd_end_snooze(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -53,14 +56,15 @@ class Dnd:
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dnd_end_snooze(token, content_type, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.dnd_end_snooze(token, content_type, request_options=request_options))
 
     def dnd_info(
         self,
@@ -76,16 +80,17 @@ class Dnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             user: User to fetch status for (defaults to current user)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dnd_info(
-            content_type, token=token, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.dnd_info(content_type, token=token, user=user, request_options=request_options)
+        )
 
     def dnd_set_snooze(
         self,
@@ -101,16 +106,17 @@ class Dnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:write``
             num_minutes: Number of minutes, from now, to snooze until.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dnd_set_snooze(
-            content_type, token, num_minutes, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.dnd_set_snooze(content_type, token, num_minutes, request_options=request_options)
+        )
 
     def dnd_team_info(
         self,
@@ -126,16 +132,19 @@ class Dnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             users: Comma-separated list of users to fetch Do Not Disturb status for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dnd_team_info(
-            content_type, token=token, users=users, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.dnd_team_info(
+                content_type, token=token, users=users, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> DndWithRawResponse:
@@ -154,16 +163,15 @@ class AsyncDnd:
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.dnd_end_dnd(token, content_type, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.dnd_end_dnd(token, content_type, request_options=request_options))
 
     async def dnd_end_snooze(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -173,16 +181,17 @@ class AsyncDnd:
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dnd_end_snooze(token, content_type, request_options=request_options)
-        ).unwrap()
+        )
 
     async def dnd_info(
         self,
@@ -198,18 +207,19 @@ class AsyncDnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             user: User to fetch status for (defaults to current user)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dnd_info(
                 content_type, token=token, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def dnd_set_snooze(
         self,
@@ -225,18 +235,19 @@ class AsyncDnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:write``
             num_minutes: Number of minutes, from now, to snooze until.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dnd_set_snooze(
                 content_type, token, num_minutes, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def dnd_team_info(
         self,
@@ -252,18 +263,19 @@ class AsyncDnd:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             users: Comma-separated list of users to fetch Do Not Disturb status for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dnd_team_info(
                 content_type, token=token, users=users, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncDndWithRawResponse:
@@ -279,7 +291,8 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -305,7 +318,8 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -337,7 +351,8 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             user: User to fetch status for (defaults to current user)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -366,7 +381,8 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:write``
             num_minutes: Number of minutes, from now, to snooze until.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -374,7 +390,7 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="POST",
             url_template=self._server.default("/dnd.setSnooze"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
-            body=form_body([param[str]("token", token), param[str]("num_minutes", num_minutes)]),
+            body=form_body(param[str]("token", token), param[str]("num_minutes", num_minutes)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[DndSetSnoozeschema],
             error_mapper=raw_error_response,
@@ -395,7 +411,8 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             users: Comma-separated list of users to fetch Do Not Disturb status for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -420,7 +437,8 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -433,7 +451,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[DndEndDndschema],
+            decoder=async_json_decoder[DndEndDndschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -446,7 +464,8 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         Args:
             token: Authentication token. Requires scope: ``dnd:write``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -459,7 +478,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[DndEndSnoozeschema],
+            decoder=async_json_decoder[DndEndSnoozeschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -478,7 +497,8 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             user: User to fetch status for (defaults to current user)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -488,7 +508,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             query_params=[param[str | None]("token", token), param[str | None]("user", user)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[DndInfoschema],
+            decoder=async_json_decoder[DndInfoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -507,7 +527,8 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:write``
             num_minutes: Number of minutes, from now, to snooze until.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -515,9 +536,9 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             http_method="POST",
             url_template=self._server.default("/dnd.setSnooze"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
-            body=form_body([param[str]("token", token), param[str]("num_minutes", num_minutes)]),
+            body=form_body(param[str]("token", token), param[str]("num_minutes", num_minutes)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[DndSetSnoozeschema],
+            decoder=async_json_decoder[DndSetSnoozeschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -536,7 +557,8 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``dnd:read``
             users: Comma-separated list of users to fetch Do Not Disturb status for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -546,7 +568,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
             query_params=[param[str | None]("token", token), param[str | None]("users", users)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

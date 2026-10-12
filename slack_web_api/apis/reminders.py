@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.reminders_addschema import RemindersAddschema
@@ -49,16 +51,19 @@ class Reminders:
                 or "every Thursday")
             user: The user who will receive the reminder. If no user is specified, the reminder will go to user who
                 created it.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reminders_add(
-            token, content_type, text, time, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reminders_add(
+                token, content_type, text, time, user=user, request_options=request_options
+            ),
+        )
 
     def reminders_complete(
         self,
@@ -74,16 +79,19 @@ class Reminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder to be marked as complete
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reminders_complete(
-            content_type, token=token, reminder=reminder, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reminders_complete(
+                content_type, token=token, reminder=reminder, request_options=request_options
+            ),
+        )
 
     def reminders_delete(
         self,
@@ -99,16 +107,19 @@ class Reminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reminders_delete(
-            content_type, token=token, reminder=reminder, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reminders_delete(
+                content_type, token=token, reminder=reminder, request_options=request_options
+            ),
+        )
 
     def reminders_info(
         self,
@@ -124,16 +135,19 @@ class Reminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reminders_info(
-            content_type, token=token, reminder=reminder, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reminders_info(
+                content_type, token=token, reminder=reminder, request_options=request_options
+            ),
+        )
 
     def reminders_list(
         self,
@@ -147,16 +161,17 @@ class Reminders:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reminders_list(
-            content_type, token=token, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reminders_list(content_type, token=token, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> RemindersWithRawResponse:
@@ -188,18 +203,19 @@ class AsyncReminders:
                 or "every Thursday")
             user: The user who will receive the reminder. If no user is specified, the reminder will go to user who
                 created it.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reminders_add(
                 token, content_type, text, time, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reminders_complete(
         self,
@@ -215,18 +231,19 @@ class AsyncReminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder to be marked as complete
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reminders_complete(
                 content_type, token=token, reminder=reminder, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reminders_delete(
         self,
@@ -242,18 +259,19 @@ class AsyncReminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reminders_delete(
                 content_type, token=token, reminder=reminder, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reminders_info(
         self,
@@ -269,18 +287,19 @@ class AsyncReminders:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reminders_info(
                 content_type, token=token, reminder=reminder, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reminders_list(
         self,
@@ -294,16 +313,17 @@ class AsyncReminders:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reminders_list(content_type, token=token, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncRemindersWithRawResponse:
@@ -332,7 +352,8 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 or "every Thursday")
             user: The user who will receive the reminder. If no user is specified, the reminder will go to user who
                 created it.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -344,7 +365,7 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("text", text), param[str]("time", time), param[str | None]("user", user)]),
+            body=form_body(param[str]("text", text), param[str]("time", time), param[str | None]("user", user)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[RemindersAddschema],
             error_mapper=raw_error_response,
@@ -365,7 +386,8 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder to be marked as complete
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -377,7 +399,7 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("reminder", reminder)]),
+            body=form_body(param[str | None]("reminder", reminder)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[RemindersCompleteschema],
             error_mapper=raw_error_response,
@@ -398,7 +420,8 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -410,7 +433,7 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("reminder", reminder)]),
+            body=form_body(param[str | None]("reminder", reminder)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[RemindersDeleteschema],
             error_mapper=raw_error_response,
@@ -431,7 +454,8 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -458,7 +482,8 @@ class RemindersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -496,7 +521,8 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 or "every Thursday")
             user: The user who will receive the reminder. If no user is specified, the reminder will go to user who
                 created it.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -508,9 +534,9 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("text", text), param[str]("time", time), param[str | None]("user", user)]),
+            body=form_body(param[str]("text", text), param[str]("time", time), param[str | None]("user", user)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[RemindersAddschema],
+            decoder=async_json_decoder[RemindersAddschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -529,7 +555,8 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder to be marked as complete
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -541,9 +568,9 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("reminder", reminder)]),
+            body=form_body(param[str | None]("reminder", reminder)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[RemindersCompleteschema],
+            decoder=async_json_decoder[RemindersCompleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -562,7 +589,8 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:write``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -574,9 +602,9 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("reminder", reminder)]),
+            body=form_body(param[str | None]("reminder", reminder)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[RemindersDeleteschema],
+            decoder=async_json_decoder[RemindersDeleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -595,7 +623,8 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
             reminder: The ID of the reminder
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -605,7 +634,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             query_params=[param[str | None]("token", token), param[str | None]("reminder", reminder)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[RemindersInfoschema],
+            decoder=async_json_decoder[RemindersInfoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -622,7 +651,8 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``reminders:read``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -632,7 +662,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             query_params=[param[str | None]("token", token)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[RemindersListschema],
+            decoder=async_json_decoder[RemindersListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

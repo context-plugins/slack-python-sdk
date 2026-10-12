@@ -11,4 +11,4 @@ class Profile(SdkBaseModel):
 
 
 class ProfileDict(TypedDict):
-    fields: list[ObjsTeamProfileField | ObjsTeamProfileFieldDict]
+    fields: list[ObjsTeamProfileFieldDict]

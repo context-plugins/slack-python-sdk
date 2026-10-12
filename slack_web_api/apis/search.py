@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -45,24 +47,27 @@ class Search:
             page: Value sent with the request.
             sort: Return matches sorted by either ``score`` or ``timestamp``.
             sort_dir: Change sort direction to ascending (``asc``) or descending (``desc``).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_messages(
-            token,
-            query,
-            content_type,
-            count=count,
-            highlight=highlight,
-            page=page,
-            sort=sort,
-            sort_dir=sort_dir,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.search_messages(
+                token,
+                query,
+                content_type,
+                count=count,
+                highlight=highlight,
+                page=page,
+                sort=sort,
+                sort_dir=sort_dir,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> SearchWithRawResponse:
@@ -97,14 +102,15 @@ class AsyncSearch:
             page: Value sent with the request.
             sort: Return matches sorted by either ``score`` or ``timestamp``.
             sort_dir: Change sort direction to ascending (``asc``) or descending (``desc``).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.search_messages(
                 token,
                 query,
@@ -115,8 +121,8 @@ class AsyncSearch:
                 sort=sort,
                 sort_dir=sort_dir,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncSearchWithRawResponse:
@@ -148,7 +154,8 @@ class SearchWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             page: Value sent with the request.
             sort: Return matches sorted by either ``score`` or ``timestamp``.
             sort_dir: Change sort direction to ascending (``asc``) or descending (``desc``).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -197,7 +204,8 @@ class AsyncSearchWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             page: Value sent with the request.
             sort: Return matches sorted by either ``score`` or ``timestamp``.
             sort_dir: Change sort direction to ascending (``asc``) or descending (``desc``).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -215,7 +223,7 @@ class AsyncSearchWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

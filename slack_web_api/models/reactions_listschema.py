@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -12,13 +12,13 @@ class ReactionsListschema(SdkBaseModel):
     """Schema for successful response from reactions.list method"""
 
     items: list[Any]
-    ok: Literal["True"] = "True"
+    ok: bool
     paging: Optional[Pagingobject] = UNSET
     response_metadata: Optional[Any] = UNSET
 
 
 class ReactionsListschemaDict(TypedDict):
     items: list[Any]
-    ok: NotRequired[Literal["True"]]
-    paging: NotRequired[Pagingobject | PagingobjectDict]
+    ok: bool
+    paging: NotRequired[PagingobjectDict]
     response_metadata: NotRequired[Any]

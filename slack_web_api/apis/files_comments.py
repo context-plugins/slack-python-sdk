@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.files_comments_deleteschema import FilesCommentsDeleteschema
@@ -30,7 +32,7 @@ class FilesComments:
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
@@ -39,17 +41,20 @@ class FilesComments:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response is very simple
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_comments_delete(
-            content_type, token=token, file=file, id=id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_comments_delete(
+                content_type, token=token, file=file, id_=id_, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> FilesCommentsWithRawResponse:
@@ -66,7 +71,7 @@ class AsyncFilesComments:
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
@@ -75,19 +80,20 @@ class AsyncFilesComments:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response is very simple
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_comments_delete(
-                content_type, token=token, file=file, id=id, request_options=request_options
-            )
-        ).unwrap()
+                content_type, token=token, file=file, id_=id_, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncFilesCommentsWithRawResponse:
@@ -101,7 +107,7 @@ class FilesCommentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
@@ -110,8 +116,9 @@ class FilesCommentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -123,7 +130,7 @@ class FilesCommentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file), param[str | None]("id", id)]),
+            body=form_body(param[str | None]("file", file), param[str | None]("id", id_)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesCommentsDeleteschema],
             error_mapper=raw_error_response,
@@ -138,7 +145,7 @@ class AsyncFilesCommentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
@@ -147,8 +154,9 @@ class AsyncFilesCommentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -160,9 +168,9 @@ class AsyncFilesCommentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file), param[str | None]("id", id)]),
+            body=form_body(param[str | None]("file", file), param[str | None]("id", id_)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesCommentsDeleteschema],
+            decoder=async_json_decoder[FilesCommentsDeleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -15,10 +13,10 @@ class FilesCommentsDeleteerrorschema1Error(SdkBaseModel):
     """Note: PHP callstack is only visible in dev/qa"""
 
     error: FilesCommentsDeleteErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class FilesCommentsDeleteerrorschema1ErrorDict(TypedDict):
     callstack: NotRequired[str]
     error: FilesCommentsDeleteErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

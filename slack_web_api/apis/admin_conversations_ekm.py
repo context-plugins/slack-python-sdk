@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -42,22 +44,25 @@ class AdminConversationsEkm:
             team_ids: A comma-separated list of the workspaces to which the channels you would like returned belong.
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
-            token,
-            content_type,
-            channel_ids=channel_ids,
-            team_ids=team_ids,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
+                token,
+                content_type,
+                channel_ids=channel_ids,
+                team_ids=team_ids,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminConversationsEkmWithRawResponse:
@@ -89,14 +94,15 @@ class AsyncAdminConversationsEkm:
             team_ids: A comma-separated list of the workspaces to which the channels you would like returned belong.
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_ekm_list_original_connected_channel_info(
                 token,
                 content_type,
@@ -105,8 +111,8 @@ class AsyncAdminConversationsEkm:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminConversationsEkmWithRawResponse:
@@ -135,7 +141,8 @@ class AdminConversationsEkmWithRawResponse(SecuredRawResponse[RawClient, Server,
             team_ids: A comma-separated list of the workspaces to which the channels you would like returned belong.
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -179,7 +186,8 @@ class AsyncAdminConversationsEkmWithRawResponse(SecuredRawResponse[AsyncRawClien
             team_ids: A comma-separated list of the workspaces to which the channels you would like returned belong.
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -195,7 +203,7 @@ class AsyncAdminConversationsEkmWithRawResponse(SecuredRawResponse[AsyncRawClien
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

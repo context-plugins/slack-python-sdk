@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -38,16 +40,19 @@ class AdminTeamsSettings:
             team_id: Value sent with the request.
             token: Authentication token. Requires scope: ``admin.teams:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_info(
-            team_id, token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_info(
+                team_id, token, content_type, request_options=request_options
+            ),
+        )
 
     def admin_teams_settings_set_default_channels(
         self,
@@ -65,16 +70,19 @@ class AdminTeamsSettings:
             token: Authentication token. Requires scope: ``admin.teams:write``
             team_id: ID for the workspace to set the default channel for.
             channel_ids: An array of channel IDs.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_set_default_channels(
-            content_type, token, team_id, channel_ids, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_set_default_channels(
+                content_type, token, team_id, channel_ids, request_options=request_options
+            ),
+        )
 
     def admin_teams_settings_set_description(
         self,
@@ -92,16 +100,19 @@ class AdminTeamsSettings:
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the description for.
             description: The new description for the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_set_description(
-            token, content_type, team_id, description, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_set_description(
+                token, content_type, team_id, description, request_options=request_options
+            ),
+        )
 
     def admin_teams_settings_set_discoverability(
         self,
@@ -120,16 +131,19 @@ class AdminTeamsSettings:
             team_id: The ID of the workspace to set discoverability on.
             discoverability: This workspace's discovery setting. It must be set to one of ``open``, ``invite_only``,
                 ``closed``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_set_discoverability(
-            token, content_type, team_id, discoverability, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_set_discoverability(
+                token, content_type, team_id, discoverability, request_options=request_options
+            ),
+        )
 
     def admin_teams_settings_set_icon(
         self,
@@ -147,16 +161,19 @@ class AdminTeamsSettings:
             token: Authentication token. Requires scope: ``admin.teams:write``
             image_url: Image URL for the icon
             team_id: ID for the workspace to set the icon for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_set_icon(
-            content_type, token, image_url, team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_set_icon(
+                content_type, token, image_url, team_id, request_options=request_options
+            ),
+        )
 
     def admin_teams_settings_set_name(
         self,
@@ -174,16 +191,19 @@ class AdminTeamsSettings:
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the name for.
             name: The new name of the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_settings_set_name(
-            token, content_type, team_id, name, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_settings_set_name(
+                token, content_type, team_id, name, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminTeamsSettingsWithRawResponse:
@@ -208,18 +228,19 @@ class AsyncAdminTeamsSettings:
             team_id: Value sent with the request.
             token: Authentication token. Requires scope: ``admin.teams:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_info(
                 team_id, token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_settings_set_default_channels(
         self,
@@ -237,18 +258,19 @@ class AsyncAdminTeamsSettings:
             token: Authentication token. Requires scope: ``admin.teams:write``
             team_id: ID for the workspace to set the default channel for.
             channel_ids: An array of channel IDs.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_set_default_channels(
                 content_type, token, team_id, channel_ids, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_settings_set_description(
         self,
@@ -266,18 +288,19 @@ class AsyncAdminTeamsSettings:
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the description for.
             description: The new description for the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_set_description(
                 token, content_type, team_id, description, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_settings_set_discoverability(
         self,
@@ -296,18 +319,19 @@ class AsyncAdminTeamsSettings:
             team_id: The ID of the workspace to set discoverability on.
             discoverability: This workspace's discovery setting. It must be set to one of ``open``, ``invite_only``,
                 ``closed``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_set_discoverability(
                 token, content_type, team_id, discoverability, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_settings_set_icon(
         self,
@@ -325,18 +349,19 @@ class AsyncAdminTeamsSettings:
             token: Authentication token. Requires scope: ``admin.teams:write``
             image_url: Image URL for the icon
             team_id: ID for the workspace to set the icon for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_set_icon(
                 content_type, token, image_url, team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_settings_set_name(
         self,
@@ -354,18 +379,19 @@ class AsyncAdminTeamsSettings:
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the name for.
             name: The new name of the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_settings_set_name(
                 token, content_type, team_id, name, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminTeamsSettingsWithRawResponse:
@@ -387,7 +413,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             team_id: Value sent with the request.
             token: Authentication token. Requires scope: ``admin.teams:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -418,7 +445,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.teams:write``
             team_id: ID for the workspace to set the default channel for.
             channel_ids: An array of channel IDs.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -427,7 +455,7 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             url_template=self._server.default("/admin.teams.settings.setDefaultChannels"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [param[str]("token", token), param[str]("team_id", team_id), param[str]("channel_ids", channel_ids)]
+                param[str]("token", token), param[str]("team_id", team_id), param[str]("channel_ids", channel_ids)
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -451,7 +479,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the description for.
             description: The new description for the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -463,7 +492,7 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("description", description)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("description", description)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -487,7 +516,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             team_id: The ID of the workspace to set discoverability on.
             discoverability: This workspace's discovery setting. It must be set to one of ``open``, ``invite_only``,
                 ``closed``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -499,7 +529,7 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("discoverability", discoverability)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("discoverability", discoverability)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -522,7 +552,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.teams:write``
             image_url: Image URL for the icon
             team_id: ID for the workspace to set the icon for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -531,7 +562,7 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             url_template=self._server.default("/admin.teams.settings.setIcon"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [param[str]("token", token), param[str]("image_url", image_url), param[str]("team_id", team_id)]
+                param[str]("token", token), param[str]("image_url", image_url), param[str]("team_id", team_id)
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -555,7 +586,8 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the name for.
             name: The new name of the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -567,7 +599,7 @@ class AdminTeamsSettingsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("name", name)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("name", name)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -590,7 +622,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             team_id: Value sent with the request.
             token: Authentication token. Requires scope: ``admin.teams:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -600,7 +633,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             query_params=[param[str]("team_id", team_id)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -621,7 +654,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.teams:write``
             team_id: ID for the workspace to set the default channel for.
             channel_ids: An array of channel IDs.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -630,10 +664,10 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             url_template=self._server.default("/admin.teams.settings.setDefaultChannels"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [param[str]("token", token), param[str]("team_id", team_id), param[str]("channel_ids", channel_ids)]
+                param[str]("token", token), param[str]("team_id", team_id), param[str]("channel_ids", channel_ids)
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -654,7 +688,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the description for.
             description: The new description for the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -666,9 +701,9 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("description", description)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("description", description)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -690,7 +725,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             team_id: The ID of the workspace to set discoverability on.
             discoverability: This workspace's discovery setting. It must be set to one of ``open``, ``invite_only``,
                 ``closed``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -702,9 +738,9 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("discoverability", discoverability)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("discoverability", discoverability)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -725,7 +761,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.teams:write``
             image_url: Image URL for the icon
             team_id: ID for the workspace to set the icon for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -734,10 +771,10 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             url_template=self._server.default("/admin.teams.settings.setIcon"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [param[str]("token", token), param[str]("image_url", image_url), param[str]("team_id", team_id)]
+                param[str]("token", token), param[str]("image_url", image_url), param[str]("team_id", team_id)
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -758,7 +795,8 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             team_id: ID for the workspace to set the name for.
             name: The new name of the workspace.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -770,9 +808,9 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("team_id", team_id), param[str]("name", name)]),
+            body=form_body(param[str]("team_id", team_id), param[str]("name", name)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

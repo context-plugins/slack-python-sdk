@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.admin_conversations_archiveschema import AdminConversationsArchiveschema
 from ..models.admin_conversations_convert_to_privateschema import AdminConversationsConvertToPrivateschema
@@ -50,16 +52,19 @@ class AdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to archive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_archive(
-            token, content_type, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_archive(
+                token, content_type, channel_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_convert_to_private(
         self,
@@ -75,16 +80,19 @@ class AdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to convert to private.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_convert_to_private(
-            token, content_type, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_convert_to_private(
+                token, content_type, channel_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_create(
         self,
@@ -110,23 +118,26 @@ class AdminConversations:
                 ``org_wide=true``, you must specify a ``team_id`` for this channel
             team_id: The workspace to create the channel in. Note: this argument is required unless you set
                 ``org_wide=true``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_create(
-            token,
-            content_type,
-            name,
-            is_private,
-            description=description,
-            org_wide=org_wide,
-            team_id=team_id,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_create(
+                token,
+                content_type,
+                name,
+                is_private,
+                description=description,
+                org_wide=org_wide,
+                team_id=team_id,
+                request_options=request_options,
+            ),
+        )
 
     def admin_conversations_delete(
         self,
@@ -142,16 +153,19 @@ class AdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_delete(
-            token, content_type, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_delete(
+                token, content_type, channel_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_disconnect_shared(
         self,
@@ -169,16 +183,19 @@ class AdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to be disconnected from some workspaces.
             leaving_team_ids: The team to be removed from the channel. Currently only a single team id can be specified.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_disconnect_shared(
-            token, content_type, channel_id, leaving_team_ids=leaving_team_ids, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_disconnect_shared(
+                token, content_type, channel_id, leaving_team_ids=leaving_team_ids, request_options=request_options
+            ),
+        )
 
     def admin_conversations_get_conversation_prefs(
         self,
@@ -194,16 +211,19 @@ class AdminConversations:
             channel_id: The channel to get preferences for.
             token: Authentication token. Requires scope: ``admin.conversations:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_get_conversation_prefs(
-            channel_id, token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_get_conversation_prefs(
+                channel_id, token, content_type, request_options=request_options
+            ),
+        )
 
     def admin_conversations_get_teams(
         self,
@@ -223,16 +243,19 @@ class AdminConversations:
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_get_teams(
-            channel_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_get_teams(
+                channel_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def admin_conversations_invite(
         self,
@@ -250,16 +273,19 @@ class AdminConversations:
             content_type: Value sent with the request.
             user_ids: The users to invite.
             channel_id: The channel that the users will be invited to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_invite(
-            token, content_type, user_ids, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_invite(
+                token, content_type, user_ids, channel_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_rename(
         self,
@@ -277,16 +303,19 @@ class AdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to rename.
             name: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_rename(
-            token, content_type, channel_id, name, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_rename(
+                token, content_type, channel_id, name, request_options=request_options
+            ),
+        )
 
     def admin_conversations_search(
         self,
@@ -319,25 +348,28 @@ class AdminConversations:
                 created). You can optionally pair this with the ``sort_dir`` arg to change how it is sorted
             sort_dir: Sort direction. Possible values are ``asc`` for ascending order like (1, 2, 3) or (a, b, c), and
                 ``desc`` for descending order like (3, 2, 1) or (c, b, a)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_search(
-            token,
-            content_type,
-            team_ids=team_ids,
-            query=query,
-            limit=limit,
-            cursor=cursor,
-            search_channel_types=search_channel_types,
-            sort=sort,
-            sort_dir=sort_dir,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_search(
+                token,
+                content_type,
+                team_ids=team_ids,
+                query=query,
+                limit=limit,
+                cursor=cursor,
+                search_channel_types=search_channel_types,
+                sort=sort,
+                sort_dir=sort_dir,
+                request_options=request_options,
+            ),
+        )
 
     def admin_conversations_set_conversation_prefs(
         self,
@@ -355,16 +387,19 @@ class AdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to set the prefs for
             prefs: The prefs for this channel in a stringified JSON format.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_set_conversation_prefs(
-            token, content_type, channel_id, prefs, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_set_conversation_prefs(
+                token, content_type, channel_id, prefs, request_options=request_options
+            ),
+        )
 
     def admin_conversations_set_teams(
         self,
@@ -388,22 +423,25 @@ class AdminConversations:
             target_team_ids: A comma-separated list of workspaces to which the channel should be shared. Not required if
                 the channel is being shared org-wide.
             org_channel: True if channel has to be converted to an org channel
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_set_teams(
-            token,
-            content_type,
-            channel_id,
-            team_id=team_id,
-            target_team_ids=target_team_ids,
-            org_channel=org_channel,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_set_teams(
+                token,
+                content_type,
+                channel_id,
+                team_id=team_id,
+                target_team_ids=target_team_ids,
+                org_channel=org_channel,
+                request_options=request_options,
+            ),
+        )
 
     def admin_conversations_unarchive(
         self,
@@ -419,16 +457,19 @@ class AdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to unarchive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_unarchive(
-            token, content_type, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_unarchive(
+                token, content_type, channel_id, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminConversationsWithRawResponse:
@@ -453,18 +494,19 @@ class AsyncAdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to archive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_archive(
                 token, content_type, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_convert_to_private(
         self,
@@ -480,18 +522,19 @@ class AsyncAdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to convert to private.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_convert_to_private(
                 token, content_type, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_create(
         self,
@@ -517,14 +560,15 @@ class AsyncAdminConversations:
                 ``org_wide=true``, you must specify a ``team_id`` for this channel
             team_id: The workspace to create the channel in. Note: this argument is required unless you set
                 ``org_wide=true``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_create(
                 token,
                 content_type,
@@ -534,8 +578,8 @@ class AsyncAdminConversations:
                 org_wide=org_wide,
                 team_id=team_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_delete(
         self,
@@ -551,18 +595,19 @@ class AsyncAdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_delete(
                 token, content_type, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_disconnect_shared(
         self,
@@ -580,18 +625,19 @@ class AsyncAdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to be disconnected from some workspaces.
             leaving_team_ids: The team to be removed from the channel. Currently only a single team id can be specified.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_disconnect_shared(
                 token, content_type, channel_id, leaving_team_ids=leaving_team_ids, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_get_conversation_prefs(
         self,
@@ -607,18 +653,19 @@ class AsyncAdminConversations:
             channel_id: The channel to get preferences for.
             token: Authentication token. Requires scope: ``admin.conversations:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_get_conversation_prefs(
                 channel_id, token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_get_teams(
         self,
@@ -638,18 +685,19 @@ class AsyncAdminConversations:
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_get_teams(
                 channel_id, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_invite(
         self,
@@ -667,18 +715,19 @@ class AsyncAdminConversations:
             content_type: Value sent with the request.
             user_ids: The users to invite.
             channel_id: The channel that the users will be invited to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_invite(
                 token, content_type, user_ids, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_rename(
         self,
@@ -696,18 +745,19 @@ class AsyncAdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to rename.
             name: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_rename(
                 token, content_type, channel_id, name, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_search(
         self,
@@ -740,14 +790,15 @@ class AsyncAdminConversations:
                 created). You can optionally pair this with the ``sort_dir`` arg to change how it is sorted
             sort_dir: Sort direction. Possible values are ``asc`` for ascending order like (1, 2, 3) or (a, b, c), and
                 ``desc`` for descending order like (3, 2, 1) or (c, b, a)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_search(
                 token,
                 content_type,
@@ -759,8 +810,8 @@ class AsyncAdminConversations:
                 sort=sort,
                 sort_dir=sort_dir,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_set_conversation_prefs(
         self,
@@ -778,18 +829,19 @@ class AsyncAdminConversations:
             content_type: Value sent with the request.
             channel_id: The channel to set the prefs for
             prefs: The prefs for this channel in a stringified JSON format.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_set_conversation_prefs(
                 token, content_type, channel_id, prefs, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_set_teams(
         self,
@@ -813,14 +865,15 @@ class AsyncAdminConversations:
             target_team_ids: A comma-separated list of workspaces to which the channel should be shared. Not required if
                 the channel is being shared org-wide.
             org_channel: True if channel has to be converted to an org channel
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_set_teams(
                 token,
                 content_type,
@@ -829,8 +882,8 @@ class AsyncAdminConversations:
                 target_team_ids=target_team_ids,
                 org_channel=org_channel,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_unarchive(
         self,
@@ -846,18 +899,19 @@ class AsyncAdminConversations:
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to unarchive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_unarchive(
                 token, content_type, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminConversationsWithRawResponse:
@@ -879,7 +933,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to archive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -891,7 +946,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsArchiveschema],
             error_mapper=raw_error_response,
@@ -912,7 +967,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to convert to private.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -924,7 +980,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsConvertToPrivateschema],
             error_mapper=raw_error_response,
@@ -955,7 +1011,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 ``org_wide=true``, you must specify a ``team_id`` for this channel
             team_id: The workspace to create the channel in. Note: this argument is required unless you set
                 ``org_wide=true``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -968,13 +1025,11 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[bool]("is_private", is_private),
-                    param[str | None]("description", description),
-                    param[bool | None]("org_wide", org_wide),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("name", name),
+                param[bool]("is_private", is_private),
+                param[str | None]("description", description),
+                param[bool | None]("org_wide", org_wide),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsCreateschema],
@@ -996,7 +1051,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1008,7 +1064,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsDeleteschema],
             error_mapper=raw_error_response,
@@ -1031,7 +1087,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             channel_id: The channel to be disconnected from some workspaces.
             leaving_team_ids: The team to be removed from the channel. Currently only a single team id can be specified.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1044,7 +1101,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [param[str]("channel_id", channel_id), param[str | None]("leaving_team_ids", leaving_team_ids)]
+                param[str]("channel_id", channel_id), param[str | None]("leaving_team_ids", leaving_team_ids)
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsRenameschema],
@@ -1066,7 +1123,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             channel_id: The channel to get preferences for.
             token: Authentication token. Requires scope: ``admin.conversations:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1099,7 +1157,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1134,7 +1193,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             user_ids: The users to invite.
             channel_id: The channel that the users will be invited to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1146,7 +1206,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("user_ids", user_ids), param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("user_ids", user_ids), param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsInviteschema],
             error_mapper=raw_error_response,
@@ -1169,7 +1229,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             channel_id: The channel to rename.
             name: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1181,7 +1242,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id), param[str]("name", name)]),
+            body=form_body(param[str]("channel_id", channel_id), param[str]("name", name)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsRenameschema1],
             error_mapper=raw_error_response,
@@ -1219,7 +1280,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 created). You can optionally pair this with the ``sort_dir`` arg to change how it is sorted
             sort_dir: Sort direction. Possible values are ``asc`` for ascending order like (1, 2, 3) or (a, b, c), and
                 ``desc`` for descending order like (3, 2, 1) or (c, b, a)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1258,7 +1320,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             content_type: Value sent with the request.
             channel_id: The channel to set the prefs for
             prefs: The prefs for this channel in a stringified JSON format.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1270,7 +1333,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id), param[str]("prefs", prefs)]),
+            body=form_body(param[str]("channel_id", channel_id), param[str]("prefs", prefs)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsSetConversationPrefsschema],
             error_mapper=raw_error_response,
@@ -1299,7 +1362,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             target_team_ids: A comma-separated list of workspaces to which the channel should be shared. Not required if
                 the channel is being shared org-wide.
             org_channel: True if channel has to be converted to an org channel
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1312,12 +1376,10 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel_id", channel_id),
-                    param[str | None]("team_id", team_id),
-                    param[str | None]("target_team_ids", target_team_ids),
-                    param[bool | None]("org_channel", org_channel),
-                ],
+                param[str]("channel_id", channel_id),
+                param[str | None]("team_id", team_id),
+                param[str | None]("target_team_ids", target_team_ids),
+                param[bool | None]("org_channel", org_channel),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -1339,7 +1401,8 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to unarchive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1351,7 +1414,7 @@ class AdminConversationsWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[AdminConversationsUnarchiveschema],
             error_mapper=raw_error_response,
@@ -1374,7 +1437,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to archive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1386,9 +1450,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsArchiveschema],
+            decoder=async_json_decoder[AdminConversationsArchiveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1407,7 +1471,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to convert to private.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1419,9 +1484,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsConvertToPrivateschema],
+            decoder=async_json_decoder[AdminConversationsConvertToPrivateschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1450,7 +1515,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 ``org_wide=true``, you must specify a ``team_id`` for this channel
             team_id: The workspace to create the channel in. Note: this argument is required unless you set
                 ``org_wide=true``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1463,16 +1529,14 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[bool]("is_private", is_private),
-                    param[str | None]("description", description),
-                    param[bool | None]("org_wide", org_wide),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("name", name),
+                param[bool]("is_private", is_private),
+                param[str | None]("description", description),
+                param[bool | None]("org_wide", org_wide),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsCreateschema],
+            decoder=async_json_decoder[AdminConversationsCreateschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1491,7 +1555,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1503,9 +1568,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsDeleteschema],
+            decoder=async_json_decoder[AdminConversationsDeleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1526,7 +1591,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             channel_id: The channel to be disconnected from some workspaces.
             leaving_team_ids: The team to be removed from the channel. Currently only a single team id can be specified.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1539,10 +1605,10 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [param[str]("channel_id", channel_id), param[str | None]("leaving_team_ids", leaving_team_ids)]
+                param[str]("channel_id", channel_id), param[str | None]("leaving_team_ids", leaving_team_ids)
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsRenameschema],
+            decoder=async_json_decoder[AdminConversationsRenameschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1561,7 +1627,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             channel_id: The channel to get preferences for.
             token: Authentication token. Requires scope: ``admin.conversations:read``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1571,7 +1638,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             query_params=[param[str]("channel_id", channel_id)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsGetConversationPrefsschema],
+            decoder=async_json_decoder[AdminConversationsGetConversationPrefsschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1594,7 +1661,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page
             limit: The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1608,7 +1676,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsGetTeamsschema],
+            decoder=async_json_decoder[AdminConversationsGetTeamsschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1629,7 +1697,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             user_ids: The users to invite.
             channel_id: The channel that the users will be invited to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1641,9 +1710,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("user_ids", user_ids), param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("user_ids", user_ids), param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsInviteschema],
+            decoder=async_json_decoder[AdminConversationsInviteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1664,7 +1733,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             channel_id: The channel to rename.
             name: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1676,9 +1746,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id), param[str]("name", name)]),
+            body=form_body(param[str]("channel_id", channel_id), param[str]("name", name)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsRenameschema1],
+            decoder=async_json_decoder[AdminConversationsRenameschema1],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1714,7 +1784,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 created). You can optionally pair this with the ``sort_dir`` arg to change how it is sorted
             sort_dir: Sort direction. Possible values are ``asc`` for ascending order like (1, 2, 3) or (a, b, c), and
                 ``desc`` for descending order like (3, 2, 1) or (c, b, a)
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1732,7 +1803,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsSearchschema],
+            decoder=async_json_decoder[AdminConversationsSearchschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1753,7 +1824,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             content_type: Value sent with the request.
             channel_id: The channel to set the prefs for
             prefs: The prefs for this channel in a stringified JSON format.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1765,9 +1837,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id), param[str]("prefs", prefs)]),
+            body=form_body(param[str]("channel_id", channel_id), param[str]("prefs", prefs)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsSetConversationPrefsschema],
+            decoder=async_json_decoder[AdminConversationsSetConversationPrefsschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1794,7 +1866,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             target_team_ids: A comma-separated list of workspaces to which the channel should be shared. Not required if
                 the channel is being shared org-wide.
             org_channel: True if channel has to be converted to an org channel
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1807,15 +1880,13 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel_id", channel_id),
-                    param[str | None]("team_id", team_id),
-                    param[str | None]("target_team_ids", target_team_ids),
-                    param[bool | None]("org_channel", org_channel),
-                ],
+                param[str]("channel_id", channel_id),
+                param[str | None]("team_id", team_id),
+                param[str | None]("target_team_ids", target_team_ids),
+                param[bool | None]("org_channel", org_channel),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1834,7 +1905,8 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             token: Authentication token. Requires scope: ``admin.conversations:write``
             content_type: Value sent with the request.
             channel_id: The channel to unarchive.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1846,9 +1918,9 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("channel_id", channel_id)]),
+            body=form_body(param[str]("channel_id", channel_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AdminConversationsUnarchiveschema],
+            decoder=async_json_decoder[AdminConversationsUnarchiveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

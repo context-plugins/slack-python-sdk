@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -37,7 +39,7 @@ class Files:
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
@@ -46,17 +48,20 @@ class Files:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response is very simple
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_comments_delete(
-            content_type, token=token, file=file, id=id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_comments_delete(
+                content_type, token=token, file=file, id_=id_, request_options=request_options
+            ),
+        )
 
     def files_delete(
         self,
@@ -72,16 +77,17 @@ class Files:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: ID of file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_delete(
-            content_type, token=token, file=file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_delete(content_type, token=token, file=file, request_options=request_options)
+        )
 
     def files_info(
         self,
@@ -109,23 +115,26 @@ class Files:
                 ``next_cursor`` attribute returned by the previous request's ``response_metadata``. This parameter is
                 optional, but pagination is mandatory: the default value simply fetches the first "page" of the
                 collection of comments.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_info(
-            content_type,
-            token=token,
-            file=file,
-            count=count,
-            page=page,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_info(
+                content_type,
+                token=token,
+                file=file,
+                count=count,
+                page=page,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def files_list(
         self,
@@ -157,26 +166,29 @@ class Files:
             page: Value sent with the request.
             show_files_hidden_by_limit: Show truncated file info for files hidden due to being too old, and the team who
                 owns the file being over the file limit.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_list(
-            content_type,
-            token=token,
-            user=user,
-            channel=channel,
-            ts_from=ts_from,
-            ts_to=ts_to,
-            types=types,
-            count=count,
-            page=page,
-            show_files_hidden_by_limit=show_files_hidden_by_limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_list(
+                content_type,
+                token=token,
+                user=user,
+                channel=channel,
+                ts_from=ts_from,
+                ts_to=ts_to,
+                types=types,
+                count=count,
+                page=page,
+                show_files_hidden_by_limit=show_files_hidden_by_limit,
+                request_options=request_options,
+            ),
+        )
 
     def files_remote_add(
         self,
@@ -203,24 +215,27 @@ class Files:
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: A text file (txt, pdf, doc, etc.) containing textual search terms that are used to
                 improve discovery of the remote file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_add(
-            content_type,
-            token=token,
-            external_id=external_id,
-            title=title,
-            filetype=filetype,
-            external_url=external_url,
-            preview_image=preview_image,
-            indexable_file_contents=indexable_file_contents,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_add(
+                content_type,
+                token=token,
+                external_id=external_id,
+                title=title,
+                filetype=filetype,
+                external_url=external_url,
+                preview_image=preview_image,
+                indexable_file_contents=indexable_file_contents,
+                request_options=request_options,
+            ),
+        )
 
     def files_remote_info(
         self,
@@ -238,16 +253,19 @@ class Files:
             token: Authentication token. Requires scope: ``remote_files:read``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_info(
-            content_type, token=token, file=file, external_id=external_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_info(
+                content_type, token=token, file=file, external_id=external_id, request_options=request_options
+            ),
+        )
 
     def files_remote_list(
         self,
@@ -273,23 +291,26 @@ class Files:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_list(
-            content_type,
-            token=token,
-            channel=channel,
-            ts_from=ts_from,
-            ts_to=ts_to,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_list(
+                content_type,
+                token=token,
+                channel=channel,
+                ts_from=ts_from,
+                ts_to=ts_to,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def files_remote_remove(
         self,
@@ -307,16 +328,19 @@ class Files:
             token: Authentication token. Requires scope: ``remote_files:write``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_remove(
-            content_type, token=token, file=file, external_id=external_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_remove(
+                content_type, token=token, file=file, external_id=external_id, request_options=request_options
+            ),
+        )
 
     def files_remote_share(
         self,
@@ -338,21 +362,24 @@ class Files:
             external_id: The globally unique identifier (GUID) for the file, as set by the app registering the file with
                 Slack. Either this field or ``file`` or both are required.
             channels: Comma-separated list of channel IDs where the file will be shared.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_share(
-            content_type,
-            token=token,
-            file=file,
-            external_id=external_id,
-            channels=channels,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_share(
+                content_type,
+                token=token,
+                file=file,
+                external_id=external_id,
+                channels=channels,
+                request_options=request_options,
+            ),
+        )
 
     def files_remote_update(
         self,
@@ -381,25 +408,28 @@ class Files:
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: File containing contents that can be used to improve searchability for the remote
                 file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_remote_update(
-            content_type,
-            token=token,
-            file=file,
-            external_id=external_id,
-            title=title,
-            filetype=filetype,
-            external_url=external_url,
-            preview_image=preview_image,
-            indexable_file_contents=indexable_file_contents,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_remote_update(
+                content_type,
+                token=token,
+                file=file,
+                external_id=external_id,
+                title=title,
+                filetype=filetype,
+                external_url=external_url,
+                preview_image=preview_image,
+                indexable_file_contents=indexable_file_contents,
+                request_options=request_options,
+            ),
+        )
 
     def files_revoke_public_url(
         self,
@@ -415,16 +445,19 @@ class Files:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to revoke
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_revoke_public_url(
-            content_type, token=token, file=file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_revoke_public_url(
+                content_type, token=token, file=file, request_options=request_options
+            ),
+        )
 
     def files_shared_public_url(
         self,
@@ -440,16 +473,19 @@ class Files:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to share
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_shared_public_url(
-            content_type, token=token, file=file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_shared_public_url(
+                content_type, token=token, file=file, request_options=request_options
+            ),
+        )
 
     def files_upload(
         self,
@@ -480,26 +516,29 @@ class Files:
             channels: Comma-separated list of channel names or IDs where the file will be shared.
             thread_ts: Provide another message's ``ts`` value to upload this file as a reply. Never use a reply's ``ts``
                 value; use its parent instead.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success response after uploading a file to a channel with an initial message
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.files_upload(
-            content_type,
-            token=token,
-            file=file,
-            content=content,
-            filetype=filetype,
-            filename=filename,
-            title=title,
-            initial_comment=initial_comment,
-            channels=channels,
-            thread_ts=thread_ts,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.files_upload(
+                content_type,
+                token=token,
+                file=file,
+                content=content,
+                filetype=filetype,
+                filename=filename,
+                title=title,
+                initial_comment=initial_comment,
+                channels=channels,
+                thread_ts=thread_ts,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> FilesWithRawResponse:
@@ -516,7 +555,7 @@ class AsyncFiles:
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
@@ -525,19 +564,20 @@ class AsyncFiles:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response is very simple
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_comments_delete(
-                content_type, token=token, file=file, id=id, request_options=request_options
-            )
-        ).unwrap()
+                content_type, token=token, file=file, id_=id_, request_options=request_options
+            ),
+        )
 
     async def files_delete(
         self,
@@ -553,18 +593,19 @@ class AsyncFiles:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: ID of file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_delete(
                 content_type, token=token, file=file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_info(
         self,
@@ -592,14 +633,15 @@ class AsyncFiles:
                 ``next_cursor`` attribute returned by the previous request's ``response_metadata``. This parameter is
                 optional, but pagination is mandatory: the default value simply fetches the first "page" of the
                 collection of comments.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_info(
                 content_type,
                 token=token,
@@ -609,8 +651,8 @@ class AsyncFiles:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_list(
         self,
@@ -642,14 +684,15 @@ class AsyncFiles:
             page: Value sent with the request.
             show_files_hidden_by_limit: Show truncated file info for files hidden due to being too old, and the team who
                 owns the file being over the file limit.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_list(
                 content_type,
                 token=token,
@@ -662,8 +705,8 @@ class AsyncFiles:
                 page=page,
                 show_files_hidden_by_limit=show_files_hidden_by_limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_add(
         self,
@@ -690,14 +733,15 @@ class AsyncFiles:
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: A text file (txt, pdf, doc, etc.) containing textual search terms that are used to
                 improve discovery of the remote file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_add(
                 content_type,
                 token=token,
@@ -708,8 +752,8 @@ class AsyncFiles:
                 preview_image=preview_image,
                 indexable_file_contents=indexable_file_contents,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_info(
         self,
@@ -727,18 +771,19 @@ class AsyncFiles:
             token: Authentication token. Requires scope: ``remote_files:read``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_info(
                 content_type, token=token, file=file, external_id=external_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_list(
         self,
@@ -764,14 +809,15 @@ class AsyncFiles:
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_list(
                 content_type,
                 token=token,
@@ -781,8 +827,8 @@ class AsyncFiles:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_remove(
         self,
@@ -800,18 +846,19 @@ class AsyncFiles:
             token: Authentication token. Requires scope: ``remote_files:write``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_remove(
                 content_type, token=token, file=file, external_id=external_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_share(
         self,
@@ -833,14 +880,15 @@ class AsyncFiles:
             external_id: The globally unique identifier (GUID) for the file, as set by the app registering the file with
                 Slack. Either this field or ``file`` or both are required.
             channels: Comma-separated list of channel IDs where the file will be shared.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_share(
                 content_type,
                 token=token,
@@ -848,8 +896,8 @@ class AsyncFiles:
                 external_id=external_id,
                 channels=channels,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_remote_update(
         self,
@@ -878,14 +926,15 @@ class AsyncFiles:
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: File containing contents that can be used to improve searchability for the remote
                 file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_remote_update(
                 content_type,
                 token=token,
@@ -897,8 +946,8 @@ class AsyncFiles:
                 preview_image=preview_image,
                 indexable_file_contents=indexable_file_contents,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_revoke_public_url(
         self,
@@ -914,18 +963,19 @@ class AsyncFiles:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to revoke
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_revoke_public_url(
                 content_type, token=token, file=file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_shared_public_url(
         self,
@@ -941,18 +991,19 @@ class AsyncFiles:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to share
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_shared_public_url(
                 content_type, token=token, file=file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def files_upload(
         self,
@@ -983,14 +1034,15 @@ class AsyncFiles:
             channels: Comma-separated list of channel names or IDs where the file will be shared.
             thread_ts: Provide another message's ``ts`` value to upload this file as a reply. Never use a reply's ``ts``
                 value; use its parent instead.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success response after uploading a file to a channel with an initial message
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.files_upload(
                 content_type,
                 token=token,
@@ -1003,8 +1055,8 @@ class AsyncFiles:
                 channels=channels,
                 thread_ts=thread_ts,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncFilesWithRawResponse:
@@ -1018,7 +1070,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
@@ -1027,8 +1079,9 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1040,7 +1093,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file), param[str | None]("id", id)]),
+            body=form_body(param[str | None]("file", file), param[str | None]("id", id_)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesCommentsDeleteschema],
             error_mapper=raw_error_response,
@@ -1061,7 +1114,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: ID of file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1073,7 +1127,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesDeleteschema],
             error_mapper=raw_error_response,
@@ -1106,7 +1160,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 ``next_cursor`` attribute returned by the previous request's ``response_metadata``. This parameter is
                 optional, but pagination is mandatory: the default value simply fetches the first "page" of the
                 collection of comments.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1158,7 +1213,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             page: Value sent with the request.
             show_files_hidden_by_limit: Show truncated file info for files hidden due to being too old, and the team who
                 owns the file being over the file limit.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1208,7 +1264,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: A text file (txt, pdf, doc, etc.) containing textual search terms that are used to
                 improve discovery of the remote file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1217,15 +1274,13 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             url_template=self._server.default("/files.remote.add"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("external_id", external_id),
-                    param[str | None]("title", title),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("external_url", external_url),
-                    param[str | None]("preview_image", preview_image),
-                    param[str | None]("indexable_file_contents", indexable_file_contents),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("external_id", external_id),
+                param[str | None]("title", title),
+                param[str | None]("filetype", filetype),
+                param[str | None]("external_url", external_url),
+                param[str | None]("preview_image", preview_image),
+                param[str | None]("indexable_file_contents", indexable_file_contents),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -1249,7 +1304,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``remote_files:read``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1292,7 +1348,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1330,7 +1387,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``remote_files:write``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1339,11 +1397,9 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             url_template=self._server.default("/files.remote.remove"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("external_id", external_id),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("external_id", external_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -1371,7 +1427,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             external_id: The globally unique identifier (GUID) for the file, as set by the app registering the file with
                 Slack. Either this field or ``file`` or both are required.
             channels: Comma-separated list of channel IDs where the file will be shared.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1418,7 +1475,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: File containing contents that can be used to improve searchability for the remote
                 file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1427,16 +1485,14 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             url_template=self._server.default("/files.remote.update"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("external_id", external_id),
-                    param[str | None]("title", title),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("external_url", external_url),
-                    param[str | None]("preview_image", preview_image),
-                    param[str | None]("indexable_file_contents", indexable_file_contents),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("external_id", external_id),
+                param[str | None]("title", title),
+                param[str | None]("filetype", filetype),
+                param[str | None]("external_url", external_url),
+                param[str | None]("preview_image", preview_image),
+                param[str | None]("indexable_file_contents", indexable_file_contents),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -1458,7 +1514,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to revoke
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1470,7 +1527,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesRevokePublicUrlschema],
             error_mapper=raw_error_response,
@@ -1491,7 +1548,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to share
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1503,7 +1561,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesSharedPublicUrlschema],
             error_mapper=raw_error_response,
@@ -1539,7 +1597,8 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             channels: Comma-separated list of channel names or IDs where the file will be shared.
             thread_ts: Provide another message's ``ts`` value to upload this file as a reply. Never use a reply's ``ts``
                 value; use its parent instead.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1548,17 +1607,15 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             url_template=self._server.default("/files.upload"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("content", content),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("filename", filename),
-                    param[str | None]("title", title),
-                    param[str | None]("initial_comment", initial_comment),
-                    param[str | None]("channels", channels),
-                    param[float | None]("thread_ts", thread_ts),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("content", content),
+                param[str | None]("filetype", filetype),
+                param[str | None]("filename", filename),
+                param[str | None]("title", title),
+                param[str | None]("initial_comment", initial_comment),
+                param[str | None]("channels", channels),
+                param[float | None]("thread_ts", thread_ts),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[FilesUploadschema],
@@ -1574,7 +1631,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         token: str | None = None,
         file: str | None = None,
-        id: str | None = None,
+        id_: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
@@ -1583,8 +1640,9 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to delete a comment from.
-            id: The comment to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The comment to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1596,9 +1654,9 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file), param[str | None]("id", id)]),
+            body=form_body(param[str | None]("file", file), param[str | None]("id", id_)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesCommentsDeleteschema],
+            decoder=async_json_decoder[FilesCommentsDeleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1617,7 +1675,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: ID of file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1629,9 +1688,9 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesDeleteschema],
+            decoder=async_json_decoder[FilesDeleteschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1662,7 +1721,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 ``next_cursor`` attribute returned by the previous request's ``response_metadata``. This parameter is
                 optional, but pagination is mandatory: the default value simply fetches the first "page" of the
                 collection of comments.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1679,7 +1739,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesInfoschema],
+            decoder=async_json_decoder[FilesInfoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1714,7 +1774,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             page: Value sent with the request.
             show_files_hidden_by_limit: Show truncated file info for files hidden due to being too old, and the team who
                 owns the file being over the file limit.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1734,7 +1795,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesListschema],
+            decoder=async_json_decoder[FilesListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1764,7 +1825,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: A text file (txt, pdf, doc, etc.) containing textual search terms that are used to
                 improve discovery of the remote file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1773,18 +1835,16 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/files.remote.add"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("external_id", external_id),
-                    param[str | None]("title", title),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("external_url", external_url),
-                    param[str | None]("preview_image", preview_image),
-                    param[str | None]("indexable_file_contents", indexable_file_contents),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("external_id", external_id),
+                param[str | None]("title", title),
+                param[str | None]("filetype", filetype),
+                param[str | None]("external_url", external_url),
+                param[str | None]("preview_image", preview_image),
+                param[str | None]("indexable_file_contents", indexable_file_contents),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1805,7 +1865,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             token: Authentication token. Requires scope: ``remote_files:read``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1819,7 +1880,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1848,7 +1909,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             cursor: Paginate through collections of data by setting the ``cursor`` parameter to a ``next_cursor``
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1865,7 +1927,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1886,7 +1948,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             token: Authentication token. Requires scope: ``remote_files:write``
             file: Specify a file by providing its ID.
             external_id: Creator defined GUID for the file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1895,14 +1958,12 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/files.remote.remove"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("external_id", external_id),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("external_id", external_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1927,7 +1988,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             external_id: The globally unique identifier (GUID) for the file, as set by the app registering the file with
                 Slack. Either this field or ``file`` or both are required.
             channels: Comma-separated list of channel IDs where the file will be shared.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1942,7 +2004,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1974,7 +2036,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             preview_image: Preview of the document via ``multipart/form-data``.
             indexable_file_contents: File containing contents that can be used to improve searchability for the remote
                 file.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1983,19 +2046,17 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/files.remote.update"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("external_id", external_id),
-                    param[str | None]("title", title),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("external_url", external_url),
-                    param[str | None]("preview_image", preview_image),
-                    param[str | None]("indexable_file_contents", indexable_file_contents),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("external_id", external_id),
+                param[str | None]("title", title),
+                param[str | None]("filetype", filetype),
+                param[str | None]("external_url", external_url),
+                param[str | None]("preview_image", preview_image),
+                param[str | None]("indexable_file_contents", indexable_file_contents),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2014,7 +2075,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to revoke
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2026,9 +2088,9 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesRevokePublicUrlschema],
+            decoder=async_json_decoder[FilesRevokePublicUrlschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2047,7 +2109,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``files:write:user``
             file: File to share
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2059,9 +2122,9 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("file", file)]),
+            body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesSharedPublicUrlschema],
+            decoder=async_json_decoder[FilesSharedPublicUrlschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2095,7 +2158,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             channels: Comma-separated list of channel names or IDs where the file will be shared.
             thread_ts: Provide another message's ``ts`` value to upload this file as a reply. Never use a reply's ``ts``
                 value; use its parent instead.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2104,20 +2168,18 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/files.upload"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str | None]("token", token),
-                    param[str | None]("file", file),
-                    param[str | None]("content", content),
-                    param[str | None]("filetype", filetype),
-                    param[str | None]("filename", filename),
-                    param[str | None]("title", title),
-                    param[str | None]("initial_comment", initial_comment),
-                    param[str | None]("channels", channels),
-                    param[float | None]("thread_ts", thread_ts),
-                ],
+                param[str | None]("token", token),
+                param[str | None]("file", file),
+                param[str | None]("content", content),
+                param[str | None]("filetype", filetype),
+                param[str | None]("filename", filename),
+                param[str | None]("title", title),
+                param[str | None]("initial_comment", initial_comment),
+                param[str | None]("channels", channels),
+                param[float | None]("thread_ts", thread_ts),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesUploadschema],
+            decoder=async_json_decoder[FilesUploadschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

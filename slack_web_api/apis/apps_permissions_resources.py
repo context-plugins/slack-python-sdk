@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.apps_permissions_resources_listsuccessschema import AppsPermissionsResourcesListsuccessschema
 from ..models.enums.content_type import ContentTypeOrStr
@@ -39,16 +41,19 @@ class AppsPermissionsResources:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_resources_list(
-            token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_resources_list(
+                token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AppsPermissionsResourcesWithRawResponse:
@@ -77,18 +82,19 @@ class AsyncAppsPermissionsResources:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_resources_list(
                 token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAppsPermissionsResourcesWithRawResponse:
@@ -114,7 +120,8 @@ class AppsPermissionsResourcesWithRawResponse(SecuredRawResponse[RawClient, Serv
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -151,7 +158,8 @@ class AsyncAppsPermissionsResourcesWithRawResponse(SecuredRawResponse[AsyncRawCl
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -163,7 +171,7 @@ class AsyncAppsPermissionsResourcesWithRawResponse(SecuredRawResponse[AsyncRawCl
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AppsPermissionsResourcesListsuccessschema],
+            decoder=async_json_decoder[AppsPermissionsResourcesListsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

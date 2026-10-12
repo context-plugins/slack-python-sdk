@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 from .objs_reminder import ObjsReminder, ObjsReminderDict
@@ -11,10 +9,10 @@ from .objs_reminder import ObjsReminder, ObjsReminderDict
 class RemindersInfoschema(SdkBaseModel):
     """Schema for successful response from reminders.info method"""
 
-    ok: Literal["True"] = "True"
+    ok: bool
     reminder: ObjsReminder
 
 
 class RemindersInfoschemaDict(TypedDict):
-    ok: NotRequired[Literal["True"]]
-    reminder: ObjsReminder | ObjsReminderDict
+    ok: bool
+    reminder: ObjsReminderDict

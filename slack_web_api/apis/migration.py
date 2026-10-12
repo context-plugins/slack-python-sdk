@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.migration_exchangesuccessschema import MigrationExchangesuccessschema
@@ -40,16 +42,19 @@ class Migration:
             team_id: Specify team_id starts with ``T`` in case of Org Token
             to_old: Specify ``true`` to convert ``W`` global user IDs to workspace-specific ``U`` IDs. Defaults to
                 ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response when mappings exist for the specified user IDs
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.migration_exchange(
-            token, users, content_type, team_id=team_id, to_old=to_old, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.migration_exchange(
+                token, users, content_type, team_id=team_id, to_old=to_old, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> MigrationWithRawResponse:
@@ -79,18 +84,19 @@ class AsyncMigration:
             team_id: Specify team_id starts with ``T`` in case of Org Token
             to_old: Specify ``true`` to convert ``W`` global user IDs to workspace-specific ``U`` IDs. Defaults to
                 ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response when mappings exist for the specified user IDs
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.migration_exchange(
                 token, users, content_type, team_id=team_id, to_old=to_old, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncMigrationWithRawResponse:
@@ -117,7 +123,8 @@ class MigrationWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             team_id: Specify team_id starts with ``T`` in case of Org Token
             to_old: Specify ``true`` to convert ``W`` global user IDs to workspace-specific ``U`` IDs. Defaults to
                 ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -158,7 +165,8 @@ class AsyncMigrationWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             team_id: Specify team_id starts with ``T`` in case of Org Token
             to_old: Specify ``true`` to convert ``W`` global user IDs to workspace-specific ``U`` IDs. Defaults to
                 ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -173,7 +181,7 @@ class AsyncMigrationWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[MigrationExchangesuccessschema],
+            decoder=async_json_decoder[MigrationExchangesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

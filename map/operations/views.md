@@ -26,9 +26,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /views.publish`
 - **Auth**: `slack_auth`
-- **Signature**: `def views_publish(user_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, hash: str | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def views_publish(user_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `user_id`, `view`, `token`, `content_type`
-- **Params**: `user_id` — query · `view` — query · `hash` — query · `token` — header · `content_type` — header `Content-Type`
+- **Params**: `user_id` — query · `view` — query · `hash_` — query `hash` · `token` — header · `content_type` — header `Content-Type`
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -58,9 +58,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /views.update`
 - **Auth**: `slack_auth`
-- **Signature**: `def views_update(token: str, content_type: ContentTypeOrStr, *, view_id: str | None = None, external_id: str | None = None, view: str | None = None, hash: str | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def views_update(token: str, content_type: ContentTypeOrStr, *, view_id: str | None = None, external_id: str | None = None, view: str | None = None, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`
-- **Params**: `view_id` — query · `external_id` — query · `view` — query · `hash` — query · `token` — header · `content_type` — header `Content-Type`
+- **Params**: `view_id` — query · `external_id` — query · `view` — query · `hash_` — query `hash` · `token` — header · `content_type` — header `Content-Type`
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**

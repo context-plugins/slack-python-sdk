@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -42,22 +44,25 @@ class Oauth:
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel. Only valid with a `legacy
                 workspace app <https://api.slack.com/legacy-workspace-apps>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful user token negotiation for a single scope
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.oauth_access(
-            content_type,
-            client_id=client_id,
-            client_secret=client_secret,
-            code=code,
-            redirect_uri=redirect_uri,
-            single_channel=single_channel,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.oauth_access(
+                content_type,
+                client_id=client_id,
+                client_secret=client_secret,
+                code=code,
+                redirect_uri=redirect_uri,
+                single_channel=single_channel,
+                request_options=request_options,
+            ),
+        )
 
     def oauth_token(
         self,
@@ -79,22 +84,25 @@ class Oauth:
             code: The ``code`` param returned via the OAuth callback.
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success example using a workspace app produces a very different kind of response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.oauth_token(
-            content_type,
-            client_id=client_id,
-            client_secret=client_secret,
-            code=code,
-            redirect_uri=redirect_uri,
-            single_channel=single_channel,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.oauth_token(
+                content_type,
+                client_id=client_id,
+                client_secret=client_secret,
+                code=code,
+                redirect_uri=redirect_uri,
+                single_channel=single_channel,
+                request_options=request_options,
+            ),
+        )
 
     def oauth_v2_access(
         self,
@@ -114,21 +122,24 @@ class Oauth:
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful token request with scopes for both a bot user and a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.oauth_v2_access(
-            code,
-            content_type,
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_uri,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.oauth_v2_access(
+                code,
+                content_type,
+                client_id=client_id,
+                client_secret=client_secret,
+                redirect_uri=redirect_uri,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> OauthWithRawResponse:
@@ -160,14 +171,15 @@ class AsyncOauth:
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel. Only valid with a `legacy
                 workspace app <https://api.slack.com/legacy-workspace-apps>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful user token negotiation for a single scope
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.oauth_access(
                 content_type,
                 client_id=client_id,
@@ -176,8 +188,8 @@ class AsyncOauth:
                 redirect_uri=redirect_uri,
                 single_channel=single_channel,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def oauth_token(
         self,
@@ -199,14 +211,15 @@ class AsyncOauth:
             code: The ``code`` param returned via the OAuth callback.
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success example using a workspace app produces a very different kind of response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.oauth_token(
                 content_type,
                 client_id=client_id,
@@ -215,8 +228,8 @@ class AsyncOauth:
                 redirect_uri=redirect_uri,
                 single_channel=single_channel,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def oauth_v2_access(
         self,
@@ -236,14 +249,15 @@ class AsyncOauth:
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful token request with scopes for both a bot user and a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.oauth_v2_access(
                 code,
                 content_type,
@@ -251,8 +265,8 @@ class AsyncOauth:
                 client_secret=client_secret,
                 redirect_uri=redirect_uri,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncOauthWithRawResponse:
@@ -281,7 +295,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel. Only valid with a `legacy
                 workspace app <https://api.slack.com/legacy-workspace-apps>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -322,7 +337,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             code: The ``code`` param returned via the OAuth callback.
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -361,7 +377,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -404,7 +421,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel. Only valid with a `legacy
                 workspace app <https://api.slack.com/legacy-workspace-apps>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -420,7 +438,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -445,7 +463,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             code: The ``code`` param returned via the OAuth callback.
             redirect_uri: This must match the originally submitted URI (if one was sent).
             single_channel: Request the user to add your app only to a single channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -461,7 +480,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -484,7 +503,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -499,7 +519,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

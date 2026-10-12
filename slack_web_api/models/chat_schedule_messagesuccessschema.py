@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 from .message import Message, MessageDict
@@ -13,14 +11,14 @@ class ChatScheduleMessagesuccessschema(SdkBaseModel):
 
     channel: str
     message: Message
-    ok: Literal["True"] = "True"
+    ok: bool
     post_at: int
     scheduled_message_id: str
 
 
 class ChatScheduleMessagesuccessschemaDict(TypedDict):
     channel: str
-    message: Message | MessageDict
-    ok: NotRequired[Literal["True"]]
+    message: MessageDict
+    ok: bool
     post_at: int
     scheduled_message_id: str

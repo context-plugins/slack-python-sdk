@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -14,7 +12,7 @@ class ApimethodusersGetPresence(SdkBaseModel):
     connection_count: Optional[int] = UNSET
     last_activity: Optional[int] = UNSET
     manual_away: Optional[bool] = UNSET
-    ok: Literal["True"] = "True"
+    ok: bool
     online: Optional[bool] = UNSET
     presence: str
 
@@ -24,6 +22,6 @@ class ApimethodusersGetPresenceDict(TypedDict):
     connection_count: NotRequired[int]
     last_activity: NotRequired[int]
     manual_away: NotRequired[bool]
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     online: NotRequired[bool]
     presence: str

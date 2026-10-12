@@ -72,8 +72,8 @@ class ChannelObjectDict(TypedDict):
     pending_shared: NotRequired[list[str]]
     previous_names: NotRequired[list[str]]
     priority: NotRequired[float]
-    purpose: Purpose | PurposeDict
-    topic: Topic | TopicDict
+    purpose: PurposeDict
+    topic: TopicDict
     unlinked: NotRequired[int]
     unread_count: NotRequired[int]
     unread_count_display: NotRequired[int]

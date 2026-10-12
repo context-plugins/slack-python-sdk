@@ -15,7 +15,7 @@ class Userprofileobject(SdkBaseModel):
     display_name: str
     display_name_normalized: str
     email: OptionalNullable[str] = UNSET
-    fields: list[Any | None]
+    fields: list[Any] | None
     first_name: OptionalNullable[str] = UNSET
     guest_expiration_ts: OptionalNullable[int] = UNSET
     guest_invited_by: OptionalNullable[str] = UNSET
@@ -62,7 +62,7 @@ class UserprofileobjectDict(TypedDict):
     display_name: str
     display_name_normalized: str
     email: NotRequired[str | None]
-    fields: list[Any | None]
+    fields: list[Any] | None
     first_name: NotRequired[str | None]
     guest_expiration_ts: NotRequired[int | None]
     guest_invited_by: NotRequired[str | None]

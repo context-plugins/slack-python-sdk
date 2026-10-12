@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.chat_delete_scheduled_messageschema import ChatDeleteScheduledMessageschema
 from ..models.chat_deletesuccessschema import ChatDeletesuccessschema
@@ -53,16 +55,19 @@ class Chat:
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_delete(
-            content_type, token=token, ts=ts, channel=channel, as_user=as_user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_delete(
+                content_type, token=token, ts=ts, channel=channel, as_user=as_user, request_options=request_options
+            ),
+        )
 
     def chat_delete_scheduled_message(
         self,
@@ -84,16 +89,19 @@ class Chat:
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_delete_scheduled_message(
-            token, content_type, channel, scheduled_message_id, as_user=as_user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_delete_scheduled_message(
+                token, content_type, channel, scheduled_message_id, as_user=as_user, request_options=request_options
+            ),
+        )
 
     def chat_get_permalink(
         self,
@@ -111,16 +119,19 @@ class Chat:
             channel: The ID of the conversation or channel containing the message
             message_ts: A message's ``ts`` value, uniquely identifying it within a channel
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_get_permalink(
-            token, channel, message_ts, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_get_permalink(
+                token, channel, message_ts, content_type, request_options=request_options
+            ),
+        )
 
     def chat_me_message(
         self,
@@ -139,16 +150,19 @@ class Chat:
             channel: Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded
                 ID, or a name.
             text: Text of the message to send.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_me_message(
-            content_type, token=token, channel=channel, text=text, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_me_message(
+                content_type, token=token, channel=channel, text=text, request_options=request_options
+            ),
+        )
 
     def chat_post_ephemeral(
         self,
@@ -194,30 +208,33 @@ class Chat:
                 already an active thread.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_post_ephemeral(
-            token,
-            content_type,
-            channel,
-            user,
-            as_user=as_user,
-            attachments=attachments,
-            blocks=blocks,
-            icon_emoji=icon_emoji,
-            icon_url=icon_url,
-            link_names=link_names,
-            parse=parse,
-            text=text,
-            thread_ts=thread_ts,
-            username=username,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_post_ephemeral(
+                token,
+                content_type,
+                channel,
+                user,
+                as_user=as_user,
+                attachments=attachments,
+                blocks=blocks,
+                icon_emoji=icon_emoji,
+                icon_url=icon_url,
+                link_names=link_names,
+                parse=parse,
+                text=text,
+                thread_ts=thread_ts,
+                username=username,
+                request_options=request_options,
+            ),
+        )
 
     def chat_post_message(
         self,
@@ -269,33 +286,36 @@ class Chat:
             unfurl_media: Pass false to disable unfurling of media content.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_post_message(
-            token,
-            content_type,
-            channel,
-            as_user=as_user,
-            attachments=attachments,
-            blocks=blocks,
-            icon_emoji=icon_emoji,
-            icon_url=icon_url,
-            link_names=link_names,
-            mrkdwn=mrkdwn,
-            parse=parse,
-            reply_broadcast=reply_broadcast,
-            text=text,
-            thread_ts=thread_ts,
-            unfurl_links=unfurl_links,
-            unfurl_media=unfurl_media,
-            username=username,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_post_message(
+                token,
+                content_type,
+                channel,
+                as_user=as_user,
+                attachments=attachments,
+                blocks=blocks,
+                icon_emoji=icon_emoji,
+                icon_url=icon_url,
+                link_names=link_names,
+                mrkdwn=mrkdwn,
+                parse=parse,
+                reply_broadcast=reply_broadcast,
+                text=text,
+                thread_ts=thread_ts,
+                unfurl_links=unfurl_links,
+                unfurl_media=unfurl_media,
+                username=username,
+                request_options=request_options,
+            ),
+        )
 
     def chat_schedule_message(
         self,
@@ -339,30 +359,33 @@ class Chat:
                 value; use its parent instead.
             reply_broadcast: Used in conjunction with ``thread_ts`` and indicates whether reply should be made visible
                 to everyone in the channel or conversation. Defaults to ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_schedule_message(
-            content_type,
-            token=token,
-            channel=channel,
-            text=text,
-            post_at=post_at,
-            parse=parse,
-            as_user=as_user,
-            link_names=link_names,
-            attachments=attachments,
-            blocks=blocks,
-            unfurl_links=unfurl_links,
-            unfurl_media=unfurl_media,
-            thread_ts=thread_ts,
-            reply_broadcast=reply_broadcast,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_schedule_message(
+                content_type,
+                token=token,
+                channel=channel,
+                text=text,
+                post_at=post_at,
+                parse=parse,
+                as_user=as_user,
+                link_names=link_names,
+                attachments=attachments,
+                blocks=blocks,
+                unfurl_links=unfurl_links,
+                unfurl_media=unfurl_media,
+                thread_ts=thread_ts,
+                reply_broadcast=reply_broadcast,
+                request_options=request_options,
+            ),
+        )
 
     def chat_scheduled_messages_list(
         self,
@@ -387,23 +410,26 @@ class Chat:
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_scheduled_messages_list(
-            content_type,
-            channel=channel,
-            latest=latest,
-            oldest=oldest,
-            limit=limit,
-            cursor=cursor,
-            token=token,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_scheduled_messages_list(
+                content_type,
+                channel=channel,
+                latest=latest,
+                oldest=oldest,
+                limit=limit,
+                cursor=cursor,
+                token=token,
+                request_options=request_options,
+            ),
+        )
 
     def chat_unfurl(
         self,
@@ -433,24 +459,27 @@ class Chat:
                 unfurls for this domain
             user_auth_url: Send users to this custom URL where they will complete authentication in your app to fully
                 trigger unfurling. Value should be properly URL-encoded.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical, minimal success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_unfurl(
-            token,
-            content_type,
-            channel,
-            ts,
-            unfurls=unfurls,
-            user_auth_message=user_auth_message,
-            user_auth_required=user_auth_required,
-            user_auth_url=user_auth_url,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_unfurl(
+                token,
+                content_type,
+                channel,
+                ts,
+                unfurls=unfurls,
+                user_auth_message=user_auth_message,
+                user_auth_required=user_auth_required,
+                user_auth_url=user_auth_url,
+                request_options=request_options,
+            ),
+        )
 
     def chat_update(
         self,
@@ -490,26 +519,29 @@ class Chat:
                 message will be overwritten with the default, ``client``.
             text: New text for the message, using the `default formatting rules </reference/surfaces/formatting>`__.
                 It's not required when presenting ``blocks`` or ``attachments``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_update(
-            token,
-            content_type,
-            channel,
-            ts,
-            as_user=as_user,
-            attachments=attachments,
-            blocks=blocks,
-            link_names=link_names,
-            parse=parse,
-            text=text,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_update(
+                token,
+                content_type,
+                channel,
+                ts,
+                as_user=as_user,
+                attachments=attachments,
+                blocks=blocks,
+                link_names=link_names,
+                parse=parse,
+                text=text,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> ChatWithRawResponse:
@@ -540,18 +572,19 @@ class AsyncChat:
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_delete(
                 content_type, token=token, ts=ts, channel=channel, as_user=as_user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_delete_scheduled_message(
         self,
@@ -573,18 +606,19 @@ class AsyncChat:
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_delete_scheduled_message(
                 token, content_type, channel, scheduled_message_id, as_user=as_user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_get_permalink(
         self,
@@ -602,18 +636,19 @@ class AsyncChat:
             channel: The ID of the conversation or channel containing the message
             message_ts: A message's ``ts`` value, uniquely identifying it within a channel
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_get_permalink(
                 token, channel, message_ts, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_me_message(
         self,
@@ -632,18 +667,19 @@ class AsyncChat:
             channel: Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded
                 ID, or a name.
             text: Text of the message to send.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_me_message(
                 content_type, token=token, channel=channel, text=text, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_post_ephemeral(
         self,
@@ -689,14 +725,15 @@ class AsyncChat:
                 already an active thread.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_post_ephemeral(
                 token,
                 content_type,
@@ -713,8 +750,8 @@ class AsyncChat:
                 thread_ts=thread_ts,
                 username=username,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_post_message(
         self,
@@ -766,14 +803,15 @@ class AsyncChat:
             unfurl_media: Pass false to disable unfurling of media content.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_post_message(
                 token,
                 content_type,
@@ -793,8 +831,8 @@ class AsyncChat:
                 unfurl_media=unfurl_media,
                 username=username,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_schedule_message(
         self,
@@ -838,14 +876,15 @@ class AsyncChat:
                 value; use its parent instead.
             reply_broadcast: Used in conjunction with ``thread_ts`` and indicates whether reply should be made visible
                 to everyone in the channel or conversation. Defaults to ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_schedule_message(
                 content_type,
                 token=token,
@@ -862,8 +901,8 @@ class AsyncChat:
                 thread_ts=thread_ts,
                 reply_broadcast=reply_broadcast,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_scheduled_messages_list(
         self,
@@ -888,14 +927,15 @@ class AsyncChat:
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_scheduled_messages_list(
                 content_type,
                 channel=channel,
@@ -905,8 +945,8 @@ class AsyncChat:
                 cursor=cursor,
                 token=token,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_unfurl(
         self,
@@ -936,14 +976,15 @@ class AsyncChat:
                 unfurls for this domain
             user_auth_url: Send users to this custom URL where they will complete authentication in your app to fully
                 trigger unfurling. Value should be properly URL-encoded.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical, minimal success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_unfurl(
                 token,
                 content_type,
@@ -954,8 +995,8 @@ class AsyncChat:
                 user_auth_required=user_auth_required,
                 user_auth_url=user_auth_url,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def chat_update(
         self,
@@ -995,14 +1036,15 @@ class AsyncChat:
                 message will be overwritten with the default, ``client``.
             text: New text for the message, using the `default formatting rules </reference/surfaces/formatting>`__.
                 It's not required when presenting ``blocks`` or ``attachments``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_update(
                 token,
                 content_type,
@@ -1015,8 +1057,8 @@ class AsyncChat:
                 parse=parse,
                 text=text,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncChatWithRawResponse:
@@ -1044,7 +1086,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1057,11 +1100,9 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[float | None]("ts", ts),
-                    param[str | None]("channel", channel),
-                    param[bool | None]("as_user", as_user),
-                ],
+                param[float | None]("ts", ts),
+                param[str | None]("channel", channel),
+                param[bool | None]("as_user", as_user),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatDeletesuccessschema],
@@ -1089,7 +1130,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1102,11 +1144,9 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("scheduled_message_id", scheduled_message_id),
-                    param[bool | None]("as_user", as_user),
-                ],
+                param[str]("channel", channel),
+                param[str]("scheduled_message_id", scheduled_message_id),
+                param[bool | None]("as_user", as_user),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatDeleteScheduledMessageschema],
@@ -1130,7 +1170,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             channel: The ID of the conversation or channel containing the message
             message_ts: A message's ``ts`` value, uniquely identifying it within a channel
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1164,7 +1205,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             channel: Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded
                 ID, or a name.
             text: Text of the message to send.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1176,7 +1218,7 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("text", text)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("text", text)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatMeMessageschema],
             error_mapper=raw_error_response,
@@ -1227,7 +1269,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 already an active thread.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1240,20 +1283,18 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("user", user),
-                    param[bool | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("icon_emoji", icon_emoji),
-                    param[str | None]("icon_url", icon_url),
-                    param[bool | None]("link_names", link_names),
-                    param[str | None]("parse", parse),
-                    param[str | None]("text", text),
-                    param[str | None]("thread_ts", thread_ts),
-                    param[str | None]("username", username),
-                ],
+                param[str]("channel", channel),
+                param[str]("user", user),
+                param[bool | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("icon_emoji", icon_emoji),
+                param[str | None]("icon_url", icon_url),
+                param[bool | None]("link_names", link_names),
+                param[str | None]("parse", parse),
+                param[str | None]("text", text),
+                param[str | None]("thread_ts", thread_ts),
+                param[str | None]("username", username),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatPostEphemeralsuccessschema],
@@ -1311,7 +1352,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             unfurl_media: Pass false to disable unfurling of media content.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1324,23 +1366,21 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("icon_emoji", icon_emoji),
-                    param[str | None]("icon_url", icon_url),
-                    param[bool | None]("link_names", link_names),
-                    param[bool | None]("mrkdwn", mrkdwn),
-                    param[str | None]("parse", parse),
-                    param[bool | None]("reply_broadcast", reply_broadcast),
-                    param[str | None]("text", text),
-                    param[str | None]("thread_ts", thread_ts),
-                    param[bool | None]("unfurl_links", unfurl_links),
-                    param[bool | None]("unfurl_media", unfurl_media),
-                    param[str | None]("username", username),
-                ],
+                param[str]("channel", channel),
+                param[str | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("icon_emoji", icon_emoji),
+                param[str | None]("icon_url", icon_url),
+                param[bool | None]("link_names", link_names),
+                param[bool | None]("mrkdwn", mrkdwn),
+                param[str | None]("parse", parse),
+                param[bool | None]("reply_broadcast", reply_broadcast),
+                param[str | None]("text", text),
+                param[str | None]("thread_ts", thread_ts),
+                param[bool | None]("unfurl_links", unfurl_links),
+                param[bool | None]("unfurl_media", unfurl_media),
+                param[str | None]("username", username),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatPostMessagesuccessschema],
@@ -1390,7 +1430,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 value; use its parent instead.
             reply_broadcast: Used in conjunction with ``thread_ts`` and indicates whether reply should be made visible
                 to everyone in the channel or conversation. Defaults to ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1403,20 +1444,18 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("text", text),
-                    param[str | None]("post_at", post_at),
-                    param[str | None]("parse", parse),
-                    param[bool | None]("as_user", as_user),
-                    param[bool | None]("link_names", link_names),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[bool | None]("unfurl_links", unfurl_links),
-                    param[bool | None]("unfurl_media", unfurl_media),
-                    param[float | None]("thread_ts", thread_ts),
-                    param[bool | None]("reply_broadcast", reply_broadcast),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("text", text),
+                param[str | None]("post_at", post_at),
+                param[str | None]("parse", parse),
+                param[bool | None]("as_user", as_user),
+                param[bool | None]("link_names", link_names),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[bool | None]("unfurl_links", unfurl_links),
+                param[bool | None]("unfurl_media", unfurl_media),
+                param[float | None]("thread_ts", thread_ts),
+                param[bool | None]("reply_broadcast", reply_broadcast),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatScheduleMessagesuccessschema],
@@ -1447,7 +1486,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1496,7 +1536,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 unfurls for this domain
             user_auth_url: Send users to this custom URL where they will complete authentication in your app to fully
                 trigger unfurling. Value should be properly URL-encoded.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1509,14 +1550,12 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("ts", ts),
-                    param[str | None]("unfurls", unfurls),
-                    param[str | None]("user_auth_message", user_auth_message),
-                    param[bool | None]("user_auth_required", user_auth_required),
-                    param[str | None]("user_auth_url", user_auth_url),
-                ],
+                param[str]("channel", channel),
+                param[str]("ts", ts),
+                param[str | None]("unfurls", unfurls),
+                param[str | None]("user_auth_message", user_auth_message),
+                param[bool | None]("user_auth_required", user_auth_required),
+                param[str | None]("user_auth_url", user_auth_url),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatUnfurlsuccessschema],
@@ -1562,7 +1601,8 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 message will be overwritten with the default, ``client``.
             text: New text for the message, using the `default formatting rules </reference/surfaces/formatting>`__.
                 It's not required when presenting ``blocks`` or ``attachments``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1575,16 +1615,14 @@ class ChatWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("ts", ts),
-                    param[str | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("link_names", link_names),
-                    param[str | None]("parse", parse),
-                    param[str | None]("text", text),
-                ],
+                param[str]("channel", channel),
+                param[str]("ts", ts),
+                param[str | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("link_names", link_names),
+                param[str | None]("parse", parse),
+                param[str | None]("text", text),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ChatUpdatesuccessschema],
@@ -1614,7 +1652,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1627,14 +1666,12 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[float | None]("ts", ts),
-                    param[str | None]("channel", channel),
-                    param[bool | None]("as_user", as_user),
-                ],
+                param[float | None]("ts", ts),
+                param[str | None]("channel", channel),
+                param[bool | None]("as_user", as_user),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatDeletesuccessschema],
+            decoder=async_json_decoder[ChatDeletesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1659,7 +1696,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             as_user: Pass true to delete the message as the authed user with ``chat:write:user`` scope. `Bot users
                 </bot-users>`__ in this context are considered authed users. If unused or false, the message will be
                 deleted with ``chat:write:bot`` scope.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1672,14 +1710,12 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("scheduled_message_id", scheduled_message_id),
-                    param[bool | None]("as_user", as_user),
-                ],
+                param[str]("channel", channel),
+                param[str]("scheduled_message_id", scheduled_message_id),
+                param[bool | None]("as_user", as_user),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatDeleteScheduledMessageschema],
+            decoder=async_json_decoder[ChatDeleteScheduledMessageschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1700,7 +1736,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             channel: The ID of the conversation or channel containing the message
             message_ts: A message's ``ts`` value, uniquely identifying it within a channel
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1712,7 +1749,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatGetPermalinksuccessschema],
+            decoder=async_json_decoder[ChatGetPermalinksuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1734,7 +1771,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             channel: Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded
                 ID, or a name.
             text: Text of the message to send.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1746,9 +1784,9 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[str | None]("token", token),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str | None]("channel", channel), param[str | None]("text", text)]),
+            body=form_body(param[str | None]("channel", channel), param[str | None]("text", text)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatMeMessageschema],
+            decoder=async_json_decoder[ChatMeMessageschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1797,7 +1835,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 already an active thread.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1810,23 +1849,21 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("user", user),
-                    param[bool | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("icon_emoji", icon_emoji),
-                    param[str | None]("icon_url", icon_url),
-                    param[bool | None]("link_names", link_names),
-                    param[str | None]("parse", parse),
-                    param[str | None]("text", text),
-                    param[str | None]("thread_ts", thread_ts),
-                    param[str | None]("username", username),
-                ],
+                param[str]("channel", channel),
+                param[str]("user", user),
+                param[bool | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("icon_emoji", icon_emoji),
+                param[str | None]("icon_url", icon_url),
+                param[bool | None]("link_names", link_names),
+                param[str | None]("parse", parse),
+                param[str | None]("text", text),
+                param[str | None]("thread_ts", thread_ts),
+                param[str | None]("username", username),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatPostEphemeralsuccessschema],
+            decoder=async_json_decoder[ChatPostEphemeralsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1881,7 +1918,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             unfurl_media: Pass false to disable unfurling of media content.
             username: Set your bot's user name. Must be used in conjunction with ``as_user`` set to false, otherwise
                 ignored. See `authorship <#authorship>`__ below.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1894,26 +1932,24 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("icon_emoji", icon_emoji),
-                    param[str | None]("icon_url", icon_url),
-                    param[bool | None]("link_names", link_names),
-                    param[bool | None]("mrkdwn", mrkdwn),
-                    param[str | None]("parse", parse),
-                    param[bool | None]("reply_broadcast", reply_broadcast),
-                    param[str | None]("text", text),
-                    param[str | None]("thread_ts", thread_ts),
-                    param[bool | None]("unfurl_links", unfurl_links),
-                    param[bool | None]("unfurl_media", unfurl_media),
-                    param[str | None]("username", username),
-                ],
+                param[str]("channel", channel),
+                param[str | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("icon_emoji", icon_emoji),
+                param[str | None]("icon_url", icon_url),
+                param[bool | None]("link_names", link_names),
+                param[bool | None]("mrkdwn", mrkdwn),
+                param[str | None]("parse", parse),
+                param[bool | None]("reply_broadcast", reply_broadcast),
+                param[str | None]("text", text),
+                param[str | None]("thread_ts", thread_ts),
+                param[bool | None]("unfurl_links", unfurl_links),
+                param[bool | None]("unfurl_media", unfurl_media),
+                param[str | None]("username", username),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatPostMessagesuccessschema],
+            decoder=async_json_decoder[ChatPostMessagesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1960,7 +1996,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 value; use its parent instead.
             reply_broadcast: Used in conjunction with ``thread_ts`` and indicates whether reply should be made visible
                 to everyone in the channel or conversation. Defaults to ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1973,23 +2010,21 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("channel", channel),
-                    param[str | None]("text", text),
-                    param[str | None]("post_at", post_at),
-                    param[str | None]("parse", parse),
-                    param[bool | None]("as_user", as_user),
-                    param[bool | None]("link_names", link_names),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[bool | None]("unfurl_links", unfurl_links),
-                    param[bool | None]("unfurl_media", unfurl_media),
-                    param[float | None]("thread_ts", thread_ts),
-                    param[bool | None]("reply_broadcast", reply_broadcast),
-                ],
+                param[str | None]("channel", channel),
+                param[str | None]("text", text),
+                param[str | None]("post_at", post_at),
+                param[str | None]("parse", parse),
+                param[bool | None]("as_user", as_user),
+                param[bool | None]("link_names", link_names),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[bool | None]("unfurl_links", unfurl_links),
+                param[bool | None]("unfurl_media", unfurl_media),
+                param[float | None]("thread_ts", thread_ts),
+                param[bool | None]("reply_broadcast", reply_broadcast),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatScheduleMessagesuccessschema],
+            decoder=async_json_decoder[ChatScheduleMessagesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2017,7 +2052,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2033,7 +2069,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[str | None]("token", token)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatScheduledMessagesListschema],
+            decoder=async_json_decoder[ChatScheduledMessagesListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2066,7 +2102,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 unfurls for this domain
             user_auth_url: Send users to this custom URL where they will complete authentication in your app to fully
                 trigger unfurling. Value should be properly URL-encoded.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2079,17 +2116,15 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("ts", ts),
-                    param[str | None]("unfurls", unfurls),
-                    param[str | None]("user_auth_message", user_auth_message),
-                    param[bool | None]("user_auth_required", user_auth_required),
-                    param[str | None]("user_auth_url", user_auth_url),
-                ],
+                param[str]("channel", channel),
+                param[str]("ts", ts),
+                param[str | None]("unfurls", unfurls),
+                param[str | None]("user_auth_message", user_auth_message),
+                param[bool | None]("user_auth_required", user_auth_required),
+                param[str | None]("user_auth_url", user_auth_url),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatUnfurlsuccessschema],
+            decoder=async_json_decoder[ChatUnfurlsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2132,7 +2167,8 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 message will be overwritten with the default, ``client``.
             text: New text for the message, using the `default formatting rules </reference/surfaces/formatting>`__.
                 It's not required when presenting ``blocks`` or ``attachments``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2145,19 +2181,17 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("channel", channel),
-                    param[str]("ts", ts),
-                    param[str | None]("as_user", as_user),
-                    param[str | None]("attachments", attachments),
-                    param[str | None]("blocks", blocks),
-                    param[str | None]("link_names", link_names),
-                    param[str | None]("parse", parse),
-                    param[str | None]("text", text),
-                ],
+                param[str]("channel", channel),
+                param[str]("ts", ts),
+                param[str | None]("as_user", as_user),
+                param[str | None]("attachments", attachments),
+                param[str | None]("blocks", blocks),
+                param[str | None]("link_names", link_names),
+                param[str | None]("parse", parse),
+                param[str | None]("text", text),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatUpdatesuccessschema],
+            decoder=async_json_decoder[ChatUpdatesuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

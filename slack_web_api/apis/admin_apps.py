@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -42,16 +44,24 @@ class AdminApps:
             app_id: The id of the app to approve.
             request_id: The id of the request to approve.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_apps_approve(
-            token, content_type, app_id=app_id, request_id=request_id, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_apps_approve(
+                token,
+                content_type,
+                app_id=app_id,
+                request_id=request_id,
+                team_id=team_id,
+                request_options=request_options,
+            ),
+        )
 
     def admin_apps_restrict(
         self,
@@ -71,16 +81,24 @@ class AdminApps:
             app_id: The id of the app to restrict.
             request_id: The id of the request to restrict.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_apps_restrict(
-            token, content_type, app_id=app_id, request_id=request_id, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_apps_restrict(
+                token,
+                content_type,
+                app_id=app_id,
+                request_id=request_id,
+                team_id=team_id,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminAppsWithRawResponse:
@@ -109,14 +127,15 @@ class AsyncAdminApps:
             app_id: The id of the app to approve.
             request_id: The id of the request to approve.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_apps_approve(
                 token,
                 content_type,
@@ -124,8 +143,8 @@ class AsyncAdminApps:
                 request_id=request_id,
                 team_id=team_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_apps_restrict(
         self,
@@ -145,14 +164,15 @@ class AsyncAdminApps:
             app_id: The id of the app to restrict.
             request_id: The id of the request to restrict.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_apps_restrict(
                 token,
                 content_type,
@@ -160,8 +180,8 @@ class AsyncAdminApps:
                 request_id=request_id,
                 team_id=team_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminAppsWithRawResponse:
@@ -187,7 +207,8 @@ class AdminAppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             app_id: The id of the app to approve.
             request_id: The id of the request to approve.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -200,11 +221,9 @@ class AdminAppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("app_id", app_id),
-                    param[str | None]("request_id", request_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str | None]("app_id", app_id),
+                param[str | None]("request_id", request_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -230,7 +249,8 @@ class AdminAppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             app_id: The id of the app to restrict.
             request_id: The id of the request to restrict.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -243,11 +263,9 @@ class AdminAppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("app_id", app_id),
-                    param[str | None]("request_id", request_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str | None]("app_id", app_id),
+                param[str | None]("request_id", request_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -275,7 +293,8 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             app_id: The id of the app to approve.
             request_id: The id of the request to approve.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -288,14 +307,12 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("app_id", app_id),
-                    param[str | None]("request_id", request_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str | None]("app_id", app_id),
+                param[str | None]("request_id", request_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -318,7 +335,8 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             app_id: The id of the app to restrict.
             request_id: The id of the request to restrict.
             team_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -331,14 +349,12 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("app_id", app_id),
-                    param[str | None]("request_id", request_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str | None]("app_id", app_id),
+                param[str | None]("request_id", request_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -11,10 +11,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.reactions_addschema import ReactionsAddschema
@@ -45,16 +47,19 @@ class Reactions:
             channel: Channel where the message to add reaction to was posted.
             name: Reaction (emoji) name.
             timestamp: Timestamp of the message to add reaction to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reactions_add(
-            token, content_type, channel, name, timestamp, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reactions_add(
+                token, content_type, channel, name, timestamp, request_options=request_options
+            ),
+        )
 
     def reactions_get(
         self,
@@ -78,23 +83,26 @@ class Reactions:
             file_comment: File comment to get reactions for.
             full: If true always return the complete reaction list.
             timestamp: Timestamp of the message to get reactions for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reactions_get(
-            token,
-            content_type,
-            channel=channel,
-            file=file,
-            file_comment=file_comment,
-            full=full,
-            timestamp=timestamp,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reactions_get(
+                token,
+                content_type,
+                channel=channel,
+                file=file,
+                file_comment=file_comment,
+                full=full,
+                timestamp=timestamp,
+                request_options=request_options,
+            ),
+        )
 
     def reactions_list(
         self,
@@ -123,24 +131,27 @@ class Reactions:
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reactions_list(
-            token,
-            content_type,
-            user=user,
-            full=full,
-            count=count,
-            page=page,
-            cursor=cursor,
-            limit=limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reactions_list(
+                token,
+                content_type,
+                user=user,
+                full=full,
+                count=count,
+                page=page,
+                cursor=cursor,
+                limit=limit,
+                request_options=request_options,
+            ),
+        )
 
     def reactions_remove(
         self,
@@ -164,23 +175,26 @@ class Reactions:
             file_comment: File comment to remove reaction from.
             channel: Channel where the message to remove reaction from was posted.
             timestamp: Timestamp of the message to remove reaction from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.reactions_remove(
-            token,
-            content_type,
-            name,
-            file=file,
-            file_comment=file_comment,
-            channel=channel,
-            timestamp=timestamp,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.reactions_remove(
+                token,
+                content_type,
+                name,
+                file=file,
+                file_comment=file_comment,
+                channel=channel,
+                timestamp=timestamp,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> ReactionsWithRawResponse:
@@ -209,18 +223,19 @@ class AsyncReactions:
             channel: Channel where the message to add reaction to was posted.
             name: Reaction (emoji) name.
             timestamp: Timestamp of the message to add reaction to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reactions_add(
                 token, content_type, channel, name, timestamp, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reactions_get(
         self,
@@ -244,14 +259,15 @@ class AsyncReactions:
             file_comment: File comment to get reactions for.
             full: If true always return the complete reaction list.
             timestamp: Timestamp of the message to get reactions for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reactions_get(
                 token,
                 content_type,
@@ -261,8 +277,8 @@ class AsyncReactions:
                 full=full,
                 timestamp=timestamp,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reactions_list(
         self,
@@ -291,14 +307,15 @@ class AsyncReactions:
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reactions_list(
                 token,
                 content_type,
@@ -309,8 +326,8 @@ class AsyncReactions:
                 cursor=cursor,
                 limit=limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def reactions_remove(
         self,
@@ -334,14 +351,15 @@ class AsyncReactions:
             file_comment: File comment to remove reaction from.
             channel: Channel where the message to remove reaction from was posted.
             timestamp: Timestamp of the message to remove reaction from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.reactions_remove(
                 token,
                 content_type,
@@ -351,8 +369,8 @@ class AsyncReactions:
                 channel=channel,
                 timestamp=timestamp,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncReactionsWithRawResponse:
@@ -378,7 +396,8 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             channel: Channel where the message to add reaction to was posted.
             name: Reaction (emoji) name.
             timestamp: Timestamp of the message to add reaction to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -391,7 +410,7 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [param[str]("channel", channel), param[str]("name", name), param[str]("timestamp", timestamp)]
+                param[str]("channel", channel), param[str]("name", name), param[str]("timestamp", timestamp)
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ReactionsAddschema],
@@ -421,7 +440,8 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             file_comment: File comment to get reactions for.
             full: If true always return the complete reaction list.
             timestamp: Timestamp of the message to get reactions for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -470,7 +490,8 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -515,7 +536,8 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             file_comment: File comment to remove reaction from.
             channel: Channel where the message to remove reaction from was posted.
             timestamp: Timestamp of the message to remove reaction from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -528,13 +550,11 @@ class ReactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("channel", channel),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str]("name", name),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("channel", channel),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[ReactionsRemoveschema],
@@ -562,7 +582,8 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             channel: Channel where the message to add reaction to was posted.
             name: Reaction (emoji) name.
             timestamp: Timestamp of the message to add reaction to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -575,10 +596,10 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [param[str]("channel", channel), param[str]("name", name), param[str]("timestamp", timestamp)]
+                param[str]("channel", channel), param[str]("name", name), param[str]("timestamp", timestamp)
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ReactionsAddschema],
+            decoder=async_json_decoder[ReactionsAddschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -605,7 +626,8 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             file_comment: File comment to get reactions for.
             full: If true always return the complete reaction list.
             timestamp: Timestamp of the message to get reactions for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -622,7 +644,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Any],
+            decoder=async_json_decoder[Any],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -654,7 +676,8 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 default value simply fetches the first "page" of the collection.
             limit: The maximum number of items to return. Fewer than the requested number of items may be returned, even
                 if the end of the list hasn't been reached.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -672,7 +695,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ReactionsListschema],
+            decoder=async_json_decoder[ReactionsListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -699,7 +722,8 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             file_comment: File comment to remove reaction from.
             channel: Channel where the message to remove reaction from was posted.
             timestamp: Timestamp of the message to remove reaction from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -712,16 +736,14 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("name", name),
-                    param[str | None]("file", file),
-                    param[str | None]("file_comment", file_comment),
-                    param[str | None]("channel", channel),
-                    param[str | None]("timestamp", timestamp),
-                ],
+                param[str]("name", name),
+                param[str | None]("file", file),
+                param[str | None]("file_comment", file_comment),
+                param[str | None]("channel", channel),
+                param[str | None]("timestamp", timestamp),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ReactionsRemoveschema],
+            decoder=async_json_decoder[ReactionsRemoveschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

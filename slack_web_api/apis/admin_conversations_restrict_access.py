@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -45,16 +47,19 @@ class AdminConversationsRestrictAccess:
             channel_id: The channel to link this group to.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_restrict_access_add_group(
-            content_type, token, group_id, channel_id, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_restrict_access_add_group(
+                content_type, token, group_id, channel_id, team_id=team_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_restrict_access_list_groups(
         self,
@@ -73,16 +78,19 @@ class AdminConversationsRestrictAccess:
             content_type: Value sent with the request.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_restrict_access_list_groups(
-            token, channel_id, content_type, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_restrict_access_list_groups(
+                token, channel_id, content_type, team_id=team_id, request_options=request_options
+            ),
+        )
 
     def admin_conversations_restrict_access_remove_group(
         self,
@@ -105,16 +113,19 @@ class AdminConversationsRestrictAccess:
                 <https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org>`__
                 ID to remove from the private channel.
             channel_id: The channel to remove the linked group from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_conversations_restrict_access_remove_group(
-            content_type, token, team_id, group_id, channel_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_conversations_restrict_access_remove_group(
+                content_type, token, team_id, group_id, channel_id, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminConversationsRestrictAccessWithRawResponse:
@@ -146,18 +157,19 @@ class AsyncAdminConversationsRestrictAccess:
             channel_id: The channel to link this group to.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_restrict_access_add_group(
                 content_type, token, group_id, channel_id, team_id=team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_restrict_access_list_groups(
         self,
@@ -176,18 +188,19 @@ class AsyncAdminConversationsRestrictAccess:
             content_type: Value sent with the request.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_restrict_access_list_groups(
                 token, channel_id, content_type, team_id=team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_conversations_restrict_access_remove_group(
         self,
@@ -210,18 +223,19 @@ class AsyncAdminConversationsRestrictAccess:
                 <https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org>`__
                 ID to remove from the private channel.
             channel_id: The channel to remove the linked group from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_conversations_restrict_access_remove_group(
                 content_type, token, team_id, group_id, channel_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminConversationsRestrictAccessWithRawResponse:
@@ -250,7 +264,8 @@ class AdminConversationsRestrictAccessWithRawResponse(SecuredRawResponse[RawClie
             channel_id: The channel to link this group to.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -259,12 +274,10 @@ class AdminConversationsRestrictAccessWithRawResponse(SecuredRawResponse[RawClie
             url_template=self._server.default("/admin.conversations.restrictAccess.addGroup"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str]("group_id", group_id),
-                    param[str]("channel_id", channel_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("token", token),
+                param[str]("group_id", group_id),
+                param[str]("channel_id", channel_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -289,7 +302,8 @@ class AdminConversationsRestrictAccessWithRawResponse(SecuredRawResponse[RawClie
             content_type: Value sent with the request.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -327,7 +341,8 @@ class AdminConversationsRestrictAccessWithRawResponse(SecuredRawResponse[RawClie
                 <https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org>`__
                 ID to remove from the private channel.
             channel_id: The channel to remove the linked group from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -336,12 +351,10 @@ class AdminConversationsRestrictAccessWithRawResponse(SecuredRawResponse[RawClie
             url_template=self._server.default("/admin.conversations.restrictAccess.removeGroup"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str]("team_id", team_id),
-                    param[str]("group_id", group_id),
-                    param[str]("channel_id", channel_id),
-                ],
+                param[str]("token", token),
+                param[str]("team_id", team_id),
+                param[str]("group_id", group_id),
+                param[str]("channel_id", channel_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -374,7 +387,8 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
             channel_id: The channel to link this group to.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -383,15 +397,13 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
             url_template=self._server.default("/admin.conversations.restrictAccess.addGroup"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str]("group_id", group_id),
-                    param[str]("channel_id", channel_id),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("token", token),
+                param[str]("group_id", group_id),
+                param[str]("channel_id", channel_id),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -413,7 +425,8 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
             content_type: Value sent with the request.
             team_id: The workspace where the channel exists. This argument is required for channels only tied to one
                 workspace, and optional for channels that are shared across an organization.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -425,7 +438,7 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -451,7 +464,8 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
                 <https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org>`__
                 ID to remove from the private channel.
             channel_id: The channel to remove the linked group from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -460,15 +474,13 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
             url_template=self._server.default("/admin.conversations.restrictAccess.removeGroup"),
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[UUID]("Idempotency-Key", uuid4())],
             body=form_body(
-                [
-                    param[str]("token", token),
-                    param[str]("team_id", team_id),
-                    param[str]("group_id", group_id),
-                    param[str]("channel_id", channel_id),
-                ],
+                param[str]("token", token),
+                param[str]("team_id", team_id),
+                param[str]("group_id", group_id),
+                param[str]("channel_id", channel_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

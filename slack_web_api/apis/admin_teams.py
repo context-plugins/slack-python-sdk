@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -45,22 +47,25 @@ class AdminTeams:
             team_description: Description for the team.
             team_discoverability: Who can join the team. A team's discoverability can be ``open``, ``closed``,
                 ``invite_only``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_create(
-            token,
-            content_type,
-            team_domain,
-            team_name,
-            team_description=team_description,
-            team_discoverability=team_discoverability,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_create(
+                token,
+                content_type,
+                team_domain,
+                team_name,
+                team_description=team_description,
+                team_discoverability=team_discoverability,
+                request_options=request_options,
+            ),
+        )
 
     def admin_teams_list(
         self,
@@ -78,16 +83,19 @@ class AdminTeams:
             content_type: Value sent with the request.
             limit: The maximum number of items to return. Must be between 1 - 100 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_teams_list(
-            token, content_type, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_teams_list(
+                token, content_type, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminTeamsWithRawResponse:
@@ -119,14 +127,15 @@ class AsyncAdminTeams:
             team_description: Description for the team.
             team_discoverability: Who can join the team. A team's discoverability can be ``open``, ``closed``,
                 ``invite_only``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_create(
                 token,
                 content_type,
@@ -135,8 +144,8 @@ class AsyncAdminTeams:
                 team_description=team_description,
                 team_discoverability=team_discoverability,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_teams_list(
         self,
@@ -154,18 +163,19 @@ class AsyncAdminTeams:
             content_type: Value sent with the request.
             limit: The maximum number of items to return. Must be between 1 - 100 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_teams_list(
                 token, content_type, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminTeamsWithRawResponse:
@@ -194,7 +204,8 @@ class AdminTeamsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             team_description: Description for the team.
             team_discoverability: Who can join the team. A team's discoverability can be ``open``, ``closed``,
                 ``invite_only``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -207,12 +218,10 @@ class AdminTeamsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_domain", team_domain),
-                    param[str]("team_name", team_name),
-                    param[str | None]("team_description", team_description),
-                    param[str | None]("team_discoverability", team_discoverability),
-                ],
+                param[str]("team_domain", team_domain),
+                param[str]("team_name", team_name),
+                param[str | None]("team_description", team_description),
+                param[str | None]("team_discoverability", team_discoverability),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -236,7 +245,8 @@ class AdminTeamsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthScheme
             content_type: Value sent with the request.
             limit: The maximum number of items to return. Must be between 1 - 100 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -274,7 +284,8 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             team_description: Description for the team.
             team_discoverability: Who can join the team. A team's discoverability can be ``open``, ``closed``,
                 ``invite_only``, or ``unlisted``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -287,15 +298,13 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("team_domain", team_domain),
-                    param[str]("team_name", team_name),
-                    param[str | None]("team_description", team_description),
-                    param[str | None]("team_discoverability", team_discoverability),
-                ],
+                param[str]("team_domain", team_domain),
+                param[str]("team_name", team_name),
+                param[str | None]("team_description", team_description),
+                param[str | None]("team_discoverability", team_discoverability),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -316,7 +325,8 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             content_type: Value sent with the request.
             limit: The maximum number of items to return. Must be between 1 - 100 both inclusive.
             cursor: Set ``cursor`` to ``next_cursor`` returned by the previous call to list items in the next page.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -326,7 +336,7 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
             query_params=[param[int | None]("limit", limit), param[str | None]("cursor", cursor)],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -15,10 +13,10 @@ class FilesDeleteerrorschema1(SdkBaseModel):
     """Note: PHP callstack is only visible in dev/qa"""
 
     error: FilesDeleteErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class FilesDeleteerrorschema1Dict(TypedDict):
     callstack: NotRequired[str]
     error: FilesDeleteErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

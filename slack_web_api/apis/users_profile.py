@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.users_profile_getschema import UsersProfileGetschema
@@ -41,16 +43,19 @@ class UsersProfile:
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_profile_get(
-            token, content_type, include_labels=include_labels, user=user, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_profile_get(
+                token, content_type, include_labels=include_labels, user=user, request_options=request_options
+            ),
+        )
 
     def users_profile_set(
         self,
@@ -73,16 +78,19 @@ class UsersProfile:
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.users_profile_set(
-            token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.users_profile_set(
+                token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> UsersProfileWithRawResponse:
@@ -109,18 +117,19 @@ class AsyncUsersProfile:
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_profile_get(
                 token, content_type, include_labels=include_labels, user=user, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def users_profile_set(
         self,
@@ -143,18 +152,19 @@ class AsyncUsersProfile:
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.users_profile_set(
                 token, content_type, name=name, profile=profile, user=user, value=value, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncUsersProfileWithRawResponse:
@@ -178,7 +188,8 @@ class UsersProfileWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -218,7 +229,8 @@ class UsersProfileWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -231,12 +243,10 @@ class UsersProfileWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("name", name),
-                    param[str | None]("profile", profile),
-                    param[str | None]("user", user),
-                    param[str | None]("value", value),
-                ],
+                param[str | None]("name", name),
+                param[str | None]("profile", profile),
+                param[str | None]("user", user),
+                param[str | None]("value", value),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[UsersProfileSetschema],
@@ -262,7 +272,8 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             content_type: Value sent with the request.
             include_labels: Include labels for each ID in custom profile fields
             user: User to retrieve profile info for
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -276,7 +287,7 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersProfileGetschema],
+            decoder=async_json_decoder[UsersProfileGetschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -302,7 +313,8 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
                 Each field name is limited to 255 characters.
             user: ID of user to change. This argument may only be specified by team admins on paid teams.
             value: Value to set a single key to. Usable only if ``profile`` is not passed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -315,15 +327,13 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str | None]("name", name),
-                    param[str | None]("profile", profile),
-                    param[str | None]("user", user),
-                    param[str | None]("value", value),
-                ],
+                param[str | None]("name", name),
+                param[str | None]("profile", profile),
+                param[str | None]("user", user),
+                param[str | None]("value", value),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[UsersProfileSetschema],
+            decoder=async_json_decoder[UsersProfileSetschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

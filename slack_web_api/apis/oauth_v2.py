@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -39,21 +41,24 @@ class OauthV2:
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful token request with scopes for both a bot user and a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.oauth_v2_access(
-            code,
-            content_type,
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_uri,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.oauth_v2_access(
+                code,
+                content_type,
+                client_id=client_id,
+                client_secret=client_secret,
+                redirect_uri=redirect_uri,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> OauthV2WithRawResponse:
@@ -82,14 +87,15 @@ class AsyncOauthV2:
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Successful token request with scopes for both a bot user and a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.oauth_v2_access(
                 code,
                 content_type,
@@ -97,8 +103,8 @@ class AsyncOauthV2:
                 client_secret=client_secret,
                 redirect_uri=redirect_uri,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncOauthV2WithRawResponse:
@@ -124,7 +130,8 @@ class OauthV2WithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -164,7 +171,8 @@ class AsyncOauthV2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
             redirect_uri: This must match the originally submitted URI (if one was sent).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -179,7 +187,7 @@ class AsyncOauthV2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

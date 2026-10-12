@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -40,16 +42,19 @@ class AdminInviteRequests:
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_invite_requests_approve(
-            token, content_type, invite_request_id, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_invite_requests_approve(
+                token, content_type, invite_request_id, team_id=team_id, request_options=request_options
+            ),
+        )
 
     def admin_invite_requests_deny(
         self,
@@ -67,16 +72,19 @@ class AdminInviteRequests:
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_invite_requests_deny(
-            token, content_type, invite_request_id, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_invite_requests_deny(
+                token, content_type, invite_request_id, team_id=team_id, request_options=request_options
+            ),
+        )
 
     def admin_invite_requests_list(
         self,
@@ -97,16 +105,19 @@ class AdminInviteRequests:
             cursor: Value of the ``next_cursor`` field sent as part of the previous API response
             limit: The number of results that will be returned by the API on each invocation. Must be between 1 - 1000,
                 both inclusive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_invite_requests_list(
-            token, content_type, team_id=team_id, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_invite_requests_list(
+                token, content_type, team_id=team_id, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminInviteRequestsWithRawResponse:
@@ -133,18 +144,19 @@ class AsyncAdminInviteRequests:
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_invite_requests_approve(
                 token, content_type, invite_request_id, team_id=team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_invite_requests_deny(
         self,
@@ -162,18 +174,19 @@ class AsyncAdminInviteRequests:
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_invite_requests_deny(
                 token, content_type, invite_request_id, team_id=team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_invite_requests_list(
         self,
@@ -194,18 +207,19 @@ class AsyncAdminInviteRequests:
             cursor: Value of the ``next_cursor`` field sent as part of the previous API response
             limit: The number of results that will be returned by the API on each invocation. Must be between 1 - 1000,
                 both inclusive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_invite_requests_list(
                 token, content_type, team_id=team_id, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminInviteRequestsWithRawResponse:
@@ -229,7 +243,8 @@ class AdminInviteRequestsWithRawResponse(SecuredRawResponse[RawClient, Server, A
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -241,7 +256,7 @@ class AdminInviteRequestsWithRawResponse(SecuredRawResponse[RawClient, Server, A
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)]),
+            body=form_body(param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -264,7 +279,8 @@ class AdminInviteRequestsWithRawResponse(SecuredRawResponse[RawClient, Server, A
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -276,7 +292,7 @@ class AdminInviteRequestsWithRawResponse(SecuredRawResponse[RawClient, Server, A
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)]),
+            body=form_body(param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -302,7 +318,8 @@ class AdminInviteRequestsWithRawResponse(SecuredRawResponse[RawClient, Server, A
             cursor: Value of the ``next_cursor`` field sent as part of the previous API response
             limit: The number of results that will be returned by the API on each invocation. Must be between 1 - 1000,
                 both inclusive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -339,7 +356,8 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -351,9 +369,9 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)]),
+            body=form_body(param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -374,7 +392,8 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
             content_type: Value sent with the request.
             invite_request_id: ID of the request to invite.
             team_id: ID for the workspace where the invite request was made.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -386,9 +405,9 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)]),
+            body=form_body(param[str]("invite_request_id", invite_request_id), param[str | None]("team_id", team_id)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -412,7 +431,8 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
             cursor: Value of the ``next_cursor`` field sent as part of the previous API response
             limit: The number of results that will be returned by the API on each invocation. Must be between 1 - 1000,
                 both inclusive
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -426,7 +446,7 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

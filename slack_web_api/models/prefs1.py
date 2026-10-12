@@ -13,5 +13,5 @@ class Prefs1(SdkBaseModel):
 
 
 class Prefs1Dict(TypedDict):
-    can_thread: NotRequired[CanThread | CanThreadDict]
-    who_can_post: NotRequired[WhoCanPost | WhoCanPostDict]
+    can_thread: NotRequired[CanThreadDict]
+    who_can_post: NotRequired[WhoCanPostDict]

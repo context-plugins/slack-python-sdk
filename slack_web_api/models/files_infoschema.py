@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -16,7 +16,7 @@ class FilesInfoschema(SdkBaseModel):
     content_html: OptionalNullable[str] = UNSET
     editor: Optional[str] = UNSET
     file: Fileobject
-    ok: Literal["True"] = "True"
+    ok: bool
     paging: Optional[Pagingobject] = UNSET
     response_metadata: Optional[Any] = UNSET
 
@@ -25,7 +25,7 @@ class FilesInfoschemaDict(TypedDict):
     comments: list[Any]
     content_html: NotRequired[str | None]
     editor: NotRequired[str]
-    file: Fileobject | FileobjectDict
-    ok: NotRequired[Literal["True"]]
-    paging: NotRequired[Pagingobject | PagingobjectDict]
+    file: FileobjectDict
+    ok: bool
+    paging: NotRequired[PagingobjectDict]
     response_metadata: NotRequired[Any]

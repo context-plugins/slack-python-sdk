@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 from .enums.admin_conversations_set_conversation_prefs_error_enum import (
@@ -14,9 +12,9 @@ class AdminConversationsSetConversationPrefserrorschema1(SdkBaseModel):
     """Schema for error response from admin.conversations.setConversationPrefs"""
 
     error: AdminConversationsSetConversationPrefsErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class AdminConversationsSetConversationPrefserrorschema1Dict(TypedDict):
     error: AdminConversationsSetConversationPrefsErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

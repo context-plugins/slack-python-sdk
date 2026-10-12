@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     form_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.defaultsuccesstemplate import Defaultsuccesstemplate
 from ..models.enums.content_type import ContentTypeOrStr
@@ -42,16 +44,19 @@ class AdminUsergroups:
             usergroup_id: ID of the IDP group to add default channels for.
             channel_ids: Comma separated string of channel IDs.
             team_id: The workspace to add default channels in.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_usergroups_add_channels(
-            token, content_type, usergroup_id, channel_ids, team_id=team_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_usergroups_add_channels(
+                token, content_type, usergroup_id, channel_ids, team_id=team_id, request_options=request_options
+            ),
+        )
 
     def admin_usergroups_add_teams(
         self,
@@ -73,16 +78,24 @@ class AdminUsergroups:
                 organization associated with the token.
             auto_provision: When ``true``, this method automatically creates new workspace accounts for the IDP group
                 members.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_usergroups_add_teams(
-            token, content_type, usergroup_id, team_ids, auto_provision=auto_provision, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_usergroups_add_teams(
+                token,
+                content_type,
+                usergroup_id,
+                team_ids,
+                auto_provision=auto_provision,
+                request_options=request_options,
+            ),
+        )
 
     def admin_usergroups_list_channels(
         self,
@@ -102,21 +115,24 @@ class AdminUsergroups:
             content_type: Value sent with the request.
             team_id: ID of the the workspace.
             include_num_members: Flag to include or exclude the count of members per channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_usergroups_list_channels(
-            usergroup_id,
-            token,
-            content_type,
-            team_id=team_id,
-            include_num_members=include_num_members,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_usergroups_list_channels(
+                usergroup_id,
+                token,
+                content_type,
+                team_id=team_id,
+                include_num_members=include_num_members,
+                request_options=request_options,
+            ),
+        )
 
     def admin_usergroups_remove_channels(
         self,
@@ -134,16 +150,19 @@ class AdminUsergroups:
             content_type: Value sent with the request.
             usergroup_id: ID of the IDP Group
             channel_ids: Comma-separated string of channel IDs
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.admin_usergroups_remove_channels(
-            token, content_type, usergroup_id, channel_ids, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.admin_usergroups_remove_channels(
+                token, content_type, usergroup_id, channel_ids, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AdminUsergroupsWithRawResponse:
@@ -172,18 +191,19 @@ class AsyncAdminUsergroups:
             usergroup_id: ID of the IDP group to add default channels for.
             channel_ids: Comma separated string of channel IDs.
             team_id: The workspace to add default channels in.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_usergroups_add_channels(
                 token, content_type, usergroup_id, channel_ids, team_id=team_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_usergroups_add_teams(
         self,
@@ -205,14 +225,15 @@ class AsyncAdminUsergroups:
                 organization associated with the token.
             auto_provision: When ``true``, this method automatically creates new workspace accounts for the IDP group
                 members.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_usergroups_add_teams(
                 token,
                 content_type,
@@ -220,8 +241,8 @@ class AsyncAdminUsergroups:
                 team_ids,
                 auto_provision=auto_provision,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_usergroups_list_channels(
         self,
@@ -241,14 +262,15 @@ class AsyncAdminUsergroups:
             content_type: Value sent with the request.
             team_id: ID of the the workspace.
             include_num_members: Flag to include or exclude the count of members per channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_usergroups_list_channels(
                 usergroup_id,
                 token,
@@ -256,8 +278,8 @@ class AsyncAdminUsergroups:
                 team_id=team_id,
                 include_num_members=include_num_members,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def admin_usergroups_remove_channels(
         self,
@@ -275,18 +297,19 @@ class AsyncAdminUsergroups:
             content_type: Value sent with the request.
             usergroup_id: ID of the IDP Group
             channel_ids: Comma-separated string of channel IDs
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.admin_usergroups_remove_channels(
                 token, content_type, usergroup_id, channel_ids, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAdminUsergroupsWithRawResponse:
@@ -312,7 +335,8 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
             usergroup_id: ID of the IDP group to add default channels for.
             channel_ids: Comma separated string of channel IDs.
             team_id: The workspace to add default channels in.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -325,11 +349,9 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup_id", usergroup_id),
-                    param[str]("channel_ids", channel_ids),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("usergroup_id", usergroup_id),
+                param[str]("channel_ids", channel_ids),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -357,7 +379,8 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
                 organization associated with the token.
             auto_provision: When ``true``, this method automatically creates new workspace accounts for the IDP group
                 members.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -370,11 +393,9 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup_id", usergroup_id),
-                    param[str]("team_ids", team_ids),
-                    param[bool | None]("auto_provision", auto_provision),
-                ],
+                param[str]("usergroup_id", usergroup_id),
+                param[str]("team_ids", team_ids),
+                param[bool | None]("auto_provision", auto_provision),
             ),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
@@ -400,7 +421,8 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
             content_type: Value sent with the request.
             team_id: ID of the the workspace.
             include_num_members: Flag to include or exclude the count of members per channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -435,7 +457,8 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
             content_type: Value sent with the request.
             usergroup_id: ID of the IDP Group
             channel_ids: Comma-separated string of channel IDs
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -447,7 +470,7 @@ class AdminUsergroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthS
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup_id", usergroup_id), param[str]("channel_ids", channel_ids)]),
+            body=form_body(param[str]("usergroup_id", usergroup_id), param[str]("channel_ids", channel_ids)),
             auth_scheme=self._auth.slack_auth,
             decoder=json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
@@ -474,7 +497,8 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
             usergroup_id: ID of the IDP group to add default channels for.
             channel_ids: Comma separated string of channel IDs.
             team_id: The workspace to add default channels in.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -487,14 +511,12 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup_id", usergroup_id),
-                    param[str]("channel_ids", channel_ids),
-                    param[str | None]("team_id", team_id),
-                ],
+                param[str]("usergroup_id", usergroup_id),
+                param[str]("channel_ids", channel_ids),
+                param[str | None]("team_id", team_id),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -519,7 +541,8 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
                 organization associated with the token.
             auto_provision: When ``true``, this method automatically creates new workspace accounts for the IDP group
                 members.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -532,14 +555,12 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
             body=form_body(
-                [
-                    param[str]("usergroup_id", usergroup_id),
-                    param[str]("team_ids", team_ids),
-                    param[bool | None]("auto_provision", auto_provision),
-                ],
+                param[str]("usergroup_id", usergroup_id),
+                param[str]("team_ids", team_ids),
+                param[bool | None]("auto_provision", auto_provision),
             ),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -562,7 +583,8 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
             content_type: Value sent with the request.
             team_id: ID of the the workspace.
             include_num_members: Flag to include or exclude the count of members per channel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -576,7 +598,7 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -597,7 +619,8 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
             content_type: Value sent with the request.
             usergroup_id: ID of the IDP Group
             channel_ids: Comma-separated string of channel IDs
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -609,9 +632,9 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
                 param[ContentTypeOrStr]("Content-Type", content_type),
                 param[UUID]("Idempotency-Key", uuid4()),
             ],
-            body=form_body([param[str]("usergroup_id", usergroup_id), param[str]("channel_ids", channel_ids)]),
+            body=form_body(param[str]("usergroup_id", usergroup_id), param[str]("channel_ids", channel_ids)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

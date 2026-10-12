@@ -10,9 +10,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.add`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_participants_add(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`, `users`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `users` — form field
+- **Signature**: `def calls_participants_add(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`, `users`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -26,9 +26,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.remove`
 - **Auth**: `slack_auth`
-- **Signature**: `def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `token`, `content_type`, `id`, `users`
-- **Params**: `token` — header · `content_type` — header `Content-Type` · `id` — form field · `users` — form field
+- **Signature**: `def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `token`, `content_type`, `id_`, `users`
+- **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
 - **Returns (parsed)**: `Defaultsuccesstemplate`
 - **Returns (raw)**: `ApiResult[Defaultsuccesstemplate, RawError]`
 - **Error**: `RawError` — **Case B**

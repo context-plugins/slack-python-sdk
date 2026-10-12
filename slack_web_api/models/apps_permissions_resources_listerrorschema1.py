@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -15,10 +13,10 @@ class AppsPermissionsResourcesListerrorschema1(SdkBaseModel):
     """Note: PHP callstack is only visible in dev/qa"""
 
     error: AppsPermissionsResourcesListErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class AppsPermissionsResourcesListerrorschema1Dict(TypedDict):
     callstack: NotRequired[str]
     error: AppsPermissionsResourcesListErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

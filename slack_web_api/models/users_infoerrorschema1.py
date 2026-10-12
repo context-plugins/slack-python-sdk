@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -13,10 +11,10 @@ class UsersInfoerrorschema1(SdkBaseModel):
 
     callstack: Optional[str] = UNSET
     error: UsersInfoErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
 
 
 class UsersInfoerrorschema1Dict(TypedDict):
     callstack: NotRequired[str]
     error: UsersInfoErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool

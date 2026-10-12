@@ -56,9 +56,9 @@ class TeamObjectDict(TypedDict):
     email_domain: str
     enterprise_id: NotRequired[str]
     enterprise_name: NotRequired[str]
-    external_org_migrations: NotRequired[ExternalOrgMigrations | ExternalOrgMigrationsDict]
+    external_org_migrations: NotRequired[ExternalOrgMigrationsDict]
     has_compliance_export: NotRequired[bool]
-    icon: ObjsIcon | ObjsIconDict
+    icon: ObjsIconDict
     id: str
     is_assigned: NotRequired[bool]
     is_enterprise: NotRequired[int]
@@ -72,5 +72,5 @@ class TeamObjectDict(TypedDict):
     over_storage_limit: NotRequired[bool]
     pay_prod_cur: NotRequired[str]
     plan: NotRequired[PlanOrStr]
-    primary_owner: NotRequired[ObjsPrimaryOwner | ObjsPrimaryOwnerDict]
-    sso_provider: NotRequired[SsoProvider | SsoProviderDict]
+    primary_owner: NotRequired[ObjsPrimaryOwnerDict]
+    sso_provider: NotRequired[SsoProviderDict]

@@ -10,9 +10,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /files.comments.delete`
 - **Auth**: `slack_auth`
-- **Signature**: `def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def files_comments_delete(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, id_: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
-- **Params**: `content_type` — header `Content-Type` · `token` — header · `file` — form field · `id` — form field
+- **Params**: `content_type` — header `Content-Type` · `token` — header · `file` — form field · `id_` — form field `id`
 - **Returns (parsed)**: `FilesCommentsDeleteschema`
 - **Returns (raw)**: `ApiResult[FilesCommentsDeleteschema, RawError]`
 - **Error**: `RawError` — **Case B**

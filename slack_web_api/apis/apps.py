@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.api_permissions_scopes_listsuccessschema import ApiPermissionsScopesListsuccessschema
 from ..models.apps_permissions_infoschema import AppsPermissionsInfoschema
@@ -45,16 +47,19 @@ class Apps:
             content_type: Value sent with the request.
             cursor: Value sent with the request.
             limit: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_event_authorizations_list(
-            event_context, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_event_authorizations_list(
+                event_context, token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def apps_permissions_info(
         self,
@@ -68,16 +73,17 @@ class Apps:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_info(
-            content_type, token=token, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_info(content_type, token=token, request_options=request_options)
+        )
 
     def apps_permissions_request(
         self,
@@ -95,16 +101,19 @@ class Apps:
             scopes: A comma separated list of scopes to request for
             trigger_id: Token used to trigger the permissions API
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_request(
-            token, scopes, trigger_id, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_request(
+                token, scopes, trigger_id, content_type, request_options=request_options
+            ),
+        )
 
     def apps_permissions_resources_list(
         self,
@@ -124,16 +133,19 @@ class Apps:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_resources_list(
-            token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_resources_list(
+                token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def apps_permissions_scopes_list(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -143,16 +155,17 @@ class Apps:
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_scopes_list(
-            token, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_scopes_list(token, content_type, request_options=request_options)
+        )
 
     def apps_permissions_users_list(
         self,
@@ -172,16 +185,19 @@ class Apps:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_users_list(
-            token, content_type, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_users_list(
+                token, content_type, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def apps_permissions_users_request(
         self,
@@ -201,16 +217,19 @@ class Apps:
             trigger_id: Token used to trigger the request
             user: The user this scope is being requested for
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_permissions_users_request(
-            token, scopes, trigger_id, user, content_type, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_permissions_users_request(
+                token, scopes, trigger_id, user, content_type, request_options=request_options
+            ),
+        )
 
     def apps_uninstall(
         self,
@@ -228,16 +247,23 @@ class Apps:
             token: Authentication token. Requires scope: ``none``
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.apps_uninstall(
-            content_type, token=token, client_id=client_id, client_secret=client_secret, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.apps_uninstall(
+                content_type,
+                token=token,
+                client_id=client_id,
+                client_secret=client_secret,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AppsWithRawResponse:
@@ -267,18 +293,19 @@ class AsyncApps:
             content_type: Value sent with the request.
             cursor: Value sent with the request.
             limit: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_event_authorizations_list(
                 event_context, token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_info(
         self,
@@ -292,18 +319,19 @@ class AsyncApps:
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_info(
                 content_type, token=token, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_request(
         self,
@@ -321,18 +349,19 @@ class AsyncApps:
             scopes: A comma separated list of scopes to request for
             trigger_id: Token used to trigger the permissions API
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_request(
                 token, scopes, trigger_id, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_resources_list(
         self,
@@ -352,18 +381,19 @@ class AsyncApps:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_resources_list(
                 token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_scopes_list(
         self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
@@ -373,18 +403,19 @@ class AsyncApps:
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_scopes_list(
                 token, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_users_list(
         self,
@@ -404,18 +435,19 @@ class AsyncApps:
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical successful paginated response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_users_list(
                 token, content_type, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_permissions_users_request(
         self,
@@ -435,18 +467,19 @@ class AsyncApps:
             trigger_id: Token used to trigger the request
             user: The user this scope is being requested for
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Standard success response when used with a user token
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_permissions_users_request(
                 token, scopes, trigger_id, user, content_type, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def apps_uninstall(
         self,
@@ -464,22 +497,23 @@ class AsyncApps:
             token: Authentication token. Requires scope: ``none``
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.apps_uninstall(
                 content_type,
                 token=token,
                 client_id=client_id,
                 client_secret=client_secret,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncAppsWithRawResponse:
@@ -506,7 +540,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             content_type: Value sent with the request.
             cursor: Value sent with the request.
             limit: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -537,7 +572,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -568,7 +604,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             scopes: A comma separated list of scopes to request for
             trigger_id: Token used to trigger the permissions API
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -603,7 +640,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -628,7 +666,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -661,7 +700,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -696,7 +736,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             trigger_id: Token used to trigger the request
             user: The user this scope is being requested for
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -732,7 +773,8 @@ class AppsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             token: Authentication token. Requires scope: ``none``
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -772,7 +814,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             content_type: Value sent with the request.
             cursor: Value sent with the request.
             limit: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -786,7 +829,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[str]("token", token), param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -803,7 +846,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             content_type: Value sent with the request.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -813,7 +857,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             query_params=[param[str | None]("token", token)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AppsPermissionsInfoschema],
+            decoder=async_json_decoder[AppsPermissionsInfoschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -834,7 +878,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             scopes: A comma separated list of scopes to request for
             trigger_id: Token used to trigger the permissions API
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -846,7 +891,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AppsPermissionsRequestschema],
+            decoder=async_json_decoder[AppsPermissionsRequestschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -869,7 +914,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -881,7 +927,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AppsPermissionsResourcesListsuccessschema],
+            decoder=async_json_decoder[AppsPermissionsResourcesListsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -894,7 +940,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             token: Authentication token. Requires scope: ``none``
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -904,7 +951,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             query_params=[param[str]("token", token)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ApiPermissionsScopesListsuccessschema],
+            decoder=async_json_decoder[ApiPermissionsScopesListsuccessschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -927,7 +974,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
                 attribute returned by a previous request's ``response_metadata``. Default value fetches the first "page"
                 of the collection.
             limit: The maximum number of items to return.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -939,7 +987,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -962,7 +1010,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             trigger_id: Token used to trigger the request
             user: The user this scope is being requested for
             content_type: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -977,7 +1026,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[Defaultsuccesstemplate],
+            decoder=async_json_decoder[Defaultsuccesstemplate],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -998,7 +1047,8 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             token: Authentication token. Requires scope: ``none``
             client_id: Issued when you created your application.
             client_secret: Issued when you created your application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1012,7 +1062,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[AppsUninstallschema],
+            decoder=async_json_decoder[AppsUninstallschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -15,5 +15,5 @@ class Im(SdkBaseModel):
 
 
 class ImDict(TypedDict):
-    resources: NotRequired[ResourcesininfofromappsPermissionsInfo | ResourcesininfofromappsPermissionsInfoDict]
+    resources: NotRequired[ResourcesininfofromappsPermissionsInfoDict]
     scopes: NotRequired[list[str]]

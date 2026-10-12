@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
 
@@ -11,9 +11,9 @@ class ConversationsCreatesuccessschema(SdkBaseModel):
     """Schema for successful response conversations.create method"""
 
     channel: Any
-    ok: Literal["True"] = "True"
+    ok: bool
 
 
 class ConversationsCreatesuccessschemaDict(TypedDict):
     channel: Any
-    ok: NotRequired[Literal["True"]]
+    ok: bool

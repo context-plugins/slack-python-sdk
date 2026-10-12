@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -12,12 +12,12 @@ class UsersListschema(SdkBaseModel):
 
     cache_ts: int
     members: list[Any]
-    ok: Literal["True"] = "True"
+    ok: bool
     response_metadata: Optional[Any] = UNSET
 
 
 class UsersListschemaDict(TypedDict):
     cache_ts: int
     members: list[Any]
-    ok: NotRequired[Literal["True"]]
+    ok: bool
     response_metadata: NotRequired[Any]

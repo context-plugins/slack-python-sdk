@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.chat_scheduled_messages_listschema import ChatScheduledMessagesListschema
 from ..models.enums.content_type import ContentTypeOrStr
@@ -44,23 +46,26 @@ class ChatScheduledMessages:
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.chat_scheduled_messages_list(
-            content_type,
-            channel=channel,
-            latest=latest,
-            oldest=oldest,
-            limit=limit,
-            cursor=cursor,
-            token=token,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.chat_scheduled_messages_list(
+                content_type,
+                channel=channel,
+                latest=latest,
+                oldest=oldest,
+                limit=limit,
+                cursor=cursor,
+                token=token,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> ChatScheduledMessagesWithRawResponse:
@@ -94,14 +99,15 @@ class AsyncChatScheduledMessages:
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Typical success response
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.chat_scheduled_messages_list(
                 content_type,
                 channel=channel,
@@ -111,8 +117,8 @@ class AsyncChatScheduledMessages:
                 cursor=cursor,
                 token=token,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncChatScheduledMessagesWithRawResponse:
@@ -143,7 +149,8 @@ class ChatScheduledMessagesWithRawResponse(SecuredRawResponse[RawClient, Server,
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -189,7 +196,8 @@ class AsyncChatScheduledMessagesWithRawResponse(SecuredRawResponse[AsyncRawClien
             cursor: For pagination purposes, this is the ``cursor`` value returned from a previous call to
                 ``chat.scheduledmessages.list`` indicating where you want to start this call from.
             token: Authentication token. Requires scope: ``none``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -205,7 +213,7 @@ class AsyncChatScheduledMessagesWithRawResponse(SecuredRawResponse[AsyncRawClien
             ],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type), param[str | None]("token", token)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ChatScheduledMessagesListschema],
+            decoder=async_json_decoder[ChatScheduledMessagesListschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

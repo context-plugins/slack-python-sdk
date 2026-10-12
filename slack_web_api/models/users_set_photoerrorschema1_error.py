@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
@@ -21,7 +19,7 @@ class UsersSetPhotoerrorschema1Error(SdkBaseModel):
     """possibly DEV/QA only"""
 
     error: UsersSetPhotoErrorEnumOrStr
-    ok: Literal["False"] = "False"
+    ok: bool
     time_ident: Optional[int] = UNSET
     """possibly DEV/QA only"""
 
@@ -31,5 +29,5 @@ class UsersSetPhotoerrorschema1ErrorDict(TypedDict):
     debug_step: NotRequired[str]
     dims: NotRequired[str]
     error: UsersSetPhotoErrorEnumOrStr
-    ok: NotRequired[Literal["False"]]
+    ok: bool
     time_ident: NotRequired[int]

@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -191,7 +192,7 @@ class AsyncAdminEmoji:
         name: str,
         url: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an emoji.
 
@@ -223,7 +224,7 @@ class AsyncAdminEmoji:
         name: str,
         alias_for: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an emoji alias.
 
@@ -254,7 +255,7 @@ class AsyncAdminEmoji:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List emoji for an Enterprise Grid organization.
 
@@ -283,7 +284,7 @@ class AsyncAdminEmoji:
         token: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove an emoji across an Enterprise Grid organization
 
@@ -311,7 +312,7 @@ class AsyncAdminEmoji:
         name: str,
         new_name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Rename an emoji.
 
@@ -515,7 +516,7 @@ class AsyncAdminEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         name: str,
         url: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an emoji.
 
@@ -549,7 +550,7 @@ class AsyncAdminEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         name: str,
         alias_for: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an emoji alias.
 
@@ -582,7 +583,7 @@ class AsyncAdminEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List emoji for an Enterprise Grid organization.
 
@@ -615,7 +616,7 @@ class AsyncAdminEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         token: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove an emoji across an Enterprise Grid organization
 
@@ -647,7 +648,7 @@ class AsyncAdminEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         name: str,
         new_name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Rename an emoji.
 

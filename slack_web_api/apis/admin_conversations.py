@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -486,7 +487,7 @@ class AsyncAdminConversations:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsArchiveschema:
         """Archive a public or private channel.
 
@@ -514,7 +515,7 @@ class AsyncAdminConversations:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsConvertToPrivateschema:
         """Convert a public channel to a private channel.
 
@@ -546,7 +547,7 @@ class AsyncAdminConversations:
         description: str | None = None,
         org_wide: bool | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsCreateschema:
         """Create a public or private channel-based conversation.
 
@@ -587,7 +588,7 @@ class AsyncAdminConversations:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsDeleteschema:
         """Delete a public or private channel.
 
@@ -616,7 +617,7 @@ class AsyncAdminConversations:
         channel_id: str,
         *,
         leaving_team_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsRenameschema:
         """Disconnect a connected channel from one or more workspaces.
 
@@ -645,7 +646,7 @@ class AsyncAdminConversations:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsGetConversationPrefsschema:
         """Get conversation preferences for a public or private channel.
 
@@ -675,7 +676,7 @@ class AsyncAdminConversations:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsGetTeamsschema:
         """Get all the workspaces a given public or private channel is connected to within this Enterprise org.
 
@@ -706,7 +707,7 @@ class AsyncAdminConversations:
         user_ids: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsInviteschema:
         """Invite a user to a public or private channel.
 
@@ -736,7 +737,7 @@ class AsyncAdminConversations:
         channel_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsRenameschema1:
         """Rename a public or private channel.
 
@@ -771,7 +772,7 @@ class AsyncAdminConversations:
         search_channel_types: str | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsSearchschema:
         """Search for public or private channels in an Enterprise organization.
 
@@ -820,7 +821,7 @@ class AsyncAdminConversations:
         channel_id: str,
         prefs: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsSetConversationPrefsschema:
         """Set the posting permissions for a public or private channel.
 
@@ -852,7 +853,7 @@ class AsyncAdminConversations:
         team_id: str | None = None,
         target_team_ids: str | None = None,
         org_channel: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the workspaces in an Enterprise grid org that connect to a public or private channel.
 
@@ -891,7 +892,7 @@ class AsyncAdminConversations:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsUnarchiveschema:
         """Unarchive a public or private channel.
 
@@ -1429,7 +1430,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsArchiveschema, RawError]:
         """Archive a public or private channel.
 
@@ -1463,7 +1464,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsConvertToPrivateschema, RawError]:
         """Convert a public channel to a private channel.
 
@@ -1501,7 +1502,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         description: str | None = None,
         org_wide: bool | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsCreateschema, RawError]:
         """Create a public or private channel-based conversation.
 
@@ -1547,7 +1548,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsDeleteschema, RawError]:
         """Delete a public or private channel.
 
@@ -1582,7 +1583,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         channel_id: str,
         *,
         leaving_team_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsRenameschema, RawError]:
         """Disconnect a connected channel from one or more workspaces.
 
@@ -1619,7 +1620,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsGetConversationPrefsschema, RawError]:
         """Get conversation preferences for a public or private channel.
 
@@ -1651,7 +1652,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsGetTeamsschema, RawError]:
         """Get all the workspaces a given public or private channel is connected to within this Enterprise org.
 
@@ -1688,7 +1689,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         user_ids: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsInviteschema, RawError]:
         """Invite a user to a public or private channel.
 
@@ -1724,7 +1725,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         channel_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsRenameschema1, RawError]:
         """Rename a public or private channel.
 
@@ -1765,7 +1766,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         search_channel_types: str | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsSearchschema, RawError]:
         """Search for public or private channels in an Enterprise organization.
 
@@ -1815,7 +1816,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         channel_id: str,
         prefs: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsSetConversationPrefsschema, RawError]:
         """Set the posting permissions for a public or private channel.
 
@@ -1853,7 +1854,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         team_id: str | None = None,
         target_team_ids: str | None = None,
         org_channel: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the workspaces in an Enterprise grid org that connect to a public or private channel.
 
@@ -1897,7 +1898,7 @@ class AsyncAdminConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsUnarchiveschema, RawError]:
         """Unarchive a public or private channel.
 

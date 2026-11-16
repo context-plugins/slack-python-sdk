@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Sequence
 from functools import cached_property
 from types import TracebackType
 
@@ -74,34 +75,42 @@ from .core import (
     AsyncOAuth2RefreshableScheme,
     AsyncRawClient,
     AsyncRefreshableTokenSource,
+    AsyncSdkHook,
+    AsyncSdkHooksDict,
+    LoggingOptionsOrDict,
     RetryOptionsOrDict,
     client_secret_basic,
     no_auth,
     param,
 )
-from .server.environment import Environment
+from .server.server_config import ServerConfigOrDict
 
 
 class AsyncSlackWebApiClient(BaseSlackWebApiClient[AsyncRawClient]):
     def __init__(
         self,
         *,
-        environment: Environment = "production",
-        base_url: str | None = None,
+        server_config: ServerConfigOrDict | None = None,
         timeout: float = DEFAULT_TIMEOUT,
         retry_options: int | RetryOptionsOrDict | None = None,
+        logging_options: LoggingOptionsOrDict | None = None,
+        hooks: Sequence[AsyncSdkHook] | AsyncSdkHooksDict | None = None,
         custom_async_http_client: AsyncHttpClient | None = None,
         slack_auth: AsyncAuthorizationCodeCredentialsOrDict[SlackAuthScope] | None = None,
         slack_auth_token_source: (
             AsyncRefreshableTokenSource[AsyncAuthorizationCodeCredentials[SlackAuthScope]] | None
         ) = None,
     ) -> None:
-        super().__init__(environment=environment, base_url=base_url, timeout=timeout, retry_options=retry_options)
+        super().__init__(
+            server_config=server_config, timeout=timeout, retry_options=retry_options, logging_options=logging_options
+        )
         self._raw_client = AsyncRawClient(
             http_client=(
                 custom_async_http_client if custom_async_http_client is not None else AsyncHttpx2Client(timeout=timeout)
             ),
             retry_options=self._retry_options,
+            logging_options=self._logging_options,
+            hooks=hooks if hooks is not None else [],
             global_headers=[
                 param[str]("User-Agent", "SlackWebApiClient/1.7.0 Python"),
                 param[str]("X-APIMatic-Lang", "Python"),
@@ -120,9 +129,9 @@ class AsyncSlackWebApiClient(BaseSlackWebApiClient[AsyncRawClient]):
                         if slack_auth_token_source is not None
                         else AsyncAuthorizationCodeTokenSource[SlackAuthScope](
                             client=self._raw_client,
-                            authorization_url=self._server.default("/authorize"),
-                            token_url=self._server.default("/oauth.access"),
-                            refresh_url=self._server.default("/oauth.access"),
+                            authorization_url=self._server.auth_server("/authorize"),
+                            token_url=self._server.default("/oauth.v2.access"),
+                            refresh_url=self._server.default("/oauth.v2.access"),
                             placement=client_secret_basic,
                         )
                     ),

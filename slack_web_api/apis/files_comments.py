@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -72,7 +73,7 @@ class AsyncFilesComments:
         token: str | None = None,
         file: str | None = None,
         id_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
 
@@ -146,7 +147,7 @@ class AsyncFilesCommentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         file: str | None = None,
         id_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
 

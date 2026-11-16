@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -62,7 +63,7 @@ class AsyncBots:
         content_type: ContentTypeOrStr,
         *,
         bot: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> BotsInfoschema:
         """Gets information about a bot user.
 
@@ -126,7 +127,7 @@ class AsyncBotsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         content_type: ContentTypeOrStr,
         *,
         bot: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[BotsInfoschema, RawError]:
         """Gets information about a bot user.
 

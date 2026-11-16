@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -73,7 +74,7 @@ class AsyncMigration:
         *,
         team_id: str | None = None,
         to_old: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> MigrationExchangesuccessschema:
         """For Enterprise Grid workspaces, map local user IDs to global user IDs
 
@@ -154,7 +155,7 @@ class AsyncMigrationWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         *,
         team_id: str | None = None,
         to_old: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[MigrationExchangesuccessschema, RawError]:
         """For Enterprise Grid workspaces, map local user IDs to global user IDs
 

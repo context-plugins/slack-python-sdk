@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -104,7 +105,7 @@ class AsyncCallsParticipants:
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Registers new participants added to a Call.
 
@@ -135,7 +136,7 @@ class AsyncCallsParticipants:
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Registers participants removed from a Call.
 
@@ -248,7 +249,7 @@ class AsyncCallsParticipantsWithRawResponse(SecuredRawResponse[AsyncRawClient, S
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Registers new participants added to a Call.
 
@@ -285,7 +286,7 @@ class AsyncCallsParticipantsWithRawResponse(SecuredRawResponse[AsyncRawClient, S
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Registers participants removed from a Call.
 

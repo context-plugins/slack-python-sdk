@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -171,7 +172,7 @@ class AsyncStars:
         file: str | None = None,
         file_comment: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> StarsAddschema:
         """Adds a star to an item.
 
@@ -212,7 +213,7 @@ class AsyncStars:
         page: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> StarsListschema:
         """Lists stars for a user.
 
@@ -255,7 +256,7 @@ class AsyncStars:
         file: str | None = None,
         file_comment: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> StarsRemoveschema:
         """Removes a star from an item.
 
@@ -441,7 +442,7 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         file: str | None = None,
         file_comment: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[StarsAddschema, RawError]:
         """Adds a star to an item.
 
@@ -487,7 +488,7 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         page: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[StarsListschema, RawError]:
         """Lists stars for a user.
 
@@ -532,7 +533,7 @@ class AsyncStarsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         file: str | None = None,
         file_comment: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[StarsRemoveschema, RawError]:
         """Removes a star from an item.
 

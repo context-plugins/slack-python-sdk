@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -66,7 +67,7 @@ class AsyncTeamProfile:
         content_type: ContentTypeOrStr,
         *,
         visibility: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> TeamProfileGetsuccessschema:
         """Retrieve a team's profile.
 
@@ -132,7 +133,7 @@ class AsyncTeamProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         content_type: ContentTypeOrStr,
         *,
         visibility: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[TeamProfileGetsuccessschema, RawError]:
         """Retrieve a team's profile.
 

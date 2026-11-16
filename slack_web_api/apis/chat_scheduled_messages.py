@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -86,7 +87,7 @@ class AsyncChatScheduledMessages:
         limit: int | None = None,
         cursor: str | None = None,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatScheduledMessagesListschema:
         """Returns a list of scheduled messages.
 
@@ -183,7 +184,7 @@ class AsyncChatScheduledMessagesWithRawResponse(SecuredRawResponse[AsyncRawClien
         limit: int | None = None,
         cursor: str | None = None,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatScheduledMessagesListschema, RawError]:
         """Returns a list of scheduled messages.
 

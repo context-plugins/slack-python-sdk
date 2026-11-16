@@ -7,6 +7,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -128,7 +129,7 @@ class AsyncPins:
         channel: str,
         *,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> PinsAddschema:
         """Pins an item to a channel.
 
@@ -157,7 +158,7 @@ class AsyncPins:
         channel: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Any:
         """Lists items pinned to a channel.
 
@@ -184,7 +185,7 @@ class AsyncPins:
         channel: str,
         *,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> PinsRemoveschema:
         """Un-pins an item from a channel.
 
@@ -324,7 +325,7 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         channel: str,
         *,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[PinsAddschema, RawError]:
         """Pins an item to a channel.
 
@@ -359,7 +360,7 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         channel: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Any, RawError]:
         """Lists items pinned to a channel.
 
@@ -390,7 +391,7 @@ class AsyncPinsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         channel: str,
         *,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[PinsRemoveschema, RawError]:
         """Un-pins an item from a channel.
 

@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -64,7 +65,7 @@ class AsyncApi2:
         *,
         error: str | None = None,
         foo: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiTestsuccessschema:
         """Checks API calling code.
 
@@ -128,7 +129,7 @@ class AsyncApi2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         *,
         error: str | None = None,
         foo: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ApiTestsuccessschema, RawError]:
         """Checks API calling code.
 

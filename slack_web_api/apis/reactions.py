@@ -7,6 +7,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -213,7 +214,7 @@ class AsyncReactions:
         name: str,
         timestamp: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ReactionsAddschema:
         """Adds a reaction to an item.
 
@@ -247,7 +248,7 @@ class AsyncReactions:
         file_comment: str | None = None,
         full: bool | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Any:
         """Gets reactions for an item.
 
@@ -291,7 +292,7 @@ class AsyncReactions:
         page: int | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ReactionsListschema:
         """Lists reactions made by a user.
 
@@ -339,7 +340,7 @@ class AsyncReactions:
         file_comment: str | None = None,
         channel: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ReactionsRemoveschema:
         """Removes a reaction from an item.
 
@@ -572,7 +573,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         name: str,
         timestamp: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ReactionsAddschema, RawError]:
         """Adds a reaction to an item.
 
@@ -614,7 +615,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         file_comment: str | None = None,
         full: bool | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Any, RawError]:
         """Gets reactions for an item.
 
@@ -660,7 +661,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         page: int | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ReactionsListschema, RawError]:
         """Lists reactions made by a user.
 
@@ -710,7 +711,7 @@ class AsyncReactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         file_comment: str | None = None,
         channel: str | None = None,
         timestamp: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ReactionsRemoveschema, RawError]:
         """Removes a reaction from an item.
 

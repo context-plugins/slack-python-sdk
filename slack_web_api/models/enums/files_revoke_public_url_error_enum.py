@@ -4,7 +4,7 @@ from typing import Annotated, TypeAlias
 from ...core import open_enum_validator
 
 
-class FilesRevokePublicUrlerrorEnum(str, Enum):
+class FilesRevokePublicUrlErrorEnum(str, Enum):
     FILE_NOT_FOUND = "file_not_found"
     NOT_AUTHED = "not_authed"
     INVALID_AUTH = "invalid_auth"
@@ -30,6 +30,6 @@ class FilesRevokePublicUrlerrorEnum(str, Enum):
     __str__ = str.__str__
 
 
-FilesRevokePublicUrlerrorEnumOrStr: TypeAlias = Annotated[
-    FilesRevokePublicUrlerrorEnum | str, open_enum_validator(FilesRevokePublicUrlerrorEnum)
+FilesRevokePublicUrlErrorEnumOrStr: TypeAlias = Annotated[
+    FilesRevokePublicUrlErrorEnum | str, open_enum_validator(FilesRevokePublicUrlErrorEnum)
 ]

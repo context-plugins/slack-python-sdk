@@ -4,12 +4,13 @@
 
 Accessor: `client.dnd` · Source: `slack_web_api/apis/dnd.py` · 5 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.dnd.dnd_end_dnd
 
 - **Route**: `POST /dnd.endDnd`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def dnd_end_dnd(token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`
 - **Params**: `token` — header · `content_type` — header `Content-Type`
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /dnd.endSnooze`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def dnd_end_snooze(token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`
 - **Params**: `token` — header · `content_type` — header `Content-Type`
@@ -42,6 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /dnd.info`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def dnd_info(content_type: ContentTypeOrStr, *, token: str | None = None, user: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `user` — query · `content_type` — header `Content-Type`
@@ -58,6 +61,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /dnd.setSnooze`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def dnd_set_snooze(content_type: ContentTypeOrStr, token: str, num_minutes: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`, `token`, `num_minutes`
 - **Params**: `content_type` — header `Content-Type` · `token` — form field · `num_minutes` — form field
@@ -74,6 +78,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /dnd.teamInfo`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def dnd_team_info(content_type: ContentTypeOrStr, *, token: str | None = None, users: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `users` — query · `content_type` — header `Content-Type`

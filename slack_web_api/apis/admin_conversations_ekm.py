@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -82,7 +83,7 @@ class AsyncAdminConversationsEkm:
         team_ids: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all disconnected channels—i.e., channels that were once connected to other workspaces and then
         disconnected—and the corresponding original channel IDs for key revocation with EKM.
@@ -174,7 +175,7 @@ class AsyncAdminConversationsEkmWithRawResponse(SecuredRawResponse[AsyncRawClien
         team_ids: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all disconnected channels—i.e., channels that were once connected to other workspaces and then
         disconnected—and the corresponding original channel IDs for key revocation with EKM.

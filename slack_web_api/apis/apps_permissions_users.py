@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -103,7 +104,7 @@ class AsyncAppsPermissionsUsers:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Returns list of user grants and corresponding scopes this app has on a team.
 
@@ -136,7 +137,7 @@ class AsyncAppsPermissionsUsers:
         user: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Enables an app to trigger a permissions modal to grant an app access to a user access scope.
 
@@ -250,7 +251,7 @@ class AsyncAppsPermissionsUsersWithRawResponse(SecuredRawResponse[AsyncRawClient
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Returns list of user grants and corresponding scopes this app has on a team.
 
@@ -287,7 +288,7 @@ class AsyncAppsPermissionsUsersWithRawResponse(SecuredRawResponse[AsyncRawClient
         user: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Enables an app to trigger a permissions modal to grant an app access to a user access scope.
 

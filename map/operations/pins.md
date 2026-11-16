@@ -4,12 +4,13 @@
 
 Accessor: `client.pins` · Source: `slack_web_api/apis/pins.py` · 3 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.pins.pins_add
 
 - **Route**: `POST /pins.add`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def pins_add(token: str, content_type: ContentTypeOrStr, channel: str, *, timestamp: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel` — form field · `timestamp` — form field
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /pins.list`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def pins_list(token: str, channel: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `channel`, `content_type`
 - **Params**: `token` — query · `channel` — query · `content_type` — header `Content-Type`
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /pins.remove`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def pins_remove(token: str, content_type: ContentTypeOrStr, channel: str, *, timestamp: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel` — form field · `timestamp` — form field

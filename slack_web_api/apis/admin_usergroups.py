@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -181,7 +182,7 @@ class AsyncAdminUsergroups:
         channel_ids: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add one or more default channels to an IDP group.
 
@@ -213,7 +214,7 @@ class AsyncAdminUsergroups:
         team_ids: str,
         *,
         auto_provision: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Associate one or more default workspaces with an organization-wide IDP group.
 
@@ -252,7 +253,7 @@ class AsyncAdminUsergroups:
         *,
         team_id: str | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List the channels linked to an org-level IDP group (user group).
 
@@ -288,7 +289,7 @@ class AsyncAdminUsergroups:
         usergroup_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove one or more default channels from an org-level IDP group (user group).
 
@@ -487,7 +488,7 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         channel_ids: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add one or more default channels to an IDP group.
 
@@ -529,7 +530,7 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         team_ids: str,
         *,
         auto_provision: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Associate one or more default workspaces with an organization-wide IDP group.
 
@@ -573,7 +574,7 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         *,
         team_id: str | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List the channels linked to an org-level IDP group (user group).
 
@@ -610,7 +611,7 @@ class AsyncAdminUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         usergroup_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove one or more default channels from an org-level IDP group (user group).
 

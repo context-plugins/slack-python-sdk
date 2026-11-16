@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -72,7 +73,7 @@ class AsyncAdminAppsRequests:
         limit: int | None = None,
         cursor: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List app requests for a team/workspace.
 
@@ -151,7 +152,7 @@ class AsyncAdminAppsRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient, S
         limit: int | None = None,
         cursor: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List app requests for a team/workspace.
 

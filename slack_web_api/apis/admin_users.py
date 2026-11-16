@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -329,7 +330,7 @@ class AsyncAdminUsers:
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         channel_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an Enterprise user to a workspace.
 
@@ -376,7 +377,7 @@ class AsyncAdminUsers:
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         guest_expiration_ts: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Invite a user to a workspace.
 
@@ -427,7 +428,7 @@ class AsyncAdminUsers:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List users on a workspace
 
@@ -458,7 +459,7 @@ class AsyncAdminUsers:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a user from a workspace.
 
@@ -488,7 +489,7 @@ class AsyncAdminUsers:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest, regular user, or owner to be an admin user.
 
@@ -519,7 +520,7 @@ class AsyncAdminUsers:
         user_id: str,
         expiration_ts: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an expiration for a guest user
 
@@ -550,7 +551,7 @@ class AsyncAdminUsers:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest, regular user, or admin user to be a workspace owner.
 
@@ -580,7 +581,7 @@ class AsyncAdminUsers:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest user, admin user, or owner to be a regular user.
 
@@ -953,7 +954,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         channel_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an Enterprise user to a workspace.
 
@@ -1005,7 +1006,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         guest_expiration_ts: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Invite a user to a workspace.
 
@@ -1061,7 +1062,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List users on a workspace
 
@@ -1096,7 +1097,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a user from a workspace.
 
@@ -1132,7 +1133,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest, regular user, or owner to be an admin user.
 
@@ -1169,7 +1170,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         user_id: str,
         expiration_ts: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an expiration for a guest user
 
@@ -1210,7 +1211,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest, regular user, or admin user to be a workspace owner.
 
@@ -1246,7 +1247,7 @@ class AsyncAdminUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest user, admin user, or owner to be a regular user.
 

@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -220,7 +221,7 @@ class AsyncAdminTeamsSettings:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Fetch information about settings in a workspace
 
@@ -249,7 +250,7 @@ class AsyncAdminTeamsSettings:
         team_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the default channels of a workspace.
 
@@ -279,7 +280,7 @@ class AsyncAdminTeamsSettings:
         team_id: str,
         description: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the description of a given workspace.
 
@@ -309,7 +310,7 @@ class AsyncAdminTeamsSettings:
         team_id: str,
         discoverability: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """An API method that allows admins to set the discoverability of a given workspace
 
@@ -340,7 +341,7 @@ class AsyncAdminTeamsSettings:
         image_url: str,
         team_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Sets the icon of a workspace.
 
@@ -370,7 +371,7 @@ class AsyncAdminTeamsSettings:
         team_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the name of a given workspace.
 
@@ -614,7 +615,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Fetch information about settings in a workspace
 
@@ -645,7 +646,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         team_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the default channels of a workspace.
 
@@ -679,7 +680,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         team_id: str,
         description: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the description of a given workspace.
 
@@ -715,7 +716,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         team_id: str,
         discoverability: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """An API method that allows admins to set the discoverability of a given workspace
 
@@ -752,7 +753,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         image_url: str,
         team_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Sets the icon of a workspace.
 
@@ -786,7 +787,7 @@ class AsyncAdminTeamsSettingsWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         team_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the name of a given workspace.
 

@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -203,7 +204,7 @@ class AsyncTeamApi:
         before: str | None = None,
         count: str | None = None,
         page: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> TeamAccessLogsschema:
         """Gets the access logs for the current team.
 
@@ -233,7 +234,7 @@ class AsyncTeamApi:
         content_type: ContentTypeOrStr,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Gets billable users information for the current team.
 
@@ -261,7 +262,7 @@ class AsyncTeamApi:
         content_type: ContentTypeOrStr,
         *,
         team: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> TeamInfoschema:
         """Gets information about the current team.
 
@@ -293,7 +294,7 @@ class AsyncTeamApi:
         page: str | None = None,
         service_id: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> TeamIntegrationLogsschema:
         """Gets the integration logs for the current team.
 
@@ -334,7 +335,7 @@ class AsyncTeamApi:
         content_type: ContentTypeOrStr,
         *,
         visibility: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> TeamProfileGetsuccessschema:
         """Retrieve a team's profile.
 
@@ -550,7 +551,7 @@ class AsyncTeamApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         before: str | None = None,
         count: str | None = None,
         page: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[TeamAccessLogsschema, RawError]:
         """Gets the access logs for the current team.
 
@@ -587,7 +588,7 @@ class AsyncTeamApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         content_type: ContentTypeOrStr,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Gets billable users information for the current team.
 
@@ -617,7 +618,7 @@ class AsyncTeamApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         content_type: ContentTypeOrStr,
         *,
         team: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[TeamInfoschema, RawError]:
         """Gets information about the current team.
 
@@ -653,7 +654,7 @@ class AsyncTeamApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         page: str | None = None,
         service_id: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[TeamIntegrationLogsschema, RawError]:
         """Gets the integration logs for the current team.
 
@@ -696,7 +697,7 @@ class AsyncTeamApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         content_type: ContentTypeOrStr,
         *,
         visibility: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[TeamProfileGetsuccessschema, RawError]:
         """Retrieve a team's profile.
 

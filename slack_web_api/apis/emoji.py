@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -51,7 +52,7 @@ class AsyncEmoji:
         self._with_raw_response = AsyncEmojiWithRawResponse(client, server, auth)
 
     async def emoji_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> Defaultsuccesstemplate:
         """Lists custom emoji for a team.
 
@@ -101,7 +102,7 @@ class EmojiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
 class AsyncEmojiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAuthSchemes]):
     async def emoji_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Lists custom emoji for a team.
 

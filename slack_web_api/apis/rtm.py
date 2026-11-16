@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -74,7 +75,7 @@ class AsyncRtm:
         *,
         batch_presence_aware: bool | None = None,
         presence_sub: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RtmConnectschema:
         """Starts a Real Time Messaging session.
 
@@ -154,7 +155,7 @@ class AsyncRtmWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         *,
         batch_presence_aware: bool | None = None,
         presence_sub: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RtmConnectschema, RawError]:
         """Starts a Real Time Messaging session.
 

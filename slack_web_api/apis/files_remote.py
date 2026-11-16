@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -287,7 +288,7 @@ class AsyncFilesRemote:
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Adds a file from a remote service
 
@@ -330,7 +331,7 @@ class AsyncFilesRemote:
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Retrieve information about a remote file added to Slack
 
@@ -363,7 +364,7 @@ class AsyncFilesRemote:
         ts_to: float | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Retrieve information about a remote file added to Slack
 
@@ -405,7 +406,7 @@ class AsyncFilesRemote:
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a remote file.
 
@@ -436,7 +437,7 @@ class AsyncFilesRemote:
         file: str | None = None,
         external_id: str | None = None,
         channels: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Share a remote file into a channel.
 
@@ -479,7 +480,7 @@ class AsyncFilesRemote:
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Updates an existing remote file.
 
@@ -797,7 +798,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Adds a file from a remote service
 
@@ -842,7 +843,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Retrieve information about a remote file added to Slack
 
@@ -881,7 +882,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         ts_to: float | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Retrieve information about a remote file added to Slack
 
@@ -925,7 +926,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a remote file.
 
@@ -962,7 +963,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         file: str | None = None,
         external_id: str | None = None,
         channels: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Share a remote file into a channel.
 
@@ -1007,7 +1008,7 @@ class AsyncFilesRemoteWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Updates an existing remote file.
 

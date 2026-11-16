@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -72,7 +73,7 @@ class AsyncAdminTeamsAdmins:
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all of the admins on a given workspace.
 
@@ -151,7 +152,7 @@ class AsyncAdminTeamsAdminsWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all of the admins on a given workspace.
 

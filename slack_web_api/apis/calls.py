@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -263,7 +264,7 @@ class AsyncCalls:
         title: str | None = None,
         created_by: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Registers a new Call.
 
@@ -315,7 +316,7 @@ class AsyncCalls:
         id_: str,
         *,
         duration: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Ends a Call.
 
@@ -344,7 +345,7 @@ class AsyncCalls:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Returns information about a Call.
 
@@ -371,7 +372,7 @@ class AsyncCalls:
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Registers new participants added to a Call.
 
@@ -402,7 +403,7 @@ class AsyncCalls:
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Registers participants removed from a Call.
 
@@ -435,7 +436,7 @@ class AsyncCalls:
         title: str | None = None,
         join_url: str | None = None,
         desktop_app_join_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Updates information about a Call.
 
@@ -737,7 +738,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         title: str | None = None,
         created_by: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Registers a new Call.
 
@@ -794,7 +795,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         id_: str,
         *,
         duration: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Ends a Call.
 
@@ -829,7 +830,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Returns information about a Call.
 
@@ -860,7 +861,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Registers new participants added to a Call.
 
@@ -897,7 +898,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         id_: str,
         users: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Registers participants removed from a Call.
 
@@ -936,7 +937,7 @@ class AsyncCallsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         title: str | None = None,
         join_url: str | None = None,
         desktop_app_join_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Updates information about a Call.
 

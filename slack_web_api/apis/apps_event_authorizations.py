@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -73,7 +74,7 @@ class AsyncAppsEventAuthorizations:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Get a list of authorizations for the given event context. Each authorization represents an app installation
         that the event is visible to.
@@ -153,7 +154,7 @@ class AsyncAppsEventAuthorizationsWithRawResponse(SecuredRawResponse[AsyncRawCli
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Get a list of authorizations for the given event context. Each authorization represents an app installation
         that the event is visible to.

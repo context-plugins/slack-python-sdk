@@ -102,8 +102,8 @@ from .files_comments_delete_error_enum import FilesCommentsDeleteErrorEnum, File
 from .files_delete_error_enum import FilesDeleteErrorEnum, FilesDeleteErrorEnumOrStr
 from .files_info_error_enum import FilesInfoErrorEnum, FilesInfoErrorEnumOrStr
 from .files_list_error_enum import FilesListErrorEnum, FilesListErrorEnumOrStr
-from .files_revoke_public_urlerror_enum import FilesRevokePublicUrlerrorEnum, FilesRevokePublicUrlerrorEnumOrStr
-from .files_shared_public_urlerror_enum import FilesSharedPublicUrlerrorEnum, FilesSharedPublicUrlerrorEnumOrStr
+from .files_revoke_public_url_error_enum import FilesRevokePublicUrlErrorEnum, FilesRevokePublicUrlErrorEnumOrStr
+from .files_shared_public_url_error_enum import FilesSharedPublicUrlErrorEnum, FilesSharedPublicUrlErrorEnumOrStr
 from .files_upload_error_enum import FilesUploadErrorEnum, FilesUploadErrorEnumOrStr
 from .migration_exchange_error_enum import MigrationExchangeErrorEnum, MigrationExchangeErrorEnumOrStr
 from .pins_add_error_enum import PinsAddErrorEnum, PinsAddErrorEnumOrStr
@@ -249,10 +249,10 @@ __all__ = [
     "FilesInfoErrorEnumOrStr",
     "FilesListErrorEnum",
     "FilesListErrorEnumOrStr",
-    "FilesRevokePublicUrlerrorEnum",
-    "FilesRevokePublicUrlerrorEnumOrStr",
-    "FilesSharedPublicUrlerrorEnum",
-    "FilesSharedPublicUrlerrorEnumOrStr",
+    "FilesRevokePublicUrlErrorEnum",
+    "FilesRevokePublicUrlErrorEnumOrStr",
+    "FilesSharedPublicUrlErrorEnum",
+    "FilesSharedPublicUrlErrorEnumOrStr",
     "FilesUploadErrorEnum",
     "FilesUploadErrorEnumOrStr",
     "MigrationExchangeErrorEnum",

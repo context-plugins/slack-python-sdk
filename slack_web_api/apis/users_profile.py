@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -108,7 +109,7 @@ class AsyncUsersProfile:
         *,
         include_labels: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersProfileGetschema:
         """Retrieves a user's profile information.
 
@@ -140,7 +141,7 @@ class AsyncUsersProfile:
         profile: str | None = None,
         user: str | None = None,
         value: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersProfileSetschema:
         """Set the profile information for a user.
 
@@ -263,7 +264,7 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         *,
         include_labels: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersProfileGetschema, RawError]:
         """Retrieves a user's profile information.
 
@@ -301,7 +302,7 @@ class AsyncUsersProfileWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         profile: str | None = None,
         user: str | None = None,
         value: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersProfileSetschema, RawError]:
         """Set the profile information for a user.
 

@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -109,7 +110,7 @@ class AsyncAdminUsersSession:
         team_id: str,
         session_id: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Invalidate a single session for a user by session_id
 
@@ -140,7 +141,7 @@ class AsyncAdminUsersSession:
         *,
         mobile_only: bool | None = None,
         web_only: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Wipes all valid sessions on all devices for a given user
 
@@ -262,7 +263,7 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
         team_id: str,
         session_id: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Invalidate a single session for a user by session_id
 
@@ -299,7 +300,7 @@ class AsyncAdminUsersSessionWithRawResponse(SecuredRawResponse[AsyncRawClient, S
         *,
         mobile_only: bool | None = None,
         web_only: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Wipes all valid sessions on all devices for a given user
 

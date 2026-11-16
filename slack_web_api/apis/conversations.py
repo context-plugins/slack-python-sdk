@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -671,7 +672,7 @@ class AsyncConversations:
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsArchivesuccessschema:
         """Archives a conversation.
 
@@ -699,7 +700,7 @@ class AsyncConversations:
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsClosesuccessschema:
         """Closes a direct message or multi-person direct message.
 
@@ -728,7 +729,7 @@ class AsyncConversations:
         token: str | None = None,
         name: str | None = None,
         is_private: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsCreatesuccessschema:
         """Initiates a public or private channel-based conversation
 
@@ -762,7 +763,7 @@ class AsyncConversations:
         inclusive: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsHistorysuccessschema:
         """Fetches a conversation's history of messages and events.
 
@@ -809,7 +810,7 @@ class AsyncConversations:
         channel: str | None = None,
         include_locale: bool | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsInfosuccessschema:
         """Retrieve information about a conversation.
 
@@ -847,7 +848,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsInviteerrorschema:
         """Invites users to a channel.
 
@@ -876,7 +877,7 @@ class AsyncConversations:
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsJoinsuccessschema:
         """Joins an existing conversation.
 
@@ -905,7 +906,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsKicksuccessschema:
         """Removes a user from a conversation.
 
@@ -934,7 +935,7 @@ class AsyncConversations:
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsLeavesuccessschema:
         """Leaves a conversation.
 
@@ -965,7 +966,7 @@ class AsyncConversations:
         types: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsListsuccessschema:
         """Lists all channels in a Slack team.
 
@@ -1007,7 +1008,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         ts: float | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsMarksuccessschema:
         """Sets the read cursor in a channel.
 
@@ -1038,7 +1039,7 @@ class AsyncConversations:
         channel: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsMemberssuccessschema:
         """Retrieve members of a conversation.
 
@@ -1073,7 +1074,7 @@ class AsyncConversations:
         channel: str | None = None,
         users: str | None = None,
         return_im: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsOpensuccessschema:
         """Opens or resumes a direct message or multi-person direct message.
 
@@ -1112,7 +1113,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         name: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsRenamesuccessschema:
         """Renames a conversation.
 
@@ -1147,7 +1148,7 @@ class AsyncConversations:
         inclusive: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsRepliessuccessschema:
         """Retrieve a thread of messages posted to a conversation
 
@@ -1197,7 +1198,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         purpose: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsSetPurposesuccessschema:
         """Sets the purpose for a conversation.
 
@@ -1227,7 +1228,7 @@ class AsyncConversations:
         token: str | None = None,
         channel: str | None = None,
         topic: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsSetTopicsuccessschema:
         """Sets the topic for a conversation.
 
@@ -1256,7 +1257,7 @@ class AsyncConversations:
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ConversationsUnarchivesuccessschema:
         """Reverses conversation archival.
 
@@ -1996,7 +1997,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsArchivesuccessschema, RawError]:
         """Archives a conversation.
 
@@ -2030,7 +2031,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsClosesuccessschema, RawError]:
         """Closes a direct message or multi-person direct message.
 
@@ -2065,7 +2066,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         name: str | None = None,
         is_private: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsCreatesuccessschema, RawError]:
         """Initiates a public or private channel-based conversation
 
@@ -2105,7 +2106,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         inclusive: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsHistorysuccessschema, RawError]:
         """Fetches a conversation's history of messages and events.
 
@@ -2154,7 +2155,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         channel: str | None = None,
         include_locale: bool | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsInfosuccessschema, RawError]:
         """Retrieve information about a conversation.
 
@@ -2193,7 +2194,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsInviteerrorschema, RawError]:
         """Invites users to a channel.
 
@@ -2228,7 +2229,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsJoinsuccessschema, RawError]:
         """Joins an existing conversation.
 
@@ -2263,7 +2264,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsKicksuccessschema, RawError]:
         """Removes a user from a conversation.
 
@@ -2298,7 +2299,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsLeavesuccessschema, RawError]:
         """Leaves a conversation.
 
@@ -2335,7 +2336,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         types: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsListsuccessschema, RawError]:
         """Lists all channels in a Slack team.
 
@@ -2379,7 +2380,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         ts: float | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsMarksuccessschema, RawError]:
         """Sets the read cursor in a channel.
 
@@ -2416,7 +2417,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         channel: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsMemberssuccessschema, RawError]:
         """Retrieve members of a conversation.
 
@@ -2458,7 +2459,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         channel: str | None = None,
         users: str | None = None,
         return_im: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsOpensuccessschema, RawError]:
         """Opens or resumes a direct message or multi-person direct message.
 
@@ -2502,7 +2503,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         name: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsRenamesuccessschema, RawError]:
         """Renames a conversation.
 
@@ -2543,7 +2544,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         inclusive: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsRepliessuccessschema, RawError]:
         """Retrieve a thread of messages posted to a conversation
 
@@ -2595,7 +2596,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         purpose: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsSetPurposesuccessschema, RawError]:
         """Sets the purpose for a conversation.
 
@@ -2631,7 +2632,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         token: str | None = None,
         channel: str | None = None,
         topic: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsSetTopicsuccessschema, RawError]:
         """Sets the topic for a conversation.
 
@@ -2666,7 +2667,7 @@ class AsyncConversationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         *,
         token: str | None = None,
         channel: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ConversationsUnarchivesuccessschema, RawError]:
         """Reverses conversation archival.
 

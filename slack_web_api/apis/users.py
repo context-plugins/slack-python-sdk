@@ -7,6 +7,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -18,7 +19,7 @@ from ..core import (
     raw_error_response,
     unwrap,
 )
-from ..models.apimethodusers_get_presence import ApimethodusersGetPresence
+from ..models.ap_imethodusers_get_presence import ApImethodusersGetPresence
 from ..models.enums.content_type import ContentTypeOrStr
 from ..models.users_conversationssuccessschema import UsersConversationssuccessschema
 from ..models.users_delete_photoschema import UsersDeletePhotoschema
@@ -111,7 +112,7 @@ class Users:
         *,
         user: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> ApimethodusersGetPresence:
+    ) -> ApImethodusersGetPresence:
         """Gets user presence information.
 
         Args:
@@ -421,7 +422,7 @@ class AsyncUsers:
         exclude_archived: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersConversationssuccessschema:
         """List conversations the calling user may access.
 
@@ -461,7 +462,7 @@ class AsyncUsers:
         )
 
     async def users_delete_photo(
-        self, content_type: ContentTypeOrStr, token: str, *, request_options: RequestOptionsOrDict | None = None
+        self, content_type: ContentTypeOrStr, token: str, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> UsersDeletePhotoschema:
         """Delete the user profile photo
 
@@ -486,8 +487,8 @@ class AsyncUsers:
         content_type: ContentTypeOrStr,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> ApimethodusersGetPresence:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> ApImethodusersGetPresence:
         """Gets user presence information.
 
         Args:
@@ -514,7 +515,7 @@ class AsyncUsers:
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Any:
         """Get a user's identity.
 
@@ -540,7 +541,7 @@ class AsyncUsers:
         *,
         include_locale: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersInfosuccessschema:
         """Gets information about a user.
 
@@ -571,7 +572,7 @@ class AsyncUsers:
         limit: int | None = None,
         cursor: str | None = None,
         include_locale: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersListschema:
         """Lists all users in a Slack team.
 
@@ -611,7 +612,7 @@ class AsyncUsers:
         email: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersLookupByEmailsuccessschema:
         """Find a user with an email address.
 
@@ -640,7 +641,7 @@ class AsyncUsers:
         *,
         include_labels: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersProfileGetschema:
         """Retrieves a user's profile information.
 
@@ -672,7 +673,7 @@ class AsyncUsers:
         profile: str | None = None,
         user: str | None = None,
         value: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersProfileSetschema:
         """Set the profile information for a user.
 
@@ -699,7 +700,7 @@ class AsyncUsers:
         )
 
     async def users_set_active(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> UsersSetActiveschema:
         """Marked a user as active. Deprecated and non-functional.
 
@@ -727,7 +728,7 @@ class AsyncUsers:
         crop_x: str | None = None,
         crop_y: str | None = None,
         image: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersSetPhotoschema:
         """Set the user profile photo
 
@@ -764,7 +765,7 @@ class AsyncUsers:
         content_type: ContentTypeOrStr,
         presence: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsersSetPresenceschema:
         """Manually sets user presence.
 
@@ -873,7 +874,7 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         *,
         user: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[ApimethodusersGetPresence, RawError]:
+    ) -> ApiResult[ApImethodusersGetPresence, RawError]:
         """Gets user presence information.
 
         Args:
@@ -891,7 +892,7 @@ class UsersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             query_params=[param[str]("token", token), param[str | None]("user", user)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[ApimethodusersGetPresence],
+            decoder=json_decoder[ApImethodusersGetPresence],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1231,7 +1232,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         exclude_archived: bool | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersConversationssuccessschema, RawError]:
         """List conversations the calling user may access.
 
@@ -1272,7 +1273,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         )
 
     async def users_delete_photo(
-        self, content_type: ContentTypeOrStr, token: str, *, request_options: RequestOptionsOrDict | None = None
+        self, content_type: ContentTypeOrStr, token: str, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[UsersDeletePhotoschema, RawError]:
         """Delete the user profile photo
 
@@ -1301,8 +1302,8 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[ApimethodusersGetPresence, RawError]:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> ApiResult[ApImethodusersGetPresence, RawError]:
         """Gets user presence information.
 
         Args:
@@ -1320,7 +1321,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             query_params=[param[str]("token", token), param[str | None]("user", user)],
             headers=[param[ContentTypeOrStr]("Content-Type", content_type)],
             auth_scheme=self._auth.slack_auth,
-            decoder=async_json_decoder[ApimethodusersGetPresence],
+            decoder=async_json_decoder[ApImethodusersGetPresence],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1330,7 +1331,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Any, RawError]:
         """Get a user's identity.
 
@@ -1360,7 +1361,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         include_locale: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersInfosuccessschema, RawError]:
         """Gets information about a user.
 
@@ -1397,7 +1398,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         limit: int | None = None,
         cursor: str | None = None,
         include_locale: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersListschema, RawError]:
         """Lists all users in a Slack team.
 
@@ -1439,7 +1440,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         email: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersLookupByEmailsuccessschema, RawError]:
         """Find a user with an email address.
 
@@ -1470,7 +1471,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         include_labels: bool | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersProfileGetschema, RawError]:
         """Retrieves a user's profile information.
 
@@ -1508,7 +1509,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         profile: str | None = None,
         user: str | None = None,
         value: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersProfileSetschema, RawError]:
         """Set the profile information for a user.
 
@@ -1546,7 +1547,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         )
 
     async def users_set_active(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[UsersSetActiveschema, RawError]:
         """Marked a user as active. Deprecated and non-functional.
 
@@ -1581,7 +1582,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         crop_x: str | None = None,
         crop_y: str | None = None,
         image: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersSetPhotoschema, RawError]:
         """Set the user profile photo
 
@@ -1620,7 +1621,7 @@ class AsyncUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         presence: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsersSetPresenceschema, RawError]:
         """Manually sets user presence.
 

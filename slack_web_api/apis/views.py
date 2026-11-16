@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -168,7 +169,7 @@ class AsyncViews:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Open a view for a user.
 
@@ -199,7 +200,7 @@ class AsyncViews:
         content_type: ContentTypeOrStr,
         *,
         hash_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Publish a static view for a User.
 
@@ -230,7 +231,7 @@ class AsyncViews:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Push a view onto the stack of a root view.
 
@@ -262,7 +263,7 @@ class AsyncViews:
         external_id: str | None = None,
         view: str | None = None,
         hash_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Update an existing view.
 
@@ -449,7 +450,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Open a view for a user.
 
@@ -482,7 +483,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         *,
         hash_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Publish a static view for a User.
 
@@ -515,7 +516,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Push a view onto the stack of a root view.
 
@@ -549,7 +550,7 @@ class AsyncViewsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         external_id: str | None = None,
         view: str | None = None,
         hash_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Update an existing view.
 

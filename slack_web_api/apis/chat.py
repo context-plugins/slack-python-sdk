@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -560,7 +561,7 @@ class AsyncChat:
         ts: float | None = None,
         channel: str | None = None,
         as_user: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatDeletesuccessschema:
         """Deletes a message.
 
@@ -594,7 +595,7 @@ class AsyncChat:
         scheduled_message_id: str,
         *,
         as_user: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatDeleteScheduledMessageschema:
         """Deletes a pending scheduled message from the queue.
 
@@ -627,7 +628,7 @@ class AsyncChat:
         message_ts: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatGetPermalinksuccessschema:
         """Retrieve a permalink URL for a specific extant message
 
@@ -657,7 +658,7 @@ class AsyncChat:
         token: str | None = None,
         channel: str | None = None,
         text: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatMeMessageschema:
         """Share a me message into a channel.
 
@@ -698,7 +699,7 @@ class AsyncChat:
         text: str | None = None,
         thread_ts: str | None = None,
         username: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatPostEphemeralsuccessschema:
         """Sends an ephemeral message to a user in a channel.
 
@@ -773,7 +774,7 @@ class AsyncChat:
         unfurl_links: bool | None = None,
         unfurl_media: bool | None = None,
         username: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatPostMessagesuccessschema:
         """Sends a message to a channel.
 
@@ -851,7 +852,7 @@ class AsyncChat:
         unfurl_media: bool | None = None,
         thread_ts: float | None = None,
         reply_broadcast: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatScheduleMessagesuccessschema:
         """Schedules a message to be sent to a channel.
 
@@ -914,7 +915,7 @@ class AsyncChat:
         limit: int | None = None,
         cursor: str | None = None,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatScheduledMessagesListschema:
         """Returns a list of scheduled messages.
 
@@ -959,7 +960,7 @@ class AsyncChat:
         user_auth_message: str | None = None,
         user_auth_required: bool | None = None,
         user_auth_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatUnfurlsuccessschema:
         """Provide custom unfurl behavior for user-posted URLs
 
@@ -1011,7 +1012,7 @@ class AsyncChat:
         link_names: str | None = None,
         parse: str | None = None,
         text: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ChatUpdatesuccessschema:
         """Updates a message.
 
@@ -1640,7 +1641,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         ts: float | None = None,
         channel: str | None = None,
         as_user: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatDeletesuccessschema, RawError]:
         """Deletes a message.
 
@@ -1684,7 +1685,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         scheduled_message_id: str,
         *,
         as_user: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatDeleteScheduledMessageschema, RawError]:
         """Deletes a pending scheduled message from the queue.
 
@@ -1727,7 +1728,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         message_ts: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatGetPermalinksuccessschema, RawError]:
         """Retrieve a permalink URL for a specific extant message
 
@@ -1761,7 +1762,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         token: str | None = None,
         channel: str | None = None,
         text: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatMeMessageschema, RawError]:
         """Share a me message into a channel.
 
@@ -1808,7 +1809,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         text: str | None = None,
         thread_ts: str | None = None,
         username: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatPostEphemeralsuccessschema, RawError]:
         """Sends an ephemeral message to a user in a channel.
 
@@ -1888,7 +1889,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         unfurl_links: bool | None = None,
         unfurl_media: bool | None = None,
         username: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatPostMessagesuccessschema, RawError]:
         """Sends a message to a channel.
 
@@ -1971,7 +1972,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         unfurl_media: bool | None = None,
         thread_ts: float | None = None,
         reply_broadcast: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatScheduleMessagesuccessschema, RawError]:
         """Schedules a message to be sent to a channel.
 
@@ -2039,7 +2040,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         limit: int | None = None,
         cursor: str | None = None,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatScheduledMessagesListschema, RawError]:
         """Returns a list of scheduled messages.
 
@@ -2085,7 +2086,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         user_auth_message: str | None = None,
         user_auth_required: bool | None = None,
         user_auth_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatUnfurlsuccessschema, RawError]:
         """Provide custom unfurl behavior for user-posted URLs
 
@@ -2142,7 +2143,7 @@ class AsyncChatWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         link_names: str | None = None,
         parse: str | None = None,
         text: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[ChatUpdatesuccessschema, RawError]:
         """Updates a message.
 

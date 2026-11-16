@@ -15496,7 +15496,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def files_revoke_public_url(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, request_options: RequestOptionsOrDict | None = None) -> FilesRevokePublicUrlschema</code></summary>
+<summary><code>def files_revoke_public_url(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, request_options: RequestOptionsOrDict | None = None) -> FilesRevokePublicUrLschema</code></summary>
 
 <dl>
 <dd>
@@ -15521,7 +15521,7 @@ Revokes public/external sharing access for a file
 ```python
 try:
     response = client.files.files_revoke_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
-    # TODO: Handle 'response' of type FilesRevokePublicUrlschema
+    # TODO: Handle 'response' of type FilesRevokePublicUrLschema
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -15531,7 +15531,7 @@ except ApiError as e:
 ```python
 try:
     response = await async_client.files.files_revoke_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
-    # TODO: Handle 'response' of type FilesRevokePublicUrlschema
+    # TODO: Handle 'response' of type FilesRevokePublicUrLschema
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -15559,7 +15559,7 @@ except ApiError as e:
 <dl>
 <dd>
 
-**OnSuccess**: <code>[FilesRevokePublicUrlschema](slack_web_api/models/files_revoke_public_urlschema.py)</code> -- Typical success response
+**OnSuccess**: <code>[FilesRevokePublicUrLschema](slack_web_api/models/files_revoke_public_ur_lschema.py)</code> -- Typical success response
 
 **OnError**: <code>[ApiError](slack_web_api/core/exceptions.py)&#91;[RawError](slack_web_api/core/results.py)&#93;</code>
 
@@ -15572,7 +15572,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def files_shared_public_url(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, request_options: RequestOptionsOrDict | None = None) -> FilesSharedPublicUrlschema</code></summary>
+<summary><code>def files_shared_public_url(content_type: ContentTypeOrStr, *, token: str | None = None, file: str | None = None, request_options: RequestOptionsOrDict | None = None) -> FilesSharedPublicUrLschema</code></summary>
 
 <dl>
 <dd>
@@ -15597,7 +15597,7 @@ Enables a file for public/external sharing.
 ```python
 try:
     response = client.files.files_shared_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
-    # TODO: Handle 'response' of type FilesSharedPublicUrlschema
+    # TODO: Handle 'response' of type FilesSharedPublicUrLschema
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -15607,7 +15607,7 @@ except ApiError as e:
 ```python
 try:
     response = await async_client.files.files_shared_public_url(ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
-    # TODO: Handle 'response' of type FilesSharedPublicUrlschema
+    # TODO: Handle 'response' of type FilesSharedPublicUrLschema
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -15635,7 +15635,7 @@ except ApiError as e:
 <dl>
 <dd>
 
-**OnSuccess**: <code>[FilesSharedPublicUrlschema](slack_web_api/models/files_shared_public_urlschema.py)</code> -- Typical success response
+**OnSuccess**: <code>[FilesSharedPublicUrLschema](slack_web_api/models/files_shared_public_ur_lschema.py)</code> -- Typical success response
 
 **OnError**: <code>[ApiError](slack_web_api/core/exceptions.py)&#91;[RawError](slack_web_api/core/results.py)&#93;</code>
 
@@ -19505,7 +19505,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def users_get_presence(token: str, content_type: ContentTypeOrStr, *, user: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApimethodusersGetPresence</code></summary>
+<summary><code>def users_get_presence(token: str, content_type: ContentTypeOrStr, *, user: str | None = None, request_options: RequestOptionsOrDict | None = None) -> ApImethodusersGetPresence</code></summary>
 
 <dl>
 <dd>
@@ -19530,7 +19530,7 @@ Gets user presence information.
 ```python
 try:
     response = client.users.users_get_presence("some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED)
-    # TODO: Handle 'response' of type ApimethodusersGetPresence
+    # TODO: Handle 'response' of type ApImethodusersGetPresence
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -19542,7 +19542,7 @@ try:
     response = await async_client.users.users_get_presence(
         "some example string", ContentType.APPLICATION_X_WWW_FORM_URLENCODED
     )
-    # TODO: Handle 'response' of type ApimethodusersGetPresence
+    # TODO: Handle 'response' of type ApImethodusersGetPresence
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
 ```
@@ -19570,7 +19570,7 @@ except ApiError as e:
 <dl>
 <dd>
 
-**OnSuccess**: <code>[ApimethodusersGetPresence](slack_web_api/models/apimethodusers_get_presence.py)</code> -- When requesting information for a different user, this method just returns the current presence (either `active` or `away`).
+**OnSuccess**: <code>[ApImethodusersGetPresence](slack_web_api/models/ap_imethodusers_get_presence.py)</code> -- When requesting information for a different user, this method just returns the current presence (either `active` or `away`).
 
 **OnError**: <code>[ApiError](slack_web_api/core/exceptions.py)&#91;[RawError](slack_web_api/core/results.py)&#93;</code>
 

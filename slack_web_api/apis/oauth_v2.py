@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -77,7 +78,7 @@ class AsyncOauthV2:
         client_id: str | None = None,
         client_secret: str | None = None,
         redirect_uri: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Exchanges a temporary OAuth verifier code for an access token.
 
@@ -161,7 +162,7 @@ class AsyncOauthV2WithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         client_id: str | None = None,
         client_secret: str | None = None,
         redirect_uri: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Exchanges a temporary OAuth verifier code for an access token.
 

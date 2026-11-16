@@ -4,12 +4,13 @@
 
 Accessor: `client.conversations` · Source: `slack_web_api/apis/conversations.py` · 18 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.conversations.conversations_archive
 
 - **Route**: `POST /conversations.archive`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_archive(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.close`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_close(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field
@@ -42,6 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.create`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_create(content_type: ContentTypeOrStr, *, token: str | None = None, name: str | None = None, is_private: bool | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `name` — form field · `is_private` — form field
@@ -58,6 +61,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /conversations.history`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_history(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, latest: float | None = None, oldest: float | None = None, inclusive: bool | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `channel` — query · `latest` — query · `oldest` — query · `inclusive` — query · `limit` — query · `cursor` — query · `content_type` — header `Content-Type`
@@ -74,6 +78,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /conversations.info`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_info(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, include_locale: bool | None = None, include_num_members: bool | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `channel` — query · `include_locale` — query · `include_num_members` — query · `content_type` — header `Content-Type`
@@ -90,6 +95,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.invite`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_invite(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, users: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `users` — form field
@@ -106,6 +112,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.join`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_join(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field
@@ -122,6 +129,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.kick`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_kick(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, user: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `user` — form field
@@ -138,6 +146,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.leave`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_leave(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field
@@ -154,6 +163,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /conversations.list`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_list(content_type: ContentTypeOrStr, *, token: str | None = None, exclude_archived: bool | None = None, types: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `exclude_archived` — query · `types` — query · `limit` — query · `cursor` — query · `content_type` — header `Content-Type`
@@ -170,6 +180,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.mark`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_mark(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, ts: float | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `ts` — form field
@@ -186,6 +197,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /conversations.members`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_members(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `channel` — query · `limit` — query · `cursor` — query · `content_type` — header `Content-Type`
@@ -202,6 +214,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.open`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_open(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, users: str | None = None, return_im: bool | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `users` — form field · `return_im` — form field
@@ -218,6 +231,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.rename`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_rename(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, name: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `name` — form field
@@ -234,6 +248,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /conversations.replies`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_replies(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, ts: float | None = None, latest: float | None = None, oldest: float | None = None, inclusive: bool | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `token` — query · `channel` — query · `ts` — query · `latest` — query · `oldest` — query · `inclusive` — query · `limit` — query · `cursor` — query · `content_type` — header `Content-Type`
@@ -250,6 +265,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.setPurpose`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_set_purpose(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, purpose: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `purpose` — form field
@@ -266,6 +282,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.setTopic`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_set_topic(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, topic: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field · `topic` — form field
@@ -282,6 +299,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /conversations.unarchive`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def conversations_unarchive(content_type: ContentTypeOrStr, *, token: str | None = None, channel: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `content_type`
 - **Params**: `content_type` — header `Content-Type` · `token` — header · `channel` — form field

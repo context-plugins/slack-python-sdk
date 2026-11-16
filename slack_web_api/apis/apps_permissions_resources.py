@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -71,7 +72,7 @@ class AsyncAppsPermissionsResources:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsResourcesListsuccessschema:
         """Returns list of resource grants this app has on a team.
 
@@ -147,7 +148,7 @@ class AsyncAppsPermissionsResourcesWithRawResponse(SecuredRawResponse[AsyncRawCl
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsResourcesListsuccessschema, RawError]:
         """Returns list of resource grants this app has on a team.
 

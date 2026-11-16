@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -89,7 +90,7 @@ class AsyncSearch:
         page: int | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Searches for messages matching a query.
 
@@ -191,7 +192,7 @@ class AsyncSearchWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         page: int | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Searches for messages matching a query.
 

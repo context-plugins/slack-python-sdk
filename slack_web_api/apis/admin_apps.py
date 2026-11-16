@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -117,7 +118,7 @@ class AsyncAdminApps:
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Approve an app for installation on a workspace.
 
@@ -154,7 +155,7 @@ class AsyncAdminApps:
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Restrict an app for installation on a workspace.
 
@@ -283,7 +284,7 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Approve an app for installation on a workspace.
 
@@ -325,7 +326,7 @@ class AsyncAdminAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Restrict an app for installation on a workspace.
 

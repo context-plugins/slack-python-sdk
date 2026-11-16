@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -1927,7 +1928,7 @@ class AsyncAdmin:
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Approve an app for installation on a workspace.
 
@@ -1965,7 +1966,7 @@ class AsyncAdmin:
         cursor: str | None = None,
         team_id: str | None = None,
         enterprise_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List approved apps for an org or workspace.
 
@@ -2004,7 +2005,7 @@ class AsyncAdmin:
         limit: int | None = None,
         cursor: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List app requests for a team/workspace.
 
@@ -2036,7 +2037,7 @@ class AsyncAdmin:
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Restrict an app for installation on a workspace.
 
@@ -2074,7 +2075,7 @@ class AsyncAdmin:
         cursor: str | None = None,
         team_id: str | None = None,
         enterprise_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List restricted apps for an org or workspace.
 
@@ -2111,7 +2112,7 @@ class AsyncAdmin:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsArchiveschema:
         """Archive a public or private channel.
 
@@ -2139,7 +2140,7 @@ class AsyncAdmin:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsConvertToPrivateschema:
         """Convert a public channel to a private channel.
 
@@ -2171,7 +2172,7 @@ class AsyncAdmin:
         description: str | None = None,
         org_wide: bool | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsCreateschema:
         """Create a public or private channel-based conversation.
 
@@ -2212,7 +2213,7 @@ class AsyncAdmin:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsDeleteschema:
         """Delete a public or private channel.
 
@@ -2241,7 +2242,7 @@ class AsyncAdmin:
         channel_id: str,
         *,
         leaving_team_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsRenameschema:
         """Disconnect a connected channel from one or more workspaces.
 
@@ -2273,7 +2274,7 @@ class AsyncAdmin:
         team_ids: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all disconnected channels—i.e., channels that were once connected to other workspaces and then
         disconnected—and the corresponding original channel IDs for key revocation with EKM.
@@ -2311,7 +2312,7 @@ class AsyncAdmin:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsGetConversationPrefsschema:
         """Get conversation preferences for a public or private channel.
 
@@ -2341,7 +2342,7 @@ class AsyncAdmin:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsGetTeamsschema:
         """Get all the workspaces a given public or private channel is connected to within this Enterprise org.
 
@@ -2372,7 +2373,7 @@ class AsyncAdmin:
         user_ids: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsInviteschema:
         """Invite a user to a public or private channel.
 
@@ -2402,7 +2403,7 @@ class AsyncAdmin:
         channel_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsRenameschema1:
         """Rename a public or private channel.
 
@@ -2433,7 +2434,7 @@ class AsyncAdmin:
         channel_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an allowlist of IDP groups for accessing a channel
 
@@ -2467,7 +2468,7 @@ class AsyncAdmin:
         content_type: ContentTypeOrStr,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all IDP Groups linked to a channel
 
@@ -2499,7 +2500,7 @@ class AsyncAdmin:
         group_id: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a linked IDP group linked from a private channel
 
@@ -2538,7 +2539,7 @@ class AsyncAdmin:
         search_channel_types: str | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsSearchschema:
         """Search for public or private channels in an Enterprise organization.
 
@@ -2587,7 +2588,7 @@ class AsyncAdmin:
         channel_id: str,
         prefs: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsSetConversationPrefsschema:
         """Set the posting permissions for a public or private channel.
 
@@ -2619,7 +2620,7 @@ class AsyncAdmin:
         team_id: str | None = None,
         target_team_ids: str | None = None,
         org_channel: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the workspaces in an Enterprise grid org that connect to a public or private channel.
 
@@ -2658,7 +2659,7 @@ class AsyncAdmin:
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AdminConversationsUnarchiveschema:
         """Unarchive a public or private channel.
 
@@ -2687,7 +2688,7 @@ class AsyncAdmin:
         name: str,
         url: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an emoji.
 
@@ -2719,7 +2720,7 @@ class AsyncAdmin:
         name: str,
         alias_for: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an emoji alias.
 
@@ -2750,7 +2751,7 @@ class AsyncAdmin:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List emoji for an Enterprise Grid organization.
 
@@ -2779,7 +2780,7 @@ class AsyncAdmin:
         token: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove an emoji across an Enterprise Grid organization
 
@@ -2807,7 +2808,7 @@ class AsyncAdmin:
         name: str,
         new_name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Rename an emoji.
 
@@ -2838,7 +2839,7 @@ class AsyncAdmin:
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Approve a workspace invite request.
 
@@ -2869,7 +2870,7 @@ class AsyncAdmin:
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all approved workspace invite requests.
 
@@ -2902,7 +2903,7 @@ class AsyncAdmin:
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all denied workspace invite requests.
 
@@ -2934,7 +2935,7 @@ class AsyncAdmin:
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Deny a workspace invite request.
 
@@ -2965,7 +2966,7 @@ class AsyncAdmin:
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all pending workspace invite requests.
 
@@ -2998,7 +2999,7 @@ class AsyncAdmin:
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all of the admins on a given workspace.
 
@@ -3031,7 +3032,7 @@ class AsyncAdmin:
         *,
         team_description: str | None = None,
         team_discoverability: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Create an Enterprise team.
 
@@ -3070,7 +3071,7 @@ class AsyncAdmin:
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all teams on an Enterprise organization
 
@@ -3101,7 +3102,7 @@ class AsyncAdmin:
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all of the owners on a given workspace.
 
@@ -3131,7 +3132,7 @@ class AsyncAdmin:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Fetch information about settings in a workspace
 
@@ -3160,7 +3161,7 @@ class AsyncAdmin:
         team_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the default channels of a workspace.
 
@@ -3190,7 +3191,7 @@ class AsyncAdmin:
         team_id: str,
         description: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the description of a given workspace.
 
@@ -3220,7 +3221,7 @@ class AsyncAdmin:
         team_id: str,
         discoverability: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """An API method that allows admins to set the discoverability of a given workspace
 
@@ -3251,7 +3252,7 @@ class AsyncAdmin:
         image_url: str,
         team_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Sets the icon of a workspace.
 
@@ -3281,7 +3282,7 @@ class AsyncAdmin:
         team_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set the name of a given workspace.
 
@@ -3312,7 +3313,7 @@ class AsyncAdmin:
         channel_ids: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add one or more default channels to an IDP group.
 
@@ -3344,7 +3345,7 @@ class AsyncAdmin:
         team_ids: str,
         *,
         auto_provision: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Associate one or more default workspaces with an organization-wide IDP group.
 
@@ -3383,7 +3384,7 @@ class AsyncAdmin:
         *,
         team_id: str | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List the channels linked to an org-level IDP group (user group).
 
@@ -3419,7 +3420,7 @@ class AsyncAdmin:
         usergroup_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove one or more default channels from an org-level IDP group (user group).
 
@@ -3452,7 +3453,7 @@ class AsyncAdmin:
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         channel_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an Enterprise user to a workspace.
 
@@ -3499,7 +3500,7 @@ class AsyncAdmin:
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         guest_expiration_ts: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Invite a user to a workspace.
 
@@ -3550,7 +3551,7 @@ class AsyncAdmin:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List users on a workspace
 
@@ -3581,7 +3582,7 @@ class AsyncAdmin:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a user from a workspace.
 
@@ -3611,7 +3612,7 @@ class AsyncAdmin:
         team_id: str,
         session_id: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Invalidate a single session for a user by session_id
 
@@ -3642,7 +3643,7 @@ class AsyncAdmin:
         *,
         mobile_only: bool | None = None,
         web_only: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Wipes all valid sessions on all devices for a given user
 
@@ -3678,7 +3679,7 @@ class AsyncAdmin:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest, regular user, or owner to be an admin user.
 
@@ -3709,7 +3710,7 @@ class AsyncAdmin:
         user_id: str,
         expiration_ts: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an expiration for a guest user
 
@@ -3740,7 +3741,7 @@ class AsyncAdmin:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest, regular user, or admin user to be a workspace owner.
 
@@ -3770,7 +3771,7 @@ class AsyncAdmin:
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Set an existing guest user, admin user, or owner to be a regular user.
 
@@ -5967,7 +5968,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Approve an app for installation on a workspace.
 
@@ -6010,7 +6011,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         cursor: str | None = None,
         team_id: str | None = None,
         enterprise_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List approved apps for an org or workspace.
 
@@ -6051,7 +6052,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         limit: int | None = None,
         cursor: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List app requests for a team/workspace.
 
@@ -6090,7 +6091,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         app_id: str | None = None,
         request_id: str | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Restrict an app for installation on a workspace.
 
@@ -6133,7 +6134,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         cursor: str | None = None,
         team_id: str | None = None,
         enterprise_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List restricted apps for an org or workspace.
 
@@ -6172,7 +6173,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsArchiveschema, RawError]:
         """Archive a public or private channel.
 
@@ -6206,7 +6207,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsConvertToPrivateschema, RawError]:
         """Convert a public channel to a private channel.
 
@@ -6244,7 +6245,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         description: str | None = None,
         org_wide: bool | None = None,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsCreateschema, RawError]:
         """Create a public or private channel-based conversation.
 
@@ -6290,7 +6291,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsDeleteschema, RawError]:
         """Delete a public or private channel.
 
@@ -6325,7 +6326,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         channel_id: str,
         *,
         leaving_team_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsRenameschema, RawError]:
         """Disconnect a connected channel from one or more workspaces.
 
@@ -6365,7 +6366,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_ids: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all disconnected channels—i.e., channels that were once connected to other workspaces and then
         disconnected—and the corresponding original channel IDs for key revocation with EKM.
@@ -6405,7 +6406,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsGetConversationPrefsschema, RawError]:
         """Get conversation preferences for a public or private channel.
 
@@ -6437,7 +6438,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsGetTeamsschema, RawError]:
         """Get all the workspaces a given public or private channel is connected to within this Enterprise org.
 
@@ -6474,7 +6475,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         user_ids: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsInviteschema, RawError]:
         """Invite a user to a public or private channel.
 
@@ -6510,7 +6511,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         channel_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsRenameschema1, RawError]:
         """Rename a public or private channel.
 
@@ -6547,7 +6548,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         channel_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an allowlist of IDP groups for accessing a channel
 
@@ -6588,7 +6589,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all IDP Groups linked to a channel
 
@@ -6624,7 +6625,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         group_id: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a linked IDP group linked from a private channel
 
@@ -6670,7 +6671,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         search_channel_types: str | None = None,
         sort: str | None = None,
         sort_dir: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsSearchschema, RawError]:
         """Search for public or private channels in an Enterprise organization.
 
@@ -6720,7 +6721,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         channel_id: str,
         prefs: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsSetConversationPrefsschema, RawError]:
         """Set the posting permissions for a public or private channel.
 
@@ -6758,7 +6759,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str | None = None,
         target_team_ids: str | None = None,
         org_channel: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the workspaces in an Enterprise grid org that connect to a public or private channel.
 
@@ -6802,7 +6803,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         content_type: ContentTypeOrStr,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AdminConversationsUnarchiveschema, RawError]:
         """Unarchive a public or private channel.
 
@@ -6837,7 +6838,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         name: str,
         url: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an emoji.
 
@@ -6871,7 +6872,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         name: str,
         alias_for: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an emoji alias.
 
@@ -6904,7 +6905,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List emoji for an Enterprise Grid organization.
 
@@ -6937,7 +6938,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove an emoji across an Enterprise Grid organization
 
@@ -6969,7 +6970,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         name: str,
         new_name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Rename an emoji.
 
@@ -7002,7 +7003,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Approve a workspace invite request.
 
@@ -7039,7 +7040,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all approved workspace invite requests.
 
@@ -7078,7 +7079,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all denied workspace invite requests.
 
@@ -7116,7 +7117,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Deny a workspace invite request.
 
@@ -7153,7 +7154,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all pending workspace invite requests.
 
@@ -7192,7 +7193,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all of the admins on a given workspace.
 
@@ -7232,7 +7233,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         team_description: str | None = None,
         team_discoverability: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Create an Enterprise team.
 
@@ -7276,7 +7277,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all teams on an Enterprise organization
 
@@ -7309,7 +7310,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all of the owners on a given workspace.
 
@@ -7346,7 +7347,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Fetch information about settings in a workspace
 
@@ -7377,7 +7378,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the default channels of a workspace.
 
@@ -7411,7 +7412,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         description: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the description of a given workspace.
 
@@ -7447,7 +7448,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         discoverability: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """An API method that allows admins to set the discoverability of a given workspace
 
@@ -7484,7 +7485,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         image_url: str,
         team_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Sets the icon of a workspace.
 
@@ -7518,7 +7519,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         name: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set the name of a given workspace.
 
@@ -7555,7 +7556,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         channel_ids: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add one or more default channels to an IDP group.
 
@@ -7597,7 +7598,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_ids: str,
         *,
         auto_provision: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Associate one or more default workspaces with an organization-wide IDP group.
 
@@ -7641,7 +7642,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         team_id: str | None = None,
         include_num_members: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List the channels linked to an org-level IDP group (user group).
 
@@ -7678,7 +7679,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         usergroup_id: str,
         channel_ids: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove one or more default channels from an org-level IDP group (user group).
 
@@ -7717,7 +7718,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         channel_ids: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an Enterprise user to a workspace.
 
@@ -7769,7 +7770,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         is_restricted: bool | None = None,
         is_ultra_restricted: bool | None = None,
         guest_expiration_ts: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Invite a user to a workspace.
 
@@ -7825,7 +7826,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List users on a workspace
 
@@ -7860,7 +7861,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a user from a workspace.
 
@@ -7896,7 +7897,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         session_id: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Invalidate a single session for a user by session_id
 
@@ -7933,7 +7934,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         mobile_only: bool | None = None,
         web_only: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Wipes all valid sessions on all devices for a given user
 
@@ -7974,7 +7975,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest, regular user, or owner to be an admin user.
 
@@ -8011,7 +8012,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         user_id: str,
         expiration_ts: int,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an expiration for a guest user
 
@@ -8052,7 +8053,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest, regular user, or admin user to be a workspace owner.
 
@@ -8088,7 +8089,7 @@ class AsyncAdminWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         team_id: str,
         user_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Set an existing guest user, admin user, or owner to be a regular user.
 

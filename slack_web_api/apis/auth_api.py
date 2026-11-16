@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -84,7 +85,7 @@ class AsyncAuthApi:
         content_type: ContentTypeOrStr,
         *,
         test: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AuthRevokeschema:
         """Revokes a token.
 
@@ -106,7 +107,7 @@ class AsyncAuthApi:
         )
 
     async def auth_test(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> AuthTestsuccessschema:
         """Checks authentication & identity.
 
@@ -191,7 +192,7 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         content_type: ContentTypeOrStr,
         *,
         test: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AuthRevokeschema, RawError]:
         """Revokes a token.
 
@@ -217,7 +218,7 @@ class AsyncAuthApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         )
 
     async def auth_test(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[AuthTestsuccessschema, RawError]:
         """Checks authentication & identity.
 

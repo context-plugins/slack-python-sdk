@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -53,7 +54,7 @@ class AsyncAppsPermissionsScopes:
         self._with_raw_response = AsyncAppsPermissionsScopesWithRawResponse(client, server, auth)
 
     async def apps_permissions_scopes_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiPermissionsScopesListsuccessschema:
         """Returns list of scopes this app has on a team.
 
@@ -107,7 +108,7 @@ class AppsPermissionsScopesWithRawResponse(SecuredRawResponse[RawClient, Server,
 
 class AsyncAppsPermissionsScopesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAuthSchemes]):
     async def apps_permissions_scopes_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[ApiPermissionsScopesListsuccessschema, RawError]:
         """Returns list of scopes this app has on a team.
 

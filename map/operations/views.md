@@ -4,12 +4,13 @@
 
 Accessor: `client.views` · Source: `slack_web_api/apis/views.py` · 4 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.views.views_open
 
 - **Route**: `GET /views.open`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def views_open(trigger_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `trigger_id`, `view`, `token`, `content_type`
 - **Params**: `trigger_id` — query · `view` — query · `token` — header · `content_type` — header `Content-Type`
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /views.publish`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def views_publish(user_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `user_id`, `view`, `token`, `content_type`
 - **Params**: `user_id` — query · `view` — query · `hash_` — query `hash` · `token` — header · `content_type` — header `Content-Type`
@@ -42,6 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /views.push`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def views_push(trigger_id: str, view: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `trigger_id`, `view`, `token`, `content_type`
 - **Params**: `trigger_id` — query · `view` — query · `token` — header · `content_type` — header `Content-Type`
@@ -58,6 +61,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /views.update`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def views_update(token: str, content_type: ContentTypeOrStr, *, view_id: str | None = None, external_id: str | None = None, view: str | None = None, hash_: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`
 - **Params**: `view_id` — query · `external_id` — query · `view` — query · `hash_` — query `hash` · `token` — header · `content_type` — header `Content-Type`

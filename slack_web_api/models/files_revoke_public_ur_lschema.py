@@ -6,13 +6,13 @@ from ..core import SdkBaseModel
 from .fileobject import Fileobject, FileobjectDict
 
 
-class FilesSharedPublicUrlschema(SdkBaseModel):
-    """Schema for successful response from files.sharedPublicURL method"""
+class FilesRevokePublicUrLschema(SdkBaseModel):
+    """Schema for successful response from files.revokePublicURL method"""
 
     file: Fileobject
     ok: bool
 
 
-class FilesSharedPublicUrlschemaDict(TypedDict):
+class FilesRevokePublicUrLschemaDict(TypedDict):
     file: FileobjectDict
     ok: bool

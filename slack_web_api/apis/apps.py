@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -282,7 +283,7 @@ class AsyncApps:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Get a list of authorizations for the given event context. Each authorization represents an app installation
         that the event is visible to.
@@ -312,7 +313,7 @@ class AsyncApps:
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsInfoschema:
         """Returns list of permissions this app has on a team.
 
@@ -340,7 +341,7 @@ class AsyncApps:
         trigger_id: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsRequestschema:
         """Allows an app to request additional scopes
 
@@ -370,7 +371,7 @@ class AsyncApps:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsResourcesListsuccessschema:
         """Returns list of resource grants this app has on a team.
 
@@ -396,7 +397,7 @@ class AsyncApps:
         )
 
     async def apps_permissions_scopes_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiPermissionsScopesListsuccessschema:
         """Returns list of scopes this app has on a team.
 
@@ -424,7 +425,7 @@ class AsyncApps:
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Returns list of user grants and corresponding scopes this app has on a team.
 
@@ -457,7 +458,7 @@ class AsyncApps:
         user: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Enables an app to trigger a permissions modal to grant an app access to a user access scope.
 
@@ -488,7 +489,7 @@ class AsyncApps:
         token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsUninstallschema:
         """Uninstalls your app from a workspace.
 
@@ -803,7 +804,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Get a list of authorizations for the given event context. Each authorization represents an app installation
         that the event is visible to.
@@ -839,7 +840,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsInfoschema, RawError]:
         """Returns list of permissions this app has on a team.
 
@@ -869,7 +870,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         trigger_id: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsRequestschema, RawError]:
         """Allows an app to request additional scopes
 
@@ -903,7 +904,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsResourcesListsuccessschema, RawError]:
         """Returns list of resource grants this app has on a team.
 
@@ -933,7 +934,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         )
 
     async def apps_permissions_scopes_list(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[ApiPermissionsScopesListsuccessschema, RawError]:
         """Returns list of scopes this app has on a team.
 
@@ -963,7 +964,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         *,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Returns list of user grants and corresponding scopes this app has on a team.
 
@@ -1000,7 +1001,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         user: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Enables an app to trigger a permissions modal to grant an app access to a user access scope.
 
@@ -1038,7 +1039,7 @@ class AsyncAppsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsUninstallschema, RawError]:
         """Uninstalls your app from a workspace.
 

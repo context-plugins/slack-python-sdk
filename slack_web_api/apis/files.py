@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -23,8 +24,8 @@ from ..models.files_comments_deleteschema import FilesCommentsDeleteschema
 from ..models.files_deleteschema import FilesDeleteschema
 from ..models.files_infoschema import FilesInfoschema
 from ..models.files_listschema import FilesListschema
-from ..models.files_revoke_public_urlschema import FilesRevokePublicUrlschema
-from ..models.files_shared_public_urlschema import FilesSharedPublicUrlschema
+from ..models.files_revoke_public_ur_lschema import FilesRevokePublicUrLschema
+from ..models.files_shared_public_ur_lschema import FilesSharedPublicUrLschema
 from ..models.files_uploadschema import FilesUploadschema
 from ..server.server import Server
 
@@ -438,7 +439,7 @@ class Files:
         token: str | None = None,
         file: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> FilesRevokePublicUrlschema:
+    ) -> FilesRevokePublicUrLschema:
         """Revokes public/external sharing access for a file
 
         Args:
@@ -466,7 +467,7 @@ class Files:
         token: str | None = None,
         file: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> FilesSharedPublicUrlschema:
+    ) -> FilesSharedPublicUrLschema:
         """Enables a file for public/external sharing.
 
         Args:
@@ -556,7 +557,7 @@ class AsyncFiles:
         token: str | None = None,
         file: str | None = None,
         id_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesCommentsDeleteschema:
         """Deletes an existing comment on a file.
 
@@ -585,7 +586,7 @@ class AsyncFiles:
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesDeleteschema:
         """Deletes a file.
 
@@ -617,7 +618,7 @@ class AsyncFiles:
         page: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesInfoschema:
         """Gets information about a file.
 
@@ -667,7 +668,7 @@ class AsyncFiles:
         count: str | None = None,
         page: str | None = None,
         show_files_hidden_by_limit: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesListschema:
         """List for a team, in a channel, or from a user with applied filters.
 
@@ -719,7 +720,7 @@ class AsyncFiles:
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Adds a file from a remote service
 
@@ -762,7 +763,7 @@ class AsyncFiles:
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Retrieve information about a remote file added to Slack
 
@@ -795,7 +796,7 @@ class AsyncFiles:
         ts_to: float | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Retrieve information about a remote file added to Slack
 
@@ -837,7 +838,7 @@ class AsyncFiles:
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a remote file.
 
@@ -868,7 +869,7 @@ class AsyncFiles:
         file: str | None = None,
         external_id: str | None = None,
         channels: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Share a remote file into a channel.
 
@@ -911,7 +912,7 @@ class AsyncFiles:
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Updates an existing remote file.
 
@@ -955,8 +956,8 @@ class AsyncFiles:
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> FilesRevokePublicUrlschema:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> FilesRevokePublicUrLschema:
         """Revokes public/external sharing access for a file
 
         Args:
@@ -983,8 +984,8 @@ class AsyncFiles:
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> FilesSharedPublicUrlschema:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> FilesSharedPublicUrLschema:
         """Enables a file for public/external sharing.
 
         Args:
@@ -1018,7 +1019,7 @@ class AsyncFiles:
         initial_comment: str | None = None,
         channels: str | None = None,
         thread_ts: float | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> FilesUploadschema:
         """Uploads or creates a file.
 
@@ -1507,7 +1508,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         token: str | None = None,
         file: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[FilesRevokePublicUrlschema, RawError]:
+    ) -> ApiResult[FilesRevokePublicUrLschema, RawError]:
         """Revokes public/external sharing access for a file
 
         Args:
@@ -1529,7 +1530,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             ],
             body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesRevokePublicUrlschema],
+            decoder=json_decoder[FilesRevokePublicUrLschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1541,7 +1542,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         token: str | None = None,
         file: str | None = None,
         request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[FilesSharedPublicUrlschema, RawError]:
+    ) -> ApiResult[FilesSharedPublicUrLschema, RawError]:
         """Enables a file for public/external sharing.
 
         Args:
@@ -1563,7 +1564,7 @@ class FilesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             ],
             body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=json_decoder[FilesSharedPublicUrlschema],
+            decoder=json_decoder[FilesSharedPublicUrLschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1632,7 +1633,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str | None = None,
         file: str | None = None,
         id_: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesCommentsDeleteschema, RawError]:
         """Deletes an existing comment on a file.
 
@@ -1667,7 +1668,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesDeleteschema, RawError]:
         """Deletes a file.
 
@@ -1705,7 +1706,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         page: str | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesInfoschema, RawError]:
         """Gets information about a file.
 
@@ -1757,7 +1758,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         count: str | None = None,
         page: str | None = None,
         show_files_hidden_by_limit: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesListschema, RawError]:
         """List for a team, in a channel, or from a user with applied filters.
 
@@ -1811,7 +1812,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Adds a file from a remote service
 
@@ -1856,7 +1857,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Retrieve information about a remote file added to Slack
 
@@ -1895,7 +1896,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         ts_to: float | None = None,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Retrieve information about a remote file added to Slack
 
@@ -1939,7 +1940,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         token: str | None = None,
         file: str | None = None,
         external_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a remote file.
 
@@ -1976,7 +1977,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         file: str | None = None,
         external_id: str | None = None,
         channels: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Share a remote file into a channel.
 
@@ -2021,7 +2022,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         external_url: str | None = None,
         preview_image: str | None = None,
         indexable_file_contents: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Updates an existing remote file.
 
@@ -2067,8 +2068,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[FilesRevokePublicUrlschema, RawError]:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> ApiResult[FilesRevokePublicUrLschema, RawError]:
         """Revokes public/external sharing access for a file
 
         Args:
@@ -2090,7 +2091,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=async_json_decoder[FilesRevokePublicUrlschema],
+            decoder=async_json_decoder[FilesRevokePublicUrLschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2101,8 +2102,8 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         *,
         token: str | None = None,
         file: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
-    ) -> ApiResult[FilesSharedPublicUrlschema, RawError]:
+        request_options: AsyncRequestOptionsOrDict | None = None,
+    ) -> ApiResult[FilesSharedPublicUrLschema, RawError]:
         """Enables a file for public/external sharing.
 
         Args:
@@ -2124,7 +2125,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             ],
             body=form_body(param[str | None]("file", file)),
             auth_scheme=self._auth.slack_auth,
-            decoder=async_json_decoder[FilesSharedPublicUrlschema],
+            decoder=async_json_decoder[FilesSharedPublicUrLschema],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2142,7 +2143,7 @@ class AsyncFilesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         initial_comment: str | None = None,
         channels: str | None = None,
         thread_ts: float | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[FilesUploadschema, RawError]:
         """Uploads or creates a file.
 

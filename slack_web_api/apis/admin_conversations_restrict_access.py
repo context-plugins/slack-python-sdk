@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -144,7 +145,7 @@ class AsyncAdminConversationsRestrictAccess:
         channel_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Add an allowlist of IDP groups for accessing a channel
 
@@ -178,7 +179,7 @@ class AsyncAdminConversationsRestrictAccess:
         content_type: ContentTypeOrStr,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all IDP Groups linked to a channel
 
@@ -210,7 +211,7 @@ class AsyncAdminConversationsRestrictAccess:
         group_id: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Remove a linked IDP group linked from a private channel
 
@@ -374,7 +375,7 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
         channel_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Add an allowlist of IDP groups for accessing a channel
 
@@ -415,7 +416,7 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
         content_type: ContentTypeOrStr,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all IDP Groups linked to a channel
 
@@ -451,7 +452,7 @@ class AsyncAdminConversationsRestrictAccessWithRawResponse(
         group_id: str,
         channel_id: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Remove a linked IDP group linked from a private channel
 

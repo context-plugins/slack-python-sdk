@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -135,7 +136,7 @@ class AsyncAdminInviteRequests:
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Approve a workspace invite request.
 
@@ -165,7 +166,7 @@ class AsyncAdminInviteRequests:
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Deny a workspace invite request.
 
@@ -196,7 +197,7 @@ class AsyncAdminInviteRequests:
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all pending workspace invite requests.
 
@@ -347,7 +348,7 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Approve a workspace invite request.
 
@@ -383,7 +384,7 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
         invite_request_id: str,
         *,
         team_id: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Deny a workspace invite request.
 
@@ -420,7 +421,7 @@ class AsyncAdminInviteRequestsWithRawResponse(SecuredRawResponse[AsyncRawClient,
         team_id: str | None = None,
         cursor: str | None = None,
         limit: int | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all pending workspace invite requests.
 

@@ -5,7 +5,7 @@ from typing_extensions import NotRequired, TypedDict
 from ..core import UNSET, Optional, SdkBaseModel
 
 
-class ApimethodusersGetPresence(SdkBaseModel):
+class ApImethodusersGetPresence(SdkBaseModel):
     """Generated from users.getPresence with shasum e7251aec575d8863f9e0eb38663ae9dc26655f65"""
 
     auto_away: Optional[bool] = UNSET
@@ -17,7 +17,7 @@ class ApimethodusersGetPresence(SdkBaseModel):
     presence: str
 
 
-class ApimethodusersGetPresenceDict(TypedDict):
+class ApImethodusersGetPresenceDict(TypedDict):
     auto_away: NotRequired[bool]
     connection_count: NotRequired[int]
     last_activity: NotRequired[int]

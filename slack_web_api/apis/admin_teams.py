@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -115,7 +116,7 @@ class AsyncAdminTeams:
         *,
         team_description: str | None = None,
         team_discoverability: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Create an Enterprise team.
 
@@ -154,7 +155,7 @@ class AsyncAdminTeams:
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """List all teams on an Enterprise organization
 
@@ -272,7 +273,7 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         *,
         team_description: str | None = None,
         team_discoverability: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Create an Enterprise team.
 
@@ -316,7 +317,7 @@ class AsyncAdminTeamsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         *,
         limit: int | None = None,
         cursor: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """List all teams on an Enterprise organization
 

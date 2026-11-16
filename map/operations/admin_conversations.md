@@ -4,12 +4,13 @@
 
 Accessor: `client.admin_conversations` · Source: `slack_web_api/apis/admin_conversations.py` · 13 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.admin_conversations.admin_conversations_archive
 
 - **Route**: `POST /admin.conversations.archive`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_archive(token: str, content_type: ContentTypeOrStr, channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.convertToPrivate`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_convert_to_private(token: str, content_type: ContentTypeOrStr, channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field
@@ -42,6 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.create`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_create(token: str, content_type: ContentTypeOrStr, name: str, is_private: bool, *, description: str | None = None, org_wide: bool | None = None, team_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `name`, `is_private`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `name` — form field · `is_private` — form field · `description` — form field · `org_wide` — form field · `team_id` — form field
@@ -58,6 +61,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.delete`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_delete(token: str, content_type: ContentTypeOrStr, channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field
@@ -74,6 +78,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.disconnectShared`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_disconnect_shared(token: str, content_type: ContentTypeOrStr, channel_id: str, *, leaving_team_ids: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field · `leaving_team_ids` — form field
@@ -90,6 +95,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /admin.conversations.getConversationPrefs`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_get_conversation_prefs(channel_id: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `channel_id`, `token`, `content_type`
 - **Params**: `channel_id` — query · `token` — header · `content_type` — header `Content-Type`
@@ -106,6 +112,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /admin.conversations.getTeams`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_get_teams(channel_id: str, token: str, content_type: ContentTypeOrStr, *, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `channel_id`, `token`, `content_type`
 - **Params**: `channel_id` — query · `cursor` — query · `limit` — query · `token` — header · `content_type` — header `Content-Type`
@@ -122,6 +129,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.invite`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_invite(token: str, content_type: ContentTypeOrStr, user_ids: str, channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `user_ids`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `user_ids` — form field · `channel_id` — form field
@@ -138,6 +146,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.rename`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_rename(token: str, content_type: ContentTypeOrStr, channel_id: str, name: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`, `name`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field · `name` — form field
@@ -154,6 +163,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /admin.conversations.search`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_search(token: str, content_type: ContentTypeOrStr, *, team_ids: str | None = None, query: str | None = None, limit: int | None = None, cursor: str | None = None, search_channel_types: str | None = None, sort: str | None = None, sort_dir: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`
 - **Params**: `team_ids` — query · `query` — query · `limit` — query · `cursor` — query · `search_channel_types` — query · `sort` — query · `sort_dir` — query · `token` — header · `content_type` — header `Content-Type`
@@ -170,6 +180,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.setConversationPrefs`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_set_conversation_prefs(token: str, content_type: ContentTypeOrStr, channel_id: str, prefs: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`, `prefs`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field · `prefs` — form field
@@ -186,6 +197,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.setTeams`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_set_teams(token: str, content_type: ContentTypeOrStr, channel_id: str, *, team_id: str | None = None, target_team_ids: str | None = None, org_channel: bool | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field · `team_id` — form field · `target_team_ids` — form field · `org_channel` — form field
@@ -202,6 +214,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /admin.conversations.unarchive`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def admin_conversations_unarchive(token: str, content_type: ContentTypeOrStr, channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `channel_id`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `channel_id` — form field

@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -69,7 +70,7 @@ class AsyncDialog:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> DialogOpenschema:
         """Open a dialog with a user
 
@@ -139,7 +140,7 @@ class AsyncDialogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[DialogOpenschema, RawError]:
         """Open a dialog with a user
 

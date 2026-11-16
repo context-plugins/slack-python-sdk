@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -150,7 +151,7 @@ class AsyncWorkflows:
         content_type: ContentTypeOrStr,
         *,
         outputs: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Indicate that an app's step in a workflow completed execution.
 
@@ -181,7 +182,7 @@ class AsyncWorkflows:
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Indicate that an app's step in a workflow failed to execute.
 
@@ -214,7 +215,7 @@ class AsyncWorkflows:
         outputs: str | None = None,
         step_name: str | None = None,
         step_image_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Update the configuration for a workflow extension step.
 
@@ -387,7 +388,7 @@ class AsyncWorkflowsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         content_type: ContentTypeOrStr,
         *,
         outputs: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Indicate that an app's step in a workflow completed execution.
 
@@ -422,7 +423,7 @@ class AsyncWorkflowsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         token: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Indicate that an app's step in a workflow failed to execute.
 
@@ -457,7 +458,7 @@ class AsyncWorkflowsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         outputs: str | None = None,
         step_name: str | None = None,
         step_image_url: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Update the configuration for a workflow extension step.
 

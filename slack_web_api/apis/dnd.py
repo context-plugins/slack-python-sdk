@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -156,7 +157,7 @@ class AsyncDnd:
         self._with_raw_response = AsyncDndWithRawResponse(client, server, auth)
 
     async def dnd_end_dnd(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> DndEndDndschema:
         """Ends the current user's Do Not Disturb session immediately.
 
@@ -174,7 +175,7 @@ class AsyncDnd:
         return unwrap(await self._with_raw_response.dnd_end_dnd(token, content_type, request_options=request_options))
 
     async def dnd_end_snooze(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> DndEndSnoozeschema:
         """Ends the current user's snooze mode immediately.
 
@@ -199,7 +200,7 @@ class AsyncDnd:
         *,
         token: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> DndInfoschema:
         """Retrieves a user's current Do Not Disturb status.
 
@@ -227,7 +228,7 @@ class AsyncDnd:
         token: str,
         num_minutes: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> DndSetSnoozeschema:
         """Turns on Do Not Disturb mode for the current user, or changes its duration.
 
@@ -255,7 +256,7 @@ class AsyncDnd:
         *,
         token: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> Defaultsuccesstemplate:
         """Retrieves the Do Not Disturb status for up to 50 users on a team.
 
@@ -430,7 +431,7 @@ class DndWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
 class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAuthSchemes]):
     async def dnd_end_dnd(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[DndEndDndschema, RawError]:
         """Ends the current user's Do Not Disturb session immediately.
 
@@ -457,7 +458,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         )
 
     async def dnd_end_snooze(
-        self, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None
+        self, token: str, content_type: ContentTypeOrStr, *, request_options: AsyncRequestOptionsOrDict | None = None
     ) -> ApiResult[DndEndSnoozeschema, RawError]:
         """Ends the current user's snooze mode immediately.
 
@@ -489,7 +490,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         *,
         token: str | None = None,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[DndInfoschema, RawError]:
         """Retrieves a user's current Do Not Disturb status.
 
@@ -519,7 +520,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         token: str,
         num_minutes: str,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[DndSetSnoozeschema, RawError]:
         """Turns on Do Not Disturb mode for the current user, or changes its duration.
 
@@ -549,7 +550,7 @@ class AsyncDndWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncAu
         *,
         token: str | None = None,
         users: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[Defaultsuccesstemplate, RawError]:
         """Retrieves the Do Not Disturb status for up to 50 users on a team.
 

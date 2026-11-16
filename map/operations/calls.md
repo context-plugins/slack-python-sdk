@@ -4,12 +4,13 @@
 
 Accessor: `client.calls` · Source: `slack_web_api/apis/calls.py` · 6 operations
 
-Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameters (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
+Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omit what its invariants table covers and are otherwise self-contained, so chunk at block level. Signatures are the sync parsed spelling; the async and raw spellings take the same parameter names, the async ones typing `request_options` as `AsyncRequestOptionsOrDict` (see sdk-map.md). **Type sources** names the module declaring each type an operation mentions, so resolving a body, return or error payload is a lookup rather than a search; the runtime types `RawError` and `ApiResult` are excluded.
 
 ### client.calls.calls_add
 
 - **Route**: `POST /calls.add`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_add(token: str, content_type: ContentTypeOrStr, external_unique_id: str, join_url: str, *, external_display_id: str | None = None, desktop_app_join_url: str | None = None, date_start: int | None = None, title: str | None = None, created_by: str | None = None, users: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `external_unique_id`, `join_url`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `external_unique_id` — form field · `join_url` — form field · `external_display_id` — form field · `desktop_app_join_url` — form field · `date_start` — form field · `title` — form field · `created_by` — form field · `users` — form field
@@ -26,6 +27,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.end`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_end(token: str, content_type: ContentTypeOrStr, id_: str, *, duration: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `id_`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `duration` — form field
@@ -42,6 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /calls.info`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_info(id_: str, token: str, content_type: ContentTypeOrStr, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id_`, `token`, `content_type`
 - **Params**: `id_` — query `id` · `token` — header · `content_type` — header `Content-Type`
@@ -58,6 +61,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.add`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_participants_add(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `id_`, `users`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
@@ -74,6 +78,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.participants.remove`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_participants_remove(token: str, content_type: ContentTypeOrStr, id_: str, users: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `id_`, `users`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `users` — form field
@@ -90,6 +95,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /calls.update`
 - **Auth**: `slack_auth`
+- **Server**: `default`
 - **Signature**: `def calls_update(token: str, content_type: ContentTypeOrStr, id_: str, *, title: str | None = None, join_url: str | None = None, desktop_app_join_url: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `token`, `content_type`, `id_`
 - **Params**: `token` — header · `content_type` — header `Content-Type` · `id_` — form field `id` · `title` — form field · `join_url` — form field · `desktop_app_join_url` — form field

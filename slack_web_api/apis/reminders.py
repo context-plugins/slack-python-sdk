@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -190,7 +191,7 @@ class AsyncReminders:
         time: str,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RemindersAddschema:
         """Creates a reminder.
 
@@ -223,7 +224,7 @@ class AsyncReminders:
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RemindersCompleteschema:
         """Marks a reminder as complete.
 
@@ -251,7 +252,7 @@ class AsyncReminders:
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RemindersDeleteschema:
         """Deletes a reminder.
 
@@ -279,7 +280,7 @@ class AsyncReminders:
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RemindersInfoschema:
         """Gets information about a reminder.
 
@@ -306,7 +307,7 @@ class AsyncReminders:
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> RemindersListschema:
         """Lists all reminders created by or for a given user.
 
@@ -508,7 +509,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         time: str,
         *,
         user: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RemindersAddschema, RawError]:
         """Creates a reminder.
 
@@ -547,7 +548,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RemindersCompleteschema, RawError]:
         """Marks a reminder as complete.
 
@@ -581,7 +582,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RemindersDeleteschema, RawError]:
         """Deletes a reminder.
 
@@ -615,7 +616,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         *,
         token: str | None = None,
         reminder: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RemindersInfoschema, RawError]:
         """Gets information about a reminder.
 
@@ -644,7 +645,7 @@ class AsyncRemindersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[RemindersListschema, RawError]:
         """Lists all reminders created by or for a given user.
 

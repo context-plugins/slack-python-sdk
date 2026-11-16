@@ -4,6 +4,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -92,7 +93,7 @@ class AsyncAppsPermissions:
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsInfoschema:
         """Returns list of permissions this app has on a team.
 
@@ -120,7 +121,7 @@ class AsyncAppsPermissions:
         trigger_id: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> AppsPermissionsRequestschema:
         """Allows an app to request additional scopes
 
@@ -218,7 +219,7 @@ class AsyncAppsPermissionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         content_type: ContentTypeOrStr,
         *,
         token: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsInfoschema, RawError]:
         """Returns list of permissions this app has on a team.
 
@@ -248,7 +249,7 @@ class AsyncAppsPermissionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         trigger_id: str,
         content_type: ContentTypeOrStr,
         *,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[AppsPermissionsRequestschema, RawError]:
         """Allows an app to request additional scopes
 

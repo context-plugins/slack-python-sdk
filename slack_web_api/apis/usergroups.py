@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -300,7 +301,7 @@ class AsyncUsergroups:
         description: str | None = None,
         handle: str | None = None,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsCreateschema:
         """Create a User Group
 
@@ -340,7 +341,7 @@ class AsyncUsergroups:
         usergroup: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsDisableschema:
         """Disable an existing User Group
 
@@ -370,7 +371,7 @@ class AsyncUsergroups:
         usergroup: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsEnableschema:
         """Enable a User Group
 
@@ -401,7 +402,7 @@ class AsyncUsergroups:
         include_users: bool | None = None,
         include_count: bool | None = None,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsListschema:
         """List all User Groups for a team
 
@@ -441,7 +442,7 @@ class AsyncUsergroups:
         channels: str | None = None,
         include_count: bool | None = None,
         name: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsUpdateschema:
         """Update an existing User Group
 
@@ -483,7 +484,7 @@ class AsyncUsergroups:
         content_type: ContentTypeOrStr,
         *,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsUsersListschema:
         """List all users in a User Group
 
@@ -514,7 +515,7 @@ class AsyncUsergroups:
         users: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsUsersUpdateschema:
         """Update the list of users for a User Group
 
@@ -846,7 +847,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         description: str | None = None,
         handle: str | None = None,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsCreateschema, RawError]:
         """Create a User Group
 
@@ -891,7 +892,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         usergroup: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsDisableschema, RawError]:
         """Disable an existing User Group
 
@@ -927,7 +928,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         usergroup: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsEnableschema, RawError]:
         """Enable a User Group
 
@@ -964,7 +965,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         include_users: bool | None = None,
         include_count: bool | None = None,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsListschema, RawError]:
         """List all User Groups for a team
 
@@ -1006,7 +1007,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         channels: str | None = None,
         include_count: bool | None = None,
         name: str | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsUpdateschema, RawError]:
         """Update an existing User Group
 
@@ -1053,7 +1054,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         content_type: ContentTypeOrStr,
         *,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsUsersListschema, RawError]:
         """List all users in a User Group
 
@@ -1090,7 +1091,7 @@ class AsyncUsergroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, 
         users: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsUsersUpdateschema, RawError]:
         """Update the list of users for a User Group
 

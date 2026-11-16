@@ -6,6 +6,7 @@ from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
     AsyncRawClient,
+    AsyncRequestOptionsOrDict,
     RawClient,
     RawError,
     RequestOptionsOrDict,
@@ -106,7 +107,7 @@ class AsyncUsergroupsUsers:
         content_type: ContentTypeOrStr,
         *,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsUsersListschema:
         """List all users in a User Group
 
@@ -137,7 +138,7 @@ class AsyncUsergroupsUsers:
         users: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> UsergroupsUsersUpdateschema:
         """Update the list of users for a User Group
 
@@ -256,7 +257,7 @@ class AsyncUsergroupsUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         content_type: ContentTypeOrStr,
         *,
         include_disabled: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsUsersListschema, RawError]:
         """List all users in a User Group
 
@@ -293,7 +294,7 @@ class AsyncUsergroupsUsersWithRawResponse(SecuredRawResponse[AsyncRawClient, Ser
         users: str,
         *,
         include_count: bool | None = None,
-        request_options: RequestOptionsOrDict | None = None,
+        request_options: AsyncRequestOptionsOrDict | None = None,
     ) -> ApiResult[UsergroupsUsersUpdateschema, RawError]:
         """Update the list of users for a User Group
 

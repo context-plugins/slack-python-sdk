@@ -4,7 +4,7 @@ from typing import Annotated, TypeAlias
 from ...core import open_enum_validator
 
 
-class FilesSharedPublicUrlerrorEnum(str, Enum):
+class FilesSharedPublicUrlErrorEnum(str, Enum):
     FILE_NOT_FOUND = "file_not_found"
     NOT_ALLOWED = "not_allowed"
     NOT_AUTHED = "not_authed"
@@ -31,6 +31,6 @@ class FilesSharedPublicUrlerrorEnum(str, Enum):
     __str__ = str.__str__
 
 
-FilesSharedPublicUrlerrorEnumOrStr: TypeAlias = Annotated[
-    FilesSharedPublicUrlerrorEnum | str, open_enum_validator(FilesSharedPublicUrlerrorEnum)
+FilesSharedPublicUrlErrorEnumOrStr: TypeAlias = Annotated[
+    FilesSharedPublicUrlErrorEnum | str, open_enum_validator(FilesSharedPublicUrlErrorEnum)
 ]
